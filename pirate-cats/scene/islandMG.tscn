@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://bfprnost8nmpi"]
+
+[ext_resource type="Script" uid="uid://5plxamhmmudi" path="res://script/island_mg.gd" id="1_h7jsb"]
+[ext_resource type="Texture2D" uid="uid://3qgu4pn8usqr" path="res://assets/beach puzzle bg.png" id="1_xy4n2"]
+[ext_resource type="Texture2D" uid="uid://c0i7ccy83bsu2" path="res://assets/candied catnip.png" id="3_h7jsb"]
+[ext_resource type="Texture2D" uid="uid://bpw4glf37l581" path="res://assets/star.png" id="9_mjfxx"]
+[ext_resource type="Texture2D" uid="uid://buhyh8gypkkxu" path="res://assets/shell2.png" id="10_o4bf1"]
+[ext_resource type="Texture2D" uid="uid://2wuctke70gyw" path="res://assets/coconut.png" id="11_ykvkq"]
+[ext_resource type="Texture2D" uid="uid://bfx6njjb766cf" path="res://assets/clam.png" id="12_hrb60"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48q5p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yexw1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kpj8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7jsb"]
+
+[node name="Node2D" type="Node2D" unique_id=280944476]
+script = ExtResource("1_h7jsb")
+
+[node name="BeachPuzzleBg" type="Sprite2D" parent="." unique_id=1928508575]
+position = Vector2(576, 324)
+texture = ExtResource("1_xy4n2")
+
+[node name="CandiedCatnip" type="Sprite2D" parent="." unique_id=254460415]
+position = Vector2(381, 786)
+texture = ExtResource("3_h7jsb")
+
+[node name="Button" type="Button" parent="." unique_id=167163700]
+modulate = Color(1, 1, 1, 0.59000003)
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 56.999992
+offset_top = 141.0
+offset_right = 309.73016
+offset_bottom = 380.0
+scale = Vector2(1.3294811, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_48q5p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yexw1")
+
+[node name="Button2" type="Button" parent="." unique_id=1264273219]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 56.999992
+offset_top = 380.0
+offset_right = 309.73016
+offset_bottom = 619.0
+scale = Vector2(1.3294811, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_48q5p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yexw1")
+
+[node name="Button3" type="Button" parent="." unique_id=122250559]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 393.0
+offset_top = 141.0
+offset_right = 645.73016
+offset_bottom = 380.0
+scale = Vector2(1.3294811, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_48q5p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yexw1")
+
+[node name="Button4" type="Button" parent="." unique_id=2068923312]
+modulate = Color(1, 1, 1, 0.69900006)
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 393.0
+offset_top = 380.0
+offset_right = 645.73016
+offset_bottom = 619.0
+scale = Vector2(1.3294811, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_48q5p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yexw1")
+
+[node name="Button5" type="Button" parent="." unique_id=177642356]
+modulate = Color(1, 1, 1, 0.20500001)
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 729.0
+offset_top = 141.0
+offset_right = 981.7302
+offset_bottom = 380.0
+scale = Vector2(1.3294811, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_48q5p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yexw1")
+
+[node name="Button6" type="Button" parent="." unique_id=1036623887]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 729.0
+offset_top = 380.0
+offset_right = 981.7302
+offset_bottom = 619.0
+scale = Vector2(1.3294811, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_48q5p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yexw1")
+
+[node name="side" type="Button" parent="." unique_id=1822933561]
+self_modulate = Color(0, 0, 0, 0.4392157)
+offset_left = -11.0
+offset_top = 5.0
+offset_right = 105.0
+offset_bottom = 616.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_0kpj8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h7jsb")
+
+[node name="side2" type="Button" parent="." unique_id=885996045]
+self_modulate = Color(0, 0, 0, 0.4392157)
+offset_left = 965.0
+offset_top = 25.0
+offset_right = 1152.0
+offset_bottom = 636.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_0kpj8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h7jsb")
+
+[node name="top" type="Button" parent="." unique_id=921257450]
+self_modulate = Color(0, 0, 0, 0.4392157)
+offset_left = -8.0
+offset_right = 1165.0
+offset_bottom = 146.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_0kpj8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h7jsb")
+
+[node name="bottom" type="Button" parent="." unique_id=425751395]
+self_modulate = Color(0, 0, 0, 0.4392157)
+offset_left = -9.0
+offset_top = 612.0
+offset_right = 1164.0
+offset_bottom = 648.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_0kpj8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h7jsb")
+
+[node name="Star" type="Sprite2D" parent="." unique_id=1733061692]
+position = Vector2(-361, 868)
+texture = ExtResource("9_mjfxx")
+
+[node name="Shell2" type="Sprite2D" parent="." unique_id=37325161]
+position = Vector2(955, 143.99994)
+rotation = 0.25363895
+scale = Vector2(0.6824817, 0.68248165)
+texture = ExtResource("10_o4bf1")
+
+[node name="Shell3" type="Sprite2D" parent="." unique_id=1743094926]
+modulate = Color(1, 0.50956357, 1, 1)
+position = Vector2(914, 137)
+rotation = 0.16459376
+scale = Vector2(0.6824817, 0.68248165)
+texture = ExtResource("10_o4bf1")
+
+[node name="Coconut" type="Sprite2D" parent="." unique_id=150007607]
+position = Vector2(135.5, 150.5)
+texture = ExtResource("11_ykvkq")
+
+[node name="Coconut2" type="Sprite2D" parent="." unique_id=522541031]
+position = Vector2(87.5, 167.5)
+texture = ExtResource("11_ykvkq")
+
+[node name="Clam" type="Sprite2D" parent="." unique_id=1677173877]
+position = Vector2(949, 592.00006)
+rotation = 0.2321944
+scale = Vector2(0.6269338, 0.6269338)
+texture = ExtResource("12_hrb60")
+
+[node name="Clam2" type="Sprite2D" parent="." unique_id=1987191464]
+modulate = Color(0.96107644, 0.38908723, 0.48397207, 1)
+position = Vector2(908, 596)
+rotation = -0.3786652
+scale = Vector2(0.7348092, 0.7348092)
+texture = ExtResource("12_hrb60")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="Button6" to="." method="_on_button_6_pressed"]
+[connection signal="pressed" from="side" to="." method="_on_side_pressed"]
+[connection signal="pressed" from="side2" to="." method="_on_side_2_pressed"]
+[connection signal="pressed" from="top" to="." method="_on_top_pressed"]
+[connection signal="pressed" from="bottom" to="." method="_on_bottom_pressed"]
