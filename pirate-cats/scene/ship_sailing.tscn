@@ -848,6 +848,7 @@ texture = ExtResource("25_k5ume")
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1461788157]
 offset_right = 1160.0
 offset_bottom = 698.0
+mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
 [connection signal="pressed" from="parallaxbg/Camera2D/Button" to="." method="_on_button_pressed"]

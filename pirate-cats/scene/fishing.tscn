@@ -12,6 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://v7d4ra687lii" path="res://assets/green fish.png" id="6_so0t4"]
 [ext_resource type="Texture2D" uid="uid://dk2qa7xurhhtn" path="res://assets/golden cat fish.png" id="7_y3t8l"]
 [ext_resource type="Texture2D" uid="uid://b3x4qcdo2ul6v" path="res://assets/Fishing BOat Only.png" id="12_j7myu"]
+[ext_resource type="Texture2D" uid="uid://bk0yokqeio7rc" path="res://assets/textbox.png" id="13_d18c1"]
+[ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="14_u2eu5"]
+[ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="15_ce22x"]
+[ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="16_21ie3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ue6ed"]
 atlas = ExtResource("1_ly0cx")
@@ -40,7 +44,7 @@ animations = [{
 "duration": 1.0,
 "texture": null
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -98,7 +102,7 @@ animations = [{
 "duration": 1.0,
 "texture": null
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -334,6 +338,71 @@ shape = SubResource("RectangleShape2D_f8at7")
 position = Vector2(722.25, 474)
 shape = SubResource("RectangleShape2D_f8at7")
 
+[node name="Textbox" type="Sprite2D" parent="." unique_id=1523800899]
+visible = false
+position = Vector2(584.03235, 401)
+scale = Vector2(0.34551278, 0.34551278)
+texture = ExtResource("13_d18c1")
+
+[node name="namelabel" type="Label" parent="Textbox" unique_id=105582495]
+offset_left = -370.464
+offset_top = -95.51019
+offset_right = 107.087036
+offset_bottom = -52.096497
+theme_override_fonts/font = ExtResource("14_u2eu5")
+theme_override_font_sizes/font_size = 35
+text = "???"
+vertical_alignment = 1
+
+[node name="textlabel" type="Label" parent="Textbox" unique_id=1459632270]
+custom_minimum_size = Vector2(16.92, 0)
+offset_left = -222.85681
+offset_top = -34.730988
+offset_right = 240.22302
+offset_bottom = 54.990692
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("14_u2eu5")
+theme_override_font_sizes/font_size = 38
+text = "hi  my name is bob. i like to eat"
+autowrap_mode = 2
+
+[node name="skiplabel" type="Label" parent="Textbox" unique_id=1929847811]
+offset_left = 208.38596
+offset_top = 57.88497
+offset_right = 347.30978
+offset_bottom = 77.88497
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("14_u2eu5")
+theme_override_font_sizes/font_size = 20
+text = "SPACE TO SKIP"
+
+[node name="photobox" type="TextureRect" parent="Textbox" unique_id=411061501]
+offset_left = -379.1466
+offset_top = -43.413727
+offset_right = -222.85706
+offset_bottom = 78.144745
+expand_mode = 2
+stretch_mode = 4
+
+[node name="player button" type="Button" parent="." unique_id=1500359846]
+texture_filter = 2
+offset_left = 487.03235
+offset_top = 285.0
+offset_right = 671.03235
+offset_bottom = 335.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("14_u2eu5")
+theme_override_styles/normal = ExtResource("15_ce22x")
+theme_override_styles/pressed = ExtResource("16_21ie3")
+theme_override_styles/hover = ExtResource("16_21ie3")
+theme_override_styles/focus = ExtResource("16_21ie3")
+text = "I dont see any fish"
+autowrap_mode = 3
+
 [connection signal="area_entered" from="Outside/Inside/InsideSlider" to="." method="_on_inside_slider_area_entered"]
 [connection signal="area_exited" from="Outside/Inside/InsideSlider" to="." method="_on_inside_slider_area_exited"]
 [connection signal="body_entered" from="Outside/Slider/SLiderArea" to="." method="_on_s_lider_area_body_entered"]
@@ -342,3 +411,4 @@ shape = SubResource("RectangleShape2D_f8at7")
 [connection signal="timeout" from="WaitReel" to="." method="_on_wait_reel_timeout"]
 [connection signal="timeout" from="TimeOutOfTank" to="." method="_on_time_out_of_tank_timeout"]
 [connection signal="timeout" from="InsMove" to="." method="_on_ins_move_timeout"]
+[connection signal="pressed" from="player button" to="." method="_on_player_button_pressed"]

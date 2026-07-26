@@ -16,12 +16,111 @@ var time_insmove
 var fish_swiming = true
 
 
+var dialogue = [
+	{
+		#0
+		"speaker": "you",
+		"name": "",
+		"text": "I dont see any fish"
+	},
+	{
+		#1
+		"speaker": "cat",
+		"name": "Fisher",
+		"text": "You have to cast and reel the fish in to see it. ",
+		"portrait": preload("res://assets/headshots/FISHER FACE.png")
+	},
+	{
+		#2
+		"speaker": "cat",
+		"name": "Fisher",
+		"text": "Click once to cast your rod in, wait for a catch ",
+		"portrait": preload("res://assets/headshots/FISHER FACE.png")
+	},
+	{
+		#3
+		"speaker": "cat",
+		"name": "Fisher",
+		"text": "Keep the red bar in the orange bar for some time to get the fish. ",
+		"portrait": preload("res://assets/headshots/FISHER FACE.png")
+	},
+	{
+		#4
+		"speaker": "you",
+		"name": "",
+		"text": "Okay, I think Im ready!"
+	},
+]
+
+var dialogue_index = 0
+var typing = false
+
+
+
+func show_next_dialogue() -> void:
+	if dialogue_index >= dialogue.size():
+		$Textbox.visible = false
+		$"player button".visible = false
+		return
+	
+	var line = dialogue[dialogue_index]
+	
+	if line["speaker"] == "you":
+		$Textbox.visible = false
+		$"player button".visible = true
+		$"player button".text = line["text"]
+		
+	elif line["speaker"] == "cat":
+		$"player button".visible = false
+		show_cat_text(line)
+		
+
+
+func _on_player_button_pressed() -> void:
+	dialogue_index += 1
+	show_next_dialogue()
+
+func show_cat_text(line) -> void:
+	$Textbox.visible = true
+	typing = true
+	
+	$Textbox/namelabel.text = line["name"]
+	$Textbox/textlabel.text = line["text"]
+	
+	if line.has("portrait"):
+		$Textbox/photobox.texture = line["portrait"]
+	else:
+		$Textbox/photobox.texture = null
+	$Textbox/textlabel.visible_characters = 0
+	
+	for i in $Textbox/textlabel.text.length():
+		$Textbox/textlabel.visible_characters = i
+		await get_tree().create_timer(0.05).timeout
+	
+	typing = false
+
+
+func _input(event):
+	if event.is_action_pressed("ui_accept") and !typing:
+		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
+			dialogue_index += 1
+			if dialogue_index == 4:
+				$Button.disabled = false
+			show_next_dialogue()
+
+
+
+
+
+
+
+
 func _ready() -> void:
 	$Rod.visible = false
 	$Outside.visible = false
 	$fishbub.visible = false
 	$Label.visible = false
-	
+	$Button.disabled = true
 		
 
 func _on_button_pressed() -> void:

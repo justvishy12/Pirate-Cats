@@ -20,6 +20,7 @@ visible = false
 texture = ExtResource("2_djbn3")
 
 [node name="DeepHole" type="Sprite2D" parent="." unique_id=1206387840]
+visible = false
 texture = ExtResource("3_r3mut")
 
 [node name="SmallSandPile" type="Sprite2D" parent="." unique_id=642153592]

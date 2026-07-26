@@ -151,12 +151,10 @@ var dialogue = [
 		"name":"",
 		"text": "",
 	},
-]
+	]
 
 var dialogue_index = 0
 var typing = false
-
-var you_text_index = 0
 
 func _ready() -> void:
 	SaveManager.save_game(SaveManager.current_slot)
@@ -169,7 +167,6 @@ func _ready() -> void:
 func _on_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scene/loading.tscn")
 
-		
 func show_next_dialogue() -> void:
 	if dialogue_index >= dialogue.size():
 		$Textbox.visible = false
@@ -252,8 +249,4 @@ func _input(event):
 	if event.is_action_pressed("ui_accept") and !typing:
 		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
 			dialogue_index += 1
-			if dialogue_index ==15:
-				$AnimationPlayer.play("pan crab")
-				await $AnimationPlayer.animation_finished
-				$parallaxbg/Camera2D.apply_shake(0.5)
 			show_next_dialogue()
