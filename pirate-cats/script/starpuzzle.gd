@@ -88,6 +88,7 @@ func _process(delta: float) -> void:
 	if $ShirtConstellation.global_position.x <= 575:
 		$ShirtConstellation.modulate.a = max(0.0, $ShirtConstellation.modulate.a - delta)
 		if $ShirtConstellation.modulate.a <= 0.0 and p1 == false:
+			round1done = true
 			$Wheel.rotation += 2.0 * delta
 			p1 = true
 			round1 = false
@@ -98,6 +99,7 @@ func _process(delta: float) -> void:
 	if $BootConstellation.global_position.x >= 575:
 		$BootConstellation.modulate.a = max(0.0,  $BootConstellation.modulate.a - delta)
 		if $BootConstellation.modulate.a <= 0.0 and p2== false:
+			round2done = true
 			$Wheel.rotation += -2.0 * delta
 			p2 = true
 			round2 = false
@@ -124,6 +126,7 @@ func _process(delta: float) -> void:
 	if $PantsConstellation.global_position.x <= 575:
 		$PantsConstellation.modulate.a = max(0.0, $PantsConstellation.modulate.a - delta)
 		if $PantsConstellation.modulate.a <= 0.0 and p3 == false:
+			round3done = true
 			$Wheel.rotation += 2.0 * delta
 			p3 = true
 			round3 = false

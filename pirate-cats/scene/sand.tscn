@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bpcpxfhaty6v"]
+
+[ext_resource type="Script" uid="uid://co58vpojjison" path="res://script/sand.gd" id="1_djbn3"]
+[ext_resource type="Texture2D" uid="uid://bi1ui6mtdiq5b" path="res://assets/baby hole.png" id="1_wjmi7"]
+[ext_resource type="Texture2D" uid="uid://vvg7vmuvjyiv" path="res://assets/hole.png" id="2_djbn3"]
+[ext_resource type="Texture2D" uid="uid://bw0q210f67nex" path="res://assets/deep hole.png" id="3_r3mut"]
+[ext_resource type="Texture2D" uid="uid://dnha3w25k1m55" path="res://assets/mid sand pile.png" id="4_p5lce"]
+[ext_resource type="Texture2D" uid="uid://bswpp4owfqskd" path="res://assets/sandpile.png" id="5_uhf46"]
+[ext_resource type="Texture2D" uid="uid://dne4uwtyh0ban" path="res://assets/small sand pile.png" id="6_3cjxl"]
+[ext_resource type="Texture2D" uid="uid://c0i7ccy83bsu2" path="res://assets/candied catnip.png" id="8_r3mut"]
+
+[node name="Node2D" type="Node2D" unique_id=1074234064]
+script = ExtResource("1_djbn3")
+
+[node name="BabyHole" type="Sprite2D" parent="." unique_id=1514174417]
+texture = ExtResource("1_wjmi7")
+
+[node name="Hole" type="Sprite2D" parent="." unique_id=2101431732]
+visible = false
+texture = ExtResource("2_djbn3")
+
+[node name="DeepHole" type="Sprite2D" parent="." unique_id=1206387840]
+texture = ExtResource("3_r3mut")
+
+[node name="SmallSandPile" type="Sprite2D" parent="." unique_id=642153592]
+position = Vector2(107, -79)
+texture = ExtResource("6_3cjxl")
+
+[node name="MidSandPile" type="Sprite2D" parent="." unique_id=683946374]
+visible = false
+position = Vector2(108, -84)
+texture = ExtResource("4_p5lce")
+
+[node name="Sandpile" type="Sprite2D" parent="." unique_id=1861482693]
+visible = false
+position = Vector2(112, -97)
+texture = ExtResource("5_uhf46")
+
+[node name="SandPan" type="Panel" parent="." unique_id=1353814748]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -105.0
+offset_top = -145.0
+offset_right = 189.0
+offset_bottom = 32.0
+
+[node name="Button" type="Button" parent="." unique_id=703037382]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -125.0
+offset_top = -54.0
+offset_right = 142.0
+offset_bottom = 45.0
+
+[node name="CandiedCatnip" type="Sprite2D" parent="." unique_id=2080709176]
+visible = false
+position = Vector2(2, 8.000001)
+scale = Vector2(0.55500007, 0.555)
+texture = ExtResource("8_r3mut")
+region_enabled = true
+region_rect = Rect2(0, 0, 100, 79)
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

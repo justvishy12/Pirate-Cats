@@ -15,11 +15,12 @@ var E3 = false
 var E4 = false
 var E5 = false
 var E6 = false
-
+var sponge = preload("res://assets/sponge cursor.png")
 var mouse_pos: Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	mouse_pos = get_global_mouse_position()
+	Input.set_custom_mouse_cursor(sponge)
 	round1()
 
 
