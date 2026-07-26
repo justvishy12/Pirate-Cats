@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rb44yvydtdb7"
-path="res://.godot/imported/chef cat (2).png-271788121a38f80fbf58ba9fd824b7c4.ctex"
+path="res://.godot/imported/chef cat.png-2724dcebc661de1a72e8be1fd0cfbe02.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/chef cat (2).png"
-dest_files=["res://.godot/imported/chef cat (2).png-271788121a38f80fbf58ba9fd824b7c4.ctex"]
+source_file="res://assets/chef cat.png"
+dest_files=["res://.godot/imported/chef cat.png-2724dcebc661de1a72e8be1fd0cfbe02.ctex"]
 
 [params]
 

@@ -10,60 +10,19 @@
 [ext_resource type="Texture2D" uid="uid://cktu0nawmpjoh" path="res://assets/front blue (1).png" id="6_xq2r4"]
 [ext_resource type="Script" uid="uid://chm8mh7jeh6ru" path="res://script/cam shake.gd" id="8_5h22d"]
 [ext_resource type="Texture2D" uid="uid://bcqnv5lqra7vt" path="res://assets/catshow.png" id="8_pjvru"]
-[ext_resource type="Texture2D" uid="uid://27pxglwpxqic" path="res://assets/crabwave1.png" id="10_aw3qn"]
 [ext_resource type="Texture2D" uid="uid://in8dasb1lynv" path="res://assets/lcuky cat (1).png" id="10_ifos2"]
 [ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="11_5fpcd"]
 [ext_resource type="Texture2D" uid="uid://bk0yokqeio7rc" path="res://assets/textbox.png" id="11_gy4ki"]
 [ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="11_qvx0c"]
-[ext_resource type="Texture2D" uid="uid://b6pdkwn0imxw" path="res://assets/crabwave2.png" id="11_s55cq"]
 [ext_resource type="Texture2D" uid="uid://d0wlabvjcu6fv" path="res://assets/fisher.png" id="12_bmp2w"]
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="12_qvx0c"]
-[ext_resource type="Texture2D" uid="uid://dqlgdm73a5y56" path="res://assets/crabwave3.png" id="12_sn1kl"]
 [ext_resource type="Texture2D" uid="uid://c1ymamehqfgv6" path="res://assets/scrubber cat.png" id="13_5h22d"]
 [ext_resource type="Texture2D" uid="uid://rb44yvydtdb7" path="res://assets/chef cat.png" id="14_5p75s"]
 [ext_resource type="Texture2D" uid="uid://cippd77hlp4i7" path="res://assets/powder monkey.png" id="15_gy4ki"]
 [ext_resource type="Texture2D" uid="uid://uevxgxsijq8n" path="res://assets/captain cat.png" id="15_rc3hd"]
-[ext_resource type="Texture2D" uid="uid://bva75w67aq42b" path="res://assets/crab-1.png" id="24_jepum"]
-[ext_resource type="Texture2D" uid="uid://gftjvq4gmerj" path="res://assets/crab.png" id="25_k5ume"]
 
 [sub_resource type="Animation" id="Animation_riyh1"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("parallaxbg/Camera2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1416.8889, 582)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Textbox:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(848, 701)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect:color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_2e2bh"]
 resource_name = "boat craddle"
@@ -173,121 +132,6 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_s55cq"]
-resource_name = "crabpanback"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("parallaxbg/Camera2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1.624505, 1),
-"update": 0,
-"values": [Vector2(1416.8889, 582), Vector2(840.8889, 582)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("parallaxbg/Mid:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("parallaxbg/Back:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("parallaxbg/Front:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Catshow:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("parallaxbg/Cloude2d:scroll_offset")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(30, -179)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("LcukyCat(1):visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Textbox:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1465, 701.00006), Vector2(848, 701)]
-}
-
-[sub_resource type="Animation" id="Animation_sn1kl"]
-resource_name = "new_animation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_5p75s"]
 resource_name = "fisher show"
 length = 0.5
@@ -314,106 +158,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_aw3qn"]
-resource_name = "pan crab"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("parallaxbg/Camera2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(2.0705297, 1),
-"update": 0,
-"values": [Vector2(840.8889, 582), Vector2(1416.8889, 582)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("parallaxbg/Mid:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("parallaxbg/Back:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("parallaxbg/Front:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Catshow:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("parallaxbg/Cloude2d:scroll_offset")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(30, -179)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("LcukyCat(1):visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Textbox:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(848, 701), Vector2(1465, 701.00006)]
 }
 
 [sub_resource type="Animation" id="Animation_gy4ki"]
@@ -602,10 +346,7 @@ _data = {
 &"boat craddle": SubResource("Animation_2e2bh"),
 &"captain show": SubResource("Animation_bmp2w"),
 &"chef show": SubResource("Animation_5h22d"),
-&"crabpanback": SubResource("Animation_s55cq"),
-&"fadescene": SubResource("Animation_sn1kl"),
 &"fisher show": SubResource("Animation_5p75s"),
-&"pan crab": SubResource("Animation_aw3qn"),
 &"powder monkey show": SubResource("Animation_gy4ki"),
 &"scrubber show": SubResource("Animation_rc3hd"),
 &"showcats": SubResource("Animation_xq2r4")
@@ -685,7 +426,7 @@ scale = Vector2(0.26081735, 0.26081732)
 texture = ExtResource("5_ifos2")
 
 [node name="Camera2D" type="Camera2D" parent="parallaxbg" unique_id=1861970315]
-position = Vector2(1416.8889, 582)
+position = Vector2(-288, 525)
 scale = Vector2(0.5, 0.5)
 zoom = Vector2(2, 2)
 script = ExtResource("8_5h22d")
@@ -710,21 +451,6 @@ centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=878352042]
 libraries/ = SubResource("AnimationLibrary_m0u1b")
-
-[node name="Crabwave1" type="Sprite2D" parent="." unique_id=325102537]
-position = Vector2(1603, 588)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("10_aw3qn")
-
-[node name="Crabwave2" type="Sprite2D" parent="." unique_id=333179577]
-position = Vector2(1602, 613.25)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("11_s55cq")
-
-[node name="Crabwave3" type="Sprite2D" parent="." unique_id=1972431791]
-position = Vector2(1596, 670)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("12_sn1kl")
 
 [node name="Catshow" type="Sprite2D" parent="." unique_id=1735153117]
 visible = false
@@ -833,22 +559,6 @@ theme_override_styles/pressed = ExtResource("12_qvx0c")
 theme_override_styles/hover = ExtResource("12_qvx0c")
 theme_override_styles/focus = ExtResource("12_qvx0c")
 text = "..."
-autowrap_mode = 3
-
-[node name="Crab1" type="Sprite2D" parent="." unique_id=1631049255]
-position = Vector2(1297, 587)
-scale = Vector2(0.21468925, 0.21468927)
-texture = ExtResource("24_jepum")
-
-[node name="Crab" type="Sprite2D" parent="." unique_id=886892450]
-position = Vector2(1611, 550)
-scale = Vector2(0.20056497, 0.20056497)
-texture = ExtResource("25_k5ume")
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1461788157]
-offset_right = 1160.0
-offset_bottom = 698.0
-color = Color(0, 0, 0, 0)
 
 [connection signal="pressed" from="parallaxbg/Camera2D/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_player_button_pressed"]

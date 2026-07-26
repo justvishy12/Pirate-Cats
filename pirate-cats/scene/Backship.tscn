@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dtt7uo4fx7dgx" path="res://assets/nofish.png" id="3_i0nue"]
 [ext_resource type="Texture2D" uid="uid://d0wlabvjcu6fv" path="res://assets/fisher.png" id="3_j2d8o"]
 [ext_resource type="Texture2D" uid="uid://b6hx4ir767xjl" path="res://assets/fish box with fish anim sprite.png" id="4_j2d8o"]
-[ext_resource type="Texture2D" uid="uid://rb44yvydtdb7" path="res://assets/chef cat (2).png" id="4_vp247"]
+[ext_resource type="Texture2D" uid="uid://rb44yvydtdb7" path="res://assets/chef cat.png" id="4_vp247"]
 [ext_resource type="Texture2D" uid="uid://bpgusf78mlj4a" path="res://assets/fried egg anim sprite.png" id="5_vp247"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x1gyp"]

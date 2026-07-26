@@ -1,0 +1,416 @@
+[gd_scene format=3 uid="uid://x0yrlwsfxom2"]
+
+[ext_resource type="Texture2D" uid="uid://twsdpehvo25k" path="res://assets/bg.png" id="1_1ymlp"]
+[ext_resource type="Script" uid="uid://cva68sbqexu1n" path="res://script/ship_sailing.gd" id="1_c0c2u"]
+[ext_resource type="Texture2D" uid="uid://curbdxaf7jf86" path="res://assets/clouds.png" id="2_c0c2u"]
+[ext_resource type="Texture2D" uid="uid://bhdiu5db3tbq2" path="res://assets/middleblue.png" id="3_pjvru"]
+[ext_resource type="Texture2D" uid="uid://d1ne8hi4rsd46" path="res://assets/backblue.png" id="4_eqgp1"]
+[ext_resource type="Texture2D" uid="uid://db323u36livna" path="res://assets/catscloud.png" id="4_ifos2"]
+[ext_resource type="Texture2D" uid="uid://bwv6v8yq3f70t" path="res://assets/boat.png" id="5_ifos2"]
+[ext_resource type="Texture2D" uid="uid://cktu0nawmpjoh" path="res://assets/front blue (1).png" id="6_xq2r4"]
+[ext_resource type="Texture2D" uid="uid://bcqnv5lqra7vt" path="res://assets/catshow.png" id="8_pjvru"]
+[ext_resource type="Texture2D" uid="uid://in8dasb1lynv" path="res://assets/lcuky cat (1).png" id="10_ifos2"]
+[ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="11_5fpcd"]
+[ext_resource type="Texture2D" uid="uid://bk0yokqeio7rc" path="res://assets/textbox.png" id="11_gy4ki"]
+[ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="11_qvx0c"]
+[ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="12_qvx0c"]
+
+[sub_resource type="Animation" id="Animation_riyh1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Button:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2e2bh"]
+resource_name = "boat craddle"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("parallaxbg/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-288, 525), Vector2(840.8889, 525)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("parallaxbg/Boat:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8666667, 1.8, 2.7666667, 3.56, 4.66, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.07913376, -0.09993515, 0.05280053, 0.085175544, -0.105465785, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("parallaxbg/Boat:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.48, 2.11, 2.84, 3.34, 4.19, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-2, 50), Vector2(19.06665, 68), Vector2(15.697758, 45.999977), Vector2(15.217762, 61.999947), Vector2(29.582262, 49.999947), Vector2(31.804451, 61.999958), Vector2(13.982124, 34.000053), Vector2(-2, 50)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("parallaxbg/Boat:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-288, 525), Vector2(840.8889, 525)]
+}
+
+[sub_resource type="Animation" id="Animation_xq2r4"]
+resource_name = "showcats"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("parallaxbg/Boat:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.0533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("parallaxbg/Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.0533, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(840.8889, 525), Vector2(840.8889, -147), Vector2(840.8889, 582)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("parallaxbg/Mid:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("parallaxbg/Back:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("parallaxbg/Front:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Catshow:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("parallaxbg/Cloude2d:scroll_offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.02),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-13, -136), Vector2(30, -179)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("LcukyCat(1):visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.23),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Button:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Button:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(2, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5fpcd"]
+_data = {
+&"RESET": SubResource("Animation_riyh1"),
+&"boat craddle": SubResource("Animation_2e2bh"),
+&"showcats": SubResource("Animation_xq2r4")
+}
+
+[node name="Node2D2" type="Node2D" unique_id=332542109]
+script = ExtResource("1_c0c2u")
+
+[node name="Bg" type="Sprite2D" parent="." unique_id=1742924480]
+position = Vector2(493, 526.5)
+scale = Vector2(3.859375, 0.53549385)
+texture = ExtResource("1_1ymlp")
+
+[node name="Bg2" type="Sprite2D" parent="." unique_id=1085748962]
+position = Vector2(501, 180)
+scale = Vector2(3.859375, 0.53549385)
+texture = ExtResource("1_1ymlp")
+flip_v = true
+
+[node name="Bg3" type="Sprite2D" parent="." unique_id=249297316]
+position = Vector2(501, -167)
+scale = Vector2(3.859375, 0.53549385)
+texture = ExtResource("1_1ymlp")
+
+[node name="parallaxbg" type="Node2D" parent="." unique_id=192301986]
+
+[node name="Cloude2d" type="Parallax2D" parent="parallaxbg" unique_id=947462412]
+scroll_scale = Vector2(0.4, 0.4)
+scroll_offset = Vector2(-13, -136)
+repeat_size = Vector2(1152, 0)
+repeat_times = 2
+
+[node name="Backblue" type="Sprite2D" parent="parallaxbg/Cloude2d" unique_id=1934793275]
+position = Vector2(593, 289)
+scale = Vector2(0.5, 0.49999994)
+texture = ExtResource("2_c0c2u")
+centered = false
+
+[node name="Cloude2d2" type="Parallax2D" parent="parallaxbg" unique_id=861553152]
+scroll_scale = Vector2(0.4, 0.4)
+scroll_offset = Vector2(-1271, -292)
+repeat_size = Vector2(1152, 0)
+repeat_times = 2
+
+[node name="Catscloud" type="Sprite2D" parent="parallaxbg/Cloude2d2" unique_id=1591837801]
+position = Vector2(1087, 100)
+scale = Vector2(0.5805083, 0.5805083)
+texture = ExtResource("4_ifos2")
+
+[node name="Back" type="Parallax2D" parent="parallaxbg" unique_id=1560224030]
+scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.1, 0.1)
+scroll_offset = Vector2(-575, -231)
+repeat_size = Vector2(2304, 0)
+repeat_times = 2
+
+[node name="Middleblue" type="Sprite2D" parent="parallaxbg/Back" unique_id=1618038263]
+position = Vector2(470, 1362)
+texture = ExtResource("3_pjvru")
+centered = false
+
+[node name="Mid" type="Parallax2D" parent="parallaxbg" unique_id=1950133527]
+scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.2, 0.2)
+scroll_offset = Vector2(-575, -231)
+repeat_size = Vector2(2304, 0)
+repeat_times = 2
+
+[node name="Backblue" type="Sprite2D" parent="parallaxbg/Mid" unique_id=372056824]
+position = Vector2(456, 1386)
+texture = ExtResource("4_eqgp1")
+centered = false
+
+[node name="Boat" type="Sprite2D" parent="parallaxbg" unique_id=1432534839]
+position = Vector2(-290, 575)
+scale = Vector2(0.26081735, 0.26081732)
+texture = ExtResource("5_ifos2")
+
+[node name="Camera2D" type="Camera2D" parent="parallaxbg" unique_id=1861970315]
+position = Vector2(840.8889, 525)
+scale = Vector2(0.5, 0.5)
+zoom = Vector2(2, 2)
+
+[node name="Button" type="Button" parent="parallaxbg/Camera2D" unique_id=631269876]
+offset_left = 570.0
+offset_top = -326.0
+offset_right = 578.0
+offset_bottom = -318.0
+
+[node name="Front" type="Parallax2D" parent="parallaxbg" unique_id=415243839]
+scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.4, 0.4)
+scroll_offset = Vector2(-575, -231)
+repeat_size = Vector2(2304, 0)
+repeat_times = 2
+
+[node name="FrontBlue(1)" type="Sprite2D" parent="parallaxbg/Front" unique_id=112025083]
+position = Vector2(458, 1476)
+texture = ExtResource("6_xq2r4")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=878352042]
+libraries/ = SubResource("AnimationLibrary_5fpcd")
+
+[node name="Catshow" type="Sprite2D" parent="." unique_id=1735153117]
+visible = false
+position = Vector2(841, 604)
+scale = Vector2(0.28087604, 0.28087604)
+texture = ExtResource("8_pjvru")
+
+[node name="LcukyCat(1)" type="Sprite2D" parent="." unique_id=361457369]
+visible = false
+position = Vector2(842, 485.50003)
+scale = Vector2(0.14677404, 0.14677402)
+texture = ExtResource("10_ifos2")
+
+[node name="Textbox" type="Sprite2D" parent="." unique_id=915430295]
+visible = false
+position = Vector2(841, 605)
+scale = Vector2(0.34551278, 0.34551278)
+texture = ExtResource("11_gy4ki")
+
+[node name="namelabel" type="Label" parent="Textbox" unique_id=1180160997]
+offset_left = -376.2523
+offset_top = -95.51021
+offset_right = 95.51041
+offset_bottom = -53.51021
+theme_override_fonts/font = ExtResource("11_qvx0c")
+theme_override_font_sizes/font_size = 30
+text = "???"
+vertical_alignment = 1
+
+[node name="textlabel" type="Label" parent="Textbox" unique_id=1859723016]
+custom_minimum_size = Vector2(16.92, 0)
+offset_left = -205.49161
+offset_top = -34.730988
+offset_right = 257.58823
+offset_bottom = 54.990692
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("11_qvx0c")
+theme_override_font_sizes/font_size = 38
+text = "hi  my name is bob. i like to eat"
+autowrap_mode = 2
+
+[node name="skiplabel" type="Label" parent="Textbox" unique_id=739962977]
+offset_left = 208.38596
+offset_top = 57.88497
+offset_right = 347.30978
+offset_bottom = 77.88497
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("11_qvx0c")
+theme_override_font_sizes/font_size = 20
+text = "SPACE TO SKIP"
+
+[node name="photobox" type="TextureRect" parent="Textbox" unique_id=1039567791]
+offset_left = -379.1466
+offset_top = -43.413727
+offset_right = -222.85706
+offset_bottom = 75.25046
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="." unique_id=642604634]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = 749.0
+offset_top = 555.0
+offset_right = 933.0
+offset_bottom = 605.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_qvx0c")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("11_5fpcd")
+theme_override_styles/pressed = ExtResource("12_qvx0c")
+theme_override_styles/hover = ExtResource("12_qvx0c")
+theme_override_styles/focus = ExtResource("12_qvx0c")
+text = "\"...\""
+
+[node name="Label" type="Label" parent="Button" unique_id=1977352449]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 38.0
+offset_right = 174.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("11_qvx0c")
+theme_override_font_sizes/font_size = 8
+text = " press to continue"
+
+[connection signal="pressed" from="parallaxbg/Camera2D/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_player_button_pressed"]
