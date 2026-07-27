@@ -11,11 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://73g5qxvhwqeg" path="res://assets/puff.png" id="5_abwp3"]
 [ext_resource type="Texture2D" uid="uid://v7d4ra687lii" path="res://assets/green fish.png" id="6_so0t4"]
 [ext_resource type="Texture2D" uid="uid://dk2qa7xurhhtn" path="res://assets/golden cat fish.png" id="7_y3t8l"]
+[ext_resource type="Texture2D" uid="uid://dtfxxnuxje6ra" path="res://scene/fish banner.png" id="9_u2eu5"]
 [ext_resource type="Texture2D" uid="uid://b3x4qcdo2ul6v" path="res://assets/Fishing BOat Only.png" id="12_j7myu"]
 [ext_resource type="Texture2D" uid="uid://bk0yokqeio7rc" path="res://assets/textbox.png" id="13_d18c1"]
 [ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="14_u2eu5"]
 [ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="15_ce22x"]
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="16_21ie3"]
+[ext_resource type="Texture2D" uid="uid://c8bkutybtaau0" path="res://assets/map1.png" id="18_ce22x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ue6ed"]
 atlas = ExtResource("1_ly0cx")
@@ -115,12 +117,98 @@ animations = [{
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6b7ss"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ce22x"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgf7s"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.76862746, 0.25490198, 0.25490198, 1)
+
 [sub_resource type="Animation" id="Animation_f8at7"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FishBanner:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FishBanner:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(582.00006, 348)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect/grade:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect2:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ce22x"]
+resource_name = "fade_scene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_abwp3"]
 resource_name = "fish_caught"
-length = 3.5
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -128,10 +216,10 @@ tracks/0/path = NodePath("ColorRect:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.53333336, 1.1666666, 1.3666667, 1.5, 1.6666666, 1.8333334, 2, 3, 3.4666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(1, 1.2333333, 1.3666667, 1.5333333, 1.7, 1.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(119.000015, 588), Vector2(263, 461), Vector2(444.00003, 394.00003), Vector2(444, 383), Vector2(441, 412), Vector2(446, 381), Vector2(447, 413), Vector2(444.00003, 394.00003), Vector2(667, 405), Vector2(804, 487)]
+"values": [Vector2(444.00003, 394.00003), Vector2(444, 383), Vector2(441, 412), Vector2(446, 381), Vector2(447, 413), Vector2(444.00003, 394.00003)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -140,16 +228,105 @@ tracks/1/path = NodePath("ColorRect:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.53333336, 1.1666666, 2, 3, 3.4666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(1, 1.8666667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-0.6789331, -0.16929694, 0.0, 0.0, 0.50963616, 1.0192723]
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FishBanner:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FishBanner:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(582.00006, 116.00001), Vector2(582.00006, 348)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect/grade:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.6, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u2eu5"]
+resource_name = "fish_fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FishBanner:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FishBanner:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(582, 348)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_so0t4"]
 _data = {
 &"RESET": SubResource("Animation_f8at7"),
-&"fish_caught": SubResource("Animation_abwp3")
+&"fade_scene": SubResource("Animation_ce22x"),
+&"fish_caught": SubResource("Animation_abwp3"),
+&"fish_fade": SubResource("Animation_u2eu5")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8at7"]
@@ -284,49 +461,102 @@ offset_top = 283.0
 offset_right = 445.0
 offset_bottom = 306.0
 
+[node name="FishBanner" type="Sprite2D" parent="." unique_id=1478823292]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(582.00006, 348)
+scale = Vector2(0.17077886, 0.17077889)
+texture = ExtResource("9_u2eu5")
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=9942349]
-offset_left = -11.000015
-offset_top = 582.0
-offset_right = 232.81827
-offset_bottom = 622.00006
-rotation = -0.6789331
+modulate = Color(1, 1, 1, 0)
+offset_left = 444.00003
+offset_top = 394.00003
+offset_right = 687.819
+offset_bottom = 434.0003
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
 
 [node name="PurpleFish" type="Sprite2D" parent="ColorRect" unique_id=651392733]
-position = Vector2(132.77145, -86.262726)
+position = Vector2(132.77148, -49.262695)
 scale = Vector2(0.22158077, 0.22158079)
 texture = ExtResource("4_f8at7")
 flip_h = true
 
 [node name="Puff" type="Sprite2D" parent="ColorRect" unique_id=1602303756]
-position = Vector2(138.77147, -89.26276)
+position = Vector2(138.77148, -52.262695)
 rotation = -0.27617016
 scale = Vector2(0.20356037, 0.20356037)
 texture = ExtResource("5_abwp3")
 
 [node name="GreenFish" type="Sprite2D" parent="ColorRect" unique_id=1616590210]
-position = Vector2(138.7715, -88.262695)
+position = Vector2(138.77148, -51.262695)
 scale = Vector2(0.17032966, 0.17032966)
 texture = ExtResource("6_so0t4")
 flip_h = true
 
+[node name="mapbutton" type="Button" parent="ColorRect" unique_id=2128184699]
+layout_mode = 0
+offset_left = 170.99997
+offset_top = -67.00003
+offset_right = 236.99997
+offset_bottom = -2.7500305
+theme_override_styles/normal = SubResource("StyleBoxFlat_ce22x")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rgf7s")
+
+[node name="Map1" type="Sprite2D" parent="ColorRect/mapbutton" unique_id=1037004518]
+position = Vector2(33.000008, 32.000008)
+scale = Vector2(0.12005934, 0.11822632)
+texture = ExtResource("18_ce22x")
+
 [node name="GoldenCatFish" type="Sprite2D" parent="ColorRect" unique_id=284080269]
-position = Vector2(127.771454, -97.26276)
+position = Vector2(127.771484, -60.262695)
 scale = Vector2(0.2376163, 0.2376163)
 texture = ExtResource("7_y3t8l")
 
 [node name="Label" type="Label" parent="ColorRect" unique_id=877499037]
 layout_mode = 0
-offset_left = 46.034492
-offset_top = -28.387093
-offset_right = 224.03448
-offset_bottom = -5.3870926
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = -10.999992
+offset_top = -149.45715
+offset_right = 291.0
+offset_bottom = -126.45715
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("14_u2eu5")
+theme_override_font_sizes/font_size = 20
 text = "You Caught A Common"
+horizontal_alignment = 1
+
+[node name="grade" type="Label" parent="ColorRect" unique_id=1253503027]
+layout_mode = 0
+offset_left = -26.000023
+offset_top = -63.00003
+offset_right = 36.999977
+offset_bottom = -11.958363
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("14_u2eu5")
+theme_override_font_sizes/font_size = 50
+text = "A+"
+horizontal_alignment = 1
+
+[node name="grade2" type="Label" parent="ColorRect" unique_id=1710011581]
+layout_mode = 0
+offset_left = 243.99997
+offset_top = -65.00003
+offset_right = 306.99997
+offset_bottom = -13.958363
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("14_u2eu5")
+theme_override_font_sizes/font_size = 50
+text = "A+"
+horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=240840749]
 libraries/ = SubResource("AnimationLibrary_so0t4")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=742575650]
+offset_right = 1160.0
+offset_bottom = 698.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1425469299 groups=["lineedge"]]
 
@@ -339,8 +569,7 @@ position = Vector2(722.25, 474)
 shape = SubResource("RectangleShape2D_f8at7")
 
 [node name="Textbox" type="Sprite2D" parent="." unique_id=1523800899]
-visible = false
-position = Vector2(584.03235, 401)
+position = Vector2(584.03235, 465)
 scale = Vector2(0.34551278, 0.34551278)
 texture = ExtResource("13_d18c1")
 
@@ -387,9 +616,9 @@ stretch_mode = 4
 [node name="player button" type="Button" parent="." unique_id=1500359846]
 texture_filter = 2
 offset_left = 487.03235
-offset_top = 285.0
+offset_top = 317.0
 offset_right = 671.03235
-offset_bottom = 335.0
+offset_bottom = 367.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
@@ -411,4 +640,5 @@ autowrap_mode = 3
 [connection signal="timeout" from="WaitReel" to="." method="_on_wait_reel_timeout"]
 [connection signal="timeout" from="TimeOutOfTank" to="." method="_on_time_out_of_tank_timeout"]
 [connection signal="timeout" from="InsMove" to="." method="_on_ins_move_timeout"]
+[connection signal="pressed" from="ColorRect/mapbutton" to="." method="_on_mapbutton_pressed"]
 [connection signal="pressed" from="player button" to="." method="_on_player_button_pressed"]

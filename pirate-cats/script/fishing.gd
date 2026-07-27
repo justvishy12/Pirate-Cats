@@ -26,21 +26,21 @@ var dialogue = [
 	{
 		#1
 		"speaker": "cat",
-		"name": "Fisher",
+		"name": "Minnow (Fisher)",
 		"text": "You have to cast and reel the fish in to see it. ",
 		"portrait": preload("res://assets/headshots/FISHER FACE.png")
 	},
 	{
 		#2
 		"speaker": "cat",
-		"name": "Fisher",
+		"name": "Minnow (Fisher)",
 		"text": "Click once to cast your rod in, wait for a catch ",
 		"portrait": preload("res://assets/headshots/FISHER FACE.png")
 	},
 	{
 		#3
 		"speaker": "cat",
-		"name": "Fisher",
+		"name": "Minnow (Fisher)",
 		"text": "Keep the red bar in the orange bar for some time to get the fish. ",
 		"portrait": preload("res://assets/headshots/FISHER FACE.png")
 	},
@@ -50,12 +50,43 @@ var dialogue = [
 		"name": "",
 		"text": "Okay, I think Im ready!"
 	},
+	{
+		#5
+		"speaker": "event",
+		"name": "",
+		"text": ""
+	},
+	{
+		#6
+		"speaker": "cat",
+		"name": "Minnow (Fisher)",
+		"text": "Wait is that... ",
+		"portrait": preload("res://assets/headshots/FISHER FACE.png")
+	},
+	{
+		#7
+		"speaker": "cat",
+		"name": "Minnow (Fisher)",
+		"text": "By the Sea gods, You found a piece of the map! ",
+		"portrait": preload("res://assets/headshots/FISHER FACE.png")
+	},
+	{
+		#8
+		"speaker": "cat",
+		"name": "Minnow (Fisher)",
+		"text": "Leave it on the captain's desk! He'll be really happy.  ",
+		"portrait": preload("res://assets/headshots/FISHER FACE.png")
+	},
+	{
+		#9
+		"speaker": "fadescene",
+		"name":"",
+		"text": "",
+	},
 ]
 
 var dialogue_index = 0
 var typing = false
-
-
 
 func show_next_dialogue() -> void:
 	if dialogue_index >= dialogue.size():
@@ -74,6 +105,18 @@ func show_next_dialogue() -> void:
 		$"player button".visible = false
 		show_cat_text(line)
 		
+	elif line["speaker"] == "event":
+		$"player button".visible = false
+		$Textbox.visible = false
+		$Button.disabled = false
+		
+	elif line["speaker"] == "fadescene":
+		$"player button".visible = false
+		$Textbox.visible = false
+		$Button.disabled = false
+		$AnimationPlayer.play("fade_scene")
+		await $AnimationPlayer.animation_finished
+		get_tree().change_scene_to_file("res://scene/Backship.tscn")
 
 
 func _on_player_button_pressed() -> void:
@@ -104,15 +147,7 @@ func _input(event):
 	if event.is_action_pressed("ui_accept") and !typing:
 		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
 			dialogue_index += 1
-			if dialogue_index == 4:
-				$Button.disabled = false
 			show_next_dialogue()
-
-
-
-
-
-
 
 
 func _ready() -> void:
@@ -121,6 +156,7 @@ func _ready() -> void:
 	$fishbub.visible = false
 	$Label.visible = false
 	$Button.disabled = true
+	show_next_dialogue()
 		
 
 func _on_button_pressed() -> void:
@@ -291,6 +327,8 @@ func _on_wait_reel_timeout() -> void:
 	$Outside.visible = false
 	$Rod.visible = false
 	if fish == 1 or fish == 2 or fish == 3:
+		$ColorRect/grade.text = "D-"
+		$ColorRect/grade2.text = "D-"
 		$ColorRect/PurpleFish.visible = false
 		$ColorRect/Puff.visible = false
 		$ColorRect/GreenFish.visible = true
@@ -299,8 +337,12 @@ func _on_wait_reel_timeout() -> void:
 		$ColorRect/Label.visible = true
 		$AnimationPlayer.play("fish_caught")
 		await $AnimationPlayer.animation_finished
+		$AnimationPlayer.play("fish_fade")
+		await $AnimationPlayer.animation_finished
 		$ColorRect/Label.visible = false
 	elif fish == 4 or fish == 5:
+		$ColorRect/grade.text = "B"
+		$ColorRect/grade2.text = "B"
 		$ColorRect/PurpleFish.visible = true
 		$ColorRect/Puff.visible = false
 		$ColorRect/GreenFish.visible = false
@@ -309,8 +351,12 @@ func _on_wait_reel_timeout() -> void:
 		$ColorRect/Label.visible = true
 		$AnimationPlayer.play("fish_caught")
 		await $AnimationPlayer.animation_finished
+		$AnimationPlayer.play("fish_fade")
+		await $AnimationPlayer.animation_finished
 		$ColorRect/Label.visible = false
 	elif fish == 6:
+		$ColorRect/grade.text = "A-"
+		$ColorRect/grade2.text = "A-"
 		$ColorRect/PurpleFish.visible = false
 		$ColorRect/Puff.visible = true
 		$ColorRect/GreenFish.visible = false
@@ -319,12 +365,17 @@ func _on_wait_reel_timeout() -> void:
 		$ColorRect/Label.visible = true
 		$AnimationPlayer.play("fish_caught")
 		await $AnimationPlayer.animation_finished
+		$AnimationPlayer.play("fish_fade")
+		await $AnimationPlayer.animation_finished
 		$ColorRect/Label.visible = false
 	elif fish == 7:
+		$ColorRect/grade.text = "S"
+		$ColorRect/grade2.text = "S"
 		$ColorRect/PurpleFish.visible = false
 		$ColorRect/Puff.visible = false
 		$ColorRect/GreenFish.visible = false
 		$ColorRect/GoldenCatFish.visible = true
+		$ColorRect/mapbutton.visible=true
 		$ColorRect/Label.text = "You Caught A Legendary Fish With A Map!"
 		$ColorRect/Label.visible = true
 		$AnimationPlayer.play("fish_caught")
@@ -424,3 +475,10 @@ func _on_time_out_of_tank_timeout() -> void:
 	$bobber.visible = false
 	$Button.size.y = 230
 	$Button.disabled = false
+
+
+func _on_mapbutton_pressed() -> void:
+	dialogue_index += 1
+	show_next_dialogue()
+	print("yay")
+	
