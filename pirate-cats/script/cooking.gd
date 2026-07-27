@@ -8,10 +8,12 @@ var star
 var shell
 var flag
 var plate = 0
+var plates = 0
 var plate_anim = false
 var base
 var top
 var game_start = false
+var done = false
 #CheckOrder
 var OBase1 = false
 var OBase2 = false
@@ -42,41 +44,55 @@ var dialogue = [
 		#0
 		"speaker": "you",
 		"name": "",
-		"text": "Are we going to cook?"
+		"text": "Are we going to cook? "
 	},
 	{
 		#1
 		"speaker": "cat",
-		"name": "Cook",
-		"text": "No, but I will teach you how",
-		"portrait": preload("res://assets/headshots/FISHER FACE.png")
+		"name": "Biscuits (Cook)",
+		"text": "No, but I will teach you how! ",
+		"portrait": preload("res://assets/headshots/CHEF FACE.png")
 	},
-	{
+	{ 
 		#2
 		"speaker": "cat",
-		"name": "Fisher",
-		"text": "First Drag a plate onto the line",
-		"portrait": preload("res://assets/headshots/FISHER FACE.png")
+		"name": "Biscuits (Cook)",
+		"text": "First Drag a plate onto the line! ",
+		"portrait": preload("res://assets/headshots/CHEF FACE.png")
 	},
 	{
 		#3
-		"speaker": "cat",
-		"name": "Fisher",
-		"text": "Then Add the Castles based on the order",
-		"portrait": preload("res://assets/headshots/FISHER FACE.png")
-	},
-	{
-		#3
-		"speaker": "cat",
-		"name": "Fisher",
-		"text": "Then add the toppings",
-		"portrait": preload("res://assets/headshots/FISHER FACE.png")
+		"speaker": "plate",
+		"name": "Biscuits (Cook)",
+		"text": "Then add the Castles based on the order! ",
+		"portrait": preload("res://assets/headshots/CHEF FACE.png")
 	},
 	{
 		#4
-		"speaker": "you",
+		"speaker": "base",
+		"name": "Biscuits (Cook)",
+		"text": "Then if needed, add the toppings! ",
+		"portrait": preload("res://assets/headshots/CHEF FACE.png")
+	},
+	{
+		#5
+		"speaker": "toppings",
+		"name": "Biscuits (Cook)",
+		"text": "You did it, Ready to make your own? ",
+		"portrait": preload("res://assets/headshots/CHEF FACE.png")
+	},
+	{
+		#6
+		"speaker": "you(start)",
 		"name": "",
-		"text": "Okay, Lets DO this"
+		"text": "Okay, Lets DO this "
+	},
+	{
+		#7
+		"speaker": "cat",
+		"name": "Biscuits (Cook)",
+		"text": "Leave it on the captain's desk! He'll be really happy. ",
+		"portrait": preload("res://assets/headshots/CHEF FACE.png")
 	},
 ]
 
@@ -98,16 +114,49 @@ func show_next_dialogue() -> void:
 		$"Camera2D/player button".visible = true
 		$"Camera2D/player button".text = line["text"]
 		
+	elif line["speaker"] == "you(start)":
+		$Camera2D/Textbox.visible = false
+		$"Camera2D/player button".visible = true
+		$"Camera2D/player button".text = line["text"]
+		game_start = true
+		
 	elif line["speaker"] == "cat":
 		$"Camera2D/player button".visible = false
 		show_cat_text(line)
 		
+	elif line["speaker"] == "plate":
+		if plates == 0:
+			plates = 1
+			$"Camera2D/player button".visible = false
+			await get_tree().create_timer(0.4).timeout
+			$AnimationPlayer.play("PlateFinish")
+			await get_tree().create_timer(0.65).timeout
+			$AnimationPlayer2.play("PlateMenu")
+			show_cat_text(line)
 
+	elif line["speaker"] == "base":
+		$"Camera2D/player button".visible = false
+		$AnimationPlayer.play("CastleFinish")
+		await get_tree().create_timer(0.65).timeout
+		$AnimationPlayer2.play("CastleMenu")
+		show_cat_text(line)
+		
+	elif line["speaker"] == "toppings":
+		$Platesss.visible = false
+		$AnimationPlayer.play("ToppingsFinish")
+		plate_check()
+		show_cat_text(line)
 
 func _on_player_button_pressed() -> void:
-	dialogue_index += 1
-	show_next_dialogue()
-
+	if dialogue_index == 6:
+		$"Camera2D/player button".visible = false
+		$AnimationPlayer2.play("Reset")
+		await  get_tree().create_timer(0.2).timeout
+		plate_reset()
+	else:
+		dialogue_index += 1
+		show_next_dialogue()
+	
 func show_cat_text(line) -> void:
 	$Camera2D/Textbox.visible = true
 	typing = true
@@ -126,40 +175,78 @@ func show_cat_text(line) -> void:
 		await get_tree().create_timer(0.05).timeout
 	
 	typing = false
-
-
+	
 func _input(event):
 	if event.is_action_pressed("ui_accept") and !typing:
 		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
+			print(dialogue_index)
+			if dialogue_index == 2 and $MiddlePlate.global_position == Vector2(75,510):
+				return
 			dialogue_index += 1
-			if dialogue_index == 1 and $MiddlePlate.global_position == Vector2(75,510):
-				await get_tree().create_timer(0.4).timeout
-				$AnimationPlayer.play("PlateFinish")
-				await get_tree().create_timer(0.65).timeout
-				$AnimationPlayer2.play("PlateMenu")
-				show_next_dialogue()
-
-
-
-
-
-
+			show_next_dialogue()
+		elif dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "plate":
+			print(dialogue_index)
+			if $MiddlePlate/Top2.visible == false and $MiddlePlate/Top1.visible == false and $"MiddlePlate/Top2-1".visible == false and $"MiddlePlate/Top1-1".visible == false and $MiddlePlate/Bottom1.visible == false and $MiddlePlate/Bottom2.visible == false:
+				return
+			dialogue_index += 1
+			show_next_dialogue()
+		elif dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "base":
+			print(dialogue_index)
+			dialogue_index += 1
+			show_next_dialogue()
+		elif dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "toppings":
+			print(dialogue_index)
+			dialogue_index += 1
+			show_next_dialogue()
+			
+func plate_reset():
+	$MiddlePlate.self_modulate = Color(1.0, 1.0, 1.0, 0.0)
+	$MiddlePlate.global_position = Vector2(75,510)
+	$MiddlePlate/Flag1.visible = false
+	$MiddlePlate/Flag3.visible = false
+	$MiddlePlate/Flag3.visible = false
+	$MiddlePlate/Top2.visible = false
+	$MiddlePlate/Top1.visible = false
+	$"MiddlePlate/Top2-1".visible = false
+	$"MiddlePlate/Top1-1".visible = false
+	$MiddlePlate/Bottom1.visible = false
+	$MiddlePlate/Bottom2.visible = false
+	$MiddlePlate/SmallBase/Star.visible = false
+	$MiddlePlate/SmallBase/Star2.visible = false
+	$MiddlePlate/SmallBase/Clam.visible = false
+	$MiddlePlate/SmallBase/Clam2.visible = false
+	$MiddlePlate/BigBase/Star3.visible = false
+	$MiddlePlate/BigBase/Star4.visible = false
+	$MiddlePlate/BigBase/Clam3.visible = false
+	$MiddlePlate/BigBase/Clam4.visible = false
+	$MiddlePlate/NoBase/Star6.visible = false
+	$MiddlePlate/NoBase/Clam5.visible = false
+	order()
+	
 func _ready() -> void:
+	show_next_dialogue()
 	$Camera2D.position = Vector2(299,463)
 	$MiddlePlate.self_modulate = Color(1.0, 1.0, 1.0, 0.0)
 	$MiddlePlate.global_position = Vector2(75,510)
 	order()
 	
 func _process(delta: float) -> void:
+	if $Plates/Plate1.visible == false and $Plates/Plate2.visible == false and $Plates/Plate3.visible == false  and $Plates/Plate4.visible == false  and $Plates/Plate5.visible == false:
+		if done == false:
+			$AnimationPlayer.play("map")
+			await $AnimationPlayer.animation_finished
+			
 	if $MiddlePlate/Panel.get_global_rect().intersects($PlatePanel.get_global_rect()) and plate_anim == false and $MiddlePlate.in_zone == true:
 		plate_anim = true
 		if game_start == true:
+			$Arrow.visible = true
+			$Arrow2.visible = true
 			await get_tree().create_timer(0.4).timeout
 			$AnimationPlayer.play("PlateFinish")
 			await get_tree().create_timer(0.65).timeout
 			$AnimationPlayer2.play("PlateMenu")
 	if plate == 1:
-		$Plates/Plate.visible = false
+		$Plates/Plate1.visible = false
 	elif plate == 2:
 		$Plates/Plate2.visible = false
 	elif plate == 3:
@@ -168,11 +255,7 @@ func _process(delta: float) -> void:
 		$Plates/Plate4.visible = false
 	elif plate == 5:
 		$Plates/Plate5.visible = false
-	elif plate == 6:
-		$Plates/Plate6.visible = false
-	elif plate == 7:
-		$Plates/Plate7.visible = false
-
+		
 func order():
 	OTop1 = false
 	OTop2 = false
@@ -260,10 +343,9 @@ func order():
 			if layer1 == 2:
 				$Order/Flag1.visible = true
 			else:
-				$Order/Flag2.visible = true
+				$Order/Flag3.visible = true
 		else:
 			$Order/Flag3.visible = true
-			
 func plate_check():
 	if $MiddlePlate/Bottom1.visible == true:
 		PBase1 = true
@@ -277,7 +359,7 @@ func plate_check():
 		PShell = true
 	if $MiddlePlate/SmallBase/Star.visible == true or $MiddlePlate/BigBase/Star3.visible == true or $MiddlePlate/NoBase/Star6.visible == true:
 		PStar = true
-	if $MiddlePlate/Flag1.visible == true or $MiddlePlate/Flag2.visible == true or $MiddlePlate/Flag3.visible == true:
+	if $MiddlePlate/Flag1.visible == true or $MiddlePlate/Flag3.visible == true or $MiddlePlate/Flag3.visible == true:
 		PFlag = true
 	
 	if OBase1 == PBase1:
@@ -308,13 +390,20 @@ func plate_check():
 		CFlag  = true
 		$F1.modulate = Color(4.869, 4.869, 4.869)
 		print(CFlag )
+		
 func _on_buttonmove_pressed() -> void:
-	if game_start == true:
+	if game_start:
 		$AnimationPlayer.play("CastleFinish")
 		await get_tree().create_timer(0.65).timeout
 		$AnimationPlayer2.play("CastleMenu")
-
+		
 func _on_buttonmove_1_pressed() -> void:
-	if game_start == true:
+	if game_start:
 		$AnimationPlayer.play("ToppingsFinish")
 		plate_check()
+
+
+func _on_mapbutton_pressed() -> void:
+	dialogue_index += 1
+	show_next_dialogue()
+	print("yay")

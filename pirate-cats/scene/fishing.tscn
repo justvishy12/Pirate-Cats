@@ -495,6 +495,7 @@ texture = ExtResource("6_so0t4")
 flip_h = true
 
 [node name="mapbutton" type="Button" parent="ColorRect" unique_id=2128184699]
+visible = false
 layout_mode = 0
 offset_left = 170.99997
 offset_top = -67.00003

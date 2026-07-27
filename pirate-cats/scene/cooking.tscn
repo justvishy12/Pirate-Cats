@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://40naf4am3sek" path="res://script/cooking.gd" id="1_6xkwg"]
 [ext_resource type="Texture2D" uid="uid://6toluj3fytn" path="res://assets/cookbg.png" id="2_u8adt"]
 [ext_resource type="Texture2D" uid="uid://cvf1l67epat3w" path="res://assets/plate.png" id="3_0colb"]
+[ext_resource type="Texture2D" uid="uid://c8bkutybtaau0" path="res://assets/map1.png" id="3_00mn3"]
 [ext_resource type="Texture2D" uid="uid://08qlhlttdfnc" path="res://assets/middle plate.png" id="4_si2go"]
 [ext_resource type="Script" uid="uid://bmxqb32wcjc12" path="res://script/CookDrag/middle_plate.gd" id="5_6h2ao"]
 [ext_resource type="Texture2D" uid="uid://b7of4i853fuxh" path="res://assets/bottom1.png" id="6_1ya7u"]
@@ -29,6 +30,20 @@
 [sub_resource type="Environment" id="Environment_ldxs4"]
 background_mode = 3
 glow_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1sr6h"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssagg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.76862746, 0.25490198, 0.25490198, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kpj8"]
+bg_color = Color(0, 0, 0, 0.59000003)
 
 [sub_resource type="Animation" id="Animation_yc3pb"]
 resource_name = "CastleFinish"
@@ -119,6 +134,21 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_si2go"]
 length = 0.001
 
+[sub_resource type="Animation" id="Animation_ah7bq"]
+resource_name = "Reset"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2027, 463), Vector2(299, 463)]
+}
+
 [sub_resource type="Animation" id="Animation_nrofp"]
 resource_name = "ToppingsFinish"
 tracks/0/type = "value"
@@ -146,6 +176,33 @@ tracks/1/keys = {
 "values": [Vector2(1451, 540), Vector2(2027, 540)]
 }
 
+[sub_resource type="Animation" id="Animation_00mn3"]
+resource_name = "map"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Plates/mapbutton:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Plates/mapbutton:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6h2ao"]
 _data = {
 &"CastleFinish": SubResource("Animation_yc3pb"),
@@ -153,7 +210,9 @@ _data = {
 &"PlateFinish": SubResource("Animation_0colb"),
 &"PlateMenu": SubResource("Animation_2upe3"),
 &"RESET": SubResource("Animation_si2go"),
-&"ToppingsFinish": SubResource("Animation_nrofp")
+&"Reset": SubResource("Animation_ah7bq"),
+&"ToppingsFinish": SubResource("Animation_nrofp"),
+&"map": SubResource("Animation_00mn3")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldxs4"]
@@ -208,40 +267,229 @@ offset_bottom = 577.0
 
 [node name="Plates" type="Node2D" parent="." unique_id=411730867]
 
-[node name="Plate" type="Sprite2D" parent="Plates" unique_id=480961363]
-position = Vector2(76, 483)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("3_0colb")
+[node name="mapbutton" type="Button" parent="Plates" unique_id=1760370566]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = 44.0
+offset_top = 478.0
+offset_right = 110.0
+offset_bottom = 542.25
+theme_override_styles/normal = SubResource("StyleBoxFlat_1sr6h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ssagg")
 
-[node name="Plate2" type="Sprite2D" parent="Plates" unique_id=1467105915]
-position = Vector2(76.00001, 492.00003)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("3_0colb")
+[node name="Map1" type="Sprite2D" parent="Plates/mapbutton" unique_id=694635038]
+position = Vector2(33.000008, 32.000008)
+scale = Vector2(0.12005934, 0.11822632)
+texture = ExtResource("3_00mn3")
 
-[node name="Plate3" type="Sprite2D" parent="Plates" unique_id=928590128]
+[node name="Plate1" type="Sprite2D" parent="Plates" unique_id=928590128]
 position = Vector2(76, 501)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_0colb")
 
-[node name="Plate4" type="Sprite2D" parent="Plates" unique_id=716067379]
+[node name="Plate2" type="Sprite2D" parent="Plates" unique_id=716067379]
 position = Vector2(76.00001, 510.00003)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_0colb")
 
-[node name="Plate5" type="Sprite2D" parent="Plates" unique_id=1124868295]
+[node name="Plate3" type="Sprite2D" parent="Plates" unique_id=1124868295]
 position = Vector2(76, 519)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_0colb")
 
-[node name="Plate6" type="Sprite2D" parent="Plates" unique_id=1464359658]
+[node name="Plate4" type="Sprite2D" parent="Plates" unique_id=1464359658]
 position = Vector2(76.00001, 528.00006)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_0colb")
 
-[node name="Plate7" type="Sprite2D" parent="Plates" unique_id=848641434]
+[node name="Plate5" type="Sprite2D" parent="Plates" unique_id=848641434]
 position = Vector2(76, 537)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_0colb")
+
+[node name="Order" type="Sprite2D" parent="." unique_id=557691217]
+position = Vector2(293, 370)
+rotation = -1.3835788
+scale = Vector2(0.5887395, 0.5887395)
+texture = ExtResource("21_yc3pb")
+
+[node name="Flag1" type="Sprite2D" parent="Order" unique_id=19859864]
+position = Vector2(85.55881, -2.0320425)
+rotation = 1.3835788
+scale = Vector2(0.48529738, 0.48529735)
+texture = ExtResource("6_i0riy")
+
+[node name="Flag3" type="Sprite2D" parent="Order" unique_id=1211469208]
+position = Vector2(35.492947, 7.4523325)
+rotation = 1.3835788
+scale = Vector2(0.48529738, 0.48529735)
+texture = ExtResource("6_i0riy")
+
+[node name="Top2" type="Sprite2D" parent="Order" unique_id=231195970]
+visible = false
+position = Vector2(27.421265, -1.3911133)
+rotation = 1.3835788
+scale = Vector2(0.5095632, 0.50956327)
+texture = ExtResource("10_ns7iu")
+
+[node name="Top1" type="Sprite2D" parent="Order" unique_id=1905301592]
+visible = false
+position = Vector2(27.421265, -1.3910522)
+rotation = 1.3835788
+scale = Vector2(0.5095632, 0.50956327)
+texture = ExtResource("9_i7xxb")
+
+[node name="Top2-1" type="Sprite2D" parent="Order" unique_id=250112133]
+position = Vector2(-27.967407, 7.3727417)
+rotation = 1.3835788
+scale = Vector2(0.5095632, 0.5095632)
+texture = ExtResource("10_ns7iu")
+
+[node name="Top1-1" type="Sprite2D" parent="Order" unique_id=1666328059]
+position = Vector2(-27.967407, 7.3727417)
+rotation = 1.3835788
+scale = Vector2(0.5095632, 0.5095632)
+texture = ExtResource("9_i7xxb")
+
+[node name="Bottom1" type="Sprite2D" parent="Order" unique_id=1544052657]
+visible = false
+position = Vector2(-41.819004, 9.996765)
+rotation = 1.3835788
+scale = Vector2(0.5095632, 0.50956327)
+texture = ExtResource("6_1ya7u")
+
+[node name="Bottom2" type="Sprite2D" parent="Order" unique_id=341196244]
+visible = false
+position = Vector2(-42.135044, 8.327637)
+rotation = 1.3835788
+scale = Vector2(0.5095632, 0.50956327)
+texture = ExtResource("8_317at")
+
+[node name="SmallBase" type="Node2D" parent="Order" unique_id=1991497244]
+position = Vector2(-70.822, 12.033386)
+rotation = 1.3835788
+scale = Vector2(0.67941767, 0.6794176)
+
+[node name="Star" type="Sprite2D" parent="Order/SmallBase" unique_id=1401662468]
+visible = false
+position = Vector2(-90, 0)
+scale = Vector2(1.2624983, 1.2624983)
+texture = ExtResource("16_aqocp")
+
+[node name="Star2" type="Sprite2D" parent="Order/SmallBase" unique_id=1446744323]
+visible = false
+position = Vector2(100, -62.5)
+rotation = -0.37213373
+scale = Vector2(1.2624983, 1.2624981)
+texture = ExtResource("16_aqocp")
+
+[node name="Clam" type="Sprite2D" parent="Order/SmallBase" unique_id=1614267337]
+visible = false
+position = Vector2(99.99982, 5)
+rotation = 0.5774585
+scale = Vector2(0.6447788, 0.64477867)
+texture = ExtResource("15_l8xg6")
+
+[node name="Clam2" type="Sprite2D" parent="Order/SmallBase" unique_id=1597219733]
+visible = false
+position = Vector2(-95.00006, -79.99988)
+rotation = -0.51651037
+scale = Vector2(0.6447787, 0.64477867)
+texture = ExtResource("15_l8xg6")
+
+[node name="BigBase" type="Node2D" parent="Order" unique_id=2126335495]
+position = Vector2(-70.822, 12.033386)
+rotation = 1.3835788
+scale = Vector2(0.67941767, 0.6794176)
+
+[node name="Star3" type="Sprite2D" parent="Order/BigBase" unique_id=1925448555]
+visible = false
+position = Vector2(127.49997, 0)
+scale = Vector2(1.2624983, 1.2624983)
+texture = ExtResource("16_aqocp")
+
+[node name="Star4" type="Sprite2D" parent="Order/BigBase" unique_id=1381071434]
+visible = false
+position = Vector2(-122.499985, -67.49999)
+rotation = -0.37213373
+scale = Vector2(1.2624981, 1.262498)
+texture = ExtResource("16_aqocp")
+
+[node name="Clam3" type="Sprite2D" parent="Order/BigBase" unique_id=1170393574]
+visible = false
+position = Vector2(97.49997, -72.5)
+rotation = 0.57745856
+scale = Vector2(0.6447787, 0.64477867)
+texture = ExtResource("15_l8xg6")
+
+[node name="Clam4" type="Sprite2D" parent="Order/BigBase" unique_id=1002521395]
+visible = false
+position = Vector2(-84.999985, 5.0000396)
+rotation = -0.51651037
+scale = Vector2(0.64477867, 0.6447786)
+texture = ExtResource("15_l8xg6")
+
+[node name="NoBase" type="Node2D" parent="Order" unique_id=905984810]
+position = Vector2(-70.822, 12.033386)
+rotation = 1.3835788
+scale = Vector2(0.67941767, 0.6794176)
+
+[node name="Star6" type="Sprite2D" parent="Order/NoBase" unique_id=1491998815]
+visible = false
+position = Vector2(-50.500183, -70.71434)
+rotation = -0.7551331
+scale = Vector2(1.262498, 1.2624979)
+texture = ExtResource("16_aqocp")
+
+[node name="Clam5" type="Sprite2D" parent="Order/NoBase" unique_id=55958990]
+visible = false
+position = Vector2(49.49982, -50.714333)
+rotation = 0.57745856
+scale = Vector2(0.6447787, 0.64477867)
+texture = ExtResource("15_l8xg6")
+
+[node name="Platesss" type="Node2D" parent="." unique_id=1352903542]
+position = Vector2(3, 298)
+
+[node name="Panel" type="Panel" parent="Platesss" unique_id=13258150]
+offset_right = 584.0
+offset_bottom = 172.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0kpj8")
+
+[node name="Panel2" type="Panel" parent="Platesss" unique_id=1361498326]
+offset_left = -2.0
+offset_top = 286.0
+offset_right = 584.0
+offset_bottom = 386.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0kpj8")
+
+[node name="Panel3" type="Panel" parent="Platesss" unique_id=1922457036]
+offset_left = 374.0
+offset_top = 172.0
+offset_right = 584.0
+offset_bottom = 286.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0kpj8")
+
+[node name="Panel4" type="Panel" parent="Platesss" unique_id=1239303235]
+offset_left = -31.0
+offset_top = 248.0
+offset_right = 217.0
+offset_bottom = 286.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0kpj8")
+
+[node name="Panel6" type="Panel" parent="Platesss" unique_id=1567423653]
+offset_left = 134.0
+offset_top = 196.0
+offset_right = 217.0
+offset_bottom = 248.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0kpj8")
+
+[node name="Panel5" type="Panel" parent="Platesss" unique_id=1264314330]
+offset_left = 134.0
+offset_top = 172.0
+offset_right = 374.0
+offset_bottom = 196.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0kpj8")
 
 [node name="MiddlePlate" type="Sprite2D" parent="." unique_id=1426199758]
 position = Vector2(298, 540)
@@ -262,6 +510,7 @@ offset_left = -196.66656
 offset_top = -110.0
 offset_right = 193.33337
 offset_bottom = 100.0
+focus_mode = 0
 
 [node name="Flag1" type="Sprite2D" parent="MiddlePlate" unique_id=1117597962]
 visible = false
@@ -452,7 +701,7 @@ offset_right = 130.66675
 offset_bottom = 80.99992
 
 [node name="Top2" type="Sprite2D" parent="." unique_id=1690554313]
-position = Vector2(1065.2, 480.55)
+position = Vector2(1067, 486)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("10_ns7iu")
 script = ExtResource("13_ns7iu")
@@ -532,239 +781,14 @@ offset_top = -40.5128
 offset_right = 45.914734
 offset_bottom = 39.162373
 
-[node name="Order" type="Sprite2D" parent="." unique_id=557691217]
-position = Vector2(293, 370)
-rotation = -1.3835788
-scale = Vector2(0.5887395, 0.5887395)
-texture = ExtResource("21_yc3pb")
-
-[node name="Flag1" type="Sprite2D" parent="Order" unique_id=19859864]
-visible = false
-position = Vector2(85.55881, -2.0320425)
-rotation = 1.3835788
-scale = Vector2(0.48529738, 0.48529735)
-texture = ExtResource("6_i0riy")
-
-[node name="Flag2" type="Sprite2D" parent="Order" unique_id=638104066]
-visible = false
-position = Vector2(0.446743, 14.0912485)
-rotation = 1.3835788
-scale = Vector2(0.48529738, 0.48529735)
-texture = ExtResource("6_i0riy")
-
-[node name="Flag3" type="Sprite2D" parent="Order" unique_id=1211469208]
-visible = false
-position = Vector2(35.492947, 7.4523325)
-rotation = 1.3835788
-scale = Vector2(0.48529738, 0.48529735)
-texture = ExtResource("6_i0riy")
-
-[node name="Top2" type="Sprite2D" parent="Order" unique_id=231195970]
-visible = false
-position = Vector2(27.421265, -1.3911133)
-rotation = 1.3835788
-scale = Vector2(0.5095632, 0.50956327)
-texture = ExtResource("10_ns7iu")
-
-[node name="Top1" type="Sprite2D" parent="Order" unique_id=1905301592]
-visible = false
-position = Vector2(27.421265, -1.3910522)
-rotation = 1.3835788
-scale = Vector2(0.5095632, 0.50956327)
-texture = ExtResource("9_i7xxb")
-
-[node name="Top2-1" type="Sprite2D" parent="Order" unique_id=250112133]
-visible = false
-position = Vector2(-27.967407, 7.3727417)
-rotation = 1.3835788
-scale = Vector2(0.5095632, 0.5095632)
-texture = ExtResource("10_ns7iu")
-
-[node name="Top1-1" type="Sprite2D" parent="Order" unique_id=1666328059]
-position = Vector2(-27.967407, 7.3727417)
-rotation = 1.3835788
-scale = Vector2(0.5095632, 0.5095632)
-texture = ExtResource("9_i7xxb")
-
-[node name="Bottom1" type="Sprite2D" parent="Order" unique_id=1544052657]
-visible = false
-position = Vector2(-41.819004, 9.996765)
-rotation = 1.3835788
-scale = Vector2(0.5095632, 0.50956327)
-texture = ExtResource("6_1ya7u")
-
-[node name="Bottom2" type="Sprite2D" parent="Order" unique_id=341196244]
-visible = false
-position = Vector2(-42.135044, 8.327637)
-rotation = 1.3835788
-scale = Vector2(0.5095632, 0.50956327)
-texture = ExtResource("8_317at")
-
-[node name="SmallBase" type="Node2D" parent="Order" unique_id=1991497244]
-position = Vector2(-70.822, 12.033386)
-rotation = 1.3835788
-scale = Vector2(0.67941767, 0.6794176)
-
-[node name="Star" type="Sprite2D" parent="Order/SmallBase" unique_id=1401662468]
-visible = false
-position = Vector2(-90, 0)
-scale = Vector2(1.2624983, 1.2624983)
-texture = ExtResource("16_aqocp")
-
-[node name="Star2" type="Sprite2D" parent="Order/SmallBase" unique_id=1446744323]
-visible = false
-position = Vector2(100, -62.5)
-rotation = -0.37213373
-scale = Vector2(1.2624983, 1.2624981)
-texture = ExtResource("16_aqocp")
-
-[node name="Clam" type="Sprite2D" parent="Order/SmallBase" unique_id=1614267337]
-visible = false
-position = Vector2(99.99982, 5)
-rotation = 0.5774585
-scale = Vector2(0.6447788, 0.64477867)
-texture = ExtResource("15_l8xg6")
-
-[node name="Clam2" type="Sprite2D" parent="Order/SmallBase" unique_id=1597219733]
-visible = false
-position = Vector2(-95.00006, -79.99988)
-rotation = -0.51651037
-scale = Vector2(0.6447787, 0.64477867)
-texture = ExtResource("15_l8xg6")
-
-[node name="BigBase" type="Node2D" parent="Order" unique_id=2126335495]
-position = Vector2(-70.822, 12.033386)
-rotation = 1.3835788
-scale = Vector2(0.67941767, 0.6794176)
-
-[node name="Star3" type="Sprite2D" parent="Order/BigBase" unique_id=1925448555]
-visible = false
-position = Vector2(127.49997, 0)
-scale = Vector2(1.2624983, 1.2624983)
-texture = ExtResource("16_aqocp")
-
-[node name="Star4" type="Sprite2D" parent="Order/BigBase" unique_id=1381071434]
-visible = false
-position = Vector2(-122.499985, -67.49999)
-rotation = -0.37213373
-scale = Vector2(1.2624981, 1.262498)
-texture = ExtResource("16_aqocp")
-
-[node name="Clam3" type="Sprite2D" parent="Order/BigBase" unique_id=1170393574]
-visible = false
-position = Vector2(97.49997, -72.5)
-rotation = 0.57745856
-scale = Vector2(0.6447787, 0.64477867)
-texture = ExtResource("15_l8xg6")
-
-[node name="Clam4" type="Sprite2D" parent="Order/BigBase" unique_id=1002521395]
-visible = false
-position = Vector2(-84.999985, 5.0000396)
-rotation = -0.51651037
-scale = Vector2(0.64477867, 0.6447786)
-texture = ExtResource("15_l8xg6")
-
-[node name="NoBase" type="Node2D" parent="Order" unique_id=905984810]
-position = Vector2(-70.822, 12.033386)
-rotation = 1.3835788
-scale = Vector2(0.67941767, 0.6794176)
-
-[node name="Star6" type="Sprite2D" parent="Order/NoBase" unique_id=1491998815]
-visible = false
-position = Vector2(-50.500183, -70.71434)
-rotation = -0.7551331
-scale = Vector2(1.262498, 1.2624979)
-texture = ExtResource("16_aqocp")
-
-[node name="Clam5" type="Sprite2D" parent="Order/NoBase" unique_id=55958990]
-visible = false
-position = Vector2(49.49982, -50.714333)
-rotation = 0.57745856
-scale = Vector2(0.6447787, 0.64477867)
-texture = ExtResource("15_l8xg6")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2024708833]
 libraries/ = SubResource("AnimationLibrary_6h2ao")
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=648021941]
 libraries/ = SubResource("AnimationLibrary_6h2ao")
 
-[node name="Panel" type="Panel" parent="." unique_id=13258150]
-offset_left = 3.0
-offset_top = 298.0
-offset_right = 590.0
-offset_bottom = 470.0
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=32059403]
-position = Vector2(299, 463)
-zoom = Vector2(2, 2)
-
-[node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=1385800012]
-visible = false
-position = Vector2(-866.96765, -62)
-scale = Vector2(0.34551278, 0.34551278)
-texture = ExtResource("21_ah7bq")
-
-[node name="namelabel" type="Label" parent="Camera2D/Textbox" unique_id=1945742980]
-offset_left = -370.464
-offset_top = -95.51019
-offset_right = 107.087036
-offset_bottom = -52.096497
-theme_override_fonts/font = ExtResource("22_00mn3")
-theme_override_font_sizes/font_size = 35
-text = "???"
-vertical_alignment = 1
-
-[node name="textlabel" type="Label" parent="Camera2D/Textbox" unique_id=2122768063]
-custom_minimum_size = Vector2(16.92, 0)
-offset_left = -222.85681
-offset_top = -34.730988
-offset_right = 240.22302
-offset_bottom = 54.990692
-theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
-theme_override_fonts/font = ExtResource("22_00mn3")
-theme_override_font_sizes/font_size = 38
-text = "hi  my name is bob. i like to eat"
-autowrap_mode = 2
-
-[node name="skiplabel" type="Label" parent="Camera2D/Textbox" unique_id=1164134758]
-offset_left = 208.38596
-offset_top = 57.88497
-offset_right = 347.30978
-offset_bottom = 77.88497
-theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
-theme_override_fonts/font = ExtResource("22_00mn3")
-theme_override_font_sizes/font_size = 20
-text = "SPACE TO SKIP"
-
-[node name="photobox" type="TextureRect" parent="Camera2D/Textbox" unique_id=1022130340]
-offset_left = -379.1466
-offset_top = -43.413727
-offset_right = -222.85706
-offset_bottom = 78.144745
-expand_mode = 2
-stretch_mode = 4
-
-[node name="player button" type="Button" parent="Camera2D" unique_id=1310490342]
-texture_filter = 2
-offset_left = -92.0
-offset_top = -57.0
-offset_right = 92.0
-offset_bottom = -7.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("22_00mn3")
-theme_override_styles/normal = ExtResource("23_1sr6h")
-theme_override_styles/pressed = ExtResource("24_ssagg")
-theme_override_styles/hover = ExtResource("24_ssagg")
-theme_override_styles/focus = ExtResource("24_ssagg")
-text = "Are we going to cook?"
-autowrap_mode = 3
-
 [node name="Arrow" type="Sprite2D" parent="." unique_id=592210537]
+visible = false
 position = Vector2(1074, 399)
 scale = Vector2(0.56666666, 0.56666666)
 texture = ExtResource("20_8giwa")
@@ -778,6 +802,7 @@ offset_bottom = 51.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Arrow2" type="Sprite2D" parent="." unique_id=1163599062]
+visible = false
 position = Vector2(1664, 399)
 scale = Vector2(0.56666666, 0.56666666)
 texture = ExtResource("20_8giwa")
@@ -877,6 +902,76 @@ offset_right = 2280.0
 offset_bottom = 432.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ldxs4")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=32059403]
+position = Vector2(299, 463)
+zoom = Vector2(2, 2)
+
+[node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=1385800012]
+visible = false
+position = Vector2(17, 124.999985)
+scale = Vector2(0.34551278, 0.34551278)
+texture = ExtResource("21_ah7bq")
+
+[node name="namelabel" type="Label" parent="Camera2D/Textbox" unique_id=1945742980]
+offset_left = -370.464
+offset_top = -95.51019
+offset_right = 107.087036
+offset_bottom = -52.096497
+theme_override_fonts/font = ExtResource("22_00mn3")
+theme_override_font_sizes/font_size = 35
+text = "???"
+vertical_alignment = 1
+
+[node name="textlabel" type="Label" parent="Camera2D/Textbox" unique_id=2122768063]
+custom_minimum_size = Vector2(16.92, 0)
+offset_left = -222.85681
+offset_top = -34.730988
+offset_right = 240.22302
+offset_bottom = 54.990692
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("22_00mn3")
+theme_override_font_sizes/font_size = 38
+text = "hi  my name is bob. i like to eat"
+autowrap_mode = 2
+
+[node name="skiplabel" type="Label" parent="Camera2D/Textbox" unique_id=1164134758]
+offset_left = 208.38596
+offset_top = 57.88497
+offset_right = 347.30978
+offset_bottom = 77.88497
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("22_00mn3")
+theme_override_font_sizes/font_size = 20
+text = "SPACE TO SKIP"
+
+[node name="photobox" type="TextureRect" parent="Camera2D/Textbox" unique_id=1022130340]
+offset_left = -379.1466
+offset_top = -43.413727
+offset_right = -222.85706
+offset_bottom = 78.144745
+expand_mode = 2
+stretch_mode = 4
+
+[node name="player button" type="Button" parent="Camera2D" unique_id=1310490342]
+texture_filter = 2
+offset_left = -92.0
+offset_top = -57.0
+offset_right = 92.0
+offset_bottom = -7.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("22_00mn3")
+theme_override_styles/normal = ExtResource("23_1sr6h")
+theme_override_styles/pressed = ExtResource("24_ssagg")
+theme_override_styles/hover = ExtResource("24_ssagg")
+theme_override_styles/focus = ExtResource("24_ssagg")
+text = "Are we going to cook?"
+autowrap_mode = 3
+
+[connection signal="pressed" from="Plates/mapbutton" to="." method="_on_mapbutton_pressed"]
 [connection signal="button_down" from="MiddlePlate/Button" to="MiddlePlate" method="_on_button_button_down"]
 [connection signal="button_up" from="MiddlePlate/Button" to="MiddlePlate" method="_on_button_button_up"]
 [connection signal="button_down" from="Bottom1/Button" to="Bottom1" method="_on_button_button_down"]
@@ -893,6 +988,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ldxs4")
 [connection signal="button_up" from="Flag/Button" to="Flag" method="_on_button_button_up"]
 [connection signal="button_down" from="Clam/Button" to="Clam" method="_on_button_button_down"]
 [connection signal="button_up" from="Clam/Button" to="Clam" method="_on_button_button_up"]
-[connection signal="pressed" from="Camera2D/player button" to="." method="_on_player_button_pressed"]
 [connection signal="pressed" from="Arrow/Buttonmove" to="." method="_on_buttonmove_pressed"]
 [connection signal="pressed" from="Arrow2/Buttonmove1" to="." method="_on_buttonmove_1_pressed"]
+[connection signal="pressed" from="Camera2D/player button" to="." method="_on_player_button_pressed"]
