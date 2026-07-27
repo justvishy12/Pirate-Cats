@@ -11,6 +11,7 @@ var plate = 0
 var plate_anim = false
 var base
 var top
+var game_start = false
 #CheckOrder
 var OBase1 = false
 var OBase2 = false
@@ -36,6 +37,113 @@ var CShell = false
 var CFlag = false
 var CStar = false
 
+var dialogue = [
+	{
+		#0
+		"speaker": "you",
+		"name": "",
+		"text": "Are we going to cook?"
+	},
+	{
+		#1
+		"speaker": "cat",
+		"name": "Cook",
+		"text": "No, but I will teach you how",
+		"portrait": preload("res://assets/headshots/FISHER FACE.png")
+	},
+	{
+		#2
+		"speaker": "cat",
+		"name": "Fisher",
+		"text": "First Drag a plate onto the line",
+		"portrait": preload("res://assets/headshots/FISHER FACE.png")
+	},
+	{
+		#3
+		"speaker": "cat",
+		"name": "Fisher",
+		"text": "Then Add the Castles based on the order",
+		"portrait": preload("res://assets/headshots/FISHER FACE.png")
+	},
+	{
+		#3
+		"speaker": "cat",
+		"name": "Fisher",
+		"text": "Then add the toppings",
+		"portrait": preload("res://assets/headshots/FISHER FACE.png")
+	},
+	{
+		#4
+		"speaker": "you",
+		"name": "",
+		"text": "Okay, Lets DO this"
+	},
+]
+
+var dialogue_index = 0
+var typing = false
+
+
+
+func show_next_dialogue() -> void:
+	if dialogue_index >= dialogue.size():
+		$Camera2D/Textbox.visible = false
+		$"Camera2D/player button".visible = false
+		return
+	
+	var line = dialogue[dialogue_index]
+	
+	if line["speaker"] == "you":
+		$Camera2D/Textbox.visible = false
+		$"Camera2D/player button".visible = true
+		$"Camera2D/player button".text = line["text"]
+		
+	elif line["speaker"] == "cat":
+		$"Camera2D/player button".visible = false
+		show_cat_text(line)
+		
+
+
+func _on_player_button_pressed() -> void:
+	dialogue_index += 1
+	show_next_dialogue()
+
+func show_cat_text(line) -> void:
+	$Camera2D/Textbox.visible = true
+	typing = true
+	
+	$Camera2D/Textbox/namelabel.text = line["name"]
+	$Camera2D/Textbox/textlabel.text = line["text"]
+	
+	if line.has("portrait"):
+		$Camera2D/Textbox/photobox.texture = line["portrait"]
+	else:
+		$Camera2D/Textbox/photobox.texture = null
+	$Camera2D/Textbox/textlabel.visible_characters = 0
+	
+	for i in $Camera2D/Textbox/textlabel.text.length():
+		$Camera2D/Textbox/textlabel.visible_characters = i
+		await get_tree().create_timer(0.05).timeout
+	
+	typing = false
+
+
+func _input(event):
+	if event.is_action_pressed("ui_accept") and !typing:
+		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
+			dialogue_index += 1
+			if dialogue_index == 1 and $MiddlePlate.global_position == Vector2(75,510):
+				await get_tree().create_timer(0.4).timeout
+				$AnimationPlayer.play("PlateFinish")
+				await get_tree().create_timer(0.65).timeout
+				$AnimationPlayer2.play("PlateMenu")
+				show_next_dialogue()
+
+
+
+
+
+
 func _ready() -> void:
 	$Camera2D.position = Vector2(299,463)
 	$MiddlePlate.self_modulate = Color(1.0, 1.0, 1.0, 0.0)
@@ -45,10 +153,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if $MiddlePlate/Panel.get_global_rect().intersects($PlatePanel.get_global_rect()) and plate_anim == false and $MiddlePlate.in_zone == true:
 		plate_anim = true
-		await get_tree().create_timer(0.4).timeout
-		$AnimationPlayer.play("PlateFinish")
-		await get_tree().create_timer(0.65).timeout
-		$AnimationPlayer2.play("PlateMenu")
+		if game_start == true:
+			await get_tree().create_timer(0.4).timeout
+			$AnimationPlayer.play("PlateFinish")
+			await get_tree().create_timer(0.65).timeout
+			$AnimationPlayer2.play("PlateMenu")
 	if plate == 1:
 		$Plates/Plate.visible = false
 	elif plate == 2:
@@ -200,10 +309,12 @@ func plate_check():
 		$F1.modulate = Color(4.869, 4.869, 4.869)
 		print(CFlag )
 func _on_buttonmove_pressed() -> void:
-	$AnimationPlayer.play("CastleFinish")
-	await get_tree().create_timer(0.65).timeout
-	$AnimationPlayer2.play("CastleMenu")
+	if game_start == true:
+		$AnimationPlayer.play("CastleFinish")
+		await get_tree().create_timer(0.65).timeout
+		$AnimationPlayer2.play("CastleMenu")
 
 func _on_buttonmove_1_pressed() -> void:
-	$AnimationPlayer.play("ToppingsFinish")
-	plate_check()
+	if game_start == true:
+		$AnimationPlayer.play("ToppingsFinish")
+		plate_check()

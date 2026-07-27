@@ -20,7 +20,11 @@
 [ext_resource type="Script" uid="uid://cpgispv6mlbr6" path="res://script/CookDrag/flag.gd" id="18_aqocp"]
 [ext_resource type="Script" uid="uid://cgrrcqf5i6tvd" path="res://script/CookDrag/clam.gd" id="19_tfb5l"]
 [ext_resource type="Texture2D" uid="uid://ce70g20dsoxb3" path="res://assets/arrow.png" id="20_8giwa"]
+[ext_resource type="Texture2D" uid="uid://bk0yokqeio7rc" path="res://assets/textbox.png" id="21_ah7bq"]
 [ext_resource type="Texture2D" uid="uid://cff1rr3aa37es" path="res://assets/order.png" id="21_yc3pb"]
+[ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="22_00mn3"]
+[ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="23_1sr6h"]
+[ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="24_ssagg"]
 
 [sub_resource type="Environment" id="Environment_ldxs4"]
 background_mode = 3
@@ -114,42 +118,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_si2go"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Order:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(293, 370)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1451, 463)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MiddlePlate:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1451, 540)]
-}
 
 [sub_resource type="Animation" id="Animation_nrofp"]
 resource_name = "ToppingsFinish"
@@ -276,7 +244,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_0colb")
 
 [node name="MiddlePlate" type="Sprite2D" parent="." unique_id=1426199758]
-position = Vector2(1451, 540)
+position = Vector2(298, 540)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_si2go")
 script = ExtResource("5_6h2ao")
@@ -721,9 +689,80 @@ libraries/ = SubResource("AnimationLibrary_6h2ao")
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=648021941]
 libraries/ = SubResource("AnimationLibrary_6h2ao")
 
+[node name="Panel" type="Panel" parent="." unique_id=13258150]
+offset_left = 3.0
+offset_top = 298.0
+offset_right = 590.0
+offset_bottom = 470.0
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=32059403]
-position = Vector2(1451, 463)
+position = Vector2(299, 463)
 zoom = Vector2(2, 2)
+
+[node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=1385800012]
+visible = false
+position = Vector2(-866.96765, -62)
+scale = Vector2(0.34551278, 0.34551278)
+texture = ExtResource("21_ah7bq")
+
+[node name="namelabel" type="Label" parent="Camera2D/Textbox" unique_id=1945742980]
+offset_left = -370.464
+offset_top = -95.51019
+offset_right = 107.087036
+offset_bottom = -52.096497
+theme_override_fonts/font = ExtResource("22_00mn3")
+theme_override_font_sizes/font_size = 35
+text = "???"
+vertical_alignment = 1
+
+[node name="textlabel" type="Label" parent="Camera2D/Textbox" unique_id=2122768063]
+custom_minimum_size = Vector2(16.92, 0)
+offset_left = -222.85681
+offset_top = -34.730988
+offset_right = 240.22302
+offset_bottom = 54.990692
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("22_00mn3")
+theme_override_font_sizes/font_size = 38
+text = "hi  my name is bob. i like to eat"
+autowrap_mode = 2
+
+[node name="skiplabel" type="Label" parent="Camera2D/Textbox" unique_id=1164134758]
+offset_left = 208.38596
+offset_top = 57.88497
+offset_right = 347.30978
+offset_bottom = 77.88497
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("22_00mn3")
+theme_override_font_sizes/font_size = 20
+text = "SPACE TO SKIP"
+
+[node name="photobox" type="TextureRect" parent="Camera2D/Textbox" unique_id=1022130340]
+offset_left = -379.1466
+offset_top = -43.413727
+offset_right = -222.85706
+offset_bottom = 78.144745
+expand_mode = 2
+stretch_mode = 4
+
+[node name="player button" type="Button" parent="Camera2D" unique_id=1310490342]
+texture_filter = 2
+offset_left = -92.0
+offset_top = -57.0
+offset_right = 92.0
+offset_bottom = -7.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("22_00mn3")
+theme_override_styles/normal = ExtResource("23_1sr6h")
+theme_override_styles/pressed = ExtResource("24_ssagg")
+theme_override_styles/hover = ExtResource("24_ssagg")
+theme_override_styles/focus = ExtResource("24_ssagg")
+text = "Are we going to cook?"
+autowrap_mode = 3
 
 [node name="Arrow" type="Sprite2D" parent="." unique_id=592210537]
 position = Vector2(1074, 399)
@@ -854,5 +893,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ldxs4")
 [connection signal="button_up" from="Flag/Button" to="Flag" method="_on_button_button_up"]
 [connection signal="button_down" from="Clam/Button" to="Clam" method="_on_button_button_down"]
 [connection signal="button_up" from="Clam/Button" to="Clam" method="_on_button_button_up"]
+[connection signal="pressed" from="Camera2D/player button" to="." method="_on_player_button_pressed"]
 [connection signal="pressed" from="Arrow/Buttonmove" to="." method="_on_buttonmove_pressed"]
 [connection signal="pressed" from="Arrow2/Buttonmove1" to="." method="_on_buttonmove_1_pressed"]
