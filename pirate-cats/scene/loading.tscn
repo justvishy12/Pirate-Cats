@@ -2,33 +2,291 @@
 
 [ext_resource type="Script" uid="uid://bwsij72x7fm3g" path="res://script/loading.gd" id="1_waisc"]
 [ext_resource type="Texture2D" uid="uid://cn8qc7os5yfk2" path="res://assets/txture plc holder.png" id="2_eavwo"]
-[ext_resource type="FontFile" uid="uid://ga2lqw0ds03v" path="res://fonts/RobotoCondensed-VariableFont_wght.ttf" id="8_w0yx0"]
+[ext_resource type="StyleBox" uid="uid://d02qh5wfrhljo" path="res://styles/Black+WhiteButton.tres" id="3_mufkd"]
+[ext_resource type="Texture2D" uid="uid://ba77fukagwcw1" path="res://scene/load bg2.png" id="4_xwca0"]
+[ext_resource type="Texture2D" uid="uid://hod1ee2s411u" path="res://scene/load bg.png" id="5_vudae"]
+[ext_resource type="StyleBox" uid="uid://tvgg7r1vrqhf" path="res://styles/loadbutton.tres" id="5_waisc"]
+[ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="6_waisc"]
+
+[sub_resource type="Animation" id="Animation_xwca0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../LoadBg:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Save1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Save2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Save3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Prefferences:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Guide:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Save1:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Save2:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Save3:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Prefferences:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Guide:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vudae"]
+resource_name = "fade"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../LoadBg:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.47, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Save1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.2666667, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Save2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.1333333, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Save3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.2333333, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Prefferences:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Guide:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.2666667, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Save1:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2, 3.8333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Save2:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2, 3.8333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Save3:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2, 3.8333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Prefferences:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(2, 3.8333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Guide:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(2, 3.8333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mufkd"]
+_data = {
+&"RESET": SubResource("Animation_xwca0"),
+&"fade": SubResource("Animation_vudae")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_riyh1"]
-bg_color = Color(0.041024573, 0.26967442, 0.32882544, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5sra7"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjsnc"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpmfe"]
 bg_color = Color(0, 0, 0, 1)
@@ -45,6 +303,11 @@ corner_radius_bottom_left = 10
 [node name="Node2D" type="Node2D" unique_id=2123407205]
 script = ExtResource("1_waisc")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=110874712]
+root_node = NodePath("../Loading/LoadBg2")
+libraries/ = SubResource("AnimationLibrary_mufkd")
+autoplay = &"fade"
+
 [node name="Loading" type="Node2D" parent="." unique_id=1755795209]
 position = Vector2(-556, 376)
 scale = Vector2(0.44, 0.44)
@@ -56,12 +319,18 @@ offset_right = 1280.0
 offset_bottom = 721.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_riyh1")
 
+[node name="LoadBg2" type="Sprite2D" parent="Loading" unique_id=910199769]
+position = Vector2(644.63043, 362.1784)
+scale = Vector2(0.63635814, 0.63635814)
+texture = ExtResource("4_xwca0")
+
 [node name="Save1" type="Panel" parent="Loading" unique_id=765922399]
+visible = false
 offset_left = 230.0
 offset_top = 285.0
 offset_right = 476.0
 offset_bottom = 588.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_5sra7")
+theme_override_styles/panel = ExtResource("3_mufkd")
 
 [node name="Thumbnail" type="TextureRect" parent="Loading/Save1" unique_id=586232907]
 layout_mode = 0
@@ -79,7 +348,7 @@ offset_left = 188.18182
 offset_top = 235.45459
 offset_right = 233.63635
 offset_bottom = 280.90918
-theme_override_styles/normal = SubResource("StyleBoxFlat_fjsnc")
+theme_override_styles/normal = ExtResource("5_waisc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dpmfe")
 expand_icon = true
 
@@ -90,9 +359,10 @@ offset_top = 235.45464
 offset_right = 311.1157
 offset_bottom = 315.66864
 scale = Vector2(0.55, 0.55)
-theme_override_fonts/font = ExtResource("8_w0yx0")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_waisc")
 theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxFlat_fjsnc")
+theme_override_styles/normal = ExtResource("5_waisc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dpmfe")
 text = "LOAD GAME"
 
@@ -105,23 +375,27 @@ offset_bottom = 225.90918
 
 [node name="Label" type="Label" parent="Loading/Save1/Container" unique_id=1610525382]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_waisc")
 theme_override_font_sizes/font_size = 32
 text = "Slot 1"
 
 [node name="Date" type="Label" parent="Loading/Save1/Container" unique_id=479027689]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_waisc")
 text = "xx/xx/xxxx"
 
 [node name="Time" type="Label" parent="Loading/Save1/Container" unique_id=880536550]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_waisc")
 text = "xx:xx"
 
 [node name="Save2" type="Panel" parent="Loading" unique_id=1096441112]
+visible = false
 offset_left = 539.09106
 offset_top = 285.0
 offset_right = 785.09106
 offset_bottom = 588.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_5sra7")
+theme_override_styles/panel = ExtResource("3_mufkd")
 
 [node name="Thumbnail" type="TextureRect" parent="Loading/Save2" unique_id=364656760]
 layout_mode = 0
@@ -139,7 +413,7 @@ offset_left = 188.18182
 offset_top = 235.45459
 offset_right = 229.36365
 offset_bottom = 278.54553
-theme_override_styles/normal = SubResource("StyleBoxFlat_fjsnc")
+theme_override_styles/normal = ExtResource("5_waisc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dpmfe")
 
 [node name="Load2" type="Button" parent="Loading/Save2" unique_id=931732838]
@@ -149,9 +423,10 @@ offset_top = 235.45464
 offset_right = 311.1157
 offset_bottom = 315.66864
 scale = Vector2(0.55, 0.55)
-theme_override_fonts/font = ExtResource("8_w0yx0")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_waisc")
 theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxFlat_fjsnc")
+theme_override_styles/normal = ExtResource("5_waisc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dpmfe")
 text = "LOAD GAME"
 
@@ -164,23 +439,27 @@ offset_bottom = 225.90918
 
 [node name="Label" type="Label" parent="Loading/Save2/Container" unique_id=1619201343]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_waisc")
 theme_override_font_sizes/font_size = 32
 text = "Slot 2"
 
 [node name="Date" type="Label" parent="Loading/Save2/Container" unique_id=1058264288]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_waisc")
 text = "xx/xx/xxxx"
 
 [node name="Time" type="Label" parent="Loading/Save2/Container" unique_id=1387742248]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_waisc")
 text = "xx:xx"
 
 [node name="Save3" type="Panel" parent="Loading" unique_id=964077196]
+visible = false
 offset_left = 848.18176
 offset_top = 285.0
 offset_right = 1094.1818
 offset_bottom = 588.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_5sra7")
+theme_override_styles/panel = ExtResource("3_mufkd")
 
 [node name="Thumbnail" type="TextureRect" parent="Loading/Save3" unique_id=1887049656]
 layout_mode = 0
@@ -198,7 +477,7 @@ offset_left = 188.18182
 offset_top = 235.45459
 offset_right = 229.36365
 offset_bottom = 278.54553
-theme_override_styles/normal = SubResource("StyleBoxFlat_fjsnc")
+theme_override_styles/normal = ExtResource("5_waisc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dpmfe")
 
 [node name="Load3" type="Button" parent="Loading/Save3" unique_id=1050569299]
@@ -208,9 +487,10 @@ offset_top = 235.45464
 offset_right = 311.1157
 offset_bottom = 315.66864
 scale = Vector2(0.55, 0.55)
-theme_override_fonts/font = ExtResource("8_w0yx0")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_waisc")
 theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxFlat_fjsnc")
+theme_override_styles/normal = ExtResource("5_waisc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dpmfe")
 text = "LOAD GAME"
 
@@ -223,47 +503,49 @@ offset_bottom = 225.90918
 
 [node name="Label" type="Label" parent="Loading/Save3/Container" unique_id=1010715350]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_waisc")
 theme_override_font_sizes/font_size = 32
 text = "Slot 3"
 
 [node name="Date" type="Label" parent="Loading/Save3/Container" unique_id=352244660]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_waisc")
 text = "xx/xx/xxxx"
 
 [node name="Time" type="Label" parent="Loading/Save3/Container" unique_id=1732095474]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_waisc")
 text = "xx:xx"
 
 [node name="Prefferences" type="Button" parent="Loading" unique_id=1622919171]
+visible = false
 offset_left = 32.0
 offset_top = 88.0
 offset_right = 200.0
 offset_bottom = 152.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_fjsnc")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_waisc")
+theme_override_styles/normal = ExtResource("3_mufkd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dpmfe")
 text = "PREFFERENCES"
 
 [node name="Guide" type="Button" parent="Loading" unique_id=1436311473]
+visible = false
 offset_left = 32.0
 offset_top = 199.99994
 offset_right = 200.0
 offset_bottom = 263.99994
-theme_override_styles/normal = SubResource("StyleBoxFlat_fjsnc")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_waisc")
+theme_override_styles/normal = ExtResource("3_mufkd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dpmfe")
 text = "GUIDE"
 
-[node name="Label" type="Label" parent="Loading" unique_id=250329690]
-offset_left = 506.81824
-offset_top = -15.909111
-offset_right = 764.81824
-offset_bottom = 77.27271
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 48
-text = "Load Menu"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
+[node name="LoadBg" type="Sprite2D" parent="." unique_id=1166868167]
+position = Vector2(-272.36258, 535.3585)
+scale = Vector2(0.2799976, 0.2799976)
+texture = ExtResource("5_vudae")
+metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=809109245]
 position = Vector2(-288, 526)
