@@ -19,7 +19,7 @@
 [ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="17_85f5m"]
 [ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="18_66c1l"]
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="19_nr356"]
-[ext_resource type="Texture2D" uid="uid://cjnad54uiwsts" path="res://assets/map4.png" id="20_85f5m"]
+[ext_resource type="Texture2D" uid="uid://b0ioblyl7a35b" path="res://assets/map3.png" id="20_85f5m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iio88"]
 atlas = ExtResource("2_bo8uk")

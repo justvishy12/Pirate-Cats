@@ -614,7 +614,6 @@ position = Vector2(266, 0)
 shape = SubResource("RectangleShape2D_ldxs4")
 
 [node name="bg" type="Panel" parent="Camera2D" unique_id=1966440609]
-visible = false
 offset_left = -288.0
 offset_top = -201.0
 offset_right = 319.0

@@ -48,6 +48,24 @@ var in_zone6 = false
 var get_map = false
 
 func _ready() -> void:
+	if SaveManager.fish == false:
+		$Camera2D/bg/Map1.disabled = true
+		$Camera2D/bg/Map1.visible = true
+	if SaveManager.cook == false:
+		$Camera2D/bg/Map2.disabled = true
+		$Camera2D/bg/Map2.visible = true
+	if SaveManager.feed == false:
+		$Camera2D/bg/Map3.disabled = true
+		$Camera2D/bg/Map3.visible = true
+	if SaveManager.sort == false:
+		$Camera2D/bg/Map4.disabled = true
+		$Camera2D/bg/Map4.visible = true
+	if SaveManager.scrub == false:
+		$Camera2D/bg/Map5.disabled = true
+		$Camera2D/bg/Map5.visible = true
+	#if SaveManager.fish == false:
+	#	$Camera2D/bg/Map1.disabled = true
+	#	$Camera2D/bg/Map1.visible = true
 	Global.leftcam = false
 	Global.rightcam = false
 	maps = [$Camera2D/bg/Map1, $Camera2D/bg/Map2, $Camera2D/bg/Map3, $Camera2D/bg/Map4, $Camera2D/bg/Map5, $Camera2D/bg/Map6]

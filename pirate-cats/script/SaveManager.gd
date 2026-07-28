@@ -2,28 +2,24 @@ extends Node
 
 const SAVE_FOLDER = "user://"
 var current_slot = 0
-var scene = 1
 var coins = 0
-var fish_played = false
-var cook_played = false
-var fishmap = false
-var cookmap = false
-var crabmap = false
-var parrotmap = false
-var captainmap = false
-var powdermap = false
 var fish = false
 var cook = false
 var scrub = false
 var feed = false
 var sort = false
-
+var crab_fight = false
 func save_game(slot: int) -> void:
 	var path = SAVE_FOLDER + "save_%d.json" % slot
 
 	var data = {
 		"saved_at": Time.get_datetime_string_from_system(),
-		"scene": scene
+		"fish": fish,
+		"cook": cook,
+		"scrub": scrub,
+		"feed": feed,
+		"sort": sort,
+		"crab_fight": crab_fight
 	}
 
 	var file = FileAccess.open(path, FileAccess.WRITE)
@@ -65,7 +61,11 @@ func load_game(slot: int):
 	if data == null:
 		return null
 
-	scene = int(data.get("scene", 1))
+	crab_fight = data["crab_fight"]
+	if crab_fight:
+		get_tree().change_scene_to_file("res://scene/Backship.tscn")
+	else:
+		get_tree().change_scene_to_file("res://scene/ship_sailing.tscn")
 
 	return data
 

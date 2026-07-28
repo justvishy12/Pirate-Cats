@@ -187,6 +187,7 @@ func pick_crabs():
 		return
 		
 	if rounds == 3:
+		SaveManager.crab_fight = true
 		can_play = false	
 		dialogue_index = 4
 		show_next_dialogue()
