@@ -18,11 +18,94 @@ const CannonBallScene = preload("res://scene/Cannon Ball.tscn")
 @onready var mid_start: Vector2 = $CMid.global_position
 @onready var left_start = $CLeft.global_position
 @onready var right_start = $CRight.global_position
+
+var dialogue = [
+{
+		#0
+		"speaker": "you",
+		"name":"",
+		"text": "How do I help?",
+	},
+	{
+		#1
+		"speaker": "cat",
+		"name":"Smokey (Powder Monkey)",
+		"text": "You can move the cannons with arrow keys and press space to shoot! ",
+		"portrait": preload("res://assets/headshots/POWDER MONKEY FACE.png")
+	},
+	{
+		#2
+		"speaker": "cat",
+		"name":"Smokey (Powder Monkey)",
+		"text": "Good luck, we are counting on you~ ",
+		"portrait": preload("res://assets/headshots/POWDER MONKEY FACE.png")
+	},
+	{
+		#3
+		"speaker": "event",
+		"name":"",
+		"text": " ",
+	},
+]	
+var dialogue_index = 0
+var typing = false
+var fight = false
+
+func show_next_dialogue() -> void:
+	if dialogue_index >= dialogue.size():
+		$Textbox.visible = false
+		$Button.visible = false
+		return
+	
+	var line = dialogue[dialogue_index]
+	
+	if line["speaker"] == "you":
+		$Textbox.visible = false
+		$Button.visible = true
+		$Button.text = line["text"]
+		
+	elif line["speaker"] == "cat":
+		$Button.visible = false
+		$Textbox.visible = true
+		show_cat_text(line)
+			
+	elif line["speaker"] == "event":
+		$Button.visible = false
+		$Textbox.visible = false
+		fight=true
+
+func _on_player_button_pressed() -> void:
+	dialogue_index += 1
+	show_next_dialogue()
+
+func show_cat_text(line) -> void:
+	$Textbox.visible = true
+	typing = true
+	
+	$Textbox/namelabel.text = line["name"]
+	$Textbox/textlabel.text = line["text"]
+	
+	if line.has("portrait"):
+		$Textbox/photobox.texture = line["portrait"]
+	else:
+		$Textbox/photobox.texture = null
+	$Textbox/textlabel.visible_characters = 0
+	
+	for i in $Textbox/textlabel.text.length():
+		$Textbox/textlabel.visible_characters = i
+		await get_tree().create_timer(0.05).timeout
+	
+	typing = false
+
+
+	
+	
 func _ready() -> void:
 	$CMid.visible = false
 	$CLeft.visible = false
 	$CRight.visible = false
 	pick_crabs()
+	show_next_dialogue()
 
 func _process(delta: float) -> void:
 	var crab_rect = $CMid/MidPanel.get_global_rect()
@@ -48,12 +131,16 @@ func _process(delta: float) -> void:
 		playing_mg = false
 		pick_crabs()
 	
-	
 
 
 func _input(event):
-	if event.is_action_pressed("space"):
+	if event.is_action_pressed("ui_accept") and !typing:
+		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
+			dialogue_index += 1
+			show_next_dialogue()
+	if event.is_action_pressed("space") and fight == true:
 		fire()
+		
 func fire():
 	var cannonball = CannonBallScene.instantiate()
 	get_parent().add_child(cannonball)
