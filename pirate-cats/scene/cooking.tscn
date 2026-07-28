@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://40naf4am3sek" path="res://script/cooking.gd" id="1_6xkwg"]
 [ext_resource type="Texture2D" uid="uid://6toluj3fytn" path="res://assets/cookbg.png" id="2_u8adt"]
 [ext_resource type="Texture2D" uid="uid://cvf1l67epat3w" path="res://assets/plate.png" id="3_0colb"]
-[ext_resource type="Texture2D" uid="uid://c8bkutybtaau0" path="res://assets/map1.png" id="3_00mn3"]
+[ext_resource type="Texture2D" uid="uid://rfqlsdlgdnrf" path="res://assets/map2.png" id="3_00mn3"]
 [ext_resource type="Texture2D" uid="uid://08qlhlttdfnc" path="res://assets/middle plate.png" id="4_si2go"]
 [ext_resource type="Script" uid="uid://bmxqb32wcjc12" path="res://script/CookDrag/middle_plate.gd" id="5_6h2ao"]
 [ext_resource type="Texture2D" uid="uid://b7of4i853fuxh" path="res://assets/bottom1.png" id="6_1ya7u"]

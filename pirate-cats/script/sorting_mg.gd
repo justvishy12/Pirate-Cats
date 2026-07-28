@@ -125,8 +125,111 @@ var cc4 = false
 var cb4 = false
 var finish = false
 
+var map_dialogue_shown = false
+var dialogue = [
+	{
+		#0
+		"speaker": "cat",
+		"name": "Smokey (Powder Monkey)",
+		"text": "Who actually organized these cannons! ",
+		"portrait": preload("res://assets/headshots/POWDER MONKEY FACE.png")
+	},
+	{
+		#1
+		"speaker": "you",
+		"name": "",
+		"text": "Do you need help? "
+	},
+	{
+		#2
+		"speaker": "cat",
+		"name": "Smokey (Powder Monkey)",
+		"text": "Good, you can sort them so each cannon only has one type of item. ",
+		"portrait": preload("res://assets/headshots/POWDER MONKEY FACE.png")
+	},
+	{
+		#3
+		"speaker": "cat",
+		"name": "Smokey (Powder Monkey)",
+		"text": "Im going to sleep ",
+		"portrait": preload("res://assets/headshots/POWDER MONKEY FACE.png")
+	},
+	{ 
+		#4
+		"speaker": "cat",
+		"name": "Smokey (Powder Monkey)",
+		"text": "Wait, is that? Thank you so much, leave it on the captains desk! ",
+		"portrait": preload("res://assets/headshots/POWDER MONKEY FACE.png")
+	},
+]
+
+var dialogue_index = 0
+var typing = false
+
+
+
+func show_next_dialogue() -> void:
+	if dialogue_index >= dialogue.size():
+		$Textbox.visible = false
+		$"player button".visible = false
+		return
+	
+	var line = dialogue[dialogue_index]
+	
+	if line["speaker"] == "you":
+		$Textbox.visible = false
+		$"player button".visible = true
+		$"player button".text = line["text"]
+		
+	elif line["speaker"] == "cat":
+		$"player button".visible = false
+		show_cat_text(line)
+
+		
+
+func _on_player_button_pressed() -> void:
+	dialogue_index += 1
+	show_next_dialogue()
+
+func show_cat_text(line) -> void:
+	$Textbox.visible = true
+	typing = true
+	
+	$Textbox/namelabel.text = line["name"]
+	$Textbox/textlabel.text = line["text"]
+	
+	if line.has("portrait"):
+		$Textbox/photobox.texture = line["portrait"]
+	else:
+		$Textbox/photobox.texture = null
+	$Textbox/textlabel.visible_characters = 0
+	
+	for i in $Textbox/textlabel.text.length():
+		$Textbox/textlabel.visible_characters = i
+		await get_tree().create_timer(0.05).timeout
+	
+	typing = false
+
+
+func _input(event):
+	if event.is_action_pressed("ui_accept") and !typing:
+		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
+			if dialogue_index == 3:
+				print("Hiding panel")
+				$Textbox.visible = false
+				$Panel.visible = false
+			if dialogue_index != 3:
+				dialogue_index += 1
+				show_next_dialogue()
+
+func _on_mapbutton_pressed() -> void:
+	if !map_dialogue_shown:
+		map_dialogue_shown = true
+		dialogue_index = 4
+		show_next_dialogue()
+
 func _ready() -> void:
-	pass
+	show_next_dialogue()
 
 func _process(delta: float) -> void:
 	if a1[1] == "WB" and a2[1] == "WB" and a3[1] == "WB" and a4[1] == "WB":
@@ -160,8 +263,8 @@ func _process(delta: float) -> void:
 		finish = true
 		for button in Buttons:
 			button.disabled = true
-		print("Beat The Game")
-		$"Game Beat".visible = true
+		$mapbutton.visible = true
+		$mapbutton.modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 #region Dragging
 	if dragginga1:

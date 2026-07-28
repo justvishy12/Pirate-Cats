@@ -15,10 +15,114 @@ var E3 = false
 var E4 = false
 var E5 = false
 var E6 = false
+var map_dialogue_shown = false
 var sponge = preload("res://assets/sponge cursor.png")
 var mouse_pos: Vector2
-# Called when the node enters the scene tree for the first time.
+
+var dialogue = [
+	{
+		#0
+		"speaker": "cat",
+		"name": "Mopps (Scrubber)",
+		"text": "My h-h-hands are really sore, can you help me? ",
+		"portrait": preload("res://assets/headshots/SCRUBBER FACE.png")
+	},
+	{
+		#1
+		"speaker": "you",
+		"name": "",
+		"text": "Sure, but what do I do? "
+	},
+	{
+		#2
+		"speaker": "cat",
+		"name": "Mopps (Scrubber)",
+		"text": "Oh right, hover and move your mouse on the stains to clean them. ",
+		"portrait": preload("res://assets/headshots/SCRUBBER FACE.png")
+	},
+	{
+		#3
+		"speaker": "cat",
+		"name": "Mopps (Scrubber)",
+		"text": "They're hard to get out, make sure you're scrubbing on top of them, good luck! ",
+		"portrait": preload("res://assets/headshots/SCRUBBER FACE.png")
+	},
+	{
+		#4
+		"speaker": "cat",
+		"name": "Mopps (Scrubber)",
+		"text": "Wait, is that? Thank you so much, leave it on the captains desk! ",
+		"portrait": preload("res://assets/headshots/SCRUBBER FACE.png")
+	},
+]
+
+var dialogue_index = 0
+var typing = false
+
+
+
+func show_next_dialogue() -> void:
+	if dialogue_index >= dialogue.size():
+		$Textbox.visible = false
+		$"player button".visible = false
+		return
+	
+	var line = dialogue[dialogue_index]
+	
+	if line["speaker"] == "you":
+		$Textbox.visible = false
+		$"player button".visible = true
+		$"player button".text = line["text"]
+		
+	elif line["speaker"] == "cat":
+		$"player button".visible = false
+		show_cat_text(line)
+
+		
+
+func _on_player_button_pressed() -> void:
+	dialogue_index += 1
+	show_next_dialogue()
+
+func show_cat_text(line) -> void:
+	$Textbox.visible = true
+	typing = true
+	
+	$Textbox/namelabel.text = line["name"]
+	$Textbox/textlabel.text = line["text"]
+	
+	if line.has("portrait"):
+		$Textbox/photobox.texture = line["portrait"]
+	else:
+		$Textbox/photobox.texture = null
+	$Textbox/textlabel.visible_characters = 0
+	
+	for i in $Textbox/textlabel.text.length():
+		$Textbox/textlabel.visible_characters = i
+		await get_tree().create_timer(0.05).timeout
+	
+	typing = false
+
+
+func _input(event):
+	if event.is_action_pressed("ui_accept") and !typing:
+		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
+			if dialogue_index == 3:
+				print("Hiding panel")
+				$Textbox.visible = false
+				$Panel.visible = false
+			if dialogue_index != 3:
+				dialogue_index += 1
+				show_next_dialogue()
+			
+
+
+
+
+
+
 func _ready() -> void:
+	show_next_dialogue()
 	mouse_pos = get_global_mouse_position()
 	Input.set_custom_mouse_cursor(sponge)
 	round1()
@@ -41,17 +145,8 @@ func round1():
 				
 		mouse_pos = get_global_mouse_position()
 		await get_tree().create_timer(0.4).timeout
-		print($Round1/Dirt1.modulate.a)
-		print($Round1/Dirt2.modulate.a)
-		print($Round1/Dirt3.modulate.a)
 
 	$Round1.position = Vector2(-816, 383)
-	print(
-	$Round1/Dirt1.modulate.a,
-	$Round1/Dirt2.modulate.a,
-	$Round1/Dirt3.modulate.a
-	)
-	print("round2")
 	round2()
 	$Round2.position = Vector2(0, 0)
 
@@ -81,7 +176,7 @@ func round3():
 		if E2 == true and mouse_pos.distance_to(get_global_mouse_position()) >= 10:
 			$Round3/Dirt2.modulate.a = max(0.0, $Round3/Dirt2.modulate.a - 0.25)
 		if E3 == true and mouse_pos.distance_to(get_global_mouse_position()) >= 10:
-			$Round3/Dirt3.modulate.a = max(0.0, $Round3/Dirt3.modulate.a - 0.3)
+			$Round3/Dirt3.modulate.a = max(0.0, $Round3/Dirt3.modulate.a - 0.4)
 		if E4 == true and mouse_pos.distance_to(get_global_mouse_position()) >= 10:
 			$Round3/Dirt4.modulate.a = max(0.0, $Round3/Dirt4.modulate.a - 0.1)
 		if E5 == true and mouse_pos.distance_to(get_global_mouse_position()) >= 10:
@@ -91,7 +186,8 @@ func round3():
 				
 		mouse_pos = get_global_mouse_position()
 		await get_tree().create_timer(0.4).timeout
-
+	$mapbutton.visible = true
+	$mapbutton.modulate = Color(1.0, 1.0, 1.0)
 	$Round3.position = Vector2(-816, 383)
 #region Round One Mouse
 func _on_o_1_mouse_entered() -> void:
@@ -207,3 +303,10 @@ func _on_e_6_mouse_entered() -> void:
 func _on_e_6_mouse_exited() -> void:
 	E6 = false
 #endregion
+
+
+func _on_mapbutton_pressed() -> void:
+	if !map_dialogue_shown:
+		map_dialogue_shown = true
+		dialogue_index = 4
+		show_next_dialogue()

@@ -9,6 +9,21 @@
 [ext_resource type="Texture2D" uid="uid://d3d4di6t3kgqm" path="res://assets/dirt6.png" id="6_m5id3"]
 [ext_resource type="Texture2D" uid="uid://b1ouhiv0e36oy" path="res://assets/dirt7.png" id="7_n17ph"]
 [ext_resource type="Texture2D" uid="uid://c1rnsgv1re0y3" path="res://assets/dirt8.png" id="8_3oxr4"]
+[ext_resource type="Texture2D" uid="uid://b0ioblyl7a35b" path="res://assets/map3.png" id="10_5nm4b"]
+[ext_resource type="Texture2D" uid="uid://bk0yokqeio7rc" path="res://assets/textbox.png" id="11_cpdr8"]
+[ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="12_7o35d"]
+[ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="13_tb3ee"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5b5d"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fh18q"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.76862746, 0.25490198, 0.25490198, 1)
 
 [node name="Node2D" type="Node2D" unique_id=1660431141]
 script = ExtResource("1_tqbhr")
@@ -241,6 +256,91 @@ text = "Round 3"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1128738182]
 zoom = Vector2(2, 2)
 
+[node name="Panel" type="Panel" parent="." unique_id=103278567]
+modulate = Color(1, 1, 1, 0.735)
+offset_left = -362.0
+offset_top = -201.0
+offset_right = 398.0
+offset_bottom = 202.0
+
+[node name="mapbutton" type="Button" parent="." unique_id=1748937514]
+modulate = Color(1, 1, 1, 0)
+offset_left = 44.0
+offset_top = 478.0
+offset_right = 110.0
+offset_bottom = 542.25
+theme_override_styles/normal = SubResource("StyleBoxFlat_n5b5d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fh18q")
+
+[node name="Map1" type="Sprite2D" parent="mapbutton" unique_id=2084050130]
+position = Vector2(-43.999985, -494.99994)
+scale = Vector2(0.12005934, 0.11822632)
+texture = ExtResource("10_5nm4b")
+
+[node name="Textbox" type="Sprite2D" parent="." unique_id=374833463]
+position = Vector2(1.0000002, 89)
+scale = Vector2(0.34551278, 0.34551278)
+texture = ExtResource("11_cpdr8")
+
+[node name="namelabel" type="Label" parent="Textbox" unique_id=968806565]
+offset_left = -370.464
+offset_top = -95.51019
+offset_right = 107.087036
+offset_bottom = -52.096497
+theme_override_fonts/font = ExtResource("2_7u8rw")
+theme_override_font_sizes/font_size = 35
+text = "???"
+vertical_alignment = 1
+
+[node name="textlabel" type="Label" parent="Textbox" unique_id=1879304520]
+custom_minimum_size = Vector2(16.92, 0)
+offset_left = -222.85681
+offset_top = -34.730988
+offset_right = 240.22302
+offset_bottom = 54.990692
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("2_7u8rw")
+theme_override_font_sizes/font_size = 38
+text = "hi  my name is bob. i like to eat"
+autowrap_mode = 2
+
+[node name="skiplabel" type="Label" parent="Textbox" unique_id=1442863940]
+offset_left = 208.38596
+offset_top = 57.88497
+offset_right = 347.30978
+offset_bottom = 77.88497
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("2_7u8rw")
+theme_override_font_sizes/font_size = 20
+text = "SPACE TO SKIP"
+
+[node name="photobox" type="TextureRect" parent="Textbox" unique_id=1815065786]
+offset_left = -379.1466
+offset_top = -43.413727
+offset_right = -222.85706
+offset_bottom = 78.144745
+expand_mode = 2
+stretch_mode = 4
+
+[node name="player button" type="Button" parent="." unique_id=1249795735]
+texture_filter = 2
+offset_left = -92.0
+offset_top = -57.0
+offset_right = 92.0
+offset_bottom = -7.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_7u8rw")
+theme_override_styles/normal = ExtResource("12_7o35d")
+theme_override_styles/pressed = ExtResource("13_tb3ee")
+theme_override_styles/hover = ExtResource("13_tb3ee")
+theme_override_styles/focus = ExtResource("13_tb3ee")
+text = "Are we going to cook?"
+autowrap_mode = 3
+
 [connection signal="mouse_entered" from="Round1/O1" to="." method="_on_o_1_mouse_entered"]
 [connection signal="mouse_exited" from="Round1/O1" to="." method="_on_o_1_mouse_exited"]
 [connection signal="mouse_entered" from="Round1/O2" to="." method="_on_o_2_mouse_entered"]
@@ -269,3 +369,5 @@ zoom = Vector2(2, 2)
 [connection signal="mouse_exited" from="Round3/E5" to="." method="_on_e_5_mouse_exited"]
 [connection signal="mouse_entered" from="Round3/E6" to="." method="_on_e_6_mouse_entered"]
 [connection signal="mouse_exited" from="Round3/E6" to="." method="_on_e_6_mouse_exited"]
+[connection signal="pressed" from="mapbutton" to="." method="_on_mapbutton_pressed"]
+[connection signal="pressed" from="player button" to="." method="_on_player_button_pressed"]

@@ -7,6 +7,21 @@
 [ext_resource type="Texture2D" uid="uid://2wuctke70gyw" path="res://assets/coconut.png" id="4_6kpuy"]
 [ext_resource type="Texture2D" uid="uid://d18ppidmgpcqu" path="res://assets/water balloon.png" id="5_dpjho"]
 [ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="7_kyxsx"]
+[ext_resource type="Texture2D" uid="uid://b0ioblyl7a35b" path="res://assets/map3.png" id="8_riik4"]
+[ext_resource type="Texture2D" uid="uid://bk0yokqeio7rc" path="res://assets/textbox.png" id="9_64hb0"]
+[ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="10_oa3j0"]
+[ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="11_n71jt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pqw84"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ubfb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.76862746, 0.25490198, 0.25490198, 1)
 
 [node name="Node2D" type="Node2D" unique_id=843400902]
 script = ExtResource("1_erb4l")
@@ -386,6 +401,91 @@ theme_override_fonts/font = ExtResource("7_kyxsx")
 theme_override_font_sizes/font_size = 48
 text = "YOU BEAT THE GAME"
 
+[node name="mapbutton" type="Button" parent="." unique_id=883290445]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = 533.0
+offset_top = 314.0
+offset_right = 599.0
+offset_bottom = 378.25
+theme_override_styles/normal = SubResource("StyleBoxFlat_pqw84")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7ubfb")
+
+[node name="Map1" type="Sprite2D" parent="mapbutton" unique_id=1548626922]
+position = Vector2(-43.999985, -494.99994)
+scale = Vector2(0.12005934, 0.11822632)
+texture = ExtResource("8_riik4")
+
+[node name="Panel" type="Panel" parent="." unique_id=649542382]
+offset_left = 266.0
+offset_top = 169.0
+offset_right = 887.0
+offset_bottom = 509.0
+
+[node name="Textbox" type="Sprite2D" parent="." unique_id=1530490289]
+position = Vector2(559.0323, 437.99997)
+scale = Vector2(0.34551278, 0.34551278)
+texture = ExtResource("9_64hb0")
+
+[node name="namelabel" type="Label" parent="Textbox" unique_id=1821901015]
+offset_left = -370.464
+offset_top = -95.51019
+offset_right = 107.087036
+offset_bottom = -52.096497
+theme_override_fonts/font = ExtResource("7_kyxsx")
+theme_override_font_sizes/font_size = 35
+text = "???"
+vertical_alignment = 1
+
+[node name="textlabel" type="Label" parent="Textbox" unique_id=942510096]
+custom_minimum_size = Vector2(16.92, 0)
+offset_left = -222.85681
+offset_top = -34.730988
+offset_right = 240.22302
+offset_bottom = 54.990692
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("7_kyxsx")
+theme_override_font_sizes/font_size = 38
+text = "hi  my name is bob. i like to eat"
+autowrap_mode = 2
+
+[node name="skiplabel" type="Label" parent="Textbox" unique_id=735541266]
+offset_left = 208.38596
+offset_top = 57.88497
+offset_right = 347.30978
+offset_bottom = 77.88497
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("7_kyxsx")
+theme_override_font_sizes/font_size = 20
+text = "SPACE TO SKIP"
+
+[node name="photobox" type="TextureRect" parent="Textbox" unique_id=857879833]
+offset_left = -379.1466
+offset_top = -43.413727
+offset_right = -222.85706
+offset_bottom = 78.144745
+expand_mode = 2
+stretch_mode = 4
+
+[node name="player button" type="Button" parent="." unique_id=2141659869]
+texture_filter = 2
+offset_left = 466.03235
+offset_top = 292.0
+offset_right = 650.03235
+offset_bottom = 342.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_kyxsx")
+theme_override_styles/normal = ExtResource("10_oa3j0")
+theme_override_styles/pressed = ExtResource("11_n71jt")
+theme_override_styles/hover = ExtResource("11_n71jt")
+theme_override_styles/focus = ExtResource("11_n71jt")
+text = "Are we going to cook?"
+autowrap_mode = 3
+
 [connection signal="button_down" from="Buttons/A1" to="." method="_on_a_1_button_down"]
 [connection signal="button_up" from="Buttons/A1" to="." method="_on_a_1_button_up"]
 [connection signal="button_down" from="Buttons/A2" to="." method="_on_a_2_button_down"]
@@ -418,3 +518,5 @@ text = "YOU BEAT THE GAME"
 [connection signal="button_up" from="Buttons/D3" to="." method="_on_d_3_button_up"]
 [connection signal="button_down" from="Buttons/D4" to="." method="_on_d_4_button_down"]
 [connection signal="button_up" from="Buttons/D4" to="." method="_on_d_4_button_up"]
+[connection signal="pressed" from="mapbutton" to="." method="_on_mapbutton_pressed"]
+[connection signal="pressed" from="player button" to="." method="_on_player_button_pressed"]
