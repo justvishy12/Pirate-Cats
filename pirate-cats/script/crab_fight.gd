@@ -52,8 +52,14 @@ var dialogue = [
 		#4
 		"speaker": "cat",
 		"name":"Smokey (Powder Monkey)",
-		"text": "Thaks poo ",
+		"text": "Woah, you defeated them all!",
 		"portrait": preload("res://assets/headshots/POWDER MONKEY FACE.png")
+	},
+	{
+		#5
+		"speaker": "fadescene",
+		"name":"",
+		"text": "",
 	},
 ]	
 var dialogue_index = 0
@@ -84,6 +90,11 @@ func show_next_dialogue() -> void:
 		fight=true
 		can_play = true
 		pick_crabs()
+		
+	elif line["speaker"] == "fadescene":
+		$AnimationPlayer2.play("fade")
+		await $AnimationPlayer2.animation_finished
+		get_tree().change_scene_to_file("res://scene/crab_fight.tscn")
 
 func _on_player_button_pressed() -> void:
 	dialogue_index += 1
@@ -96,6 +107,8 @@ func show_cat_text(line) -> void:
 	$Textbox/namelabel.text = line["name"]
 	$Textbox/textlabel.text = line["text"]
 	
+	if dialogue_index == 422:
+		fight = false
 	if line.has("portrait"):
 		$Textbox/photobox.texture = line["portrait"]
 	else:
