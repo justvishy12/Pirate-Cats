@@ -230,6 +230,30 @@ _data = {
 &"wavesmove": SubResource("Animation_1lbqr")
 }
 
+[sub_resource type="Animation" id="Animation_rubrj"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_s4goi"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer2/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5j8du"]
+_data = {
+&"RESET": SubResource("Animation_rubrj"),
+&"fade": SubResource("Animation_s4goi")
+}
+
 [node name="CrabFight" type="Node2D" unique_id=924975727]
 script = ExtResource("1_2f17f")
 
@@ -454,9 +478,9 @@ stretch_mode = 4
 visible = false
 texture_filter = 2
 offset_left = -91.96771
-offset_top = 26.0
+offset_top = -22.0
 offset_right = 92.03229
-offset_bottom = 76.0
+offset_bottom = 28.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
@@ -469,5 +493,16 @@ theme_override_styles/hover = ExtResource("15_41y0m")
 theme_override_styles/focus = ExtResource("15_41y0m")
 text = "I dont see any fish"
 autowrap_mode = 3
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=164102175]
+libraries/ = SubResource("AnimationLibrary_5j8du")
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer2" unique_id=1186796476]
+offset_left = -512.0
+offset_top = -168.0
+offset_right = 474.0
+offset_bottom = 325.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
 
 [connection signal="pressed" from="Button" to="." method="_on_player_button_pressed"]
