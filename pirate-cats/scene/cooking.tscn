@@ -314,12 +314,14 @@ scale = Vector2(0.5887395, 0.5887395)
 texture = ExtResource("21_yc3pb")
 
 [node name="Flag1" type="Sprite2D" parent="Order" unique_id=19859864]
+visible = false
 position = Vector2(85.55881, -2.0320425)
 rotation = 1.3835788
 scale = Vector2(0.48529738, 0.48529735)
 texture = ExtResource("6_i0riy")
 
 [node name="Flag3" type="Sprite2D" parent="Order" unique_id=1211469208]
+visible = false
 position = Vector2(35.492947, 7.4523325)
 rotation = 1.3835788
 scale = Vector2(0.48529738, 0.48529735)
@@ -340,12 +342,14 @@ scale = Vector2(0.5095632, 0.50956327)
 texture = ExtResource("9_i7xxb")
 
 [node name="Top2-1" type="Sprite2D" parent="Order" unique_id=250112133]
+visible = false
 position = Vector2(-27.967407, 7.3727417)
 rotation = 1.3835788
 scale = Vector2(0.5095632, 0.5095632)
 texture = ExtResource("10_ns7iu")
 
 [node name="Top1-1" type="Sprite2D" parent="Order" unique_id=1666328059]
+visible = false
 position = Vector2(-27.967407, 7.3727417)
 rotation = 1.3835788
 scale = Vector2(0.5095632, 0.5095632)

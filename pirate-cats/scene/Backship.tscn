@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://b6hx4ir767xjl" path="res://assets/fish box with fish anim sprite.png" id="4_j2d8o"]
 [ext_resource type="Texture2D" uid="uid://rb44yvydtdb7" path="res://assets/chef cat.png" id="4_vp247"]
 [ext_resource type="Texture2D" uid="uid://bpgusf78mlj4a" path="res://assets/fried egg anim sprite.png" id="5_vp247"]
+[ext_resource type="Texture2D" uid="uid://bk0yokqeio7rc" path="res://assets/textbox.png" id="8_65i2n"]
+[ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="9_tjcn3"]
+[ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="10_jeyb3"]
+[ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="11_o5cb5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x1gyp"]
 atlas = ExtResource("3_i0nue")
@@ -109,14 +113,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0kpj8"]
 size = Vector2(94, 43.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldxs4"]
-size = Vector2(57, 324)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48q5p"]
 size = Vector2(75.5, 104.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vp247"]
 size = Vector2(85, 84.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldxs4"]
+size = Vector2(57, 324)
 
 [node name="Node2D" type="Node2D" unique_id=866134312]
 script = ExtResource("1_i2e2r")
@@ -158,23 +162,7 @@ shape = SubResource("RectangleShape2D_0kpj8")
 [node name="Cook" type="Area2D" parent="." unique_id=1907389259]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cook" unique_id=1919547148]
-polygon = PackedVector2Array(891, 327, 921, 333, 930, 350, 972, 358, 1060, 352, 1066, 336, 1036, 330, 1002, 317, 899, 312)
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1476215314]
-position = Vector2(615, 322)
-zoom = Vector2(2, 2)
-
-[node name="CamLeft" type="Area2D" parent="Camera2D" unique_id=858063255]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/CamLeft" unique_id=847061544]
-position = Vector2(-259.5, 0)
-shape = SubResource("RectangleShape2D_ldxs4")
-
-[node name="CamRight" type="Area2D" parent="Camera2D" unique_id=437113817]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Camera2D/CamRight" unique_id=1058926836]
-position = Vector2(259.5, 0)
-shape = SubResource("RectangleShape2D_ldxs4")
+polygon = PackedVector2Array(893, 336, 921, 336, 921, 387, 1060, 389, 1063, 352, 1068, 319, 1040, 318, 1002, 317, 895, 315)
 
 [node name="FishingMG" type="Area2D" parent="." unique_id=457048676]
 
@@ -212,17 +200,100 @@ scale = Vector2(-1, 1)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SideShipView2" unique_id=1224040100]
 polygon = PackedVector2Array(90, 412, 77, 420, 76, 427, 124, 450, 128, 448, 126, 441, 185, 438, 187, 436, 180, 410, 121, 410, 118, 401, 113, 397, 107, 402)
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1476215314]
+position = Vector2(615, 322)
+zoom = Vector2(2, 2)
+
+[node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=1274523115]
+visible = false
+position = Vector2(0.032344818, 108.99997)
+scale = Vector2(0.34551278, 0.34551278)
+texture = ExtResource("8_65i2n")
+
+[node name="namelabel" type="Label" parent="Camera2D/Textbox" unique_id=664604379]
+offset_left = -370.464
+offset_top = -95.51019
+offset_right = 107.087036
+offset_bottom = -52.096497
+theme_override_fonts/font = ExtResource("9_tjcn3")
+theme_override_font_sizes/font_size = 35
+text = "???"
+vertical_alignment = 1
+
+[node name="textlabel" type="Label" parent="Camera2D/Textbox" unique_id=160581043]
+custom_minimum_size = Vector2(16.92, 0)
+offset_left = -222.85681
+offset_top = -34.730988
+offset_right = 240.22302
+offset_bottom = 54.990692
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("9_tjcn3")
+theme_override_font_sizes/font_size = 38
+text = "hi  my name is bob. i like to eat"
+autowrap_mode = 2
+
+[node name="skiplabel" type="Label" parent="Camera2D/Textbox" unique_id=1535913872]
+offset_left = 208.38596
+offset_top = 57.88497
+offset_right = 347.30978
+offset_bottom = 77.88497
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("9_tjcn3")
+theme_override_font_sizes/font_size = 20
+text = "SPACE TO SKIP"
+
+[node name="photobox" type="TextureRect" parent="Camera2D/Textbox" unique_id=1046852239]
+offset_left = -379.1466
+offset_top = -43.413727
+offset_right = -222.85706
+offset_bottom = 78.144745
+expand_mode = 2
+stretch_mode = 4
+
+[node name="player button" type="Button" parent="Camera2D" unique_id=1587189552]
+visible = false
+texture_filter = 2
+offset_left = -92.96759
+offset_top = -37.0
+offset_right = 91.03241
+offset_bottom = 13.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_tjcn3")
+theme_override_styles/normal = ExtResource("10_jeyb3")
+theme_override_styles/pressed = ExtResource("11_o5cb5")
+theme_override_styles/hover = ExtResource("11_o5cb5")
+theme_override_styles/focus = ExtResource("11_o5cb5")
+text = "Are we going to cook?"
+autowrap_mode = 3
+
+[node name="CamLeft" type="Area2D" parent="Camera2D" unique_id=858063255]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/CamLeft" unique_id=847061544]
+position = Vector2(-259.5, 0)
+shape = SubResource("RectangleShape2D_ldxs4")
+
+[node name="CamRight" type="Area2D" parent="Camera2D" unique_id=437113817]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Camera2D/CamRight" unique_id=1058926836]
+position = Vector2(259.5, 0)
+shape = SubResource("RectangleShape2D_ldxs4")
+
 [connection signal="mouse_entered" from="Fish" to="." method="_on_fish_mouse_entered"]
 [connection signal="mouse_exited" from="Fish" to="." method="_on_fish_mouse_exited"]
 [connection signal="mouse_entered" from="Cook" to="." method="_on_cook_mouse_entered"]
 [connection signal="mouse_exited" from="Cook" to="." method="_on_cook_mouse_exited"]
-[connection signal="mouse_entered" from="Camera2D/CamLeft" to="." method="_on_cam_left_mouse_entered"]
-[connection signal="mouse_exited" from="Camera2D/CamLeft" to="." method="_on_cam_left_mouse_exited"]
-[connection signal="mouse_entered" from="Camera2D/CamRight" to="." method="_on_cam_right_mouse_entered"]
-[connection signal="mouse_exited" from="Camera2D/CamRight" to="." method="_on_cam_right_mouse_exited"]
 [connection signal="input_event" from="FishingMG" to="." method="_on_fishing_mg_input_event"]
 [connection signal="input_event" from="CaptainMG" to="." method="_on_captain_mg_input_event"]
 [connection signal="input_event" from="CookingMG" to="." method="_on_cooking_mg_input_event"]
 [connection signal="input_event" from="Captains Room" to="." method="_on_captains_room_input_event"]
 [connection signal="input_event" from="SideShipView1" to="." method="_on_side_ship_view_1_input_event"]
 [connection signal="input_event" from="SideShipView2" to="." method="_on_side_ship_view_2_input_event"]
+[connection signal="pressed" from="Camera2D/player button" to="." method="_on_player_button_pressed"]
+[connection signal="mouse_entered" from="Camera2D/CamLeft" to="." method="_on_cam_left_mouse_entered"]
+[connection signal="mouse_exited" from="Camera2D/CamLeft" to="." method="_on_cam_left_mouse_exited"]
+[connection signal="mouse_entered" from="Camera2D/CamRight" to="." method="_on_cam_right_mouse_entered"]
+[connection signal="mouse_exited" from="Camera2D/CamRight" to="." method="_on_cam_right_mouse_exited"]

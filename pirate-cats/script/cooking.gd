@@ -233,6 +233,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if $Plates/Plate1.visible == false and $Plates/Plate2.visible == false and $Plates/Plate3.visible == false  and $Plates/Plate4.visible == false  and $Plates/Plate5.visible == false:
 		if done == false:
+			Global.cook = true
 			$AnimationPlayer.play("map")
 			await $AnimationPlayer.animation_finished
 			

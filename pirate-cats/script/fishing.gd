@@ -389,6 +389,7 @@ func _on_wait_reel_timeout() -> void:
 	fishing = false
 	await get_tree().create_timer(0.3).timeout
 	if fish_ammount == 5:
+		Global.fish = true
 		print("done")
 	else:
 		$Button.size.y = 230
