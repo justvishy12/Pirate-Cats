@@ -12,8 +12,10 @@ var crab_finished = false
 var cancel_crabmove = false
 var cancel_crabmove2 = false
 var cancel_crabmove3 = false
-var playing_mg = true
+var spawning_crabs = false
+var playing_mg = false
 var rounds = 0
+var can_play = false
 const CannonBallScene = preload("res://scene/Cannon Ball.tscn")
 @onready var mid_start: Vector2 = $CMid.global_position
 @onready var left_start = $CLeft.global_position
@@ -46,6 +48,13 @@ var dialogue = [
 		"name":"",
 		"text": " ",
 	},
+	{
+		#4
+		"speaker": "cat",
+		"name":"Smokey (Powder Monkey)",
+		"text": "Thaks poo ",
+		"portrait": preload("res://assets/headshots/POWDER MONKEY FACE.png")
+	},
 ]	
 var dialogue_index = 0
 var typing = false
@@ -73,6 +82,8 @@ func show_next_dialogue() -> void:
 		$Button.visible = false
 		$Textbox.visible = false
 		fight=true
+		can_play = true
+		pick_crabs()
 
 func _on_player_button_pressed() -> void:
 	dialogue_index += 1
@@ -97,14 +108,10 @@ func show_cat_text(line) -> void:
 	
 	typing = false
 
-
-	
-	
 func _ready() -> void:
 	$CMid.visible = false
 	$CLeft.visible = false
 	$CRight.visible = false
-	pick_crabs()
 	show_next_dialogue()
 
 func _process(delta: float) -> void:
@@ -127,17 +134,16 @@ func _process(delta: float) -> void:
 			await get_tree().create_timer(0.1).timeout
 			$CRight.visible = false
 	
-	if $CMid.visible == false and $CLeft.visible == false and $CRight.visible == false and playing_mg == true:
+	if $CMid.visible == false and $CLeft.visible == false and $CRight.visible == false and playing_mg == true and spawning_crabs == false:
 		playing_mg = false
 		pick_crabs()
-	
-
 
 func _input(event):
 	if event.is_action_pressed("ui_accept") and !typing:
 		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
 			dialogue_index += 1
 			show_next_dialogue()
+
 	if event.is_action_pressed("space") and fight == true:
 		fire()
 		
@@ -164,7 +170,17 @@ func _physics_process(delta):
 
 
 func pick_crabs():
-	if crab_finished == false and rounds != 3:
+	if spawning_crabs:
+		return
+		
+	if rounds == 3:
+		can_play = false	
+		dialogue_index = 4
+		show_next_dialogue()
+		return
+	
+	if crab_finished == false and can_play == true:
+		print(rounds)
 		await get_tree().create_timer(1.5).timeout
 		crab_finished = true
 		$"Crabwave2-1".visible = true
@@ -193,7 +209,9 @@ func pick_crabs():
 			crab_move3()
 			$CRight.visible = true
 		crab_finished = false
+		spawning_crabs = false
 		playing_mg = true
+
 		
 func crab_move3():
 	if CRight == purp:
@@ -259,6 +277,7 @@ func crab_move3():
 		var tween6: Tween = create_tween()
 		tween6.tween_property($CRight, "position:y", target_f, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 		C3_touchable = false
+		
 	elif CRight == green:
 		$CRight/yellowcrab.visible = false
 		$CRight/purplecrab.visible = false
@@ -328,6 +347,7 @@ func crab_move3():
 		var tween6: Tween = create_tween()
 		tween6.tween_property($CRight, "position:y", target_f, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 		C3_touchable = false
+		
 	elif CRight == yellow:
 		$CRight/greencrab.visible = false
 		$CRight/purplecrab.visible = false
@@ -400,7 +420,6 @@ func crab_move3():
 	await get_tree().create_timer(0.1).timeout
 	$Panel3.visible = false
 	$CRight.visible = false
-	pick_crabs()
 func crab_move2():
 		# Left
 	if CLeft == purp:
@@ -474,6 +493,7 @@ func crab_move2():
 		var tween6: Tween = create_tween()
 		tween6.tween_property($CLeft, "position:y", target_f, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 		C2_touchable = false
+		
 	elif CLeft == green:
 		$CLeft/yellowcrab.visible = false
 		$CLeft/purplecrab.visible = false
@@ -541,6 +561,7 @@ func crab_move2():
 		var tween6: Tween = create_tween()
 		tween6.tween_property($CLeft, "position:y", target_f, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 		C2_touchable = false
+		
 	elif CLeft == yellow:
 		$CLeft/greencrab.visible = false
 		$CLeft/purplecrab.visible = false
@@ -610,7 +631,7 @@ func crab_move2():
 	await get_tree().create_timer(0.1).timeout
 	$Panel2.visible = false
 	$CLeft.visible = false
-	pick_crabs()
+	
 func crab_move():
 	# Middle
 	if CMid == purp:
@@ -682,6 +703,7 @@ func crab_move():
 		var tween6: Tween = create_tween()
 		tween6.tween_property($CMid, "position:y", target_f, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 		C1_touchable = false
+		
 	elif CMid == green:
 		$CMid/yellowcrab.visible = false
 		$CMid/purplecrab.visible = false
@@ -751,6 +773,7 @@ func crab_move():
 		var tween6: Tween = create_tween()
 		tween6.tween_property($CMid, "position:y", target_f, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 		C1_touchable = false
+	
 	elif CMid == yellow:
 		$CMid/greencrab.visible = false
 		$CMid/purplecrab.visible = false
@@ -824,4 +847,3 @@ func crab_move():
 	await get_tree().create_timer(0.1).timeout
 	$Panel.visible = false
 	$CMid.visible = false
-	pick_crabs()
