@@ -4,6 +4,7 @@ var treasure = false
 var shells = false
 var coconuts = false
 var cones = false
+var stars
 var find = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,14 +23,6 @@ func _on_button_pressed() -> void:
 	if clicks == 1:
 		$Hole.visible = true
 		$MidSandPile.visible = true
-		if treasure == true:
-			get_parent().treasure()
-		elif shells == true:
-			get_parent().shells()
-		elif coconuts == true:
-			get_parent().coconuts()
-		elif cones == true:
-			get_parent().cones()
 	elif clicks == 2:
 		$DeepHole.visible = true
 		$Sandpile.visible = true
@@ -42,6 +35,10 @@ func _on_button_pressed() -> void:
 				get_parent().coconuts()
 			elif cones == true:
 				get_parent().cones()
+			elif  stars == true:
+				get_parent().stars()
+			elif  find == true:
+				get_parent().find()
 		if treasure == true:
 			get_parent().tres()	
 			$CandiedCatnip.visible = true

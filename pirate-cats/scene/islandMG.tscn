@@ -3,8 +3,12 @@
 [ext_resource type="Script" uid="uid://5plxamhmmudi" path="res://script/island_mg.gd" id="1_h7jsb"]
 [ext_resource type="Texture2D" uid="uid://3qgu4pn8usqr" path="res://assets/beach puzzle bg.png" id="1_xy4n2"]
 [ext_resource type="Texture2D" uid="uid://c0i7ccy83bsu2" path="res://assets/candied catnip.png" id="3_h7jsb"]
+[ext_resource type="Texture2D" uid="uid://bk0yokqeio7rc" path="res://assets/textbox.png" id="8_brdoa"]
 [ext_resource type="Texture2D" uid="uid://bpw4glf37l581" path="res://assets/star.png" id="9_mjfxx"]
+[ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="9_ulwyu"]
+[ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="10_h7jsb"]
 [ext_resource type="Texture2D" uid="uid://buhyh8gypkkxu" path="res://assets/shell2.png" id="10_o4bf1"]
+[ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="11_2m08x"]
 [ext_resource type="Texture2D" uid="uid://2wuctke70gyw" path="res://assets/coconut.png" id="11_ykvkq"]
 [ext_resource type="Texture2D" uid="uid://bfx6njjb766cf" path="res://assets/clam.png" id="12_hrb60"]
 
@@ -28,69 +32,67 @@ position = Vector2(381, 786)
 texture = ExtResource("3_h7jsb")
 
 [node name="Button" type="Button" parent="." unique_id=167163700]
-modulate = Color(1, 1, 1, 0.59000003)
-self_modulate = Color(1, 1, 1, 0)
-offset_left = 56.999992
-offset_top = 141.0
-offset_right = 309.73016
-offset_bottom = 380.0
+modulate = Color(1, 1, 1, 0)
+offset_left = 56.999996
+offset_top = 99.0
+offset_right = 308.22583
+offset_bottom = 373.0
 scale = Vector2(1.3294811, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_48q5p")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yexw1")
 
 [node name="Button2" type="Button" parent="." unique_id=1264273219]
-self_modulate = Color(1, 1, 1, 0)
-offset_left = 56.999992
-offset_top = 380.0
-offset_right = 309.73016
-offset_bottom = 619.0
+modulate = Color(1, 1, 1, 0)
+offset_left = 56.999996
+offset_top = 373.0
+offset_right = 308.22583
+offset_bottom = 612.0
 scale = Vector2(1.3294811, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_48q5p")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yexw1")
 
 [node name="Button3" type="Button" parent="." unique_id=122250559]
-self_modulate = Color(1, 1, 1, 0)
-offset_left = 393.0
-offset_top = 141.0
-offset_right = 645.73016
-offset_bottom = 380.0
+modulate = Color(1, 1, 1, 0)
+offset_left = 391.0
+offset_top = 99.0
+offset_right = 659.52576
+offset_bottom = 373.0
 scale = Vector2(1.3294811, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_48q5p")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yexw1")
 
 [node name="Button4" type="Button" parent="." unique_id=2068923312]
-modulate = Color(1, 1, 1, 0.69900006)
-self_modulate = Color(1, 1, 1, 0)
-offset_left = 393.0
-offset_top = 380.0
-offset_right = 645.73016
-offset_bottom = 619.0
+modulate = Color(1, 1, 1, 0)
+offset_left = 391.0
+offset_top = 373.0
+offset_right = 659.52576
+offset_bottom = 612.0
 scale = Vector2(1.3294811, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_48q5p")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yexw1")
 
 [node name="Button5" type="Button" parent="." unique_id=177642356]
-modulate = Color(1, 1, 1, 0.20500001)
-self_modulate = Color(1, 1, 1, 0)
-offset_left = 729.0
-offset_top = 141.0
-offset_right = 981.7302
-offset_bottom = 380.0
+modulate = Color(1, 1, 1, 0)
+offset_left = 747.99994
+offset_top = 99.0
+offset_right = 995.46497
+offset_bottom = 373.0
 scale = Vector2(1.3294811, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_48q5p")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yexw1")
 
 [node name="Button6" type="Button" parent="." unique_id=1036623887]
-self_modulate = Color(1, 1, 1, 0)
-offset_left = 729.0
-offset_top = 380.0
-offset_right = 981.7302
-offset_bottom = 619.0
+modulate = Color(1, 1, 1, 0)
+offset_left = 748.0
+offset_top = 373.0
+offset_right = 995.46497
+offset_bottom = 612.0
 scale = Vector2(1.3294811, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_48q5p")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yexw1")
 
 [node name="side" type="Button" parent="." unique_id=1822933561]
+modulate = Color(1, 1, 1, 0)
 self_modulate = Color(0, 0, 0, 0.4392157)
 offset_left = -11.0
 offset_top = 5.0
@@ -100,15 +102,17 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_0kpj8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h7jsb")
 
 [node name="side2" type="Button" parent="." unique_id=885996045]
+modulate = Color(1, 1, 1, 0)
 self_modulate = Color(0, 0, 0, 0.4392157)
-offset_left = 965.0
+offset_left = 966.0
 offset_top = 25.0
-offset_right = 1152.0
+offset_right = 1153.0
 offset_bottom = 636.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_0kpj8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h7jsb")
 
 [node name="top" type="Button" parent="." unique_id=921257450]
+modulate = Color(1, 1, 1, 0)
 self_modulate = Color(0, 0, 0, 0.4392157)
 offset_left = -8.0
 offset_right = 1165.0
@@ -117,6 +121,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_0kpj8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h7jsb")
 
 [node name="bottom" type="Button" parent="." unique_id=425751395]
+modulate = Color(1, 1, 1, 0)
 self_modulate = Color(0, 0, 0, 0.4392157)
 offset_left = -9.0
 offset_top = 612.0
@@ -126,42 +131,127 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_0kpj8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h7jsb")
 
 [node name="Star" type="Sprite2D" parent="." unique_id=1733061692]
-position = Vector2(-361, 868)
+position = Vector2(864, 434)
+texture = ExtResource("9_mjfxx")
+
+[node name="Star2" type="Sprite2D" parent="." unique_id=175555049]
+position = Vector2(1046, 576)
 texture = ExtResource("9_mjfxx")
 
 [node name="Shell2" type="Sprite2D" parent="." unique_id=37325161]
-position = Vector2(955, 143.99994)
-rotation = 0.25363895
-scale = Vector2(0.6824817, 0.68248165)
+position = Vector2(658, 192.00002)
+rotation = -0.22521693
+scale = Vector2(0.5311166, 0.53111655)
 texture = ExtResource("10_o4bf1")
 
 [node name="Shell3" type="Sprite2D" parent="." unique_id=1743094926]
 modulate = Color(1, 0.50956357, 1, 1)
-position = Vector2(914, 137)
-rotation = 0.16459376
-scale = Vector2(0.6824817, 0.68248165)
+position = Vector2(445.4226, 322.2341)
+rotation = 0.125043
+scale = Vector2(0.56238985, 0.5623898)
 texture = ExtResource("10_o4bf1")
 
 [node name="Coconut" type="Sprite2D" parent="." unique_id=150007607]
 position = Vector2(135.5, 150.5)
 texture = ExtResource("11_ykvkq")
 
+[node name="Coconut4" type="Sprite2D" parent="." unique_id=1072963507]
+position = Vector2(952, 222)
+texture = ExtResource("11_ykvkq")
+
+[node name="Coconut3" type="Sprite2D" parent="." unique_id=224694451]
+modulate = Color(0.86898494, 0.8689849, 0.8689849, 1)
+position = Vector2(91, 114)
+texture = ExtResource("11_ykvkq")
+flip_h = true
+
 [node name="Coconut2" type="Sprite2D" parent="." unique_id=522541031]
 position = Vector2(87.5, 167.5)
 texture = ExtResource("11_ykvkq")
 
 [node name="Clam" type="Sprite2D" parent="." unique_id=1677173877]
-position = Vector2(949, 592.00006)
+position = Vector2(352.00003, 490)
 rotation = 0.2321944
 scale = Vector2(0.6269338, 0.6269338)
 texture = ExtResource("12_hrb60")
 
 [node name="Clam2" type="Sprite2D" parent="." unique_id=1987191464]
 modulate = Color(0.96107644, 0.38908723, 0.48397207, 1)
-position = Vector2(908, 596)
+position = Vector2(89, 581)
 rotation = -0.3786652
 scale = Vector2(0.7348092, 0.7348092)
 texture = ExtResource("12_hrb60")
+
+[node name="Panel" type="Panel" parent="." unique_id=413355514]
+offset_left = -6.0
+offset_top = -24.0
+offset_right = 1163.0
+offset_bottom = 680.0
+
+[node name="Textbox" type="Sprite2D" parent="." unique_id=245072018]
+position = Vector2(598.00006, 591)
+scale = Vector2(0.57267493, 0.57267493)
+texture = ExtResource("8_brdoa")
+
+[node name="namelabel" type="Label" parent="Textbox" unique_id=490854454]
+offset_left = -370.464
+offset_top = -95.51019
+offset_right = 107.087036
+offset_bottom = -52.096497
+theme_override_fonts/font = ExtResource("9_ulwyu")
+theme_override_font_sizes/font_size = 35
+text = "???"
+vertical_alignment = 1
+
+[node name="textlabel" type="Label" parent="Textbox" unique_id=461387659]
+custom_minimum_size = Vector2(16.92, 0)
+offset_left = -222.85681
+offset_top = -34.730988
+offset_right = 240.22302
+offset_bottom = 54.990692
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("9_ulwyu")
+theme_override_font_sizes/font_size = 38
+text = "hi  my name is bob. i like to eat"
+autowrap_mode = 2
+
+[node name="skiplabel" type="Label" parent="Textbox" unique_id=118051696]
+offset_left = 208.38596
+offset_top = 57.88497
+offset_right = 347.30978
+offset_bottom = 77.88497
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("9_ulwyu")
+theme_override_font_sizes/font_size = 20
+text = "SPACE TO SKIP"
+
+[node name="photobox" type="TextureRect" parent="Textbox" unique_id=1073817684]
+offset_left = -379.1466
+offset_top = -43.413727
+offset_right = -222.85706
+offset_bottom = 78.144745
+expand_mode = 2
+stretch_mode = 4
+
+[node name="player button" type="Button" parent="." unique_id=223896542]
+texture_filter = 2
+offset_left = 423.0
+offset_top = 253.0
+offset_right = 607.0
+offset_bottom = 303.0
+scale = Vector2(1.6574638, 1.6574638)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_ulwyu")
+theme_override_styles/normal = ExtResource("10_h7jsb")
+theme_override_styles/pressed = ExtResource("11_2m08x")
+theme_override_styles/hover = ExtResource("11_2m08x")
+theme_override_styles/focus = ExtResource("11_2m08x")
+text = "Are we going to cook?"
+autowrap_mode = 3
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
@@ -173,3 +263,4 @@ texture = ExtResource("12_hrb60")
 [connection signal="pressed" from="side2" to="." method="_on_side_2_pressed"]
 [connection signal="pressed" from="top" to="." method="_on_top_pressed"]
 [connection signal="pressed" from="bottom" to="." method="_on_bottom_pressed"]
+[connection signal="pressed" from="player button" to="." method="_on_player_button_pressed"]

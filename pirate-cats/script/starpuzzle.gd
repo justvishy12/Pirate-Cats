@@ -13,13 +13,112 @@ var p2 = false
 var p3 = false
 var round1done = false
 var round2done = false
+var got_wrong = true
 var round3done = false
 var side_movement = 0
-# Called when the node enters the scene tree for the first time.
+var hello = false
+
+var game_finished = false
+var map_dialogue_shown = false
+var dialogue = [
+	{
+		#0
+		"speaker": "you",
+		"name": "",
+		"text": "The sky is so pretty. "
+	},
+	{
+		#1
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "The sky will help us find the treasure and so will you! ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+	{
+		#2
+		"speaker": "you",
+		"name": "",
+		"text": "Me? What can I do? "
+	},
+	{
+		#3
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "Hover over the cat related stars so we can steer there. ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+	{ 
+		#4
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "If you can do this, our treasure will be here... ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+	{ 
+		#5
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "Wait a second, is that! ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+]
+var dialogue_index = 0
+var typing = false
+
+func show_next_dialogue() -> void:
+	if dialogue_index >= dialogue.size():
+		$Textbox.visible = false
+		$"player button".visible = false
+		return
+	
+	var line = dialogue[dialogue_index]
+	
+	if line["speaker"] == "you":
+		$Textbox.visible = false
+		$"player button".visible = true
+		$"player button".text = line["text"]
+		
+	elif line["speaker"] == "cat":
+		$"player button".visible = false
+		show_cat_text(line)
+
+func _on_player_button_pressed() -> void:
+	dialogue_index += 1
+	show_next_dialogue()
+
+func show_cat_text(line) -> void:
+	$Textbox.visible = true
+	typing = true
+	
+	$Textbox/namelabel.text = line["name"]
+	$Textbox/textlabel.text = line["text"]
+	
+	if line.has("portrait"):
+		$Textbox/photobox.texture = line["portrait"]
+	else:
+		$Textbox/photobox.texture = null
+	$Textbox/textlabel.visible_characters = 0
+	
+	for i in $Textbox/textlabel.text.length():
+		$Textbox/textlabel.visible_characters = i
+		await get_tree().create_timer(0.05).timeout
+	
+	typing = false
+
+func _input(event):
+	if event.is_action_pressed("ui_accept") and !typing:
+		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
+			if dialogue_index == 4:
+				print("Hiding panel")
+				$Textbox.visible = false
+				round_finished()
+			if dialogue_index != 4:
+				dialogue_index += 1
+				show_next_dialogue()
+
 func _ready() -> void:
-	round_finished()
-
-
+	show_next_dialogue()
+	pass
 
 func round_finished():
 	await get_tree().create_timer(0.4).timeout
@@ -34,11 +133,14 @@ func round_finished():
 		roundS = true
 		$Timer.stop()
 		$AnimationPlayer.play("ButtonIn")
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	if round3 == true and hello == false:
+		hello = true
+		dialogue_index = 5
+		show_next_dialogue()
 func _process(delta: float) -> void:
-	if side_movement == 1 and  roundS == false:
+	if side_movement == 1 and  roundS == false and game_finished == false:
 		$Wheel.rotation += -1.0 * delta
-	if side_movement == 2 and roundS == false:
+	if side_movement == 2 and roundS == false and game_finished == false:
 		$Wheel.rotation += 1.0 * delta
 	
 #region Setup
@@ -88,10 +190,11 @@ func _process(delta: float) -> void:
 	if $ShirtConstellation.global_position.x <= 575:
 		$ShirtConstellation.modulate.a = max(0.0, $ShirtConstellation.modulate.a - delta)
 		if $ShirtConstellation.modulate.a <= 0.0 and p1 == false:
+			got_wrong = true
 			round1done = true
 			$Wheel.rotation += 2.0 * delta
 			p1 = true
-			round1 = false
+			round1 = true
 			round_finished()
 		
 
@@ -99,10 +202,11 @@ func _process(delta: float) -> void:
 	if $BootConstellation.global_position.x >= 575:
 		$BootConstellation.modulate.a = max(0.0,  $BootConstellation.modulate.a - delta)
 		if $BootConstellation.modulate.a <= 0.0 and p2== false:
+			got_wrong = true
 			round2done = true
 			$Wheel.rotation += -2.0 * delta
 			p2 = true
-			round2 = false
+			round2 = true
 			round_finished()
 
 	if $CatFaceConstellation.global_position.x <= 575:
@@ -126,10 +230,11 @@ func _process(delta: float) -> void:
 	if $PantsConstellation.global_position.x <= 575:
 		$PantsConstellation.modulate.a = max(0.0, $PantsConstellation.modulate.a - delta)
 		if $PantsConstellation.modulate.a <= 0.0 and p3 == false:
+			got_wrong = true
 			round3done = true
 			$Wheel.rotation += 2.0 * delta
 			p3 = true
-			round3 = false
+			round3 = true
 			round_finished()
 #endregion
 
@@ -169,8 +274,6 @@ func _process(delta: float) -> void:
 			$FishConstellation.global_position += Vector2(-150, 0) * delta
 #endregion
 
-
-
 #region Left and Right
 func _on_left_side_mouse_entered() -> void:
 	leftside = true
@@ -190,8 +293,6 @@ func _on_right_side_mouse_exited() -> void:
 	rightside = false
 	$Timer.stop()
 #endregion
-
-
 
 func _on_timer_timeout() -> void:
 	$Timer.stop()
@@ -222,4 +323,3 @@ func _on_timer_timeout() -> void:
 		rightside = false
 		round3 = true
 		p3 = false
-		

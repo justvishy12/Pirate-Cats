@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bxo6e4w2il155" path="res://assets/boot constellation.png" id="6_jwo0b"]
 [ext_resource type="Texture2D" uid="uid://i3j7f8lbke58" path="res://assets/cat face constellation.png" id="7_vwbd2"]
 [ext_resource type="Texture2D" uid="uid://cn1aol36cungm" path="res://assets/starpuzzle.png" id="8_dcyao"]
+[ext_resource type="Texture2D" uid="uid://bk0yokqeio7rc" path="res://assets/textbox.png" id="10_jwo0b"]
+[ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="11_vwbd2"]
+[ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="12_dcyao"]
+[ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="13_iqnaw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldxs4"]
 size = Vector2(411, 648)
@@ -118,13 +122,78 @@ position = Vector2(947, 324)
 shape = SubResource("RectangleShape2D_ldxs4")
 
 [node name="Timer" type="Timer" parent="." unique_id=116953857]
-wait_time = 1.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1765361622]
 libraries/ = SubResource("AnimationLibrary_628eg")
+
+[node name="Textbox" type="Sprite2D" parent="." unique_id=1263010946]
+position = Vector2(583, 527)
+scale = Vector2(0.54512984, 0.54512984)
+texture = ExtResource("10_jwo0b")
+
+[node name="namelabel" type="Label" parent="Textbox" unique_id=1060922040]
+offset_left = -370.464
+offset_top = -95.51019
+offset_right = 107.087036
+offset_bottom = -52.096497
+theme_override_fonts/font = ExtResource("11_vwbd2")
+theme_override_font_sizes/font_size = 35
+text = "???"
+vertical_alignment = 1
+
+[node name="textlabel" type="Label" parent="Textbox" unique_id=60559965]
+custom_minimum_size = Vector2(16.92, 0)
+offset_left = -222.85681
+offset_top = -34.730988
+offset_right = 240.22302
+offset_bottom = 54.990692
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("11_vwbd2")
+theme_override_font_sizes/font_size = 38
+text = "hi  my name is bob. i like to eat"
+autowrap_mode = 2
+
+[node name="skiplabel" type="Label" parent="Textbox" unique_id=1478520986]
+offset_left = 208.38596
+offset_top = 57.88497
+offset_right = 347.30978
+offset_bottom = 77.88497
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("11_vwbd2")
+theme_override_font_sizes/font_size = 20
+text = "SPACE TO SKIP"
+
+[node name="photobox" type="TextureRect" parent="Textbox" unique_id=1052940046]
+offset_left = -379.1466
+offset_top = -43.413727
+offset_right = -222.85706
+offset_bottom = 78.144745
+expand_mode = 2
+stretch_mode = 4
+
+[node name="player button" type="Button" parent="." unique_id=201273075]
+texture_filter = 2
+offset_left = 428.0
+offset_top = 246.0
+offset_right = 612.0
+offset_bottom = 296.0
+scale = Vector2(1.5777414, 1.5777414)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_vwbd2")
+theme_override_styles/normal = ExtResource("12_dcyao")
+theme_override_styles/pressed = ExtResource("13_iqnaw")
+theme_override_styles/hover = ExtResource("13_iqnaw")
+theme_override_styles/focus = ExtResource("13_iqnaw")
+text = "Are we going to cook?"
+autowrap_mode = 3
 
 [connection signal="mouse_entered" from="LeftSide" to="." method="_on_left_side_mouse_entered"]
 [connection signal="mouse_exited" from="LeftSide" to="." method="_on_left_side_mouse_exited"]
 [connection signal="mouse_entered" from="RightSide" to="." method="_on_right_side_mouse_entered"]
 [connection signal="mouse_exited" from="RightSide" to="." method="_on_right_side_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="player button" to="." method="_on_player_button_pressed"]
