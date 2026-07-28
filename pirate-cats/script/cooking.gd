@@ -94,6 +94,7 @@ var dialogue = [
 		"text": "Leave it on the captain's desk! He'll be really happy. ",
 		"portrait": preload("res://assets/headshots/CHEF FACE.png")
 	},
+	
 ]
 
 var dialogue_index = 0
@@ -113,6 +114,8 @@ func show_next_dialogue() -> void:
 		$Camera2D/Textbox.visible = false
 		$"Camera2D/player button".visible = true
 		$"Camera2D/player button".text = line["text"]
+	
+	
 		
 	elif line["speaker"] == "you(start)":
 		$Camera2D/Textbox.visible = false
@@ -180,6 +183,8 @@ func _input(event):
 	if event.is_action_pressed("ui_accept") and !typing:
 		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
 			print(dialogue_index)
+			if dialogue_index == 7:
+				get_tree().change_scene_to_file("res://scene/Backship.tscn")
 			if dialogue_index == 2 and $MiddlePlate.global_position == Vector2(75,510):
 				return
 			dialogue_index += 1
@@ -407,4 +412,3 @@ func _on_buttonmove_1_pressed() -> void:
 func _on_mapbutton_pressed() -> void:
 	dialogue_index += 1
 	show_next_dialogue()
-	print("yay")

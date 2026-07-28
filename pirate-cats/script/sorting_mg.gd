@@ -138,24 +138,18 @@ var dialogue = [
 		#1
 		"speaker": "you",
 		"name": "",
-		"text": "Do you need help? "
+		"text": "How should I help? "
 	},
 	{
 		#2
 		"speaker": "cat",
 		"name": "Smokey (Powder Monkey)",
-		"text": "Good, you can sort them so each cannon only has one type of item. ",
+		"text": "Drag items from cannon to cannon until each cannon only has 1 type of item. ",
 		"portrait": preload("res://assets/headshots/POWDER MONKEY FACE.png")
 	},
-	{
-		#3
-		"speaker": "cat",
-		"name": "Smokey (Powder Monkey)",
-		"text": "Im going to sleep ",
-		"portrait": preload("res://assets/headshots/POWDER MONKEY FACE.png")
-	},
+
 	{ 
-		#4
+		#3
 		"speaker": "cat",
 		"name": "Smokey (Powder Monkey)",
 		"text": "Wait, is that? Thank you so much, leave it on the captains desk! ",
@@ -214,22 +208,28 @@ func show_cat_text(line) -> void:
 func _input(event):
 	if event.is_action_pressed("ui_accept") and !typing:
 		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
-			if dialogue_index == 3:
+			if dialogue_index == 2:
 				print("Hiding panel")
 				$Textbox.visible = false
 				$Panel.visible = false
-			if dialogue_index != 3:
+			if dialogue_index == 3:
+				get_tree().change_scene_to_file("res://scene/SideShipView1.tscn")
+			if dialogue_index != 2:
 				dialogue_index += 1
 				show_next_dialogue()
-
+			
+		
+		
 func _on_mapbutton_pressed() -> void:
-	if !map_dialogue_shown:
+	if map_dialogue_shown == false:
 		map_dialogue_shown = true
-		dialogue_index = 4
+		dialogue_index = 3
 		show_next_dialogue()
 
 func _ready() -> void:
 	show_next_dialogue()
+	$mapbutton.modulate.a = 0.0
+	$mapbutton.visible = false
 
 func _process(delta: float) -> void:
 	if a1[1] == "WB" and a2[1] == "WB" and a3[1] == "WB" and a4[1] == "WB":
@@ -261,10 +261,13 @@ func _process(delta: float) -> void:
 		
 	if cb4 == true and cc4 == true and wb4 == true and finish == false:
 		finish = true
+		SaveManager.sort = true
 		for button in Buttons:
 			button.disabled = true
 		$mapbutton.visible = true
-		$mapbutton.modulate = Color(1.0, 1.0, 1.0, 1.0)
+		var tween = create_tween()
+		tween.tween_property($mapbutton, "modulate:a", 1.0, 0.5)
+		
 
 #region Dragging
 	if dragginga1:

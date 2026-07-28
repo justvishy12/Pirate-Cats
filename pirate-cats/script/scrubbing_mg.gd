@@ -21,17 +21,10 @@ var mouse_pos: Vector2
 
 var dialogue = [
 	{
-		#0
-		"speaker": "cat",
-		"name": "Mopps (Scrubber)",
-		"text": "My h-h-hands are really sore, can you help me? ",
-		"portrait": preload("res://assets/headshots/SCRUBBER FACE.png")
-	},
-	{
 		#1
 		"speaker": "you",
 		"name": "",
-		"text": "Sure, but what do I do? "
+		"text": "Uhh, what do I do? "
 	},
 	{
 		#2
@@ -51,7 +44,7 @@ var dialogue = [
 		#4
 		"speaker": "cat",
 		"name": "Mopps (Scrubber)",
-		"text": "Wait, is that? Thank you so much, leave it on the captains desk! ",
+		"text": "That was there? The captain will be happy! ",
 		"portrait": preload("res://assets/headshots/SCRUBBER FACE.png")
 	},
 ]
@@ -107,18 +100,15 @@ func show_cat_text(line) -> void:
 func _input(event):
 	if event.is_action_pressed("ui_accept") and !typing:
 		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
-			if dialogue_index == 3:
+			if dialogue_index == 2:
 				print("Hiding panel")
 				$Textbox.visible = false
 				$Panel.visible = false
-			if dialogue_index != 3:
+			if dialogue_index == 3:
+				get_tree().change_scene_to_file("res://scene/SideShipView2.tscn")
+			if dialogue_index != 2:
 				dialogue_index += 1
 				show_next_dialogue()
-			
-
-
-
-
 
 
 func _ready() -> void:
@@ -127,8 +117,6 @@ func _ready() -> void:
 	Input.set_custom_mouse_cursor(sponge)
 	round1()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
@@ -187,8 +175,10 @@ func round3():
 		mouse_pos = get_global_mouse_position()
 		await get_tree().create_timer(0.4).timeout
 	$mapbutton.visible = true
-	$mapbutton.modulate = Color(1.0, 1.0, 1.0)
+	var tween = create_tween()
+	tween.tween_property($mapbutton, "modulate:a", 1.0, 0.5)
 	$Round3.position = Vector2(-816, 383)
+	SaveManager.scrub = true
 #region Round One Mouse
 func _on_o_1_mouse_entered() -> void:
 	O1 = true
@@ -308,5 +298,5 @@ func _on_e_6_mouse_exited() -> void:
 func _on_mapbutton_pressed() -> void:
 	if !map_dialogue_shown:
 		map_dialogue_shown = true
-		dialogue_index = 4
+		dialogue_index = 3
 		show_next_dialogue()

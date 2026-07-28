@@ -6,9 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c836j72s5a4fa" path="res://assets/birdhouse anim.png" id="3_jvkyo"]
 [ext_resource type="Texture2D" uid="uid://d3xw82k84mra1" path="res://assets/cookie.png" id="5_lmnjg"]
 [ext_resource type="Texture2D" uid="uid://b3fs43s6b7gdg" path="res://assets/bird.png" id="6_upddb"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldxs4"]
-size = Vector2(605, 43)
+[ext_resource type="Texture2D" uid="uid://bk0yokqeio7rc" path="res://assets/textbox.png" id="7_hnov0"]
+[ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="8_c6tu4"]
+[ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="9_yv2lr"]
+[ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="10_tluk1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_we0jb"]
 atlas = ExtResource("2_2isa1")
@@ -71,6 +72,9 @@ size = Vector2(149, 137.5)
 radius = 47.974243
 height = 139.42395
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldxs4"]
+size = Vector2(605, 43)
+
 [node name="Node2D" type="Node2D" unique_id=1126025007]
 script = ExtResource("1_qkhsu")
 
@@ -78,22 +82,6 @@ script = ExtResource("1_qkhsu")
 position = Vector2(537, 309)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_4bgu4")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=627768848]
-position = Vector2(562, 485)
-zoom = Vector2(2, 2)
-
-[node name="MoveUp" type="Area2D" parent="Camera2D" unique_id=1443696298]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/MoveUp" unique_id=476999952]
-position = Vector2(2.5, -149.5)
-shape = SubResource("RectangleShape2D_ldxs4")
-
-[node name="MoveDOwn" type="Area2D" parent="Camera2D" unique_id=1752003995]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/MoveDOwn" unique_id=1808618389]
-position = Vector2(5, 148)
-shape = SubResource("RectangleShape2D_ldxs4")
 
 [node name="Fontain" type="AnimatedSprite2D" parent="." unique_id=2052326945]
 position = Vector2(512, 596)
@@ -155,9 +143,88 @@ position = Vector2(0, 10)
 position = Vector2(212, 158)
 polygon = PackedVector2Array(90, 412, 77, 420, 76, 427, 124, 450, 128, 448, 126, 441, 185, 438, 188, 434, 180, 410, 121, 410, 118, 399, 113, 397, 107, 402)
 
-[connection signal="mouse_entered" from="Camera2D/MoveUp" to="." method="_on_move_up_mouse_entered"]
-[connection signal="mouse_exited" from="Camera2D/MoveUp" to="." method="_on_move_up_mouse_exited"]
-[connection signal="mouse_entered" from="Camera2D/MoveDOwn" to="." method="_on_move_d_own_mouse_entered"]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=627768848]
+position = Vector2(562, 485)
+zoom = Vector2(2, 2)
+
+[node name="MoveUp" type="Area2D" parent="Camera2D" unique_id=1443696298]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/MoveUp" unique_id=476999952]
+position = Vector2(2.5, -149.5)
+shape = SubResource("RectangleShape2D_ldxs4")
+
+[node name="MoveDOwn" type="Area2D" parent="Camera2D" unique_id=1752003995]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/MoveDOwn" unique_id=1808618389]
+position = Vector2(5, 148)
+shape = SubResource("RectangleShape2D_ldxs4")
+
+[node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=275739787]
+visible = false
+position = Vector2(0.032344818, 108.99997)
+scale = Vector2(0.34551278, 0.34551278)
+texture = ExtResource("7_hnov0")
+
+[node name="namelabel" type="Label" parent="Camera2D/Textbox" unique_id=1753595507]
+offset_left = -370.464
+offset_top = -95.51019
+offset_right = 107.087036
+offset_bottom = -52.096497
+theme_override_fonts/font = ExtResource("8_c6tu4")
+theme_override_font_sizes/font_size = 35
+text = "???"
+vertical_alignment = 1
+
+[node name="textlabel" type="Label" parent="Camera2D/Textbox" unique_id=1449623206]
+custom_minimum_size = Vector2(16.92, 0)
+offset_left = -222.85681
+offset_top = -34.730988
+offset_right = 240.22302
+offset_bottom = 54.990692
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("8_c6tu4")
+theme_override_font_sizes/font_size = 38
+text = "hi  my name is bob. i like to eat"
+autowrap_mode = 2
+
+[node name="skiplabel" type="Label" parent="Camera2D/Textbox" unique_id=213599201]
+offset_left = 208.38596
+offset_top = 57.88497
+offset_right = 347.30978
+offset_bottom = 77.88497
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("8_c6tu4")
+theme_override_font_sizes/font_size = 20
+text = "SPACE TO SKIP"
+
+[node name="photobox" type="TextureRect" parent="Camera2D/Textbox" unique_id=805237118]
+offset_left = -379.1466
+offset_top = -43.413727
+offset_right = -222.85706
+offset_bottom = 78.144745
+expand_mode = 2
+stretch_mode = 4
+
+[node name="player button" type="Button" parent="Camera2D" unique_id=1073317667]
+visible = false
+texture_filter = 2
+offset_left = -92.96759
+offset_top = -37.0
+offset_right = 91.03241
+offset_bottom = 13.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_c6tu4")
+theme_override_styles/normal = ExtResource("9_yv2lr")
+theme_override_styles/pressed = ExtResource("10_tluk1")
+theme_override_styles/hover = ExtResource("10_tluk1")
+theme_override_styles/focus = ExtResource("10_tluk1")
+text = "Are we going to cook?"
+autowrap_mode = 3
+
 [connection signal="mouse_entered" from="FontainPlay" to="." method="_on_fontain_play_mouse_entered"]
 [connection signal="mouse_exited" from="FontainPlay" to="." method="_on_fontain_play_mouse_exited"]
 [connection signal="mouse_entered" from="BirdhousePlay" to="." method="_on_birdhouse_play_mouse_entered"]
@@ -165,3 +232,7 @@ polygon = PackedVector2Array(90, 412, 77, 420, 76, 427, 124, 450, 128, 448, 126,
 [connection signal="input_event" from="ParrotMG" to="." method="_on_parrot_mg_input_event"]
 [connection signal="input_event" from="SideView1" to="." method="_on_side_view_1_input_event"]
 [connection signal="input_event" from="SideView2" to="." method="_on_side_view_2_input_event"]
+[connection signal="mouse_entered" from="Camera2D/MoveUp" to="." method="_on_move_up_mouse_entered"]
+[connection signal="mouse_exited" from="Camera2D/MoveUp" to="." method="_on_move_up_mouse_exited"]
+[connection signal="mouse_entered" from="Camera2D/MoveDOwn" to="." method="_on_move_d_own_mouse_entered"]
+[connection signal="pressed" from="Camera2D/player button" to="." method="_on_player_button_pressed"]

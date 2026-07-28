@@ -12,6 +12,11 @@ var crabmap = false
 var parrotmap = false
 var captainmap = false
 var powdermap = false
+var fish = false
+var cook = false
+var scrub = false
+var feed = false
+var sort = false
 
 func save_game(slot: int) -> void:
 	var path = SAVE_FOLDER + "save_%d.json" % slot

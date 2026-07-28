@@ -15,7 +15,7 @@
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="13_tb3ee"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5b5d"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(0.76675236, 0.76675236, 0.76675236, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fh18q"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -264,16 +264,17 @@ offset_right = 398.0
 offset_bottom = 202.0
 
 [node name="mapbutton" type="Button" parent="." unique_id=1748937514]
+visible = false
 modulate = Color(1, 1, 1, 0)
-offset_left = 44.0
-offset_top = 478.0
-offset_right = 110.0
-offset_bottom = 542.25
+offset_left = -31.0
+offset_top = -29.0
+offset_right = 35.0
+offset_bottom = 35.25
 theme_override_styles/normal = SubResource("StyleBoxFlat_n5b5d")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fh18q")
 
 [node name="Map1" type="Sprite2D" parent="mapbutton" unique_id=2084050130]
-position = Vector2(-43.999985, -494.99994)
+position = Vector2(32.999992, 31.999939)
 scale = Vector2(0.12005934, 0.11822632)
 texture = ExtResource("10_5nm4b")
 

@@ -5,6 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://3r7ctjp6srdr" path="res://assets/bubble1.png" id="3_pdb1p"]
 [ext_resource type="Texture2D" uid="uid://n1tnkk3nj41p" path="res://assets/bubble2.png" id="4_g1q8m"]
 [ext_resource type="Texture2D" uid="uid://c1ymamehqfgv6" path="res://assets/scrubber cat.png" id="4_o0b6s"]
+[ext_resource type="Texture2D" uid="uid://bk0yokqeio7rc" path="res://assets/textbox.png" id="6_ipkij"]
+[ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="7_6tulu"]
+[ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="8_epqup"]
+[ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="9_0hrjc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0mlra"]
 atlas = ExtResource("3_pdb1p")
@@ -90,6 +94,73 @@ shape = SubResource("RectangleShape2D_cjbe2")
 position = Vector2(541.70496, 0)
 shape = SubResource("RectangleShape2D_cjbe2")
 
+[node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=1728152246]
+visible = false
+position = Vector2(16.598186, 226.14949)
+scale = Vector2(0.8402, 0.8402)
+texture = ExtResource("6_ipkij")
+
+[node name="namelabel" type="Label" parent="Camera2D/Textbox" unique_id=1564796480]
+offset_left = -370.464
+offset_top = -95.51019
+offset_right = 107.087036
+offset_bottom = -52.096497
+theme_override_fonts/font = ExtResource("7_6tulu")
+theme_override_font_sizes/font_size = 35
+text = "???"
+vertical_alignment = 1
+
+[node name="textlabel" type="Label" parent="Camera2D/Textbox" unique_id=272117947]
+custom_minimum_size = Vector2(16.92, 0)
+offset_left = -222.85681
+offset_top = -34.730988
+offset_right = 240.22302
+offset_bottom = 54.990692
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("7_6tulu")
+theme_override_font_sizes/font_size = 38
+text = "hi  my name is bob. i like to eat"
+autowrap_mode = 2
+
+[node name="skiplabel" type="Label" parent="Camera2D/Textbox" unique_id=511941624]
+offset_left = 208.38596
+offset_top = 57.88497
+offset_right = 347.30978
+offset_bottom = 77.88497
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("7_6tulu")
+theme_override_font_sizes/font_size = 20
+text = "SPACE TO SKIP"
+
+[node name="photobox" type="TextureRect" parent="Camera2D/Textbox" unique_id=1608415926]
+offset_left = -379.1466
+offset_top = -43.413727
+offset_right = -222.85706
+offset_bottom = 78.144745
+expand_mode = 2
+stretch_mode = 4
+
+[node name="player button" type="Button" parent="Camera2D" unique_id=1726510586]
+visible = false
+texture_filter = 2
+offset_left = -234.44879
+offset_top = -64.31772
+offset_right = -50.44879
+offset_bottom = -14.317726
+scale = Vector2(2.4317482, 2.4317482)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_6tulu")
+theme_override_styles/normal = ExtResource("8_epqup")
+theme_override_styles/pressed = ExtResource("9_0hrjc")
+theme_override_styles/hover = ExtResource("9_0hrjc")
+theme_override_styles/focus = ExtResource("9_0hrjc")
+text = "Are we going to cook?"
+autowrap_mode = 3
+
 [node name="BubbleBucket" type="Area2D" parent="." unique_id=1366504733]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BubbleBucket" unique_id=599789496]
@@ -108,6 +179,7 @@ shape = SubResource("CapsuleShape2D_ldxs4")
 [connection signal="mouse_exited" from="Camera2D/move left" to="." method="_on_move_left_mouse_exited"]
 [connection signal="mouse_entered" from="Camera2D/moveright" to="." method="_on_moveright_mouse_entered"]
 [connection signal="mouse_exited" from="Camera2D/moveright" to="." method="_on_moveright_mouse_exited"]
+[connection signal="pressed" from="Camera2D/player button" to="." method="_on_player_button_pressed"]
 [connection signal="mouse_entered" from="BubbleBucket" to="." method="_on_bubble_bucket_mouse_entered"]
 [connection signal="mouse_exited" from="BubbleBucket" to="." method="_on_bubble_bucket_mouse_exited"]
 [connection signal="input_event" from="ScrubberMG" to="." method="_on_scrubber_mg_input_event"]

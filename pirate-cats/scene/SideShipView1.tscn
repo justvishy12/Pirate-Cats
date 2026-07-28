@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://dxir4o0fqpffg" path="res://assets/ship flag.png" id="9_b4svm"]
 [ext_resource type="Texture2D" uid="uid://cnrdxryoqha32" path="res://assets/shell3.png" id="10_b4svm"]
 [ext_resource type="Texture2D" uid="uid://buhyh8gypkkxu" path="res://assets/shell2.png" id="11_krglq"]
+[ext_resource type="Texture2D" uid="uid://bk0yokqeio7rc" path="res://assets/textbox.png" id="12_kmmhd"]
+[ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="13_1jmqj"]
+[ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="14_wf1ak"]
+[ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="15_c1htk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvh76"]
 atlas = ExtResource("2_cjbe2")
@@ -33,9 +37,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjbe2"]
-size = Vector2(112.41936, 800.8598)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vi4cs"]
 atlas = ExtResource("5_b4svm")
@@ -147,6 +148,9 @@ _data = {
 radius = 56.0
 height = 150.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjbe2"]
+size = Vector2(112.41936, 800.8598)
+
 [node name="Node2D" type="Node2D" unique_id=2068451106]
 script = ExtResource("1_cjbe2")
 
@@ -159,23 +163,6 @@ texture = ExtResource("1_37hvm")
 position = Vector2(819, 328)
 scale = Vector2(0.48198202, 0.48198202)
 sprite_frames = SubResource("SpriteFrames_ldxs4")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1267768793]
-position = Vector2(561, 359)
-scale = Vector2(0.48198202, 0.48198202)
-zoom = Vector2(2, 2)
-
-[node name="CamLeft" type="Area2D" parent="Camera2D" unique_id=1064420549]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/CamLeft" unique_id=304114120]
-position = Vector2(-541.514, 18.672918)
-shape = SubResource("RectangleShape2D_cjbe2")
-
-[node name="CamRight" type="Area2D" parent="Camera2D" unique_id=52888330]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Camera2D/CamRight" unique_id=472727123]
-position = Vector2(541.70496, 0)
-shape = SubResource("RectangleShape2D_cjbe2")
 
 [node name="Shell(1)" type="Sprite2D" parent="." unique_id=756188745]
 position = Vector2(799, 451)
@@ -265,10 +252,90 @@ position = Vector2(682, 452.00003)
 scale = Vector2(0.41058356, 0.4105835)
 texture = ExtResource("11_krglq")
 
-[connection signal="mouse_entered" from="Camera2D/CamLeft" to="." method="_on_cam_left_mouse_entered"]
-[connection signal="mouse_exited" from="Camera2D/CamLeft" to="." method="_on_cam_left_mouse_exited"]
-[connection signal="mouse_entered" from="Camera2D/CamRight" to="." method="_on_cam_right_mouse_entered"]
-[connection signal="mouse_exited" from="Camera2D/CamRight" to="." method="_on_cam_right_mouse_exited"]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1267768793]
+position = Vector2(553, 359)
+scale = Vector2(0.48198202, 0.48198202)
+zoom = Vector2(2, 2)
+
+[node name="CamLeft" type="Area2D" parent="Camera2D" unique_id=1064420549]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/CamLeft" unique_id=304114120]
+position = Vector2(-541.514, 18.672918)
+shape = SubResource("RectangleShape2D_cjbe2")
+
+[node name="CamRight" type="Area2D" parent="Camera2D" unique_id=52888330]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Camera2D/CamRight" unique_id=472727123]
+position = Vector2(541.70496, 0)
+shape = SubResource("RectangleShape2D_cjbe2")
+
+[node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=81887964]
+visible = false
+position = Vector2(16.598186, 226.14949)
+scale = Vector2(0.74479526, 0.74479526)
+texture = ExtResource("12_kmmhd")
+
+[node name="namelabel" type="Label" parent="Camera2D/Textbox" unique_id=1148391684]
+offset_left = -370.464
+offset_top = -95.51019
+offset_right = 107.087036
+offset_bottom = -52.096497
+theme_override_fonts/font = ExtResource("13_1jmqj")
+theme_override_font_sizes/font_size = 35
+text = "???"
+vertical_alignment = 1
+
+[node name="textlabel" type="Label" parent="Camera2D/Textbox" unique_id=1388837780]
+custom_minimum_size = Vector2(16.92, 0)
+offset_left = -222.85681
+offset_top = -34.730988
+offset_right = 240.22302
+offset_bottom = 54.990692
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("13_1jmqj")
+theme_override_font_sizes/font_size = 38
+text = "hi  my name is bob. i like to eat"
+autowrap_mode = 2
+
+[node name="skiplabel" type="Label" parent="Camera2D/Textbox" unique_id=638306855]
+offset_left = 208.38596
+offset_top = 57.88497
+offset_right = 347.30978
+offset_bottom = 77.88497
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("13_1jmqj")
+theme_override_font_sizes/font_size = 20
+text = "SPACE TO SKIP"
+
+[node name="photobox" type="TextureRect" parent="Camera2D/Textbox" unique_id=1590633222]
+offset_left = -379.1466
+offset_top = -43.413727
+offset_right = -222.85706
+offset_bottom = 78.144745
+expand_mode = 2
+stretch_mode = 4
+
+[node name="player button" type="Button" parent="Camera2D" unique_id=1360576866]
+visible = false
+texture_filter = 2
+offset_left = -197.10275
+offset_top = -47.719593
+offset_right = -13.102753
+offset_bottom = 2.2803993
+scale = Vector2(2.155623, 2.155623)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("13_1jmqj")
+theme_override_styles/normal = ExtResource("14_wf1ak")
+theme_override_styles/pressed = ExtResource("15_c1htk")
+theme_override_styles/hover = ExtResource("15_c1htk")
+theme_override_styles/focus = ExtResource("15_c1htk")
+text = "Are we going to cook?"
+autowrap_mode = 3
+
 [connection signal="mouse_entered" from="CrabOut" to="." method="_on_crab_out_mouse_entered"]
 [connection signal="mouse_exited" from="CrabOut" to="." method="_on_crab_out_mouse_exited"]
 [connection signal="mouse_entered" from="DynaPlay" to="." method="_on_dyna_play_mouse_entered"]
@@ -279,3 +346,8 @@ texture = ExtResource("11_krglq")
 [connection signal="input_event" from="BackShip" to="." method="_on_back_ship_input_event"]
 [connection signal="input_event" from="FrontShip" to="." method="_on_front_ship_input_event"]
 [connection signal="input_event" from="PowderMG" to="." method="_on_powder_mg_input_event"]
+[connection signal="mouse_entered" from="Camera2D/CamLeft" to="." method="_on_cam_left_mouse_entered"]
+[connection signal="mouse_exited" from="Camera2D/CamLeft" to="." method="_on_cam_left_mouse_exited"]
+[connection signal="mouse_entered" from="Camera2D/CamRight" to="." method="_on_cam_right_mouse_entered"]
+[connection signal="mouse_exited" from="Camera2D/CamRight" to="." method="_on_cam_right_mouse_exited"]
+[connection signal="pressed" from="Camera2D/player button" to="." method="_on_player_button_pressed"]

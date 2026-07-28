@@ -174,7 +174,7 @@ func _on_cam_right_mouse_exited() -> void:
 	moveright = false
 
 func _on_fish_mouse_entered() -> void:
-	if SaveManager.fish_played == true:
+	if SaveManager.fish == true: 
 		$fish.play("have_fish")
 	else:
 		$fish.play("default")
@@ -191,11 +191,11 @@ func _on_fishing_mg_input_event(viewport: Node, event: InputEvent, shape_idx: in
 	if event is InputEventMouseButton and event.pressed:
 		locked = true
 		$Camera2D.global_position.x = 351
-		if Global.fish == false:
+		if SaveManager.fish == false:
 			fishing = true
 			dialogue_index = 0
 			show_next_dialogue()
-		elif Global.fish == true:
+		elif SaveManager.fish == true:
 			fishing2 = true
 			dialogue_index = 4
 			show_next_dialogue()
@@ -205,11 +205,11 @@ func _on_cooking_mg_input_event(viewport: Node, event: InputEvent, shape_idx: in
 	if event is InputEventMouseButton and event.pressed:
 		locked = true
 		$Camera2D.global_position.x = 876.5
-		if Global.cook == false:
+		if SaveManager.cook   == false:
 			cooking = true
 			dialogue_index = 5
 			show_next_dialogue()
-		elif Global.cook == true:
+		elif SaveManager.cook  == true:
 			cooking2 = true
 			dialogue_index = 7
 			show_next_dialogue()

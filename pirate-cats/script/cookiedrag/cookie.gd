@@ -19,7 +19,7 @@ func _on_button_button_up() -> void:
 				$".".visible = false
 				$"../..".parrot_eat()
 			else:
-				$".".global_position = Vector2(132, 123)
+				$".".global_position = Vector2(162, 123)
 
 func _on_button_button_down() -> void:
 	if can_drag:
