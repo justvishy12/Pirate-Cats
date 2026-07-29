@@ -47,7 +47,31 @@ var of6 = Vector2(0,0)
 var in_zone6 = false
 var get_map = false
 
+	#if dialogue_index == 3:
+		#$AnimationPlayer.play("powder monkey show")
+	if line.has("portrait"):
+		$Textbox/photobox.texture = line["portrait"]
+	else:
+		$Textbox/photobox.texture = null
+	$Textbox/textlabel.visible_characters = 0
+	
+	for i in $Textbox/textlabel.text.length():
+		$Textbox/textlabel.visible_characters = i
+		await get_tree().create_timer(0.05).timeout
+	
+	typing = false
+
+
+func _input(event):
+	if event.is_action_pressed("ui_accept") and !typing:
+		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
+			dialogue_index += 1
+			show_next_dialogue()
+
 func _ready() -> void:
+	if SaveManager.cook and SaveManager.captain == false and SaveManager.scrub and SaveManager.feed and SaveManager.sort and SaveManager.fish:
+		$CaptainCat.visible=true
+		$Area2D/CollisionShape2D.disabled=false
 	if SaveManager.fish == false:
 		$Camera2D/bg/Map1.disabled = true
 		$Camera2D/bg/Map1.visible = true
@@ -453,13 +477,11 @@ func is_panel_taken(panel, ignore_map):
 func all_maps_placed():
 	return placed1 and placed2 and placed3 and placed4 and placed5 and placed6
 	
-	
-
-
 func _on_table_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		$Camera2D/bg.visible = true
-
+		$CaptainCat.visible=false
+		
 
 func _on_resset_map_pressed() -> void:
 	map1 = false
@@ -480,3 +502,11 @@ func _on_resset_map_pressed() -> void:
 	$Camera2D/bg/Map4.position = Vector2(382, 73)
 	$Camera2D/bg/Map5.position = Vector2(65, 154)
 	$Camera2D/bg/Map6.position = Vector2(102, 76)
+
+
+func _on_captain_input(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton \
+	and event.button_index == MOUSE_BUTTON_LEFT \
+	and event.pressed:
+		dialogue_index = 0
+		show_next_dialogue()

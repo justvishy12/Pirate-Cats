@@ -17,10 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://5p61n5jeldm0" path="res://assets/map6.png" id="15_it88h"]
 [ext_resource type="Texture2D" uid="uid://eo3m1jqogybo" path="res://assets/map pieces.png" id="15_lerbx"]
 [ext_resource type="Texture2D" uid="uid://uevxgxsijq8n" path="res://assets/captain cat.png" id="17_jmuir"]
-[ext_resource type="Texture2D" uid="uid://bk0yokqeio7rc" path="res://assets/textbox.png" id="18_m2tfi"]
-[ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="19_djvvj"]
-[ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="20_hif1r"]
-[ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="21_a7tom"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qyjxp"]
 atlas = ExtResource("3_hp81p")
@@ -875,73 +871,6 @@ scale = Vector2(0.3448276, 0.34482756)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=687623032]
 position = Vector2(8.583069e-05, 29.000008)
 shape = SubResource("CapsuleShape2D_hae68")
-disabled = true
-
-[node name="Textbox" type="Sprite2D" parent="." unique_id=469863391]
-visible = false
-position = Vector2(0.032344818, 108.99997)
-scale = Vector2(0.34551278, 0.34551278)
-texture = ExtResource("18_m2tfi")
-
-[node name="namelabel" type="Label" parent="Textbox" unique_id=1542405038]
-offset_left = -370.464
-offset_top = -95.51019
-offset_right = 107.087036
-offset_bottom = -52.096497
-theme_override_fonts/font = ExtResource("19_djvvj")
-theme_override_font_sizes/font_size = 35
-text = "???"
-vertical_alignment = 1
-
-[node name="textlabel" type="Label" parent="Textbox" unique_id=1466160199]
-custom_minimum_size = Vector2(16.92, 0)
-offset_left = -222.85681
-offset_top = -34.730988
-offset_right = 240.22302
-offset_bottom = 54.990692
-theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
-theme_override_fonts/font = ExtResource("19_djvvj")
-theme_override_font_sizes/font_size = 38
-text = "hi  my name is bob. i like to eat"
-autowrap_mode = 2
-
-[node name="skiplabel" type="Label" parent="Textbox" unique_id=685571886]
-offset_left = 208.38596
-offset_top = 57.88497
-offset_right = 347.30978
-offset_bottom = 77.88497
-theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
-theme_override_fonts/font = ExtResource("19_djvvj")
-theme_override_font_sizes/font_size = 20
-text = "SPACE TO SKIP"
-
-[node name="photobox" type="TextureRect" parent="Textbox" unique_id=1749238679]
-offset_left = -379.1466
-offset_top = -43.413727
-offset_right = -222.85706
-offset_bottom = 78.144745
-expand_mode = 2
-stretch_mode = 4
-
-[node name="player button" type="Button" parent="." unique_id=663769945]
-visible = false
-texture_filter = 2
-offset_left = -92.96759
-offset_top = -37.0
-offset_right = 91.03241
-offset_bottom = 13.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("19_djvvj")
-theme_override_styles/normal = ExtResource("20_hif1r")
-theme_override_styles/pressed = ExtResource("21_a7tom")
-theme_override_styles/hover = ExtResource("21_a7tom")
-theme_override_styles/focus = ExtResource("21_a7tom")
-text = "Are we going to cook?"
-autowrap_mode = 3
 
 [connection signal="mouse_entered" from="DoorHandle" to="." method="_on_door_handle_mouse_entered"]
 [connection signal="mouse_exited" from="DoorHandle" to="." method="_on_door_handle_mouse_exited"]
