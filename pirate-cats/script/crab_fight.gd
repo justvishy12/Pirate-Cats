@@ -24,10 +24,10 @@ const CannonBallScene = preload("res://scene/Cannon Ball.tscn")
 var dialogue = [
 {
 		#0
-		"speaker": "you",
-		"name":"",
-		"text": "How do I help?",
-	},
+	"speaker": "you",
+	"name":"",
+	"text": "How do I help?",
+},
 	{
 		#1
 		"speaker": "cat",
@@ -61,7 +61,7 @@ var dialogue = [
 		"name":"",
 		"text": "",
 	},
-]	
+]
 var dialogue_index = 0
 var typing = false
 var fight = false
@@ -188,7 +188,7 @@ func pick_crabs():
 		
 	if rounds == 3:
 		SaveManager.crab_fight = true
-		can_play = false	
+		can_play = false
 		dialogue_index = 4
 		show_next_dialogue()
 		return

@@ -4,13 +4,6 @@ func _ready() -> void:
 	SaveManager.current_slot = 0
 	refresh_slots()
 
-
-
-	
-
-
-
-
 func refresh_slots():
 	for i in range(1, 4):
 		var slot = get_node("Loading/Save%d" % i)
@@ -80,7 +73,29 @@ func _on_reset_3_pressed() -> void:
 
 func _on_guide_pressed() -> void:
 	$Guide.visible = true
+	$Area2D/ColorRect.disabled=false
+	$Arrows.visible=true
+
 
 
 func _on_prefferences_pressed() -> void:
 	$Prefferences.visible = true
+	$Area2D/ColorRect.disabled=false
+	$Arrows.visible=true
+
+
+func _on_creds_pressed() -> void:
+	$credits.visible=true
+	$Area2D/ColorRect.disabled=false
+	$Arrows.visible=true
+
+
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton \
+	and event.button_index == MOUSE_BUTTON_LEFT \
+	and event.pressed and !SaveManager.full_map:
+		$Guide.visible=false
+		$Prefferences.visible=false
+		$credits.visible=false
+		$Area2D/ColorRect.disabled=true
+		$Arrows.visible=false
