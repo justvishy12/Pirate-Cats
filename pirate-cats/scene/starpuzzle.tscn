@@ -13,6 +13,13 @@
 [ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="11_vwbd2"]
 [ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="12_dcyao"]
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="13_iqnaw"]
+[ext_resource type="Texture2D" uid="uid://v1yowieeer3r" path="res://scene/backship view night.png" id="14_05tuk"]
+[ext_resource type="Texture2D" uid="uid://uevxgxsijq8n" path="res://assets/captain cat.png" id="15_jrvaw"]
+[ext_resource type="Texture2D" uid="uid://rb44yvydtdb7" path="res://assets/chef cat.png" id="16_o1f0v"]
+[ext_resource type="Texture2D" uid="uid://c1ymamehqfgv6" path="res://assets/scrubber cat.png" id="17_v0pj1"]
+[ext_resource type="Texture2D" uid="uid://d0wlabvjcu6fv" path="res://assets/fisher.png" id="18_1ryh2"]
+[ext_resource type="Texture2D" uid="uid://cippd77hlp4i7" path="res://assets/powder monkey.png" id="19_37775"]
+[ext_resource type="Texture2D" uid="uid://d24q4fggvvjnw" path="res://assets/island in distance.png" id="20_jrvaw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldxs4"]
 size = Vector2(411, 648)
@@ -47,11 +54,55 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_ylqqd"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jwo0b"]
+resource_name = "fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vwbd2"]
+resource_name = "fadeout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_628eg"]
 _data = {
 &"ButtonIn": SubResource("Animation_48817"),
-&"RESET": SubResource("Animation_ylqqd")
+&"RESET": SubResource("Animation_ylqqd"),
+&"fadein": SubResource("Animation_jwo0b"),
+&"fadeout": SubResource("Animation_vwbd2")
 }
 
 [node name="Node2D" type="Node2D" unique_id=1075233464]
@@ -108,14 +159,14 @@ scale = Vector2(0.38785046, 0.38785046)
 texture = ExtResource("2_48817")
 
 [node name="LeftSide" type="Area2D" parent="." unique_id=526185257]
-position = Vector2(0, -653)
+position = Vector2(0, -664)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftSide" unique_id=1282224925]
 position = Vector2(205.5, 324)
 shape = SubResource("RectangleShape2D_ldxs4")
 
 [node name="RightSide" type="Area2D" parent="." unique_id=479737703]
-position = Vector2(0, -653)
+position = Vector2(0, -664)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightSide" unique_id=2091940859]
 position = Vector2(947, 324)
@@ -123,12 +174,54 @@ shape = SubResource("RectangleShape2D_ldxs4")
 
 [node name="Timer" type="Timer" parent="." unique_id=116953857]
 
+[node name="BackshipViewNight" type="Sprite2D" parent="." unique_id=2014898987]
+visible = false
+position = Vector2(609.00006, 328)
+scale = Vector2(1.0123457, 1.0123457)
+texture = ExtResource("14_05tuk")
+
+[node name="CaptainCat" type="Sprite2D" parent="BackshipViewNight" unique_id=2017774176]
+position = Vector2(-18.76838, 17.78049)
+scale = Vector2(0.7595879, 0.7595878)
+texture = ExtResource("15_jrvaw")
+
+[node name="ChefCat" type="Sprite2D" parent="BackshipViewNight" unique_id=666936202]
+position = Vector2(442.53644, 80.01219)
+scale = Vector2(0.7625162, 0.76251614)
+texture = ExtResource("16_o1f0v")
+
+[node name="ScrubberCat" type="Sprite2D" parent="BackshipViewNight" unique_id=1802032366]
+position = Vector2(229.17065, 112.60976)
+scale = Vector2(0.7443715, 0.7443714)
+texture = ExtResource("17_v0pj1")
+
+[node name="Fisher" type="Sprite2D" parent="BackshipViewNight" unique_id=338145622]
+position = Vector2(-482.0488, 118.53662)
+scale = Vector2(0.83103716, 0.8310372)
+texture = ExtResource("18_1ryh2")
+
+[node name="PowderMonkey" type="Sprite2D" parent="BackshipViewNight" unique_id=1714877339]
+position = Vector2(-254.85378, 98.7805)
+scale = Vector2(0.81808203, 0.8180821)
+texture = ExtResource("19_37775")
+
+[node name="IslandInDistance" type="Sprite2D" parent="." unique_id=1954306830]
+position = Vector2(576, 321)
+scale = Vector2(1.0121527, 1.0324075)
+texture = ExtResource("20_jrvaw")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1765361622]
 libraries/ = SubResource("AnimationLibrary_628eg")
 
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer" unique_id=387295222]
+offset_right = 1187.0
+offset_bottom = 703.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
 [node name="Textbox" type="Sprite2D" parent="." unique_id=1263010946]
-position = Vector2(583, 527)
-scale = Vector2(0.54512984, 0.54512984)
+position = Vector2(578.4233, 570.425)
+scale = Vector2(0.621283, 0.621283)
 texture = ExtResource("10_jwo0b")
 
 [node name="namelabel" type="Label" parent="Textbox" unique_id=1060922040]

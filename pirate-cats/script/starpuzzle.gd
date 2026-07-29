@@ -13,7 +13,7 @@ var p2 = false
 var p3 = false
 var round1done = false
 var round2done = false
-var got_wrong = true
+var got_wrong = false
 var round3done = false
 var side_movement = 0
 var hello = false
@@ -58,7 +58,21 @@ var dialogue = [
 		#5
 		"speaker": "cat",
 		"name": "Cat Sparrow (Captain)",
-		"text": "Wait a second, is that! ",
+		"text": "Wait a second, is that... ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+	{ 
+		#6
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "It's the island! ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+	{ 
+		#7
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "Yawn, It's getting late. Let's sail again tommorow. ",
 		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
 	},
 ]
@@ -108,6 +122,26 @@ func show_cat_text(line) -> void:
 func _input(event):
 	if event.is_action_pressed("ui_accept") and !typing:
 		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
+			if dialogue_index == 7 and got_wrong:
+				$AnimationPlayer.play("fadein")
+				await$AnimationPlayer.animation_finished
+				$BackshipViewNight.visible=false
+				$Textbox.visible=false
+				got_wrong=false
+				$AnimationPlayer.play("fadeout")
+				await$AnimationPlayer.animation_finished
+				game_finished = false
+				round1 = false
+				round2 = false
+				round3 = false
+
+				return
+
+			if dialogue_index == 5:
+				$IslandInDistance.visible = false
+			if dialogue_index == 6:
+				$Textbox.visible = false
+				
 			if dialogue_index == 4:
 				print("Hiding panel")
 				$Textbox.visible = false
@@ -133,10 +167,22 @@ func round_finished():
 		roundS = true
 		$Timer.stop()
 		$AnimationPlayer.play("ButtonIn")
+	if round3 == true and got_wrong:
+		$AnimationPlayer.play("fadein")
+		await $AnimationPlayer.animation_finished
+		$BackshipViewNight.visible=true
+		$AnimationPlayer.play("fadeout")
+		await $AnimationPlayer.animation_finished
+		dialogue_index = 6
+		show_next_dialogue()
 	if round3 == true and hello == false:
 		hello = true
 		dialogue_index = 5
 		show_next_dialogue()
+	if got_wrong:
+		print("Player made at least one mistake.")
+	else:
+		print("Player got every constellation correct!")
 func _process(delta: float) -> void:
 	if side_movement == 1 and  roundS == false and game_finished == false:
 		$Wheel.rotation += -1.0 * delta
