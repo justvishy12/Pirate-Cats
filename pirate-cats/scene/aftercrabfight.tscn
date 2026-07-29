@@ -1,0 +1,334 @@
+[gd_scene format=3 uid="uid://cmqs0u80xafms"]
+
+[ext_resource type="Script" uid="uid://bv7643eibxx64" path="res://aftercrabfight.gd" id="1_6quc1"]
+[ext_resource type="Texture2D" uid="uid://twsdpehvo25k" path="res://assets/bg.png" id="2_3k8ej"]
+[ext_resource type="Texture2D" uid="uid://curbdxaf7jf86" path="res://assets/clouds.png" id="3_1p8h3"]
+[ext_resource type="Texture2D" uid="uid://db323u36livna" path="res://assets/catscloud.png" id="4_7upo7"]
+[ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="6_lm8pp"]
+[ext_resource type="Texture2D" uid="uid://bwv6v8yq3f70t" path="res://assets/boat.png" id="7_32cu7"]
+[ext_resource type="Script" uid="uid://chm8mh7jeh6ru" path="res://script/cam shake.gd" id="8_4ru6u"]
+[ext_resource type="Texture2D" uid="uid://bcqnv5lqra7vt" path="res://assets/catshow.png" id="13_3gjpd"]
+[ext_resource type="Texture2D" uid="uid://in8dasb1lynv" path="res://assets/lcuky cat (1).png" id="14_yd2tc"]
+[ext_resource type="Texture2D" uid="uid://d0wlabvjcu6fv" path="res://assets/fisher.png" id="15_8itlt"]
+[ext_resource type="Texture2D" uid="uid://cippd77hlp4i7" path="res://assets/powder monkey.png" id="16_hxrfh"]
+[ext_resource type="Texture2D" uid="uid://rb44yvydtdb7" path="res://assets/chef cat.png" id="17_ktktp"]
+[ext_resource type="Texture2D" uid="uid://uevxgxsijq8n" path="res://assets/captain cat.png" id="18_3vu5f"]
+[ext_resource type="Texture2D" uid="uid://c1ymamehqfgv6" path="res://assets/scrubber cat.png" id="19_u7o4c"]
+[ext_resource type="Texture2D" uid="uid://bk0yokqeio7rc" path="res://assets/textbox.png" id="20_x1prs"]
+[ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="22_25f7j"]
+[ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="23_4hrvj"]
+
+[sub_resource type="Animation" id="Animation_riyh1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Textbox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(848, 701)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Catshow:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_sn1kl"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xq2r4"]
+resource_name = "showcats"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("parallaxbg/Boat:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.0533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("parallaxbg/Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(840.8889, 582)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Catshow:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.06666666),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("parallaxbg/Cloude2d:scroll_offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.02),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-13, -136), Vector2(30, -179)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LcukyCat(1):visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.23),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Button:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Button:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.099999905),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nrblw"]
+_data = {
+&"RESET": SubResource("Animation_riyh1"),
+&"fadescene": SubResource("Animation_sn1kl"),
+&"showcats": SubResource("Animation_xq2r4")
+}
+
+[node name="Node2D2" type="Node2D" unique_id=332542109]
+script = ExtResource("1_6quc1")
+
+[node name="Bg" type="Sprite2D" parent="." unique_id=1742924480]
+position = Vector2(493, 526.5)
+scale = Vector2(3.859375, 0.53549385)
+texture = ExtResource("2_3k8ej")
+
+[node name="Bg2" type="Sprite2D" parent="." unique_id=1085748962]
+position = Vector2(501, 180)
+scale = Vector2(3.859375, 0.53549385)
+texture = ExtResource("2_3k8ej")
+flip_v = true
+
+[node name="Bg3" type="Sprite2D" parent="." unique_id=249297316]
+position = Vector2(501, -167)
+scale = Vector2(3.859375, 0.53549385)
+texture = ExtResource("2_3k8ej")
+
+[node name="parallaxbg" type="Node2D" parent="." unique_id=192301986]
+
+[node name="Cloude2d" type="Parallax2D" parent="parallaxbg" unique_id=947462412]
+scroll_scale = Vector2(0.4, 0.4)
+scroll_offset = Vector2(30, -179)
+repeat_size = Vector2(1152, 0)
+repeat_times = 2
+
+[node name="Backblue" type="Sprite2D" parent="parallaxbg/Cloude2d" unique_id=1934793275]
+position = Vector2(593, 289)
+scale = Vector2(0.5, 0.49999994)
+texture = ExtResource("3_1p8h3")
+centered = false
+
+[node name="Cloude2d2" type="Parallax2D" parent="parallaxbg" unique_id=861553152]
+scroll_scale = Vector2(0.4, 0.4)
+scroll_offset = Vector2(-1271, -292)
+repeat_size = Vector2(1152, 0)
+repeat_times = 2
+
+[node name="Catscloud" type="Sprite2D" parent="parallaxbg/Cloude2d2" unique_id=1591837801]
+position = Vector2(1087, 100)
+scale = Vector2(0.5805083, 0.5805083)
+texture = ExtResource("4_7upo7")
+
+[node name="Boat" type="Sprite2D" parent="parallaxbg" unique_id=1432534839]
+visible = false
+position = Vector2(-290, 575)
+scale = Vector2(0.26081735, 0.26081732)
+texture = ExtResource("7_32cu7")
+
+[node name="Camera2D" type="Camera2D" parent="parallaxbg" unique_id=1861970315]
+position = Vector2(840.8889, 582)
+scale = Vector2(0.5, 0.5)
+zoom = Vector2(2, 2)
+script = ExtResource("8_4ru6u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=878352042]
+libraries/ = SubResource("AnimationLibrary_nrblw")
+
+[node name="Catshow" type="Sprite2D" parent="." unique_id=1735153117]
+position = Vector2(841, 604)
+scale = Vector2(0.28087604, 0.28087604)
+texture = ExtResource("13_3gjpd")
+
+[node name="LcukyCat(1)" type="Sprite2D" parent="." unique_id=361457369]
+position = Vector2(842, 485.50003)
+scale = Vector2(0.14677404, 0.14677402)
+texture = ExtResource("14_yd2tc")
+
+[node name="Fisher" type="Sprite2D" parent="." unique_id=636604481]
+position = Vector2(967, 593.00006)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("15_8itlt")
+
+[node name="PowderMonkey" type="Sprite2D" parent="." unique_id=1200033722]
+position = Vector2(1078.0001, 620.00006)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("16_hxrfh")
+
+[node name="Chef" type="Sprite2D" parent="." unique_id=369232756]
+position = Vector2(1042, 682)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("17_ktktp")
+
+[node name="Captain" type="Sprite2D" parent="." unique_id=358921443]
+position = Vector2(602, 600)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("18_3vu5f")
+
+[node name="Scrubber" type="Sprite2D" parent="." unique_id=777876365]
+position = Vector2(720.00006, 626)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("19_u7o4c")
+
+[node name="Textbox" type="Sprite2D" parent="." unique_id=915430295]
+position = Vector2(848, 701)
+scale = Vector2(0.34551278, 0.34551278)
+texture = ExtResource("20_x1prs")
+
+[node name="namelabel" type="Label" parent="Textbox" unique_id=1180160997]
+offset_left = -370.464
+offset_top = -95.51019
+offset_right = 107.087036
+offset_bottom = -52.096497
+theme_override_fonts/font = ExtResource("6_lm8pp")
+theme_override_font_sizes/font_size = 35
+text = "???"
+vertical_alignment = 1
+
+[node name="textlabel" type="Label" parent="Textbox" unique_id=1859723016]
+custom_minimum_size = Vector2(16.92, 0)
+offset_left = -222.85681
+offset_top = -34.730988
+offset_right = 240.22302
+offset_bottom = 54.990692
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("6_lm8pp")
+theme_override_font_sizes/font_size = 38
+text = "hi  my name is bob. i like to eat"
+autowrap_mode = 2
+
+[node name="skiplabel" type="Label" parent="Textbox" unique_id=739962977]
+offset_left = 208.38596
+offset_top = 57.88497
+offset_right = 347.30978
+offset_bottom = 77.88497
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("6_lm8pp")
+theme_override_font_sizes/font_size = 20
+text = "SPACE TO SKIP"
+
+[node name="photobox" type="TextureRect" parent="Textbox" unique_id=1039567791]
+offset_left = -379.1466
+offset_top = -43.413727
+offset_right = -222.85706
+offset_bottom = 78.144745
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="." unique_id=642604634]
+offset_left = 751.0
+offset_top = 585.0
+offset_right = 935.0
+offset_bottom = 635.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_lm8pp")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("22_25f7j")
+theme_override_styles/pressed = ExtResource("23_4hrvj")
+theme_override_styles/hover = ExtResource("23_4hrvj")
+theme_override_styles/focus = ExtResource("23_4hrvj")
+text = "..."
+autowrap_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1461788157]
+offset_right = 1470.0
+offset_bottom = 867.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[connection signal="pressed" from="Button" to="." method="_on_player_button_pressed"]
