@@ -141,7 +141,7 @@ func _input(event):
 				$IslandInDistance.visible = false
 			if dialogue_index == 6:
 				$Textbox.visible = false
-				get_tree().change_scene_to_file("res://scene/sand.tscn")
+				get_tree().change_scene_to_file("res://scene/island.tscn")
 				
 			if dialogue_index == 4:
 				print("Hiding panel")
