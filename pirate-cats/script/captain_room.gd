@@ -47,6 +47,85 @@ var of6 = Vector2(0,0)
 var in_zone6 = false
 var get_map = false
 
+var dialogue = [
+	{
+		#0
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "Assemble the pieces on the desk and let's find some treasure ARR! ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+	{
+		#1
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "Hmm I don't remember what it looked like before.",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+	{
+		#2
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "Maybe try dragging the pieces together?",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+	{
+		#3 
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "Meet me outside and let's start sailing towards the treasure",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+
+]
+var dialogue_index = 0
+var typing = false
+
+
+
+func show_next_dialogue() -> void:
+	if dialogue_index >= dialogue.size():
+		$Textbox.visible = false
+		$"player button".visible = false
+		return
+	
+	var line = dialogue[dialogue_index]
+	
+	if line["speaker"] == "you":
+		$Textbox.visible = false
+		$"player button".visible = true
+		$"player button".text = line["text"]
+		
+	elif line["speaker"] == "cat":
+		#$Button.visible = false
+		show_cat_text(line)
+		
+	#elif line["speaker"] == "event":
+		#$Button.visible = false
+		#$Textbox.visible = false
+		#$AnimationPlayer.play("event")
+		#await $AnimationPlayer.animation_finished
+		#dialogue_index += 1
+		#show_next_dialogue()
+		#return
+	#elif line["speaker"] == "fadescene":
+		#$Button.visible = false
+		#$Textbox.visible = false
+		#$AnimationPlayer.play("fadescene")
+		#await $AnimationPlayer.animation_finished
+		#get_tree().change_scene_to_file("res://scene/crab_fight.tscn")
+
+func _on_player_button_pressed() -> void:
+	dialogue_index += 1
+	show_next_dialogue()
+
+func show_cat_text(line) -> void:
+	$Textbox.visible = true
+	typing = true
+	
+	$Textbox/namelabel.text = line["name"]
+	$Textbox/textlabel.text = line["text"]
+	
 	#if dialogue_index == 3:
 		#$AnimationPlayer.play("powder monkey show")
 	if line.has("portrait"):
