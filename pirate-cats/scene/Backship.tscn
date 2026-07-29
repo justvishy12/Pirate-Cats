@@ -224,6 +224,7 @@ position = Vector2(611, 322)
 zoom = Vector2(2, 2)
 
 [node name="CaptainCat" type="Sprite2D" parent="Camera2D" unique_id=1686984958]
+visible = false
 position = Vector2(-108, 27.999989)
 scale = Vector2(0.27068976, 0.27068976)
 texture = ExtResource("8_tjcn3")

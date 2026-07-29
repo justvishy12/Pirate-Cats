@@ -179,6 +179,7 @@ position = Vector2(5, 148)
 shape = SubResource("RectangleShape2D_ldxs4")
 
 [node name="CaptainCat" type="Sprite2D" parent="Camera2D" unique_id=1296402808]
+visible = false
 position = Vector2(-65.75, -6.364624)
 scale = Vector2(0.27068976, 0.27068976)
 texture = ExtResource("11_yv2lr")

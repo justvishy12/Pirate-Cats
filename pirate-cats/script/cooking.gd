@@ -13,6 +13,7 @@ var plate_anim = false
 var base
 var top
 var game_start = false
+var dialogue_busy = false
 var done = false
 #CheckOrder
 var OBase1 = false
@@ -103,9 +104,15 @@ var typing = false
 
 
 func show_next_dialogue() -> void:
+	if dialogue_busy:
+		return
+	
+	dialogue_busy = true
+
 	if dialogue_index >= dialogue.size():
 		$Camera2D/Textbox.visible = false
 		$"Camera2D/player button".visible = false
+		dialogue_busy = false
 		return
 	
 	var line = dialogue[dialogue_index]
@@ -147,8 +154,13 @@ func show_next_dialogue() -> void:
 	elif line["speaker"] == "toppings":
 		$Platesss.visible = false
 		$AnimationPlayer.play("ToppingsFinish")
+		$AnimationPlayer2.play("MenuBack")
+		plate_anim = false
+		game_start = true
+		order()
 		plate_check()
 		show_cat_text(line)
+	dialogue_busy = false
 
 func _on_player_button_pressed() -> void:
 	if dialogue_index == 6:
@@ -180,6 +192,8 @@ func show_cat_text(line) -> void:
 	typing = false
 	
 func _input(event):
+	if dialogue_busy:
+		return
 	if event.is_action_pressed("ui_accept") and !typing:
 		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
 			print(dialogue_index)
@@ -205,10 +219,34 @@ func _input(event):
 			show_next_dialogue()
 			
 func plate_reset():
+	$MiddlePlate.can_drag = true
+	$MiddlePlate.dragging = false
+	$MiddlePlate.in_zone = false
+	$Bottom1.can_drag = true
+	$Bottom1.in_zone = false
+	$Bottom2.can_drag = true
+	$Bottom2.in_zone = false
+	$Top1.can_drag = true
+	$Top1.in_zone = false
+	$Top2.can_drag = true
+	$Top2.in_zone = false
+	$Star.can_drag = true
+	$Star.in_zone = false
+	$Flag.can_drag = true
+	$Flag.in_zone = false
+	$Clam.can_drag = true
+	$Clam.in_zone = false
+	$Bottom1.visible = true
+	$Bottom2.visible = true
+	$Top1.visible = true
+	$Top2.visible = true
+	$Star.visible = true
+	$Flag.visible = true
+	$Clam.visible = true
 	$MiddlePlate.self_modulate = Color(1.0, 1.0, 1.0, 0.0)
 	$MiddlePlate.global_position = Vector2(75,510)
 	$MiddlePlate/Flag1.visible = false
-	$MiddlePlate/Flag3.visible = false
+	$MiddlePlate/Flag2.visible = false
 	$MiddlePlate/Flag3.visible = false
 	$MiddlePlate/Top2.visible = false
 	$MiddlePlate/Top1.visible = false
@@ -236,15 +274,20 @@ func _ready() -> void:
 	order()
 	
 func _process(delta: float) -> void:
-	if $Plates/Plate1.visible == false and $Plates/Plate2.visible == false and $Plates/Plate3.visible == false  and $Plates/Plate4.visible == false  and $Plates/Plate5.visible == false:
+	if $Plates/Plate1.visible == false and $Plates/Plate2.visible == false and $Plates/Plate3.visible == false  and $Plates/Plate4.visible == false:
 		if done == false:
+			done = true
 			Global.cook = true
+			dialogue = 7
+			show_next_dialogue()
 			$AnimationPlayer.play("map")
 			await $AnimationPlayer.animation_finished
 			
 	if $MiddlePlate/Panel.get_global_rect().intersects($PlatePanel.get_global_rect()) and plate_anim == false and $MiddlePlate.in_zone == true:
+		print("work 1")
 		plate_anim = true
 		if game_start == true:
+			print("work 2")
 			$Arrow.visible = true
 			$Arrow2.visible = true
 			await get_tree().create_timer(0.4).timeout
@@ -263,11 +306,14 @@ func _process(delta: float) -> void:
 		$Plates/Plate5.visible = false
 		
 func order():
+	
 	OTop1 = false
 	OTop2 = false
 	OShell = false
 	OFlag = false
 	OStar = false
+	OBase1 = false
+	OBase2 = false
 		#OnPlate
 	PBase1 = false
 	PBase2 = false
@@ -284,12 +330,29 @@ func order():
 	CShell = false
 	CFlag = false
 	CStar = false
-	print("works")
 	layer1 = randi_range(1,2)
 	layer2 = randi_range(1,2)
 	star = randi_range(1,2)
 	shell = randi_range(1,2)
 	flag = randi_range(1,2)
+	$Order/Bottom1.visible = false
+	$Order/Flag1.visible = false
+	$Order/Flag3.visible = false
+	$Order/Bottom2.visible = false
+	$Order/Top1.visible = false
+	$Order/Top2.visible = false
+	$"Order/Top1-1".visible = false
+	$"Order/Top2-1".visible = false
+	$Order/SmallBase/Star.visible = false
+	$Order/SmallBase/Star2.visible = false
+	$Order/SmallBase/Clam.visible = false
+	$Order/SmallBase/Clam2.visible = false
+	$Order/BigBase/Star3.visible = false
+	$Order/BigBase/Star4.visible = false
+	$Order/BigBase/Clam3.visible = false
+	$Order/BigBase/Clam4.visible = false
+	$Order/NoBase/Star6.visible = false
+	$Order/NoBase/Clam5.visible = false
 	
 	while layer1 == 1 and layer2 == 1:
 		layer1 = randi_range(1,2)
@@ -315,7 +378,7 @@ func order():
 			else:
 				$"Order/Top2-1".visible = true
 		else:
-			CTop2 = true
+			OTop2 = true
 			if layer1 == 2:
 				$Order/Top1.visible = true
 			else:
@@ -412,3 +475,11 @@ func _on_buttonmove_1_pressed() -> void:
 func _on_mapbutton_pressed() -> void:
 	dialogue_index += 1
 	show_next_dialogue()
+
+
+func _on_buttonmove_15_pressed() -> void:
+	plate_anim = false
+	order()
+	plate_reset()
+	
+	$AnimationPlayer2.play("RESET")
