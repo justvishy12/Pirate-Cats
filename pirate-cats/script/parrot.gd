@@ -3,6 +3,13 @@ var eating = false
 var map_dialogue_shown = false
 var dialogue=[
 	{
+		#0
+		"speaker": "cat",
+		"name": "Polly (Parrot)",
+		"text": "Drag and drop these treats straight to my beak! ",
+		"portrait": preload("res://assets/bird.png")
+	},
+	{
 		#1
 		"speaker": "cat",
 		"name": "Polly (Parrot)",
@@ -101,7 +108,7 @@ func _on_mapbutton_pressed() -> void:
 
 func parrot_eat():
 	if eating == false:
-		var text = randi_range(0, 4)
+		var text = randi_range(1, 5)
 		dialogue_index = text
 		show_next_dialogue()
 		eating = true
@@ -113,12 +120,14 @@ func parrot_eat():
 func _ready() -> void:
 	$mapbutton.modulate.a = 0.0
 	$mapbutton.visible = false
+	show_next_dialogue()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if $Right/Cookie2.visible == false and $Right/Cookie1.visible == false and $Right/Cookie.visible == false and $Left/Cookie5.visible == false and $Left/Cookie4.visible == false and $Left/Cookie3.visible == false and $Left/Cookie6.visible == false and map_dialogue_shown == false:
 		print("worked")
+		SaveManager.feed= true
 		map_dialogue_shown = true
-		dialogue_index = 5
+		dialogue_index = 6
 		show_next_dialogue()
 		$mapbutton.visible = true
 		var tween = create_tween()
