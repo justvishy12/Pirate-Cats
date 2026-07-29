@@ -63,9 +63,9 @@ func _ready() -> void:
 	if SaveManager.scrub == false:
 		$Camera2D/bg/Map5.disabled = true
 		$Camera2D/bg/Map5.visible = true
-	#if SaveManager.fish == false:
-	#	$Camera2D/bg/Map1.disabled = true
-	#	$Camera2D/bg/Map1.visible = true
+	if SaveManager.captain == false:
+		$Camera2D/bg/Map6.disabled = true
+		$Camera2D/bg/Map6.visible = true
 	Global.leftcam = false
 	Global.rightcam = false
 	maps = [$Camera2D/bg/Map1, $Camera2D/bg/Map2, $Camera2D/bg/Map3, $Camera2D/bg/Map4, $Camera2D/bg/Map5, $Camera2D/bg/Map6]

@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://d1ybmpef1hc1v"]
 
+[ext_resource type="Script" uid="uid://cppm0e0ywsmmr" path="res://script/prefferences.gd" id="1_c5sb6"]
 [ext_resource type="Texture2D" uid="uid://ba77fukagwcw1" path="res://scene/load bg2.png" id="1_q2mrp"]
 [ext_resource type="StyleBox" uid="uid://d02qh5wfrhljo" path="res://styles/Black+WhiteButton.tres" id="2_rmf8x"]
 [ext_resource type="FontFile" uid="uid://ci5fs3td4usu5" path="res://fonts/Irish_Grover/IrishGrover-Regular.ttf" id="3_c5sb6"]
 [ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="4_525w4"]
 
 [node name="Node2D" type="Node2D" unique_id=1942642740]
+script = ExtResource("1_c5sb6")
 
 [node name="Prefferences" type="Node2D" parent="." unique_id=1783226073]
 

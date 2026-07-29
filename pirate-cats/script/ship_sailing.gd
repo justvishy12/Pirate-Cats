@@ -122,14 +122,14 @@ var dialogue = [
 		#18
 		"speaker": "cat",
 		"name":"Cat Sparrow (Captain)",
-		"text": "I know we jsut met, but... ",
+		"text": "I know we just met, but... ",
 		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
 		#pan to crabs throwing thingd
 	},
 	{#19
 		"speaker": "cat",
 		"name":"Cat Sparrow (Captain)",
-		"text": "Can you help us get rid of those crabs?",
+		"text": "Can you help us get rid of those crabs? ",
 		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
 	},
 	{

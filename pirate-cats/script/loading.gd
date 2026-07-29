@@ -80,3 +80,7 @@ func _on_reset_3_pressed() -> void:
 
 func _on_guide_pressed() -> void:
 	$Guide.visible = true
+
+
+func _on_prefferences_pressed() -> void:
+	$Prefferences.visible = true

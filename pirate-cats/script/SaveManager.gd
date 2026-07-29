@@ -8,6 +8,7 @@ var cook = true
 var scrub = true
 var feed = true
 var sort = true
+var captain = false
 var crab_fight = false
 func save_game(slot: int) -> void:
 	var path = SAVE_FOLDER + "save_%d.json" % slot
@@ -19,6 +20,7 @@ func save_game(slot: int) -> void:
 		"scrub": scrub,
 		"feed": feed,
 		"sort": sort,
+		"captain": captain,
 		"crab_fight": crab_fight
 	}
 

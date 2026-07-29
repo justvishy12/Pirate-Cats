@@ -8,6 +8,7 @@ var four = false
 var five = false
 var six = false
 var sand_scene = preload("res://scene/sand.tscn")
+var sponge = preload("res://assets/shovel cursor.png")
 var treas = randi_range(1, 6)
 
 var dialogue = [
@@ -146,6 +147,7 @@ func _input(event):
 				show_next_dialogue()
 
 func _ready() -> void:
+	Input.set_custom_mouse_cursor(sponge)
 	show_next_dialogue()
 
 func shells():
