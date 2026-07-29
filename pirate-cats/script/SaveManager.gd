@@ -3,11 +3,11 @@ extends Node
 const SAVE_FOLDER = "user://"
 var current_slot = 0
 var coins = 0
-var fish = false
-var cook = false
-var scrub = false
-var feed = false
-var sort = false
+var fish = true
+var cook = true
+var scrub = true
+var feed = true
+var sort = true
 var crab_fight = false
 func save_game(slot: int) -> void:
 	var path = SAVE_FOLDER + "save_%d.json" % slot

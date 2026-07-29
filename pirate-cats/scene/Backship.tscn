@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://rb44yvydtdb7" path="res://assets/chef cat.png" id="4_vp247"]
 [ext_resource type="Texture2D" uid="uid://bpgusf78mlj4a" path="res://assets/fried egg anim sprite.png" id="5_vp247"]
 [ext_resource type="Texture2D" uid="uid://bk0yokqeio7rc" path="res://assets/textbox.png" id="8_65i2n"]
+[ext_resource type="Texture2D" uid="uid://uevxgxsijq8n" path="res://assets/captain cat.png" id="8_tjcn3"]
+[ext_resource type="Texture2D" uid="uid://5p61n5jeldm0" path="res://assets/map6.png" id="9_jeyb3"]
 [ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="9_tjcn3"]
 [ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="10_jeyb3"]
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="11_o5cb5"]
@@ -119,6 +121,17 @@ size = Vector2(75.5, 104.25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vp247"]
 size = Vector2(85, 84.5)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5cb5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5i1im"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.76862746, 0.25490198, 0.25490198, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldxs4"]
 size = Vector2(57, 324)
 
@@ -203,6 +216,24 @@ polygon = PackedVector2Array(90, 412, 77, 420, 76, 427, 124, 450, 128, 448, 126,
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1476215314]
 position = Vector2(615, 322)
 zoom = Vector2(2, 2)
+
+[node name="CaptainCat" type="Sprite2D" parent="Camera2D" unique_id=1686984958]
+position = Vector2(-108, 27.999989)
+scale = Vector2(0.27068976, 0.27068976)
+texture = ExtResource("8_tjcn3")
+
+[node name="mapbutton" type="Button" parent="Camera2D" unique_id=916940549]
+offset_left = -65.0
+offset_top = 11.0
+offset_right = 1.0
+offset_bottom = 75.25
+theme_override_styles/normal = SubResource("StyleBoxFlat_o5cb5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5i1im")
+
+[node name="Map6" type="Sprite2D" parent="Camera2D/mapbutton" unique_id=463867395]
+position = Vector2(34, 32)
+scale = Vector2(0.12005934, 0.11822632)
+texture = ExtResource("9_jeyb3")
 
 [node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=1274523115]
 visible = false
@@ -292,6 +323,7 @@ shape = SubResource("RectangleShape2D_ldxs4")
 [connection signal="input_event" from="Captains Room" to="." method="_on_captains_room_input_event"]
 [connection signal="input_event" from="SideShipView1" to="." method="_on_side_ship_view_1_input_event"]
 [connection signal="input_event" from="SideShipView2" to="." method="_on_side_ship_view_2_input_event"]
+[connection signal="pressed" from="Camera2D/mapbutton" to="." method="_on_mapbutton_pressed"]
 [connection signal="pressed" from="Camera2D/player button" to="." method="_on_player_button_pressed"]
 [connection signal="mouse_entered" from="Camera2D/CamLeft" to="." method="_on_cam_left_mouse_entered"]
 [connection signal="mouse_exited" from="Camera2D/CamLeft" to="." method="_on_cam_left_mouse_exited"]

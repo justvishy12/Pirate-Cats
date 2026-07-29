@@ -94,7 +94,7 @@ func show_next_dialogue() -> void:
 	elif line["speaker"] == "fadescene":
 		$AnimationPlayer2.play("fade")
 		await $AnimationPlayer2.animation_finished
-		get_tree().change_scene_to_file("res://scene/crab_fight.tscn")
+		get_tree().change_scene_to_file("res://scene/aftercrabfight.tscn")
 
 func _on_player_button_pressed() -> void:
 	dialogue_index += 1

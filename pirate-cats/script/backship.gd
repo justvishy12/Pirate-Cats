@@ -7,6 +7,7 @@ var fishing = false
 var cooking2 = false
 var fishing2 = false
 var locked = false
+var captain = false
 
 var dialogue = [
 #If player hasn’t done fishing puzzle
@@ -72,10 +73,32 @@ var dialogue = [
 		"text": "Come back for supper!",
 		"portrait": preload("res://assets/headshots/CHEF FACE.png")
 	},
+	#captian map
+	{
+		#8
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "This is a little embarrasing... ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+		{
+		#9
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "Turns out the last map piece was in my pocket. ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+	{
+		#10
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "Let's go assemble it at my desk. ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
 	]
 
 
-var dialogue_index = 0
+var dialogue_index = 8
 var typing = false
 
 
@@ -94,6 +117,7 @@ func show_next_dialogue() -> void:
 		
 	elif line["speaker"] == "cat":
 		$"Camera2D/player button".visible = false
+		$Camera2D/Textbox.visible=true
 		show_cat_text(line)
 
 
@@ -138,6 +162,9 @@ func _input(event):
 				cooking2 = true
 				$Camera2D/Textbox.visible = false
 				locked = false
+				var fish = false
+			if dialogue_index == 9:
+				$Camera2D/mapbutton.visible=true
 			dialogue_index += 1
 			show_next_dialogue()
 
@@ -149,6 +176,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if SaveManager.cook and captain == false and SaveManager.scrub and SaveManager.feed and SaveManager.sort and SaveManager.fish:
+		captain = true
+		locked = true
+		dialogue_index = 8
+		$Camera2D/CaptainCat.visible=true
+		show_next_dialogue()
+		return
+	
+	
+	
 	if moveleft == true and locked == false:
 		$Camera2D.global_position += Vector2(-150, 0) * delta
 	$Camera2D.global_position.x = clamp(
@@ -238,3 +275,10 @@ func _on_side_ship_view_2_input_event(viewport: Node, event: InputEvent, shape_i
 		Global.rightcam = true
 		Global.leftcam = false
 		get_tree().change_scene_to_file("res://scene/SideShipView2.tscn")
+
+
+func _on_mapbutton_pressed() -> void:
+	$Camera2D/mapbutton.visible=false
+	$Camera2D/CaptainCat.visible=false
+	locked=false
+	
