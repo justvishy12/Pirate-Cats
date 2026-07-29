@@ -47,6 +47,8 @@ var of6 = Vector2(0,0)
 var in_zone6 = false
 var get_map = false
 
+
+
 var dialogue = [
 	{
 		#0
@@ -73,7 +75,7 @@ var dialogue = [
 		#3 
 		"speaker": "cat",
 		"name": "Cat Sparrow (Captain)",
-		"text": "Meet me outside and let's start sailing towards the treasure",
+		"text": "Meet me outside and let's start sailing towards the treasure. ",
 		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
 	},
 
@@ -126,8 +128,6 @@ func show_cat_text(line) -> void:
 	$Textbox/namelabel.text = line["name"]
 	$Textbox/textlabel.text = line["text"]
 	
-	#if dialogue_index == 3:
-		#$AnimationPlayer.play("powder monkey show")
 	if line.has("portrait"):
 		$Textbox/photobox.texture = line["portrait"]
 	else:
@@ -144,11 +144,17 @@ func show_cat_text(line) -> void:
 func _input(event):
 	if event.is_action_pressed("ui_accept") and !typing:
 		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
+			if dialogue_index == 0:
+				$Textbox.visible=false
+				return
+			if dialogue_index == 2:
+				$Textbox.visible=false
+				return
 			dialogue_index += 1
 			show_next_dialogue()
 
 func _ready() -> void:
-	if SaveManager.cook and SaveManager.captain == false and SaveManager.scrub and SaveManager.feed and SaveManager.sort and SaveManager.fish:
+	if SaveManager.cook and SaveManager.captain == true and SaveManager.scrub and SaveManager.feed and SaveManager.sort and SaveManager.fish:
 		$CaptainCat.visible=true
 		$Area2D/CollisionShape2D.disabled=false
 	if SaveManager.fish == false:
@@ -259,11 +265,14 @@ func _on_cam_right_mouse_entered() -> void:
 func _on_cam_right_mouse_exited() -> void:
 	moveright = false
 func _on_back_ship_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and event.pressed and !SaveManager.full_map:
 		get_tree().change_scene_to_file("res://scene/Backship.tscn")
-
+	if event is InputEventMouseButton and event.pressed and SaveManager.full_map:
+		get_tree().change_scene_to_file("res://scene/starpuzzle.tscn")
 
 func allign_map():
+	dialogue_index = 3
+	SaveManager.full_map =true
 	$Camera2D/bg/Map1.visible = false
 	$Camera2D/bg/Map2.visible = false
 	$Camera2D/bg/Map3.visible = false
@@ -272,6 +281,8 @@ func allign_map():
 	$Camera2D/bg/Map6.visible = false
 	$Camera2D/bg/MapPieces.visible = true
 	await get_tree().create_timer(1).timeout
+	show_next_dialogue()
+	$CaptainCat.visible=true
 	$Camera2D/bg.visible = false
 func _on_area_m_1_mouse_entered() -> void:
 	if not $m1.is_playing():
@@ -557,10 +568,16 @@ func all_maps_placed():
 	return placed1 and placed2 and placed3 and placed4 and placed5 and placed6
 	
 func _on_table_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and event.pressed and !SaveManager.full_map:
+		dialogue_index =1
+		show_next_dialogue()
 		$Camera2D/bg.visible = true
 		$CaptainCat.visible=false
-		
+	#if event is InputEventMouseButton and event.pressed and SaveManager.full_map:
+		#
+		#$Camera2D/bg.visible=true
+		#$Camera2D/bg/table.visible=true
+		#$Camera2D/bg/MapPieces.visible =true
 
 func _on_resset_map_pressed() -> void:
 	map1 = false
@@ -586,6 +603,11 @@ func _on_resset_map_pressed() -> void:
 func _on_captain_input(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton \
 	and event.button_index == MOUSE_BUTTON_LEFT \
-	and event.pressed:
+	and event.pressed and !SaveManager.full_map:
 		dialogue_index = 0
+		show_next_dialogue()
+	if event is InputEventMouseButton \
+	and event.button_index == MOUSE_BUTTON_LEFT \
+	and event.pressed and SaveManager.full_map:
+		dialogue_index = 3
 		show_next_dialogue()

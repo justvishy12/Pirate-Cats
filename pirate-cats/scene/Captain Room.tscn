@@ -607,6 +607,11 @@ libraries/ = SubResource("AnimationLibrary_8akd2")
 [node name="m3" type="AnimationPlayer" parent="." unique_id=1326461230]
 libraries/ = SubResource("AnimationLibrary_8akd2")
 
+[node name="CaptainCat" type="Sprite2D" parent="." unique_id=717206684]
+position = Vector2(80.99997, 54)
+scale = Vector2(0.3448276, 0.34482756)
+texture = ExtResource("17_jmuir")
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1932166162]
 zoom = Vector2(2, 2)
 
@@ -862,11 +867,6 @@ visible = false
 position = Vector2(288, 200)
 scale = Vector2(0.13166997, 0.13166998)
 texture = ExtResource("15_lerbx")
-
-[node name="CaptainCat" type="Sprite2D" parent="." unique_id=717206684]
-position = Vector2(80.99997, 54)
-scale = Vector2(0.3448276, 0.34482756)
-texture = ExtResource("17_jmuir")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1322846302]
 position = Vector2(80.99997, 54)
