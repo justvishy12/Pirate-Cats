@@ -155,14 +155,14 @@ func _on_bubble_bucket_mouse_exited() -> void:
 
 func _on_side_view_1_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
-		Global.leftcam = true
-		Global.rightcam = false
+		Global.leftcam = false
+		Global.rightcam = true
 		get_tree().change_scene_to_file("res://scene/SideShipView1.tscn")
 
 func _on_side_view_2_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
-		Global.leftcam = false
-		Global.rightcam = true
+		Global.leftcam = true
+		Global.rightcam = false
 		get_tree().change_scene_to_file("res://scene/SideShipView2.tscn")
 
 

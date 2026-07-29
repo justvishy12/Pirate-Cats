@@ -36,18 +36,24 @@ func refresh_slots():
 
 func _on_load_1_pressed() -> void:
 	SaveManager.current_slot = 1
-	if SaveManager.scene == 1:
+	if SaveManager.crab_fight == false:
 		get_tree().change_scene_to_file("res://scene/ship_sailing.tscn")
+	else:
+		get_tree().change_scene_to_file("res://scene/Backship.tscn")
 
 func _on_load_2_pressed() -> void:
 	SaveManager.current_slot = 2
-	if SaveManager.scene == 1:
+	if SaveManager.crab_fight == false:
 		get_tree().change_scene_to_file("res://scene/ship_sailing.tscn")
+	else:
+		get_tree().change_scene_to_file("res://scene/Backship.tscn")
 
 func _on_load_3_pressed() -> void:
 	SaveManager.current_slot = 3
-	if SaveManager.scene == 1:
+	if SaveManager.crab_fight == false:
 		get_tree().change_scene_to_file("res://scene/ship_sailing.tscn")
+	else:
+		get_tree().change_scene_to_file("res://scene/Backship.tscn")
 
 func _on_reset_1_pressed() -> void:
 	SaveManager.delete_save(1)
@@ -70,3 +76,7 @@ func _on_reset_3_pressed() -> void:
 	$Loading/Save3/Thumbnail.texture = load("res://assets/txture plc holder.png")
 	$Loading/Save3/Container/Date.text = "xx/xx/xxxx"
 	$Loading/Save3/Container/Time.text = "xx:xx"
+
+
+func _on_guide_pressed() -> void:
+	$Guide.visible = true

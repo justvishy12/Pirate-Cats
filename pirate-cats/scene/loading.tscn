@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://hod1ee2s411u" path="res://scene/load bg.png" id="5_vudae"]
 [ext_resource type="StyleBox" uid="uid://tvgg7r1vrqhf" path="res://styles/loadbutton.tres" id="5_waisc"]
 [ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="6_waisc"]
+[ext_resource type="PackedScene" uid="uid://x40ajnefay27" path="res://scene/Guide.tscn" id="8_waisc"]
 
 [sub_resource type="Animation" id="Animation_xwca0"]
 length = 0.001
@@ -551,9 +552,15 @@ metadata/_edit_lock_ = true
 position = Vector2(-288, 526)
 zoom = Vector2(2, 2)
 
+[node name="Guide" parent="." unique_id=1783226073 instance=ExtResource("8_waisc")]
+visible = false
+position = Vector2(-576, 364.2)
+scale = Vector2(0.5, 0.5)
+
 [connection signal="pressed" from="Loading/Save1/Reset1" to="." method="_on_reset_1_pressed"]
 [connection signal="pressed" from="Loading/Save1/Load1" to="." method="_on_load_1_pressed"]
 [connection signal="pressed" from="Loading/Save2/Reset2" to="." method="_on_reset_2_pressed"]
 [connection signal="pressed" from="Loading/Save2/Load2" to="." method="_on_load_2_pressed"]
 [connection signal="pressed" from="Loading/Save3/Reset3" to="." method="_on_reset_3_pressed"]
 [connection signal="pressed" from="Loading/Save3/Load3" to="." method="_on_load_3_pressed"]
+[connection signal="pressed" from="Loading/Guide" to="." method="_on_guide_pressed"]
