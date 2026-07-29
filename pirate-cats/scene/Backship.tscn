@@ -132,6 +132,12 @@ border_width_right = 20
 border_width_bottom = 20
 border_color = Color(0.76862746, 0.25490198, 0.25490198, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wf1ak"]
+bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jeyb3"]
+bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldxs4"]
 size = Vector2(57, 324)
 
@@ -214,7 +220,7 @@ scale = Vector2(-1, 1)
 polygon = PackedVector2Array(90, 412, 77, 420, 76, 427, 124, 450, 128, 448, 126, 441, 185, 438, 187, 436, 180, 410, 121, 410, 118, 401, 113, 397, 107, 402)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1476215314]
-position = Vector2(615, 322)
+position = Vector2(611, 322)
 zoom = Vector2(2, 2)
 
 [node name="CaptainCat" type="Sprite2D" parent="Camera2D" unique_id=1686984958]
@@ -223,12 +229,16 @@ scale = Vector2(0.27068976, 0.27068976)
 texture = ExtResource("8_tjcn3")
 
 [node name="mapbutton" type="Button" parent="Camera2D" unique_id=916940549]
+visible = false
 offset_left = -65.0
 offset_top = 11.0
 offset_right = 1.0
 offset_bottom = 75.25
 theme_override_styles/normal = SubResource("StyleBoxFlat_o5cb5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5i1im")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_wf1ak")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_jeyb3")
+disabled = true
 
 [node name="Map6" type="Sprite2D" parent="Camera2D/mapbutton" unique_id=463867395]
 position = Vector2(34, 32)

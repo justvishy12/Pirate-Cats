@@ -28,7 +28,29 @@ var dialogue=[
 		"text": "Bawk, got any snacks? ",
 		"portrait": preload("res://assets/bird.png")
 	},
-]
+	#captian map
+	{
+		#8
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "This is a little embarrasing... ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+		{
+		#9
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "Turns out the last map piece was in my pocket. ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+	{
+		#10
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "Let's go assemble it at my desk. ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+	]
 
 var dialogue_index = 0
 var typing = false
@@ -79,11 +101,26 @@ func _input(event):
 				$Camera2D/Textbox.visible = false
 				can_play = false
 				feeding2 = false
+			if dialogue_index == 4:
+				$Camera2D/mapbutton.visible=true
+			if dialogue_index == 5:
+				$Camera2D/mapbutton.disabled = false
 			dialogue_index += 1
 			show_next_dialogue()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if SaveManager.cook and SaveManager.captain == false and SaveManager.scrub and SaveManager.feed and SaveManager.sort and SaveManager.fish:
+		SaveManager.captain = true
+		can_play = true
+		$ParrotMG.monitorable = false
+		locked = true
+		dialogue_index = 3
+		$Camera2D/CaptainCat.visible=true
+		show_next_dialogue()
+		return
+	
+	
 	if movedown == true and locked == false:
 		$Camera2D.global_position += Vector2(0, 150) * delta
 	$Camera2D.global_position.y = clamp(
@@ -171,3 +208,9 @@ func _on_player_button_pressed() -> void:
 		get_tree().change_scene_to_file("res://scene/parrot.tscn")
 	dialogue_index += 1
 	show_next_dialogue()
+
+func _on_mapbutton_pressed() -> void:
+	$Camera2D/mapbutton.visible=false
+	$Camera2D/CaptainCat.visible=false
+	$ParrotMG.monitorable = true
+	locked=false

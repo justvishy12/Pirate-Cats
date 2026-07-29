@@ -36,7 +36,29 @@ var dialogue=[
 		"text": "The deck shines of  sapp-furr! ",
 		"portrait": preload("res://assets/headshots/SCRUBBER FACE.png")
 	},
-]
+	#captian map
+	{
+		#8
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "This is a little embarrasing... ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+		{
+		#9
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "Turns out the last map piece was in my pocket. ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+	{
+		#10
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "Let's go assemble it at my desk. ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+	]
 
 var dialogue_index = 0
 var typing = false
@@ -89,6 +111,10 @@ func _input(event):
 				can_play = false
 				$Camera2D/Textbox.visible = false
 				scrubbing2 = false
+			if dialogue_index == 5:
+				$Camera2D/mapbutton.visible=true
+			if dialogue_index == 6:
+				$Camera2D/mapbutton.disabled = false
 			dialogue_index += 1
 			show_next_dialogue()
 			
@@ -105,6 +131,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if SaveManager.cook and SaveManager.captain == false and SaveManager.scrub and SaveManager.feed and SaveManager.sort and SaveManager.fish:
+		SaveManager.captain = true
+		can_play = true
+		locked = true
+		$ScrubberMG.monitorable = false
+		dialogue_index = 4
+		$Camera2D/CaptainCat.visible=true
+		show_next_dialogue()
+		return
+	
+	
 	if moveleft == true and locked == false:
 		$Camera2D.global_position += Vector2(-150, 0) * delta
 	$Camera2D.global_position.x = clamp(
@@ -172,3 +209,9 @@ func _on_scrubber_mg_input_event(viewport: Node, event: InputEvent, shape_idx: i
 			$Camera2D.global_position.x = 812
 			scrubbing2 = true
 			show_next_dialogue()
+
+func _on_mapbutton_pressed() -> void:
+	$Camera2D/mapbutton.visible=false
+	$Camera2D/CaptainCat.visible=false
+	$ScrubberMG.monitorable = true
+	locked=false

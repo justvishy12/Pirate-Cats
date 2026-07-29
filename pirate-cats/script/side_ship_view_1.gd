@@ -58,7 +58,29 @@ var dialogue=[
 		"text": "Boom Boom Boom ",
 		"portrait": preload("res://assets/headshots/POWDER MONKEY FACE.png")
 	},
-] 
+	#captian map
+	{
+		#4
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "This is a little embarrasing... ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+		{
+		#5
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "Turns out the last map piece was in my pocket. ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+	{
+		#6
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "Let's go assemble it at my desk. ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+	]
 var dialogue_index = 0
 var typing = false
 
@@ -107,6 +129,10 @@ func _input(event):
 				$Camera2D/Textbox.visible = false
 				can_play = false
 				sorting2 = false
+			if dialogue_index == 8:
+				$Camera2D/mapbutton.visible=true
+			if dialogue_index == 9:
+				$Camera2D/mapbutton.disabled = false
 			dialogue_index += 1
 			show_next_dialogue()
 			
@@ -117,16 +143,26 @@ func _on_player_button_pressed() -> void:
 	show_next_dialogue()
 
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Global.rightcam == true:
 		$Camera2D.position.x = 288
 	elif Global.leftcam == true:
 		$Camera2D.position.x = 812
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta: float) -> void:
+	if SaveManager.cook and SaveManager.captain == false and SaveManager.scrub and SaveManager.feed and SaveManager.sort and SaveManager.fish:
+		SaveManager.captain = true
+		can_play = true
+		locked = true
+		dialogue_index = 7
+		$PowderMG.monitorable = false
+		$Camera2D/CaptainCat.visible=true
+		show_next_dialogue()
+		return
+	
+	
+	
 	if moveleft == true and locked == false:
 		$Camera2D.global_position += Vector2(-150, 0) * delta
 	$Camera2D.global_position.x = clamp(
@@ -219,3 +255,10 @@ func _on_powder_mg_input_event(viewport: Node, event: InputEvent, shape_idx: int
 			$Camera2D.global_position.x = 417
 			sorting2 = true
 			show_next_dialogue()
+
+func _on_mapbutton_pressed() -> void:
+	$Camera2D/mapbutton.visible=false
+	$Camera2D/CaptainCat.visible=false
+	$PowderMG.monitorable = true
+	locked=false
+	

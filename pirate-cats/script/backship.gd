@@ -7,7 +7,6 @@ var fishing = false
 var cooking2 = false
 var fishing2 = false
 var locked = false
-var captain = false
 
 var dialogue = [
 #If player hasn’t done fishing puzzle
@@ -162,9 +161,10 @@ func _input(event):
 				cooking2 = true
 				$Camera2D/Textbox.visible = false
 				locked = false
-				var fish = false
 			if dialogue_index == 9:
 				$Camera2D/mapbutton.visible=true
+			if dialogue_index == 10:
+				$Camera2D/mapbutton.disabled = false
 			dialogue_index += 1
 			show_next_dialogue()
 
@@ -176,8 +176,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if SaveManager.cook and captain == false and SaveManager.scrub and SaveManager.feed and SaveManager.sort and SaveManager.fish:
-		captain = true
+	if SaveManager.cook and SaveManager.captain == false and SaveManager.scrub and SaveManager.feed and SaveManager.sort and SaveManager.fish:
+		SaveManager.captain = true
+		$Cook.monitorable = false
 		locked = true
 		dialogue_index = 8
 		$Camera2D/CaptainCat.visible=true
@@ -280,5 +281,6 @@ func _on_side_ship_view_2_input_event(viewport: Node, event: InputEvent, shape_i
 func _on_mapbutton_pressed() -> void:
 	$Camera2D/mapbutton.visible=false
 	$Camera2D/CaptainCat.visible=false
+	$Cook.monitorable = true
 	locked=false
 	

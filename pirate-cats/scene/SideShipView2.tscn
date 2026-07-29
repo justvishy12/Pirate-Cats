@@ -9,6 +9,8 @@
 [ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="7_6tulu"]
 [ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="8_epqup"]
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="9_0hrjc"]
+[ext_resource type="Texture2D" uid="uid://uevxgxsijq8n" path="res://assets/captain cat.png" id="10_epqup"]
+[ext_resource type="Texture2D" uid="uid://5p61n5jeldm0" path="res://assets/map6.png" id="11_0hrjc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0mlra"]
 atlas = ExtResource("3_pdb1p")
@@ -34,6 +36,23 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjbe2"]
 size = Vector2(112.41936, 800.8598)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d08n3"]
+bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_optvc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.76862746, 0.25490198, 0.25490198, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jeyb3"]
+bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epqup"]
+bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldxs4"]
 size = Vector2(108, 125.5)
@@ -93,6 +112,28 @@ shape = SubResource("RectangleShape2D_cjbe2")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Camera2D/moveright" unique_id=1928748589]
 position = Vector2(541.70496, 0)
 shape = SubResource("RectangleShape2D_cjbe2")
+
+[node name="CaptainCat" type="Sprite2D" parent="Camera2D" unique_id=575391787]
+position = Vector2(-107.99994, 28)
+scale = Vector2(0.93320197, 0.93320197)
+texture = ExtResource("10_epqup")
+
+[node name="mapbutton" type="Button" parent="Camera2D" unique_id=1457615076]
+visible = false
+offset_left = 12.448365
+offset_top = 29.046705
+offset_right = 184.65381
+offset_bottom = 199.17757
+theme_override_styles/normal = SubResource("StyleBoxFlat_d08n3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_optvc")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_jeyb3")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_epqup")
+disabled = true
+
+[node name="Map6" type="Sprite2D" parent="Camera2D/mapbutton" unique_id=1201064463]
+position = Vector2(87.14005, 82.99063)
+scale = Vector2(0.3214785, 0.31657028)
+texture = ExtResource("11_0hrjc")
 
 [node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=1728152246]
 visible = false
@@ -179,6 +220,7 @@ shape = SubResource("CapsuleShape2D_ldxs4")
 [connection signal="mouse_exited" from="Camera2D/move left" to="." method="_on_move_left_mouse_exited"]
 [connection signal="mouse_entered" from="Camera2D/moveright" to="." method="_on_moveright_mouse_entered"]
 [connection signal="mouse_exited" from="Camera2D/moveright" to="." method="_on_moveright_mouse_exited"]
+[connection signal="pressed" from="Camera2D/mapbutton" to="." method="_on_mapbutton_pressed"]
 [connection signal="pressed" from="Camera2D/player button" to="." method="_on_player_button_pressed"]
 [connection signal="mouse_entered" from="BubbleBucket" to="." method="_on_bubble_bucket_mouse_entered"]
 [connection signal="mouse_exited" from="BubbleBucket" to="." method="_on_bubble_bucket_mouse_exited"]
