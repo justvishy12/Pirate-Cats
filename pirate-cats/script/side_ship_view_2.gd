@@ -38,21 +38,21 @@ var dialogue=[
 	},
 	#captian map
 	{
-		#8
+		#4
 		"speaker": "cat",
 		"name": "Cat Sparrow (Captain)",
 		"text": "This is a little embarrasing... ",
 		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
 	},
 		{
-		#9
+		#5
 		"speaker": "cat",
 		"name": "Cat Sparrow (Captain)",
 		"text": "Turns out the last map piece was in my pocket. ",
 		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
 	},
 	{
-		#10
+		#6
 		"speaker": "cat",
 		"name": "Cat Sparrow (Captain)",
 		"text": "Let's go assemble it at my desk. ",

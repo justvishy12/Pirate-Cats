@@ -107,7 +107,7 @@ func show_cat_text(line) -> void:
 	$Textbox/namelabel.text = line["name"]
 	$Textbox/textlabel.text = line["text"]
 	
-	if dialogue_index == 422:
+	if dialogue_index == 4:
 		fight = false
 	if line.has("portrait"):
 		$Textbox/photobox.texture = line["portrait"]

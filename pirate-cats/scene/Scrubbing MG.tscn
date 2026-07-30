@@ -33,12 +33,12 @@ offset_left = -296.0
 offset_top = -172.0
 offset_right = 298.0
 offset_bottom = 175.0
-color = Color(0.3672866, 0.1955975, 0.015459116, 1)
+color = Color(0.6745098, 0.5019608, 0.3529412, 1)
 
 [node name="Round1" type="Node2D" parent="." unique_id=234737567]
 
 [node name="Dirt1" type="Sprite2D" parent="Round1" unique_id=61467951]
-modulate = Color(1, 0.78092533, 0, 1)
+modulate = Color(0.21960784, 0.4117647, 0.9019608, 1)
 position = Vector2(-170, -68)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_m5id3")
@@ -51,7 +51,7 @@ offset_right = -126.0
 offset_bottom = -36.0
 
 [node name="Dirt2" type="Sprite2D" parent="Round1" unique_id=1994046561]
-modulate = Color(0.3330168, 0.53753316, 1, 1)
+modulate = Color(1, 0.9137255, 0.13333334, 1)
 position = Vector2(234, -6)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_n17ph")
@@ -64,7 +64,7 @@ offset_right = 283.0
 offset_bottom = 42.0
 
 [node name="Dirt3" type="Sprite2D" parent="Round1" unique_id=649143603]
-modulate = Color(0.47467726, 0.9036324, 0.6883652, 1)
+modulate = Color(0.5294118, 1, 0.4862745, 1)
 position = Vector2(2, 100)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_3ntdx")
@@ -89,7 +89,7 @@ text = "Round 1"
 position = Vector2(-816, 383)
 
 [node name="Dirt1" type="Sprite2D" parent="Round2" unique_id=1082707864]
-modulate = Color(1, 0.43917835, 1, 1)
+modulate = Color(1, 0.44313726, 0.44313726, 1)
 position = Vector2(-193, 101)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_7u8rw")
@@ -102,7 +102,7 @@ offset_right = -154.0
 offset_bottom = 128.0
 
 [node name="Dirt2" type="Sprite2D" parent="Round2" unique_id=845256369]
-self_modulate = Color(0.44796598, 0.6629296, 1, 1)
+self_modulate = Color(0.21960784, 0.4117647, 0.9019608, 1)
 position = Vector2(164, -88)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_upuj2")
@@ -115,7 +115,7 @@ offset_right = 242.0
 offset_bottom = -30.0
 
 [node name="Dirt3" type="Sprite2D" parent="Round2" unique_id=1511621950]
-self_modulate = Color(0.7585879, 1, 1, 1)
+self_modulate = Color(0.5294118, 1, 0.4862745, 1)
 position = Vector2(-157, -69)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_3oxr4")
@@ -128,7 +128,7 @@ offset_right = -95.0
 offset_bottom = -18.0
 
 [node name="Dirt4" type="Sprite2D" parent="Round2" unique_id=2010300431]
-modulate = Color(0.06300025, 0.22972608, 0.20051426, 1)
+modulate = Color(1, 0.9137255, 0.13333334, 1)
 position = Vector2(-21, 73)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_m5id3")
@@ -141,7 +141,7 @@ offset_right = 33.0
 offset_bottom = 114.0
 
 [node name="Dirt5" type="Sprite2D" parent="Round2" unique_id=2053489066]
-modulate = Color(0.6304005, 0.35129896, 0.049467184, 1)
+modulate = Color(1, 0.44313726, 0.44313726, 1)
 position = Vector2(162, 72)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_3ntdx")
@@ -166,7 +166,7 @@ text = "Round 2"
 position = Vector2(-816, 383)
 
 [node name="Dirt1" type="Sprite2D" parent="Round3" unique_id=529531495]
-modulate = Color(0.8902031, 0.5153751, 0.135874, 1)
+modulate = Color(1, 0.44313726, 0.44313726, 1)
 position = Vector2(215, -88)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_l3acn")
@@ -179,7 +179,7 @@ offset_right = 260.0
 offset_bottom = -57.0
 
 [node name="Dirt2" type="Sprite2D" parent="Round3" unique_id=757181410]
-modulate = Color(1, 1, 0.6253981, 1)
+modulate = Color(1, 0.9137255, 0.13333334, 1)
 position = Vector2(-181, -70)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_n17ph")
@@ -192,7 +192,7 @@ offset_right = -117.0
 offset_bottom = -11.0
 
 [node name="Dirt3" type="Sprite2D" parent="Round3" unique_id=1252659897]
-modulate = Color(1, 0.735357, 1, 1)
+modulate = Color(1, 0.44313726, 0.44313726, 1)
 position = Vector2(-193, 101)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_7u8rw")
@@ -205,7 +205,7 @@ offset_right = -150.0
 offset_bottom = 135.0
 
 [node name="Dirt4" type="Sprite2D" parent="Round3" unique_id=1947375609]
-modulate = Color(0.4834036, 1, 0.62131935, 1)
+modulate = Color(0.5294118, 1, 0.4862745, 1)
 position = Vector2(22, -108)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_upuj2")
@@ -218,7 +218,7 @@ offset_right = 120.0
 offset_bottom = -46.0
 
 [node name="Dirt5" type="Sprite2D" parent="Round3" unique_id=1614869198]
-modulate = Color(0.44744408, 0.3355917, 0.09340591, 1)
+modulate = Color(1, 0.9137255, 0.13333334, 1)
 position = Vector2(43, 113)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_m5id3")
@@ -231,7 +231,7 @@ offset_right = 103.0
 offset_bottom = 156.0
 
 [node name="Dirt6" type="Sprite2D" parent="Round3" unique_id=1921010271]
-modulate = Color(0.5793735, 0.5220287, 1, 1)
+modulate = Color(0.21960784, 0.4117647, 0.9019608, 1)
 position = Vector2(193, 34)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_3ntdx")

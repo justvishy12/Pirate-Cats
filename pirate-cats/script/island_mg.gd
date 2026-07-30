@@ -112,8 +112,6 @@ var dialogue = [
 var dialogue_index = 0
 var typing = false
 
-
-
 func show_next_dialogue() -> void:
 	if dialogue_index >= dialogue.size():
 		$Textbox.visible = false
