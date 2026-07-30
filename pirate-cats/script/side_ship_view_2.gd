@@ -91,13 +91,13 @@ func show_cat_text(line) -> void:
 	else:
 		$Camera2D/Textbox/photobox.texture = null
 	$Camera2D/Textbox/textlabel.visible_characters = 0
-	
+	$Typing.play()
 	for i in $Camera2D/Textbox/textlabel.text.length():
 		if !is_inside_tree():
 			return
 		$Camera2D/Textbox/textlabel.visible_characters = i
 		await get_tree().create_timer(SaveManager.speed, false).timeout
-	
+	$Typing.stop()
 	typing = false
 
 func _input(event):

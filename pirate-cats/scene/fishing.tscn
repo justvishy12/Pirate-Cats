@@ -19,6 +19,7 @@
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="16_21ie3"]
 [ext_resource type="Texture2D" uid="uid://c8bkutybtaau0" path="res://assets/map1.png" id="18_ce22x"]
 [ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="19_21ie3"]
+[ext_resource type="AudioStream" uid="uid://d24kk8ruhuv2a" path="res://audio/TypingSound.mp3" id="20_7wtnd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ue6ed"]
 atlas = ExtResource("1_ly0cx")
@@ -638,6 +639,13 @@ zoom = Vector2(2, 2)
 [node name="pausemenu" parent="Camera2D" unique_id=622735820 instance=ExtResource("19_21ie3")]
 visible = false
 position = Vector2(-576, -324)
+
+[node name="Typing" type="AudioStreamPlayer2D" parent="." unique_id=202314017]
+stream = ExtResource("20_7wtnd")
+volume_db = 10.0
+pitch_scale = 0.8
+bus = &"Sfx"
+parameters/looping = true
 
 [connection signal="area_entered" from="Outside/Inside/InsideSlider" to="." method="_on_inside_slider_area_entered"]
 [connection signal="area_exited" from="Outside/Inside/InsideSlider" to="." method="_on_inside_slider_area_exited"]

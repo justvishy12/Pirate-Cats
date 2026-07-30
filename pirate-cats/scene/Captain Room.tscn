@@ -22,6 +22,7 @@
 [ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="20_hif1r"]
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="21_a7tom"]
 [ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="22_djvvj"]
+[ext_resource type="AudioStream" uid="uid://d24kk8ruhuv2a" path="res://audio/TypingSound.mp3" id="23_hif1r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qyjxp"]
 atlas = ExtResource("3_hp81p")
@@ -948,6 +949,13 @@ texture = ExtResource("15_lerbx")
 visible = false
 position = Vector2(-288, -162)
 scale = Vector2(0.5, 0.5)
+
+[node name="Typing" type="AudioStreamPlayer2D" parent="." unique_id=1899866195]
+stream = ExtResource("23_hif1r")
+volume_db = 10.0
+pitch_scale = 0.8
+bus = &"Sfx"
+parameters/looping = true
 
 [connection signal="mouse_entered" from="DoorHandle" to="." method="_on_door_handle_mouse_entered"]
 [connection signal="mouse_exited" from="DoorHandle" to="." method="_on_door_handle_mouse_exited"]

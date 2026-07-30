@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://rb44yvydtdb7" path="res://assets/chef cat.png" id="17_ktktp"]
 [ext_resource type="Texture2D" uid="uid://uevxgxsijq8n" path="res://assets/captain cat.png" id="18_3vu5f"]
 [ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="18_356t6"]
+[ext_resource type="AudioStream" uid="uid://d24kk8ruhuv2a" path="res://audio/TypingSound.mp3" id="19_78agt"]
 [ext_resource type="Texture2D" uid="uid://c1ymamehqfgv6" path="res://assets/scrubber cat.png" id="19_u7o4c"]
 [ext_resource type="Texture2D" uid="uid://bk0yokqeio7rc" path="res://assets/textbox.png" id="20_x1prs"]
 [ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="22_25f7j"]
@@ -336,5 +337,12 @@ color = Color(0, 0, 0, 0)
 visible = false
 position = Vector2(553, 420)
 scale = Vector2(0.5, 0.5)
+
+[node name="Typing" type="AudioStreamPlayer2D" parent="." unique_id=952974579]
+stream = ExtResource("19_78agt")
+volume_db = 10.0
+pitch_scale = 0.8
+bus = &"Sfx"
+parameters/looping = true
 
 [connection signal="pressed" from="Button" to="." method="_on_player_button_pressed"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://8nuqbej7i6rw"
+path="res://.godot/imported/crab sound.mp3-4dfdf6c98093d58edcc8ea1a39c1a4b9.mp3str"
+
+[deps]
+
+source_file="res://audio/crab sound.mp3"
+dest_files=["res://.godot/imported/crab sound.mp3-4dfdf6c98093d58edcc8ea1a39c1a4b9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

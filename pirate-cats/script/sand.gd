@@ -21,9 +21,11 @@ func _process(delta: float) -> void:
 func _on_button_pressed() -> void:
 	clicks += 1
 	if clicks == 1:
+		$Dig.play()
 		$Hole.visible = true
 		$MidSandPile.visible = true
 	elif clicks == 2:
+		$Dig.play()
 		$DeepHole.visible = true
 		$Sandpile.visible = true
 		if treasure == false:

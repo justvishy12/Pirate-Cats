@@ -21,6 +21,8 @@
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="19_nr356"]
 [ext_resource type="Texture2D" uid="uid://b0ioblyl7a35b" path="res://assets/map3.png" id="20_85f5m"]
 [ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="21_66c1l"]
+[ext_resource type="AudioStream" uid="uid://d24kk8ruhuv2a" path="res://audio/TypingSound.mp3" id="22_nr356"]
+[ext_resource type="AudioStream" uid="uid://cjxwjuwyo2cs" path="res://audio/parrot.mp3" id="23_k7b00"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iio88"]
 atlas = ExtResource("2_bo8uk")
@@ -315,6 +317,20 @@ texture = ExtResource("20_85f5m")
 visible = false
 position = Vector2(-288, -162)
 scale = Vector2(0.5, 0.5)
+
+[node name="Typing" type="AudioStreamPlayer2D" parent="." unique_id=2142848539]
+stream = ExtResource("22_nr356")
+volume_db = 10.0
+pitch_scale = 0.8
+bus = &"Sfx"
+parameters/looping = true
+
+[node name="Eating" type="AudioStreamPlayer2D" parent="." unique_id=1770154439]
+stream = ExtResource("23_k7b00")
+volume_db = 1.0
+pitch_scale = 0.8
+bus = &"Sfx"
+parameters/looping = true
 
 [connection signal="button_down" from="Right/Cookie2/Button" to="Right/Cookie2" method="_on_button_button_down"]
 [connection signal="button_up" from="Right/Cookie2/Button" to="Right/Cookie2" method="_on_button_button_up"]

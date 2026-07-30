@@ -19,6 +19,7 @@ var map_dialogue_shown = false
 var sponge = preload("res://assets/sponge cursor.png")
 var mouse_pos: Vector2
 
+
 var dialogue = [
 	{
 		#1
@@ -89,13 +90,13 @@ func show_cat_text(line) -> void:
 	else:
 		$Textbox/photobox.texture = null
 	$Textbox/textlabel.visible_characters = 0
-	
+	$Typing.play()
 	for i in $Textbox/textlabel.text.length():
 		if !is_inside_tree():
 			return
 		$Textbox/textlabel.visible_characters = i
 		await get_tree().create_timer(SaveManager.speed, false).timeout
-	
+	$Typing.stop()
 	typing = false
 
 
@@ -124,6 +125,14 @@ func _process(delta: float) -> void:
 
 func round1():
 	while $Round1/Dirt1.modulate.a > 0.0 or $Round1/Dirt2.modulate.a > 0.0 or $Round1/Dirt3.modulate.a > 0.0:
+		var hovering_stain = O1 or O2 or O3 or T1 or T2 or T3 or T4 or T5 or E1 or E2 or E3 or E4 or E5 or E6
+		var mouse_moved = mouse_pos.distance_to(get_global_mouse_position()) >= 2
+
+		if not hovering_stain or not mouse_moved:
+			$Scrubbing.stop()
+		else:
+			if !$Scrubbing.playing:
+				$Scrubbing.play()
 		if $Round1/Dirt3.modulate.a < 0.18:
 			$Round1/Dirt3.modulate.a = 0.0
 		if O1 == true and mouse_pos.distance_to(get_global_mouse_position()) >= 2:
@@ -135,13 +144,21 @@ func round1():
 				
 		mouse_pos = get_global_mouse_position()
 		await get_tree().create_timer(0.4).timeout
-
+	$Scrubbing.stop()
 	$Round1.position = Vector2(-816, 383)
 	round2()
 	$Round2.position = Vector2(0, 0)
 
 func round2():
 	while $Round2/Dirt1.modulate.a > 0.0 or $Round2/Dirt2.modulate.a > 0.0 or $Round2/Dirt3.modulate.a > 0.0 and $Round2/Dirt4.modulate.a > 0.0 and $Round2/Dirt5.modulate.a > 0.0:
+		var hovering_stain = O1 or O2 or O3 or T1 or T2 or T3 or T4 or T5 or E1 or E2 or E3 or E4 or E5 or E6
+		var mouse_moved = mouse_pos.distance_to(get_global_mouse_position()) >= 2
+
+		if not hovering_stain or not mouse_moved:
+			$Scrubbing.stop()
+		else:
+			if !$Scrubbing.playing:
+				$Scrubbing.play()
 		if T1 == true and mouse_pos.distance_to(get_global_mouse_position()) >= 10:
 			$Round2/Dirt1.modulate.a = max(0.0, $Round2/Dirt1.modulate.a - 0.17)
 		if T2 == true and mouse_pos.distance_to(get_global_mouse_position()) >= 10:
@@ -155,12 +172,20 @@ func round2():
 				
 		mouse_pos = get_global_mouse_position()
 		await get_tree().create_timer(0.4).timeout
-
+	$Scrubbing.stop()
 	$Round2.position = Vector2(-816, 383)
 	round3()
 	$Round3.position = Vector2(0, 0)
 func round3():
 	while $Round3/Dirt1.modulate.a > 0.0 or $Round3/Dirt2.modulate.a > 0.0 or $Round3/Dirt3.modulate.a > 0.0 and $Round3/Dirt4.modulate.a > 0.0 and $Round3/Dirt5.modulate.a > 0.0 and $Round3/Dirt6.modulate.a > 0.0:
+		var hovering_stain = O1 or O2 or O3 or T1 or T2 or T3 or T4 or T5 or E1 or E2 or E3 or E4 or E5 or E6
+		var mouse_moved = mouse_pos.distance_to(get_global_mouse_position()) >= 2
+
+		if not hovering_stain or not mouse_moved:
+			$Scrubbing.stop()
+		else:
+			if !$Scrubbing.playing:
+				$Scrubbing.play()
 		if E1 == true and mouse_pos.distance_to(get_global_mouse_position()) >= 10:
 			$Round3/Dirt1.modulate.a = max(0.0, $Round3/Dirt1.modulate.a - 0.17)
 		if E2 == true and mouse_pos.distance_to(get_global_mouse_position()) >= 10:
@@ -176,6 +201,7 @@ func round3():
 				
 		mouse_pos = get_global_mouse_position()
 		await get_tree().create_timer(0.4).timeout
+	$Scrubbing.stop()
 	$mapbutton.visible = true
 	var tween = create_tween()
 	tween.tween_property($mapbutton, "modulate:a", 1.0, 0.5)

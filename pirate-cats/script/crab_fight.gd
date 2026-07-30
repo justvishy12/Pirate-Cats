@@ -14,8 +14,10 @@ var cancel_crabmove2 = false
 var cancel_crabmove3 = false
 var spawning_crabs = false
 var playing_mg = false
+var moving = false
 var rounds = 0
 var can_play = false
+var can_shoot = true
 const CannonBallScene = preload("res://scene/Cannon Ball.tscn")
 @onready var mid_start: Vector2 = $CMid.global_position
 @onready var left_start = $CLeft.global_position
@@ -114,13 +116,13 @@ func show_cat_text(line) -> void:
 	else:
 		$Textbox/photobox.texture = null
 	$Textbox/textlabel.visible_characters = 0
-	
+	$Typing.play()
 	for i in $Textbox/textlabel.text.length():
 		if !is_inside_tree():
 			return
 		$Textbox/textlabel.visible_characters = i
 		await get_tree().create_timer(SaveManager.speed, false).timeout
-	
+	$Typing.stop()
 	typing = false
 
 func _ready() -> void:
@@ -148,7 +150,8 @@ func _process(delta: float) -> void:
 			cancel_crabmove3 = true
 			await get_tree().create_timer(0.1).timeout
 			$CRight.visible = false
-	
+	if $CMid.visible == false and $CLeft.visible == false and $CRight.visible == false:
+		$CrabWalk.stop()
 	if $CMid.visible == false and $CLeft.visible == false and $CRight.visible == false and playing_mg == true and spawning_crabs == false:
 		playing_mg = false
 		pick_crabs()
@@ -159,8 +162,13 @@ func _input(event):
 			dialogue_index += 1
 			show_next_dialogue()
 
-	if event.is_action_pressed("space") and fight == true:
+	if event.is_action_pressed("space") and fight == true and can_shoot == true:
+		can_shoot = false
 		fire()
+		if !is_inside_tree():
+			return
+		await get_tree().create_timer(0.4).timeout
+		can_shoot = true
 		
 func fire():
 	var cannonball = CannonBallScene.instantiate()
@@ -168,7 +176,7 @@ func fire():
 
 	cannonball.add_to_group("cannonballs")
 	cannonball.global_position = $Cannon.global_position
-
+	$CannonShoot.play()
 	var target_z: float = cannonball.position.y - 290
 	var tween: Tween = create_tween()
 	tween.tween_property(cannonball, "position:y", target_z, 0.7).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
@@ -236,6 +244,8 @@ func crab_move3():
 		var target_a: float = $CRight.position.y - 85
 		var tween: Tween = create_tween()
 		tween.tween_property($CRight, "position:y", target_a, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C3_touchable = true
 		if cancel_crabmove3:
 			return
@@ -248,6 +258,7 @@ func crab_move3():
 		var target_b: float = $CRight.position.y + 123
 		var tween2: Tween = create_tween()
 		tween2.tween_property($CRight, "position:y", target_b, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C3_touchable = false
 		if cancel_crabmove3:
 			return
@@ -256,6 +267,8 @@ func crab_move3():
 		var target_c: float = $CRight.position.y - 75
 		var tween3: Tween = create_tween()
 		tween3.tween_property($CRight, "position:y", target_c, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C3_touchable = true
 		if cancel_crabmove3:
 			return
@@ -270,6 +283,7 @@ func crab_move3():
 		var target_d: float = $CRight.position.y + 200
 		var tween4: Tween = create_tween()
 		tween4.tween_property($CRight, "position:y", target_d, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C3_touchable = false
 		if cancel_crabmove3:
 			return
@@ -280,6 +294,8 @@ func crab_move3():
 		var target_e: float = $CRight.position.y - 100
 		var tween5: Tween = create_tween()
 		tween5.tween_property($CRight, "position:y", target_e, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C3_touchable = true
 		if cancel_crabmove3:
 			return
@@ -292,6 +308,7 @@ func crab_move3():
 		var target_f: float = $CRight.position.y + 100
 		var tween6: Tween = create_tween()
 		tween6.tween_property($CRight, "position:y", target_f, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C3_touchable = false
 		
 	elif CRight == green:
@@ -300,6 +317,8 @@ func crab_move3():
 		var target_a: float = $CRight.position.y - 85
 		var tween: Tween = create_tween()
 		tween.tween_property($CRight, "position:y", target_a, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C3_touchable = true
 		if cancel_crabmove3:
 			return
@@ -314,6 +333,7 @@ func crab_move3():
 		var target_b: float = $CRight.position.y + 123
 		var tween2: Tween = create_tween()
 		tween2.tween_property($CRight, "position:y", target_b, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C3_touchable = false
 		if cancel_crabmove3:
 			return
@@ -324,6 +344,8 @@ func crab_move3():
 		var target_c: float = $CRight.position.y - 75
 		var tween3: Tween = create_tween()
 		tween3.tween_property($CRight, "position:y", target_c, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C3_touchable = true
 		if cancel_crabmove3:
 			return
@@ -338,6 +360,7 @@ func crab_move3():
 		var target_d: float = $CRight.position.y + 200
 		var tween4: Tween = create_tween()
 		tween4.tween_property($CRight, "position:y", target_d, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C3_touchable = false
 		if cancel_crabmove3:
 			return
@@ -348,6 +371,8 @@ func crab_move3():
 		var target_e: float = $CRight.position.y - 100
 		var tween5: Tween = create_tween()
 		tween5.tween_property($CRight, "position:y", target_e, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C3_touchable = true
 		if cancel_crabmove3:
 			return
@@ -362,6 +387,7 @@ func crab_move3():
 		var target_f: float = $CRight.position.y + 100
 		var tween6: Tween = create_tween()
 		tween6.tween_property($CRight, "position:y", target_f, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C3_touchable = false
 		
 	elif CRight == yellow:
@@ -371,6 +397,8 @@ func crab_move3():
 		var target_a: float = $CRight.position.y - 85
 		var tween: Tween = create_tween()
 		tween.tween_property($CRight, "position:y", target_a, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C3_touchable = true
 		if cancel_crabmove3:
 			return
@@ -385,6 +413,7 @@ func crab_move3():
 		var target_b: float = $CRight.position.y + 123
 		var tween2: Tween = create_tween()
 		tween2.tween_property($CRight, "position:y", target_b, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C3_touchable = false
 		if cancel_crabmove3:
 			return
@@ -395,6 +424,8 @@ func crab_move3():
 		var target_c: float = $CRight.position.y - 75
 		var tween3: Tween = create_tween()
 		tween3.tween_property($CRight, "position:y", target_c, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C3_touchable = true
 		if cancel_crabmove3:
 			return
@@ -407,6 +438,7 @@ func crab_move3():
 		var target_d: float = $CRight.position.y + 200
 		var tween4: Tween = create_tween()
 		tween4.tween_property($CRight, "position:y", target_d, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C3_touchable = false
 		if cancel_crabmove3:
 			return
@@ -417,6 +449,8 @@ func crab_move3():
 		var target_e: float = $CRight.position.y - 100
 		var tween5: Tween = create_tween()
 		tween5.tween_property($CRight, "position:y", target_e, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C3_touchable = true
 		if cancel_crabmove3:
 			return
@@ -431,6 +465,7 @@ func crab_move3():
 		var target_f: float = $CRight.position.y + 100
 		var tween6: Tween = create_tween()
 		tween6.tween_property($CRight, "position:y", target_f, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C3_touchable = false
 	$Panel3.visible = true
 	await get_tree().create_timer(0.1).timeout
@@ -444,6 +479,8 @@ func crab_move2():
 		var target_a: float = $CLeft.position.y - 85
 		var tween: Tween = create_tween()
 		tween.tween_property($CLeft, "position:y", target_a, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C2_touchable = true
 		if cancel_crabmove2:
 			return
@@ -458,6 +495,7 @@ func crab_move2():
 		var target_b: float = $CLeft.position.y + 123
 		var tween2: Tween = create_tween()
 		tween2.tween_property($CLeft, "position:y", target_b, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C2_touchable = false
 		if cancel_crabmove2:
 			return
@@ -470,6 +508,8 @@ func crab_move2():
 		var target_c: float = $CLeft.position.y - 75
 		var tween3: Tween = create_tween()
 		tween3.tween_property($CLeft, "position:y", target_c, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C2_touchable = true
 		if cancel_crabmove2:
 			return
@@ -484,6 +524,7 @@ func crab_move2():
 		var target_d: float = $CLeft.position.y + 200
 		var tween4: Tween = create_tween()
 		tween4.tween_property($CLeft, "position:y", target_d, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C2_touchable = false
 		if cancel_crabmove2:
 			return
@@ -494,6 +535,8 @@ func crab_move2():
 		var target_e: float = $CLeft.position.y - 100
 		var tween5: Tween = create_tween()
 		tween5.tween_property($CLeft, "position:y", target_e, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C2_touchable = true
 		if cancel_crabmove2:
 			return
@@ -508,6 +551,7 @@ func crab_move2():
 		var target_f: float = $CLeft.position.y + 100
 		var tween6: Tween = create_tween()
 		tween6.tween_property($CLeft, "position:y", target_f, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C2_touchable = false
 		
 	elif CLeft == green:
@@ -516,6 +560,8 @@ func crab_move2():
 		var target_a: float = $CLeft.position.y - 85
 		var tween: Tween = create_tween()
 		tween.tween_property($CLeft, "position:y", target_a, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C2_touchable = true
 		if cancel_crabmove2:
 			return
@@ -530,6 +576,7 @@ func crab_move2():
 		var target_b: float = $CLeft.position.y + 123
 		var tween2: Tween = create_tween()
 		tween2.tween_property($CLeft, "position:y", target_b, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C2_touchable = false
 		if cancel_crabmove2:
 			return
@@ -540,6 +587,8 @@ func crab_move2():
 		var target_c: float = $CLeft.position.y - 75
 		var tween3: Tween = create_tween()
 		tween3.tween_property($CLeft, "position:y", target_c, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C2_touchable = true
 		if cancel_crabmove2:
 			return
@@ -554,6 +603,7 @@ func crab_move2():
 		var target_d: float = $CLeft.position.y + 200
 		var tween4: Tween = create_tween()
 		tween4.tween_property($CLeft, "position:y", target_d, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C2_touchable = false
 		if cancel_crabmove2:
 			return
@@ -564,6 +614,8 @@ func crab_move2():
 		var target_e: float = $CLeft.position.y - 100
 		var tween5: Tween = create_tween()
 		tween5.tween_property($CLeft, "position:y", target_e, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C2_touchable = true
 		if cancel_crabmove2:
 			return
@@ -576,6 +628,7 @@ func crab_move2():
 		var target_f: float = $CLeft.position.y + 100
 		var tween6: Tween = create_tween()
 		tween6.tween_property($CLeft, "position:y", target_f, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C2_touchable = false
 		
 	elif CLeft == yellow:
@@ -584,6 +637,8 @@ func crab_move2():
 		var target_a: float = $CLeft.position.y - 85
 		var tween: Tween = create_tween()
 		tween.tween_property($CLeft, "position:y", target_a, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C2_touchable = true
 		if cancel_crabmove2:
 			return
@@ -598,6 +653,7 @@ func crab_move2():
 		var target_b: float = $CLeft.position.y + 123
 		var tween2: Tween = create_tween()
 		tween2.tween_property($CLeft, "position:y", target_b, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C2_touchable = false
 		if cancel_crabmove2:
 			return
@@ -608,6 +664,8 @@ func crab_move2():
 		var target_c: float = $CLeft.position.y - 75
 		var tween3: Tween = create_tween()
 		tween3.tween_property($CLeft, "position:y", target_c, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C2_touchable = true
 		if cancel_crabmove2:
 			return
@@ -622,6 +680,7 @@ func crab_move2():
 		var target_d: float = $CLeft.position.y + 200
 		var tween4: Tween = create_tween()
 		tween4.tween_property($CLeft, "position:y", target_d, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C2_touchable = false
 		if cancel_crabmove2:
 			return
@@ -632,6 +691,8 @@ func crab_move2():
 		var target_e: float = $CLeft.position.y - 100
 		var tween5: Tween = create_tween()
 		tween5.tween_property($CLeft, "position:y", target_e, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C2_touchable = true
 		if cancel_crabmove2:
 			return
@@ -642,6 +703,7 @@ func crab_move2():
 		var target_f: float = $CLeft.position.y + 100
 		var tween6: Tween = create_tween()
 		tween6.tween_property($CLeft, "position:y", target_f, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C2_touchable = false
 	$Panel2.visible = true
 	await get_tree().create_timer(0.1).timeout
@@ -656,6 +718,8 @@ func crab_move():
 		var target_a: float = $CMid.position.y - 85
 		var tween: Tween = create_tween()
 		tween.tween_property($CMid, "position:y", target_a, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C1_touchable = true
 		if cancel_crabmove:
 			return
@@ -670,6 +734,7 @@ func crab_move():
 		var target_b: float = $CMid.position.y + 123
 		var tween2: Tween = create_tween()
 		tween2.tween_property($CMid, "position:y", target_b, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C1_touchable = false
 		if cancel_crabmove:
 			return
@@ -680,6 +745,8 @@ func crab_move():
 		var target_c: float = $CMid.position.y - 75
 		var tween3: Tween = create_tween()
 		tween3.tween_property($CMid, "position:y", target_c, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C1_touchable = true
 		if cancel_crabmove:
 			return
@@ -694,6 +761,7 @@ func crab_move():
 		var target_d: float = $CMid.position.y + 200
 		var tween4: Tween = create_tween()
 		tween4.tween_property($CMid, "position:y", target_d, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C1_touchable = false
 		if cancel_crabmove:
 			return
@@ -704,6 +772,8 @@ func crab_move():
 		var target_e: float = $CMid.position.y - 100
 		var tween5: Tween = create_tween()
 		tween5.tween_property($CMid, "position:y", target_e, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C1_touchable = true
 		if cancel_crabmove:
 			return
@@ -718,6 +788,7 @@ func crab_move():
 		var target_f: float = $CMid.position.y + 50
 		var tween6: Tween = create_tween()
 		tween6.tween_property($CMid, "position:y", target_f, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C1_touchable = false
 		
 	elif CMid == green:
@@ -726,6 +797,8 @@ func crab_move():
 		var target_a: float = $CMid.position.y - 85
 		var tween: Tween = create_tween()
 		tween.tween_property($CMid, "position:y", target_a, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C1_touchable = true
 		if cancel_crabmove:
 			return
@@ -740,6 +813,7 @@ func crab_move():
 		var target_b: float = $CMid.position.y + 123
 		var tween2: Tween = create_tween()
 		tween2.tween_property($CMid, "position:y", target_b, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C1_touchable = false
 		if cancel_crabmove:
 			return
@@ -750,6 +824,8 @@ func crab_move():
 		var target_c: float = $CMid.position.y - 75
 		var tween3: Tween = create_tween()
 		tween3.tween_property($CMid, "position:y", target_c, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C1_touchable = true
 		if cancel_crabmove:
 			return
@@ -764,6 +840,7 @@ func crab_move():
 		var target_d: float = $CMid.position.y + 200
 		var tween4: Tween = create_tween()
 		tween4.tween_property($CMid, "position:y", target_d, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C1_touchable = false
 		if cancel_crabmove:
 			return
@@ -774,6 +851,8 @@ func crab_move():
 		var target_e: float = $CMid.position.y - 100
 		var tween5: Tween = create_tween()
 		tween5.tween_property($CMid, "position:y", target_e, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C1_touchable = true
 		if cancel_crabmove:
 			return
@@ -788,6 +867,7 @@ func crab_move():
 		var target_f: float = $CMid.position.y + 50
 		var tween6: Tween = create_tween()
 		tween6.tween_property($CMid, "position:y", target_f, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C1_touchable = false
 	
 	elif CMid == yellow:
@@ -796,6 +876,8 @@ func crab_move():
 		var target_a: float = $CMid.position.y - 85
 		var tween: Tween = create_tween()
 		tween.tween_property($CMid, "position:y", target_a, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C1_touchable = true
 		if cancel_crabmove:
 			return
@@ -810,6 +892,7 @@ func crab_move():
 		var target_b: float = $CMid.position.y + 123
 		var tween2: Tween = create_tween()
 		tween2.tween_property($CMid, "position:y", target_b, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C1_touchable = false
 		if cancel_crabmove:
 			return
@@ -820,6 +903,8 @@ func crab_move():
 		var target_c: float = $CMid.position.y - 75
 		var tween3: Tween = create_tween()
 		tween3.tween_property($CMid, "position:y", target_c, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C1_touchable = true
 		if cancel_crabmove:
 			return
@@ -834,6 +919,7 @@ func crab_move():
 		var target_d: float = $CMid.position.y + 200
 		var tween4: Tween = create_tween()
 		tween4.tween_property($CMid, "position:y", target_d, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C1_touchable = false
 		if cancel_crabmove:
 			return
@@ -844,6 +930,8 @@ func crab_move():
 		var target_e: float = $CMid.position.y - 100
 		var tween5: Tween = create_tween()
 		tween5.tween_property($CMid, "position:y", target_e, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		if moving == false:
+			$CrabWalk.play()
 		C1_touchable = true
 		if cancel_crabmove:
 			return
@@ -858,6 +946,7 @@ func crab_move():
 		var target_f: float = $CMid.position.y + 50
 		var tween6: Tween = create_tween()
 		tween6.tween_property($CMid, "position:y", target_f, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		$CrabWalk.stop()
 		C1_touchable = false
 	$Panel.visible = true
 	await get_tree().create_timer(0.1).timeout

@@ -146,13 +146,14 @@ func show_cat_text(line) -> void:
 	else:
 		$Textbox/photobox.texture = null
 	$Textbox/textlabel.visible_characters = 0
+	$Typing.play()
 	
 	for i in $Textbox/textlabel.text.length():
 		if !is_inside_tree():
 			return
 		$Textbox/textlabel.visible_characters = i
 		await get_tree().create_timer(SaveManager.speed, false).timeout
-	
+	$Typing.stop()
 	typing = false
 
 func _input(event):
@@ -225,6 +226,7 @@ func _on_bottom_pressed() -> void:
 	show_next_dialogue()
  
 func _on_button_pressed() -> void:
+	$Dig.play()
 	mos_pos = get_global_mouse_position()
 	var sand = sand_scene.instantiate()
 	sand.global_position = mos_pos
@@ -235,6 +237,7 @@ func _on_button_pressed() -> void:
 
 
 func _on_button_2_pressed() -> void:
+	$Dig.play()
 	mos_pos = get_global_mouse_position()
 	var sand = sand_scene.instantiate()
 	sand.global_position = mos_pos
@@ -246,6 +249,7 @@ func _on_button_2_pressed() -> void:
 
 
 func _on_button_3_pressed() -> void:
+	$Dig.play()
 	mos_pos = get_global_mouse_position()
 	var sand = sand_scene.instantiate()
 	sand.global_position = mos_pos
@@ -257,6 +261,7 @@ func _on_button_3_pressed() -> void:
 
 
 func _on_button_4_pressed() -> void:
+	$Dig.play()
 	mos_pos = get_global_mouse_position()
 	var sand = sand_scene.instantiate()
 	sand.global_position = mos_pos
@@ -268,6 +273,7 @@ func _on_button_4_pressed() -> void:
 
 
 func _on_button_5_pressed() -> void:
+	$Dig.play()
 	mos_pos = get_global_mouse_position()
 	var sand = sand_scene.instantiate()
 	sand.global_position = mos_pos
@@ -279,6 +285,7 @@ func _on_button_5_pressed() -> void:
 
 
 func _on_button_6_pressed() -> void:
+	$Dig.play()
 	mos_pos = get_global_mouse_position()
 	var sand = sand_scene.instantiate()
 	sand.global_position = mos_pos

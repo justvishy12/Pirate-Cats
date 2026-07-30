@@ -134,13 +134,13 @@ func show_cat_text(line) -> void:
 	else:
 		$Textbox/photobox.texture = null
 	$Textbox/textlabel.visible_characters = 0
-	
+	$Typing.play()
 	for i in $Textbox/textlabel.text.length():
 		if !is_inside_tree():
 			return
 		$Textbox/textlabel.visible_characters = i
 		await get_tree().create_timer(SaveManager.speed, false).timeout
-	
+	$Typing.stop()
 	typing = false
 
 

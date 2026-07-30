@@ -16,6 +16,9 @@
 [ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="14_5j8du"]
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="15_41y0m"]
 [ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="16_s4goi"]
+[ext_resource type="AudioStream" uid="uid://8nuqbej7i6rw" path="res://audio/crab sound.mp3" id="17_5j8du"]
+[ext_resource type="AudioStream" uid="uid://bhfnvfqdt7804" path="res://audio/CannonShot.mp3" id="18_41y0m"]
+[ext_resource type="AudioStream" uid="uid://d24kk8ruhuv2a" path="res://audio/TypingSound.mp3" id="19_vdsdr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rubrj"]
 atlas = ExtResource("6_1lbqr")
@@ -404,7 +407,7 @@ libraries/ = SubResource("AnimationLibrary_x4gui")
 
 [node name="Panel" type="Panel" parent="." unique_id=1671154806]
 visible = false
-modulate = Color(4.8672786, 0, 0.22180009, 1)
+modulate = Color(4.8672786, 0, 0.22180009, 0.49400002)
 offset_left = -292.0
 offset_top = -173.0
 offset_right = 291.0
@@ -412,7 +415,7 @@ offset_bottom = 174.0
 
 [node name="Panel2" type="Panel" parent="." unique_id=2098583087]
 visible = false
-modulate = Color(4.8672786, 0, 0.22180009, 1)
+modulate = Color(4.8672786, 0, 0.22180009, 0.49400002)
 offset_left = -292.0
 offset_top = -173.0
 offset_right = 291.0
@@ -420,7 +423,7 @@ offset_bottom = 174.0
 
 [node name="Panel3" type="Panel" parent="." unique_id=727923897]
 visible = false
-modulate = Color(4.8672786, 0, 0.22180009, 1)
+modulate = Color(4.8672786, 0, 0.22180009, 0.49400002)
 offset_left = -292.0
 offset_top = -173.0
 offset_right = 291.0
@@ -510,5 +513,24 @@ zoom = Vector2(2, 2)
 visible = false
 position = Vector2(-288, -162)
 scale = Vector2(0.5, 0.5)
+
+[node name="CrabWalk" type="AudioStreamPlayer2D" parent="." unique_id=1955454733]
+stream = ExtResource("17_5j8du")
+volume_db = 10.0
+bus = &"Sfx"
+parameters/looping = true
+
+[node name="CannonShoot" type="AudioStreamPlayer2D" parent="." unique_id=503695572]
+stream = ExtResource("18_41y0m")
+volume_db = 10.0
+pitch_scale = 0.8
+bus = &"Sfx"
+
+[node name="Typing" type="AudioStreamPlayer2D" parent="." unique_id=1499880146]
+stream = ExtResource("19_vdsdr")
+volume_db = 10.0
+pitch_scale = 0.8
+bus = &"Sfx"
+parameters/looping = true
 
 [connection signal="pressed" from="Button" to="." method="_on_player_button_pressed"]

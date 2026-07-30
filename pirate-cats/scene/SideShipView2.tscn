@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://uevxgxsijq8n" path="res://assets/captain cat.png" id="10_epqup"]
 [ext_resource type="Texture2D" uid="uid://5p61n5jeldm0" path="res://assets/map6.png" id="11_0hrjc"]
 [ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="12_0hrjc"]
+[ext_resource type="AudioStream" uid="uid://d24kk8ruhuv2a" path="res://audio/TypingSound.mp3" id="13_d08n3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0mlra"]
 atlas = ExtResource("3_pdb1p")
@@ -220,6 +221,13 @@ shape = SubResource("RectangleShape2D_ldxs4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScrubberMG" unique_id=87103275]
 position = Vector2(878, 398)
 shape = SubResource("CapsuleShape2D_ldxs4")
+
+[node name="Typing" type="AudioStreamPlayer2D" parent="." unique_id=2020192148]
+stream = ExtResource("13_d08n3")
+volume_db = 10.0
+pitch_scale = 0.8
+bus = &"Sfx"
+parameters/looping = true
 
 [connection signal="input_event" from="FrontShip" to="." method="_on_front_ship_input_event"]
 [connection signal="input_event" from="BackShip" to="." method="_on_back_ship_input_event"]

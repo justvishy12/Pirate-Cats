@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cippd77hlp4i7" path="res://assets/powder monkey.png" id="19_37775"]
 [ext_resource type="Texture2D" uid="uid://d24q4fggvvjnw" path="res://assets/island in distance.png" id="20_jrvaw"]
 [ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="21_o1f0v"]
+[ext_resource type="AudioStream" uid="uid://d24kk8ruhuv2a" path="res://audio/TypingSound.mp3" id="22_v0pj1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldxs4"]
 size = Vector2(411, 648)
@@ -282,6 +283,13 @@ autowrap_mode = 3
 
 [node name="pausemenu" parent="." unique_id=622735820 instance=ExtResource("21_o1f0v")]
 visible = false
+
+[node name="Typing" type="AudioStreamPlayer2D" parent="." unique_id=362094482]
+stream = ExtResource("22_v0pj1")
+volume_db = 10.0
+pitch_scale = 0.8
+bus = &"Sfx"
+parameters/looping = true
 
 [connection signal="mouse_entered" from="LeftSide" to="." method="_on_left_side_mouse_entered"]
 [connection signal="mouse_exited" from="LeftSide" to="." method="_on_left_side_mouse_exited"]

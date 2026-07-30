@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bswpp4owfqskd" path="res://assets/sandpile.png" id="5_uhf46"]
 [ext_resource type="Texture2D" uid="uid://dne4uwtyh0ban" path="res://assets/small sand pile.png" id="6_3cjxl"]
 [ext_resource type="Texture2D" uid="uid://c0i7ccy83bsu2" path="res://assets/candied catnip.png" id="8_r3mut"]
+[ext_resource type="AudioStream" uid="uid://bfbweu13bd6qt" path="res://audio/SandDig.mp3" id="9_p5lce"]
 
 [node name="Node2D" type="Node2D" unique_id=1074234064]
 script = ExtResource("1_djbn3")
@@ -58,5 +59,11 @@ scale = Vector2(0.55500007, 0.555)
 texture = ExtResource("8_r3mut")
 region_enabled = true
 region_rect = Rect2(0, 0, 100, 79)
+
+[node name="Dig" type="AudioStreamPlayer2D" parent="." unique_id=252462545]
+stream = ExtResource("9_p5lce")
+volume_db = 10.0
+pitch_scale = 0.9
+bus = &"Sfx"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

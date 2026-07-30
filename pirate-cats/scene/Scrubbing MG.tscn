@@ -14,6 +14,8 @@
 [ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="12_7o35d"]
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="13_tb3ee"]
 [ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="14_cpdr8"]
+[ext_resource type="AudioStream" uid="uid://d24kk8ruhuv2a" path="res://audio/TypingSound.mp3" id="15_7o35d"]
+[ext_resource type="AudioStream" uid="uid://duulpd52lfaej" path="res://audio/Scrubbing.mp3" id="16_tb3ee"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5b5d"]
 bg_color = Color(0.76675236, 0.76675236, 0.76675236, 0)
@@ -347,6 +349,20 @@ autowrap_mode = 3
 visible = false
 position = Vector2(-288, -162)
 scale = Vector2(0.5, 0.5)
+
+[node name="Typing" type="AudioStreamPlayer2D" parent="." unique_id=1905683656]
+stream = ExtResource("15_7o35d")
+volume_db = 10.0
+pitch_scale = 0.8
+bus = &"Sfx"
+parameters/looping = true
+
+[node name="Scrubbing" type="AudioStreamPlayer2D" parent="." unique_id=854413575]
+stream = ExtResource("16_tb3ee")
+volume_db = 24.0
+pitch_scale = 0.8
+bus = &"Sfx"
+parameters/looping = true
 
 [connection signal="mouse_entered" from="Round1/O1" to="." method="_on_o_1_mouse_entered"]
 [connection signal="mouse_exited" from="Round1/O1" to="." method="_on_o_1_mouse_exited"]

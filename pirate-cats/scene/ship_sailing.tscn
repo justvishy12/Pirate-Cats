@@ -26,6 +26,8 @@
 [ext_resource type="Texture2D" uid="uid://bva75w67aq42b" path="res://assets/crab-1.png" id="24_jepum"]
 [ext_resource type="Texture2D" uid="uid://gftjvq4gmerj" path="res://assets/crab.png" id="25_k5ume"]
 [ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="26_s55cq"]
+[ext_resource type="AudioStream" uid="uid://8nuqbej7i6rw" path="res://audio/crab sound.mp3" id="27_sn1kl"]
+[ext_resource type="AudioStream" uid="uid://d24kk8ruhuv2a" path="res://audio/TypingSound.mp3" id="28_jepum"]
 
 [sub_resource type="Animation" id="Animation_riyh1"]
 length = 0.001
@@ -855,6 +857,19 @@ offset_bottom = -318.0
 [node name="pausemenu" parent="Camera2D" unique_id=622735820 instance=ExtResource("26_s55cq")]
 visible = false
 position = Vector2(-575.77783, -324)
+
+[node name="CrabWalk" type="AudioStreamPlayer2D" parent="." unique_id=40567837]
+stream = ExtResource("27_sn1kl")
+volume_db = 10.0
+bus = &"Sfx"
+parameters/looping = true
+
+[node name="Typing" type="AudioStreamPlayer2D" parent="." unique_id=707090032]
+stream = ExtResource("28_jepum")
+volume_db = 10.0
+pitch_scale = 0.8
+bus = &"Sfx"
+parameters/looping = true
 
 [connection signal="pressed" from="Button" to="." method="_on_player_button_pressed"]
 [connection signal="pressed" from="Camera2D/Button" to="." method="_on_button_pressed"]

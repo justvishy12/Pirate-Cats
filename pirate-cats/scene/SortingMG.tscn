@@ -12,6 +12,7 @@
 [ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="10_oa3j0"]
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="11_n71jt"]
 [ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="12_64hb0"]
+[ext_resource type="AudioStream" uid="uid://d24kk8ruhuv2a" path="res://audio/TypingSound.mp3" id="13_oa3j0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pqw84"]
 bg_color = Color(1, 1, 1, 0)
@@ -491,6 +492,13 @@ autowrap_mode = 3
 visible = false
 position = Vector2(278, 183)
 scale = Vector2(0.5, 0.5)
+
+[node name="Typing" type="AudioStreamPlayer2D" parent="." unique_id=896263105]
+stream = ExtResource("13_oa3j0")
+volume_db = 10.0
+pitch_scale = 0.8
+bus = &"Sfx"
+parameters/looping = true
 
 [connection signal="button_down" from="Buttons/A1" to="." method="_on_a_1_button_down"]
 [connection signal="button_up" from="Buttons/A1" to="." method="_on_a_1_button_up"]
