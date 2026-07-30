@@ -91,9 +91,8 @@ func _on_creds_pressed() -> void:
 
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton \
-	and event.button_index == MOUSE_BUTTON_LEFT \
-	and event.pressed and !SaveManager.full_map:
+	if event is InputEventMouseButton and event.pressed:
+		print("hii")
 		$Guide.visible=false
 		$Prefferences.visible=false
 		$credits.visible=false

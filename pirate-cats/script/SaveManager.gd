@@ -10,6 +10,7 @@ var sort = true
 var captain = true
 var crab_fight = false
 var full_map = false
+var speed = 0.05
 func save_game(slot: int) -> void:
 	var path = SAVE_FOLDER + "save_%d.json" % slot
 
@@ -21,7 +22,8 @@ func save_game(slot: int) -> void:
 		"feed": feed,
 		"sort": sort,
 		"captain": captain,
-		"crab_fight": crab_fight
+		"crab_fight": crab_fight,
+		"speed": speed,
 	}
 
 	var file = FileAccess.open(path, FileAccess.WRITE)
