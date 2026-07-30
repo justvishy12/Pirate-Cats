@@ -148,6 +148,8 @@ func _input(event):
 				$IslandInDistance.visible = true
 				
 			if dialogue_index == 6 and got_wrong == false:
+				SaveManager.stars = true
+				SaveManager.save_game(SaveManager.current_slot)
 				$Textbox.visible = false
 				$AnimationPlayer.play("fadein")
 				await $AnimationPlayer.animation_finished

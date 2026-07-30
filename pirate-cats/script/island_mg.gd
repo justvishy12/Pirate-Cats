@@ -163,6 +163,8 @@ func _input(event):
 				print("Hiding panel")
 				$Textbox.visible = false
 				$Panel.visible = false
+			if dialogue_index == 4:
+				get_tree().change_scene_to_file("res://scene/finalscene.tscn")
 			if dialogue_index == 0 or dialogue_index == 1 or dialogue_index == 2:
 				dialogue_index += 1
 				show_next_dialogue()
@@ -189,6 +191,8 @@ func find():
 	dialogue_index = 9
 	show_next_dialogue()
 func treasure():
+	SaveManager.island = true
+	SaveManager.save_game(SaveManager.current_slot)
 	dialogue_index = 4
 	show_next_dialogue()
 
