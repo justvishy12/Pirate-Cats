@@ -15,10 +15,11 @@ func _on_button_button_up() -> void:
 		$".".self_modulate = Color(1.0, 1.0, 1.0)
 		dragging = false
 		if $Panel.get_global_rect().intersects(get_parent().get_node("PlatePanel").get_global_rect()):
+			$"..".plate += 1
+			print("Plate =", $"..".plate)
 			in_zone = true
 			can_drag = false
 			$".".global_position = Vector2(298, 540)
-			$"..".plate = 1
 		else:
 			$".".self_modulate = Color(1.0, 1.0, 1.0, 0.0)
 			$".".global_position = Vector2(86,491)

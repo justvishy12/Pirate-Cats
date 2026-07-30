@@ -45,7 +45,7 @@ var dialogue = [
 		#0
 		"speaker": "you",
 		"name": "",
-		"text": "Are we going to cook? "
+		"text": "Are you going to cook? "
 	},
 	{
 		#1
@@ -217,7 +217,6 @@ func _input(event):
 			print(dialogue_index)
 			dialogue_index += 1
 			show_next_dialogue()
-			
 func plate_reset():
 	$MiddlePlate.can_drag = true
 	$MiddlePlate.dragging = false
@@ -265,7 +264,7 @@ func plate_reset():
 	$MiddlePlate/NoBase/Star6.visible = false
 	$MiddlePlate/NoBase/Clam5.visible = false
 	order()
-	
+
 func _ready() -> void:
 	show_next_dialogue()
 	$Camera2D.position = Vector2(299,463)
@@ -277,9 +276,10 @@ func _process(delta: float) -> void:
 	if $Plates/Plate1.visible == false and $Plates/Plate2.visible == false and $Plates/Plate3.visible == false  and $Plates/Plate4.visible == false:
 		if done == false:
 			done = true
-			Global.cook = true
-			dialogue = 7
+			SaveManager.cook = true
+			dialogue_index = 7
 			show_next_dialogue()
+			$Plates/mapbutton.visible = true
 			$AnimationPlayer.play("map")
 			await $AnimationPlayer.animation_finished
 			
@@ -290,21 +290,21 @@ func _process(delta: float) -> void:
 			print("work 2")
 			$Arrow.visible = true
 			$Arrow2.visible = true
-			await get_tree().create_timer(0.4).timeout
-			$AnimationPlayer.play("PlateFinish")
-			await get_tree().create_timer(0.65).timeout
-			$AnimationPlayer2.play("PlateMenu")
+			$Arrow3.visible = true
+			if plate != 4:
+				await get_tree().create_timer(0.4).timeout
+				$AnimationPlayer.play("PlateFinish")
+				await get_tree().create_timer(0.65).timeout
+				$AnimationPlayer2.play("PlateMenu")
 	if plate == 1:
 		$Plates/Plate1.visible = false
-	elif plate == 2:
+	if plate == 2:
 		$Plates/Plate2.visible = false
-	elif plate == 3:
+	if plate == 3:
 		$Plates/Plate3.visible = false
-	elif plate == 4:
+	if plate == 4:
 		$Plates/Plate4.visible = false
-	elif plate == 5:
-		$Plates/Plate5.visible = false
-		
+
 func order():
 	
 	OTop1 = false
@@ -469,17 +469,17 @@ func _on_buttonmove_pressed() -> void:
 func _on_buttonmove_1_pressed() -> void:
 	if game_start:
 		$AnimationPlayer.play("ToppingsFinish")
+		$AnimationPlayer2.play("MenuBack")
 		plate_check()
 
 
 func _on_mapbutton_pressed() -> void:
-	dialogue_index += 1
-	show_next_dialogue()
+	get_tree().change_scene_to_file("res://scene/Backship.tscn")
 
 
 func _on_buttonmove_15_pressed() -> void:
 	plate_anim = false
 	order()
+	$AnimationPlayer2.play("Reset")
+	await get_tree().create_timer(0.3).timeout
 	plate_reset()
-	
-	$AnimationPlayer2.play("RESET")
