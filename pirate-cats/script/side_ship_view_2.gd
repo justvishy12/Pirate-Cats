@@ -115,8 +115,9 @@ func _input(event):
 				$Camera2D/mapbutton.visible=true
 			if dialogue_index == 6:
 				$Camera2D/mapbutton.disabled = false
-			dialogue_index += 1
-			show_next_dialogue()
+			if dialogue_index != 2 and dialogue_index != 3:
+				dialogue_index += 1
+				show_next_dialogue()
 			
 func _on_player_button_pressed() -> void:
 	dialogue_index += 1
@@ -131,11 +132,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if SaveManager.cook and SaveManager.captain == false and SaveManager.scrub and SaveManager.feed and SaveManager.sort and SaveManager.fish:
+	if SaveManager.cook and SaveManager.captain == false and SaveManager.scrub and SaveManager.feed and SaveManager.sort and SaveManager.fish and !SaveManager.captain:
 		SaveManager.captain = true
 		can_play = true
 		locked = true
 		$ScrubberMG.monitorable = false
+		$ScrubberMG/CollisionShape2D.disabled = true
 		dialogue_index = 4
 		$Camera2D/CaptainCat.visible=true
 		show_next_dialogue()
@@ -214,4 +216,5 @@ func _on_mapbutton_pressed() -> void:
 	$Camera2D/mapbutton.visible=false
 	$Camera2D/CaptainCat.visible=false
 	$ScrubberMG.monitorable = true
+	$ScrubberMG/CollisionShape2D.disabled = false
 	locked=false

@@ -62,7 +62,7 @@ var dialogue = [
 	{
 		#7
 		"speaker": "cat",
-		"name": "Biscuits (Scrubber)",
+		"name": "Biscuits (Cook)",
 		"text": "No, not near the starfish. ",
 		"portrait": preload("res://assets/headshots/CHEF FACE.png")
 	},
@@ -76,7 +76,7 @@ var dialogue = [
 	{
 		#9
 		"speaker": "cat",
-		"name": "Mopps (Scrubber)",
+		"name": "Minnow (Fisher)",
 		"text": "I dont think it's here. ",
 		"portrait": preload("res://assets/headshots/SCRUBBER FACE.png")
 	},

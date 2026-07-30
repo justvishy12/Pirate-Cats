@@ -228,10 +228,10 @@ func show_cat_text(line) -> void:
 		$AnimationPlayer.play("fisher show")
 	if dialogue_index ==11:
 		$AnimationPlayer.play("captain show")
-		$parallaxbg/Camera2D.apply_shake(0.5)
+		$Camera2D.apply_shake(0.5)
 	if dialogue_index ==11:
 		$AnimationPlayer.play("captain show")
-		$parallaxbg/Camera2D.apply_shake(0.5)
+		$Camera2D.apply_shake(0.5)
 	if line.has("portrait"):
 		$Textbox/photobox.texture = line["portrait"]
 	else:

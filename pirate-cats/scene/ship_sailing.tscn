@@ -835,8 +835,8 @@ scale = Vector2(0.20056497, 0.20056497)
 texture = ExtResource("25_k5ume")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1461788157]
-offset_right = 1160.0
-offset_bottom = 698.0
+offset_right = 1184.0
+offset_bottom = 1137.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 

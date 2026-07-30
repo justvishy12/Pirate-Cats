@@ -21,14 +21,14 @@ var dialogue = [
 	{
 		#1
 		"speaker": "cat",
-		"name": "Fisher",
+		"name": "Minnow (Fisher)",
 		"text": "Oh hey! I was just about to catch some fish.",
 		"portrait": preload("res://assets/headshots/FISHER FACE.png")
 	},
 	{
 		#2
 		"speaker": "cat",
-		"name": "Fisher",
+		"name": "Minnow (Fisher)",
 		"text": "Do you want to join? ",
 		"portrait": preload("res://assets/headshots/FISHER FACE.png")
 	},
@@ -44,7 +44,7 @@ var dialogue = [
 	{
 		#4
 		"speaker": "cat",
-		"name": "Fisher",
+		"name": "Minnow (Fisher)",
 		"text": "Nice catch! I’ve never seen a golden fish before. ",
 		"portrait": preload("res://assets/headshots/FISHER FACE.png")
 	},
@@ -59,7 +59,7 @@ var dialogue = [
 	{
 		#6
 		"speaker": "cat",
-		"name": "Cook",
+		"name": "Biscuits (Cook)",
 		"text": "Let teach you my secrets ",
 		"portrait": preload("res://assets/headshots/FISHER FACE.png")
 	},
@@ -68,7 +68,7 @@ var dialogue = [
 	{
 		#7
 		"speaker": "cat",
-		"name": "Cook",
+		"name": "Biscuits (Cook)",
 		"text": "Come back for supper! ",
 		"portrait": preload("res://assets/headshots/CHEF FACE.png")
 	},

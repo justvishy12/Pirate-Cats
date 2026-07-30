@@ -21,6 +21,7 @@ var dialogue=[
 		"name": "",
 		"text": "Oh no, did no one feed you? "
 	},
+	#puzzle doine
 	{
 		#2
 		"speaker": "cat",
@@ -97,26 +98,29 @@ func show_cat_text(line) -> void:
 func _input(event):
 	if event.is_action_pressed("ui_accept") and !typing and can_play == true:
 		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
-			if feeding2 == true and dialogue_index == 2:
-				$Camera2D/Textbox.visible = false
+			if SaveManager.feed == true and dialogue_index == 2:
+				$Camera2D/Textbox.visible = false 
 				can_play = false
 				feeding2 = false
 			if dialogue_index == 4:
 				$Camera2D/mapbutton.visible=true
 			if dialogue_index == 5:
 				$Camera2D/mapbutton.disabled = false
-			dialogue_index += 1
-			show_next_dialogue()
+			if dialogue_index != 2:
+				dialogue_index += 1
+				show_next_dialogue()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if SaveManager.cook and SaveManager.captain == false and SaveManager.scrub and SaveManager.feed and SaveManager.sort and SaveManager.fish:
 		SaveManager.captain = true
+		SaveManager.save_game(SaveManager.current_slot)
 		can_play = true
 		$ParrotMG.monitorable = false
+		$ParrotMG/CollisionShape2D.disabled = true
 		locked = true
 		dialogue_index = 3
-		$Camera2D/CaptainCat.visible=true
+		$Camera2D/CaptainCat.visible = true
 		show_next_dialogue()
 		return
 	
@@ -204,7 +208,7 @@ func _on_side_view_2_input_event(viewport: Node, event: InputEvent, shape_idx: i
 
 
 func _on_player_button_pressed() -> void:
-	if feeding == true and dialogue_index == 1:
+	if dialogue_index == 1 and SaveManager.feed == false:
 		get_tree().change_scene_to_file("res://scene/parrot.tscn")
 	dialogue_index += 1
 	show_next_dialogue()
@@ -213,4 +217,5 @@ func _on_mapbutton_pressed() -> void:
 	$Camera2D/mapbutton.visible=false
 	$Camera2D/CaptainCat.visible=false
 	$ParrotMG.monitorable = true
+	$ParrotMG/CollisionShape2D.disabled = false
 	locked=false

@@ -133,8 +133,12 @@ func _input(event):
 				$Camera2D/mapbutton.visible=true
 			if dialogue_index == 9:
 				$Camera2D/mapbutton.disabled = false
-			dialogue_index += 1
-			show_next_dialogue()
+			if dialogue_index != 5 and dialogue_index != 6:
+				dialogue_index += 1
+				show_next_dialogue()
+			if dialogue_index == 6:
+				locked = false
+				$Camera2D/Textbox.visible = false
 			
 func _on_player_button_pressed() -> void:
 	if sorting == true and dialogue_index == 5:
@@ -250,7 +254,7 @@ func _on_powder_mg_input_event(viewport: Node, event: InputEvent, shape_idx: int
 			sorting = true
 			show_next_dialogue()
 		elif SaveManager.sort == true:
-			dialogue_index = 2
+			dialogue_index = 6
 			locked = true
 			$Camera2D.global_position.x = 417
 			sorting2 = true
