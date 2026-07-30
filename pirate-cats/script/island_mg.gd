@@ -49,42 +49,42 @@ var dialogue = [
 		#5
 		"speaker": "cat",
 		"name": "Mopps (Scrubber)",
-		"text": "its not near the shells ",
+		"text": "I dont think it's near the shells. ",
 		"portrait": preload("res://assets/headshots/SCRUBBER FACE.png")
 	},
 	{
 		#6
 		"speaker": "cat",
 		"name": "Mopps (Scrubber)",
-		"text": "not near coconuts",
+		"text": "Probably not near the coconuts. ",
 		"portrait": preload("res://assets/headshots/SCRUBBER FACE.png")
 	},
 	{
 		#7
 		"speaker": "cat",
 		"name": "Mopps (Scrubber)",
-		"text": "not near stars ",
+		"text": "No, not near the stars. ",
 		"portrait": preload("res://assets/headshots/SCRUBBER FACE.png")
 	},
 	{
 		#8
 		"speaker": "cat",
 		"name": "Mopps (Scrubber)",
-		"text": "not near cones ",
+		"text": "Not the cones. ",
 		"portrait": preload("res://assets/headshots/SCRUBBER FACE.png")
 	},
 	{
 		#9
 		"speaker": "cat",
 		"name": "Mopps (Scrubber)",
-		"text": "i dont think its here ",
+		"text": "I dont think it's here. ",
 		"portrait": preload("res://assets/headshots/SCRUBBER FACE.png")
 	},
 	{
 		#10
 		"speaker": "cat",
 		"name": "Mopps (Scrubber)",
-		"text": "You are too far out",
+		"text": "You're digging to far out. ",
 		"portrait": preload("res://assets/headshots/SCRUBBER FACE.png")
 	},
 ]
@@ -142,9 +142,11 @@ func _input(event):
 				print("Hiding panel")
 				$Textbox.visible = false
 				$Panel.visible = false
-			if dialogue_index == 3 or dialogue_index == 0 or dialogue_index == 1 or dialogue_index == 2:
+			if dialogue_index == 0 or dialogue_index == 1 or dialogue_index == 2:
 				dialogue_index += 1
 				show_next_dialogue()
+			else:
+				$Textbox.visible = false
 
 func _ready() -> void:
 	Input.set_custom_mouse_cursor(sponge)
