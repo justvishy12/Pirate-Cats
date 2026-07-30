@@ -49,29 +49,29 @@ var dialogue = [
 		#5
 		"speaker": "cat",
 		"name": "Mopps (Scrubber)",
-		"text": "I dont think it's near the shells. ",
+		"text": "I dont think it's near the scallops. ",
 		"portrait": preload("res://assets/headshots/SCRUBBER FACE.png")
 	},
 	{
 		#6
 		"speaker": "cat",
-		"name": "Mopps (Scrubber)",
+		"name": "Smokey (Powder Monkey)",
 		"text": "Probably not near the coconuts. ",
-		"portrait": preload("res://assets/headshots/SCRUBBER FACE.png")
+		"portrait": preload("res://assets/headshots/POWDER MONKEY FACE.png")
 	},
 	{
 		#7
 		"speaker": "cat",
-		"name": "Mopps (Scrubber)",
-		"text": "No, not near the stars. ",
-		"portrait": preload("res://assets/headshots/SCRUBBER FACE.png")
+		"name": "Biscuits (Scrubber)",
+		"text": "No, not near the starfish. ",
+		"portrait": preload("res://assets/headshots/CHEF FACE.png")
 	},
 	{
 		#8
 		"speaker": "cat",
-		"name": "Mopps (Scrubber)",
-		"text": "Not the cones. ",
-		"portrait": preload("res://assets/headshots/SCRUBBER FACE.png")
+		"name": "Minnow (Fisher)",
+		"text": "Not the shells. ",
+		"portrait": preload("res://assets/headshots/FISHER FACE.png")
 	},
 	{
 		#9
@@ -86,6 +86,26 @@ var dialogue = [
 		"name": "Mopps (Scrubber)",
 		"text": "You're digging to far out. ",
 		"portrait": preload("res://assets/headshots/SCRUBBER FACE.png")
+	},
+	{
+		#11
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "Well, I'm impressed. ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+	{
+		#12
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "What do you say we all have a party on this island? ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
+	{
+		#13
+		"speaker": "you",
+		"name": "",
+		"text": "That sounds fun!"
 	},
 ]
 
@@ -179,7 +199,15 @@ func tres():
 	$Button4.disabled = true
 	$Button5.disabled = true
 	$Button6.disabled = true
-	print("Yay, you found our treassure, we must repay you and take you home!")
+	dialogue_index = 4
+	show_next_dialogue()
+	dialogue_index =11
+	show_next_dialogue()
+	dialogue_index =12
+	show_next_dialogue()
+	dialogue_index =13
+	show_next_dialogue()
+	get_tree().change_scene_to_file("res://scene/finalscene.tscn")
 func _on_side_pressed() -> void:
 	dialogue_index = 10
 	show_next_dialogue()

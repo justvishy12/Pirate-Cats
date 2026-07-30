@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://b6klu26i7ax6w"]
+
+[ext_resource type="Texture2D" uid="uid://dm5syaeqx3ki6" path="res://scene/closer island distance.png" id="1_idaht"]
+[ext_resource type="Texture2D" uid="uid://uevxgxsijq8n" path="res://assets/captain cat.png" id="2_gsyk8"]
+[ext_resource type="Texture2D" uid="uid://c1ymamehqfgv6" path="res://assets/scrubber cat.png" id="3_4hnai"]
+[ext_resource type="Texture2D" uid="uid://rb44yvydtdb7" path="res://assets/chef cat.png" id="4_t36mn"]
+[ext_resource type="Texture2D" uid="uid://d0wlabvjcu6fv" path="res://assets/fisher.png" id="5_nn0ae"]
+[ext_resource type="Texture2D" uid="uid://cippd77hlp4i7" path="res://assets/powder monkey.png" id="6_uto7i"]
+[ext_resource type="FontFile" uid="uid://ci5fs3td4usu5" path="res://fonts/Irish_Grover/IrishGrover-Regular.ttf" id="7_t0vf3"]
+
+[node name="Node2D" type="Node2D" unique_id=1484688267]
+
+[node name="CloserIslandDistance" type="Sprite2D" parent="." unique_id=2136699666]
+position = Vector2(577, 326)
+scale = Vector2(1.037037, 1.037037)
+texture = ExtResource("1_idaht")
+
+[node name="CaptainCat" type="Sprite2D" parent="." unique_id=319828289]
+position = Vector2(834, 364)
+scale = Vector2(0.55517244, 0.55517244)
+texture = ExtResource("2_gsyk8")
+
+[node name="ScrubberCat" type="Sprite2D" parent="." unique_id=1388383256]
+position = Vector2(640.4453, 447.27023)
+scale = Vector2(0.50797707, 0.50797707)
+texture = ExtResource("3_4hnai")
+
+[node name="ChefCat" type="Sprite2D" parent="." unique_id=627913590]
+position = Vector2(273.4453, 425.27023)
+scale = Vector2(0.45884684, 0.4588468)
+texture = ExtResource("4_t36mn")
+
+[node name="Fisher" type="Sprite2D" parent="." unique_id=1596482782]
+position = Vector2(428.44537, 421.27023)
+scale = Vector2(0.5263481, 0.5263481)
+texture = ExtResource("5_nn0ae")
+
+[node name="PowderMonkey" type="Sprite2D" parent="." unique_id=1057373841]
+position = Vector2(516, 128.99995)
+scale = Vector2(0.43454546, 0.4345455)
+texture = ExtResource("6_uto7i")
+
+[node name="Label" type="Label" parent="." unique_id=1344714848]
+offset_left = 655.0
+offset_top = 4.0
+offset_right = 1163.0
+offset_bottom = 151.0
+theme_override_colors/font_color = Color(0.9999997, 0.619876, 0.11921599, 1)
+theme_override_fonts/font = ExtResource("7_t0vf3")
+theme_override_font_sizes/font_size = 124
+text = "THE END"
