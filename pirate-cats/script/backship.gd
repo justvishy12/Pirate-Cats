@@ -60,7 +60,7 @@ var dialogue = [
 		#6
 		"speaker": "cat",
 		"name": "Cook",
-		"text": "Let teach you my secrets",
+		"text": "Let teach you my secrets ",
 		"portrait": preload("res://assets/headshots/FISHER FACE.png")
 	},
 
@@ -69,7 +69,7 @@ var dialogue = [
 		#7
 		"speaker": "cat",
 		"name": "Cook",
-		"text": "Come back for supper!",
+		"text": "Come back for supper! ",
 		"portrait": preload("res://assets/headshots/CHEF FACE.png")
 	},
 	#captian map
@@ -149,15 +149,15 @@ func show_cat_text(line) -> void:
 func _input(event):
 	if event.is_action_pressed("ui_accept") and !typing:
 		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
-			if fishing == true and dialogue_index == 3:
+			if SaveManager.fish == false and dialogue_index == 3:
 				get_tree().change_scene_to_file("res://scene/fishing.tscn")
-			if fishing2 == true and dialogue_index == 4:
+			if SaveManager.fish and dialogue_index == 4:
 				$Camera2D/Textbox.visible = false
 				fishing2 = false
 				locked = false
-			if cooking == true and dialogue_index == 6:
+			if SaveManager.cook == false and dialogue_index == 6:
 				get_tree().change_scene_to_file("res://scene/cooking.tscn")
-			if cooking2 == true and dialogue_index == 7:
+			if SaveManager.cook == true and dialogue_index == 7:
 				cooking2 = true
 				$Camera2D/Textbox.visible = false
 				locked = false
@@ -165,8 +165,9 @@ func _input(event):
 				$Camera2D/mapbutton.visible=true
 			if dialogue_index == 10:
 				$Camera2D/mapbutton.disabled = false
-			dialogue_index += 1
-			show_next_dialogue()
+			if dialogue_index not in [3, 4, 6, 7]:
+				dialogue_index += 1
+				show_next_dialogue()
 
 func _ready() -> void:
 	if Global.rightcam == true:
