@@ -90,7 +90,7 @@ func show_cat_text(line) -> void:
 		if !is_inside_tree():
 			return
 		$Camera2D/Textbox/textlabel.visible_characters = i
-		await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(SaveManager.speed, false).timeout
 	
 	typing = false
 

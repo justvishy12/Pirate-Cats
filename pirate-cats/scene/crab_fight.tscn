@@ -15,6 +15,7 @@
 [ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="13_s4goi"]
 [ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="14_5j8du"]
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="15_41y0m"]
+[ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="16_s4goi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rubrj"]
 atlas = ExtResource("6_1lbqr")
@@ -381,9 +382,6 @@ position = Vector2(6.571412e-06, 161.00002)
 scale = Vector2(0.29706034, 0.29677418)
 texture = ExtResource("2_v05nj")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2089663637]
-zoom = Vector2(2, 2)
-
 [node name="Cannon" type="Sprite2D" parent="." unique_id=1238047416]
 position = Vector2(0, 106)
 scale = Vector2(0.5, 0.5)
@@ -504,5 +502,13 @@ offset_right = 474.0
 offset_bottom = 325.0
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2089663637]
+zoom = Vector2(2, 2)
+
+[node name="pausemenu" parent="Camera2D" unique_id=622735820 instance=ExtResource("16_s4goi")]
+visible = false
+position = Vector2(-288, -162)
+scale = Vector2(0.5, 0.5)
 
 [connection signal="pressed" from="Button" to="." method="_on_player_button_pressed"]

@@ -18,6 +18,7 @@
 [ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="15_ce22x"]
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="16_21ie3"]
 [ext_resource type="Texture2D" uid="uid://c8bkutybtaau0" path="res://assets/map1.png" id="18_ce22x"]
+[ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="19_21ie3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ue6ed"]
 atlas = ExtResource("1_ly0cx")
@@ -333,6 +334,7 @@ _data = {
 size = Vector2(0.5, 33)
 
 [node name="Node2D" type="Node2D" unique_id=1008847777]
+process_mode = 1
 script = ExtResource("1_ue6ed")
 
 [node name="FishingBg" type="Sprite2D" parent="." unique_id=1344961108]
@@ -344,11 +346,6 @@ texture = ExtResource("2_so0t4")
 position = Vector2(580, 457)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("12_j7myu")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=118414367]
-position = Vector2(582, 348)
-scale = Vector2(0.5, 0.5)
-zoom = Vector2(2, 2)
 
 [node name="fishbub" type="AnimatedSprite2D" parent="." unique_id=719645160]
 visible = false
@@ -632,6 +629,15 @@ theme_override_styles/hover = ExtResource("16_21ie3")
 theme_override_styles/focus = ExtResource("16_21ie3")
 text = "I dont see any fish"
 autowrap_mode = 3
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=118414367]
+position = Vector2(582, 348)
+scale = Vector2(0.5, 0.5)
+zoom = Vector2(2, 2)
+
+[node name="pausemenu" parent="Camera2D" unique_id=622735820 instance=ExtResource("19_21ie3")]
+visible = false
+position = Vector2(-576, -324)
 
 [connection signal="area_entered" from="Outside/Inside/InsideSlider" to="." method="_on_inside_slider_area_entered"]
 [connection signal="area_exited" from="Outside/Inside/InsideSlider" to="." method="_on_inside_slider_area_exited"]

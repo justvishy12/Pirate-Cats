@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cippd77hlp4i7" path="res://assets/powder monkey.png" id="16_hxrfh"]
 [ext_resource type="Texture2D" uid="uid://rb44yvydtdb7" path="res://assets/chef cat.png" id="17_ktktp"]
 [ext_resource type="Texture2D" uid="uid://uevxgxsijq8n" path="res://assets/captain cat.png" id="18_3vu5f"]
+[ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="18_356t6"]
 [ext_resource type="Texture2D" uid="uid://c1ymamehqfgv6" path="res://assets/scrubber cat.png" id="19_u7o4c"]
 [ext_resource type="Texture2D" uid="uid://bk0yokqeio7rc" path="res://assets/textbox.png" id="20_x1prs"]
 [ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="22_25f7j"]
@@ -330,5 +331,10 @@ offset_right = 1470.0
 offset_bottom = 867.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
+
+[node name="pausemenu" parent="." unique_id=622735820 instance=ExtResource("18_356t6")]
+visible = false
+position = Vector2(553, 420)
+scale = Vector2(0.5, 0.5)
 
 [connection signal="pressed" from="Button" to="." method="_on_player_button_pressed"]

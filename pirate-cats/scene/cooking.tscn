@@ -26,6 +26,7 @@
 [ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="22_00mn3"]
 [ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="23_1sr6h"]
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="24_ssagg"]
+[ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="27_1sr6h"]
 
 [sub_resource type="Environment" id="Environment_ldxs4"]
 background_mode = 3
@@ -1015,6 +1016,11 @@ theme_override_styles/hover = ExtResource("24_ssagg")
 theme_override_styles/focus = ExtResource("24_ssagg")
 text = "Are we going to cook?"
 autowrap_mode = 3
+
+[node name="pausemenu" parent="Camera2D" unique_id=622735820 instance=ExtResource("27_1sr6h")]
+visible = false
+position = Vector2(-288, -162)
+scale = Vector2(0.5, 0.5)
 
 [connection signal="pressed" from="Plates/mapbutton" to="." method="_on_mapbutton_pressed"]
 [connection signal="button_down" from="MiddlePlate/Button" to="MiddlePlate" method="_on_button_button_down"]

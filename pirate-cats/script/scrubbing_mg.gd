@@ -91,8 +91,10 @@ func show_cat_text(line) -> void:
 	$Textbox/textlabel.visible_characters = 0
 	
 	for i in $Textbox/textlabel.text.length():
+		if !is_inside_tree():
+			return
 		$Textbox/textlabel.visible_characters = i
-		await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(SaveManager.speed, false).timeout
 	
 	typing = false
 
@@ -179,6 +181,7 @@ func round3():
 	tween.tween_property($mapbutton, "modulate:a", 1.0, 0.5)
 	$Round3.position = Vector2(-816, 383)
 	SaveManager.scrub = true
+	SaveManager.save_game(SaveManager.current_slot)
 #region Round One Mouse
 func _on_o_1_mouse_entered() -> void:
 	O1 = true

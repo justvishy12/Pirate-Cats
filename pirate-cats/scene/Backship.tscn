@@ -13,6 +13,7 @@
 [ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="9_tjcn3"]
 [ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="10_jeyb3"]
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="11_o5cb5"]
+[ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="14_o5cb5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x1gyp"]
 atlas = ExtResource("3_i0nue")
@@ -323,6 +324,11 @@ shape = SubResource("RectangleShape2D_ldxs4")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Camera2D/CamRight" unique_id=1058926836]
 position = Vector2(259.5, 0)
 shape = SubResource("RectangleShape2D_ldxs4")
+
+[node name="pausemenu" parent="Camera2D" unique_id=622735820 instance=ExtResource("14_o5cb5")]
+visible = false
+position = Vector2(-288, -162)
+scale = Vector2(0.5, 0.5)
 
 [connection signal="mouse_entered" from="Fish" to="." method="_on_fish_mouse_entered"]
 [connection signal="mouse_exited" from="Fish" to="." method="_on_fish_mouse_exited"]

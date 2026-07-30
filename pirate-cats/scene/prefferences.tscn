@@ -26,10 +26,10 @@ offset_bottom = 562.0
 theme_override_styles/panel = ExtResource("2_rmf8x")
 
 [node name="Label" type="Label" parent="." unique_id=1711591338]
-offset_left = 408.0
-offset_top = 120.0
-offset_right = 746.0
-offset_bottom = 178.0
+offset_left = 400.0
+offset_top = 216.0
+offset_right = 738.0
+offset_bottom = 274.0
 theme_override_colors/font_color = Color(1, 0.77254903, 0.4509804, 1)
 theme_override_fonts/font = ExtResource("3_c5sb6")
 theme_override_font_sizes/font_size = 48
@@ -37,10 +37,10 @@ text = "PREFFERENCES"
 metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="." unique_id=1774825381]
-offset_left = 408.0
-offset_top = 32.0
-offset_right = 743.0
-offset_bottom = 99.0
+offset_left = 392.0
+offset_top = 48.0
+offset_right = 727.0
+offset_bottom = 115.0
 theme_override_colors/font_color = Color(1, 0.77254903, 0.4509804, 1)
 theme_override_fonts/font = ExtResource("3_c5sb6")
 theme_override_font_sizes/font_size = 56
@@ -48,67 +48,60 @@ text = "PIRATE CATS"
 metadata/_edit_use_anchors_ = true
 
 [node name="Background Music" type="Label" parent="." unique_id=113626731]
-offset_left = 352.0
-offset_top = 313.0
-offset_right = 488.0
-offset_bottom = 329.33334
+offset_left = 432.0
+offset_top = 369.0
+offset_right = 568.0
+offset_bottom = 385.33334
 theme_override_fonts/font = ExtResource("4_525w4")
 text = "Background Music"
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="SoundEffects" type="Label" parent="." unique_id=962576890]
-offset_left = 352.0
-offset_top = 376.0
-offset_right = 480.0
-offset_bottom = 392.33334
+offset_left = 432.0
+offset_top = 432.0
+offset_right = 560.0
+offset_bottom = 448.33334
 theme_override_fonts/font = ExtResource("4_525w4")
 text = "Sound Effects"
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Text Speed" type="Label" parent="." unique_id=1244904958]
-offset_left = 354.0
-offset_top = 425.0
-offset_right = 482.0
-offset_bottom = 441.33334
+offset_left = 432.0
+offset_top = 496.0
+offset_right = 560.0
+offset_bottom = 512.3334
 theme_override_fonts/font = ExtResource("4_525w4")
 text = "Text Speed"
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Audio" type="Label" parent="." unique_id=1833598028]
-offset_left = 352.0
-offset_top = 248.0
-offset_right = 488.0
-offset_bottom = 264.33334
+offset_left = 432.0
+offset_top = 304.0
+offset_right = 568.0
+offset_bottom = 320.33334
 theme_override_fonts/font = ExtResource("4_525w4")
 text = "Master Volume"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="." unique_id=2053967841]
-offset_left = 1118.0
-offset_top = 2.0
-offset_right = 1141.0
-offset_bottom = 24.0
-metadata/_edit_use_anchors_ = true
-
 [node name="Music" type="HSlider" parent="." unique_id=1756779394]
-offset_left = 512.0
-offset_top = 312.0
-offset_right = 606.0
-offset_bottom = 328.0
+offset_left = 592.0
+offset_top = 368.0
+offset_right = 686.0
+offset_bottom = 384.0
 max_value = 1.0
 step = 0.001
 script = ExtResource("6_525w4")
 bus_name = "Music"
 
 [node name="Sfx" type="HSlider" parent="." unique_id=1747255569]
-offset_left = 512.0
-offset_top = 376.0
-offset_right = 606.0
-offset_bottom = 392.0
+offset_left = 592.0
+offset_top = 432.0
+offset_right = 686.0
+offset_bottom = 448.0
 max_value = 1.0
 step = 0.01
 value = 0.5
@@ -116,19 +109,19 @@ script = ExtResource("7_23mrx")
 bus_name = "Sfx"
 
 [node name="Master" type="HSlider" parent="." unique_id=767808077]
-offset_left = 512.0
-offset_top = 248.0
-offset_right = 606.0
-offset_bottom = 264.0
+offset_left = 592.0
+offset_top = 304.0
+offset_right = 686.0
+offset_bottom = 320.0
 max_value = 1.0
 step = 0.001
 script = ExtResource("8_a2s2n")
 
 [node name="TextSpeed" type="HSlider" parent="." unique_id=780280650]
-offset_left = 509.0
-offset_top = 424.0
-offset_right = 603.0
-offset_bottom = 440.0
+offset_left = 592.0
+offset_top = 496.0
+offset_right = 686.0
+offset_bottom = 512.0
 min_value = 0.01
 max_value = 0.1
 step = 0.001

@@ -92,8 +92,10 @@ func show_cat_text(line) -> void:
 	$Camera2D/Textbox/textlabel.visible_characters = 0
 	
 	for i in $Camera2D/Textbox/textlabel.text.length():
+		if !is_inside_tree():
+			return
 		$Camera2D/Textbox/textlabel.visible_characters = i
-		await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(SaveManager.speed, false).timeout
 	
 	typing = false
 
@@ -126,6 +128,7 @@ func _process(delta: float) -> void:
 	if $Right/Cookie2.visible == false and $Right/Cookie1.visible == false and $Right/Cookie.visible == false and $Left/Cookie5.visible == false and $Left/Cookie4.visible == false and $Left/Cookie3.visible == false and $Left/Cookie6.visible == false and map_dialogue_shown == false:
 		print("worked")
 		SaveManager.feed= true
+		SaveManager.save_game(SaveManager.current_slot)
 		map_dialogue_shown = true
 		dialogue_index = 6
 		show_next_dialogue()

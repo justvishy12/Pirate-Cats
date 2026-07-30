@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d0wlabvjcu6fv" path="res://assets/fisher.png" id="5_nn0ae"]
 [ext_resource type="Texture2D" uid="uid://cippd77hlp4i7" path="res://assets/powder monkey.png" id="6_uto7i"]
 [ext_resource type="FontFile" uid="uid://ci5fs3td4usu5" path="res://fonts/Irish_Grover/IrishGrover-Regular.ttf" id="7_t0vf3"]
+[ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="8_gsyk8"]
 
 [node name="Node2D" type="Node2D" unique_id=1484688267]
 
@@ -49,3 +50,6 @@ theme_override_colors/font_color = Color(0.9999997, 0.619876, 0.11921599, 1)
 theme_override_fonts/font = ExtResource("7_t0vf3")
 theme_override_font_sizes/font_size = 124
 text = "THE END"
+
+[node name="pausemenu" parent="." unique_id=622735820 instance=ExtResource("8_gsyk8")]
+visible = false

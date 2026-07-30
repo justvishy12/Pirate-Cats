@@ -21,6 +21,7 @@
 [ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="19_djvvj"]
 [ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="20_hif1r"]
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="21_a7tom"]
+[ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="22_djvvj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qyjxp"]
 atlas = ExtResource("3_hp81p")
@@ -168,6 +169,10 @@ size = Vector2(248, 103)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48q5p"]
 size = Vector2(36, 43)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hae68"]
+radius = 142.10002
+height = 545.2001
 
 [sub_resource type="Animation" id="Animation_mcfne"]
 length = 0.001
@@ -484,10 +489,6 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hae68"]
-radius = 142.10002
-height = 545.2001
-
 [node name="Node2D" type="Node2D" unique_id=1551274641]
 script = ExtResource("1_gppsv")
 
@@ -598,6 +599,15 @@ shape = SubResource("RectangleShape2D_48q5p")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BackShip" unique_id=784450281]
 polygon = PackedVector2Array(312, 99, 350, 75, 354, 75, 388, 98, 388, 105, 370, 106, 371, 123, 367, 128, 335, 128, 331, 124, 331, 107, 315, 106, 311, 101)
 
+[node name="Area2D" type="Area2D" parent="." unique_id=1322846302]
+position = Vector2(80.99997, 54)
+scale = Vector2(0.3448276, 0.34482756)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=687623032]
+position = Vector2(8.583069e-05, 29.000008)
+shape = SubResource("CapsuleShape2D_hae68")
+disabled = true
+
 [node name="m1" type="AnimationPlayer" parent="." unique_id=1896461276]
 libraries/ = SubResource("AnimationLibrary_8akd2")
 
@@ -626,6 +636,72 @@ shape = SubResource("RectangleShape2D_ldxs4")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Camera2D/CamRight" unique_id=111330817]
 position = Vector2(266, 0)
 shape = SubResource("RectangleShape2D_ldxs4")
+
+[node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=469863391]
+visible = false
+position = Vector2(0.032344818, 108.99997)
+scale = Vector2(0.34551278, 0.34551278)
+texture = ExtResource("18_m2tfi")
+
+[node name="namelabel" type="Label" parent="Camera2D/Textbox" unique_id=1542405038]
+offset_left = -370.464
+offset_top = -95.51019
+offset_right = 107.087036
+offset_bottom = -52.096497
+theme_override_fonts/font = ExtResource("19_djvvj")
+theme_override_font_sizes/font_size = 35
+text = "???"
+vertical_alignment = 1
+
+[node name="textlabel" type="Label" parent="Camera2D/Textbox" unique_id=1466160199]
+custom_minimum_size = Vector2(16.92, 0)
+offset_left = -222.85681
+offset_top = -34.730988
+offset_right = 240.22302
+offset_bottom = 54.990692
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("19_djvvj")
+theme_override_font_sizes/font_size = 38
+text = "hi  my name is bob. i like to eat"
+autowrap_mode = 2
+
+[node name="skiplabel" type="Label" parent="Camera2D/Textbox" unique_id=685571886]
+offset_left = 208.38596
+offset_top = 57.88497
+offset_right = 347.30978
+offset_bottom = 77.88497
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("19_djvvj")
+theme_override_font_sizes/font_size = 20
+text = "SPACE TO SKIP"
+
+[node name="photobox" type="TextureRect" parent="Camera2D/Textbox" unique_id=1749238679]
+offset_left = -379.1466
+offset_top = -43.413727
+offset_right = -222.85706
+offset_bottom = 78.144745
+expand_mode = 2
+stretch_mode = 4
+
+[node name="player button" type="Button" parent="Camera2D" unique_id=663769945]
+visible = false
+texture_filter = 2
+offset_left = -92.96759
+offset_top = -37.0
+offset_right = 91.03241
+offset_bottom = 13.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("19_djvvj")
+theme_override_styles/normal = ExtResource("20_hif1r")
+theme_override_styles/pressed = ExtResource("21_a7tom")
+theme_override_styles/hover = ExtResource("21_a7tom")
+theme_override_styles/focus = ExtResource("21_a7tom")
+text = "Are we going to cook?"
+autowrap_mode = 3
 
 [node name="bg" type="Panel" parent="Camera2D" unique_id=1966440609]
 visible = false
@@ -868,80 +944,10 @@ position = Vector2(288, 200)
 scale = Vector2(0.13166997, 0.13166998)
 texture = ExtResource("15_lerbx")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1322846302]
-position = Vector2(80.99997, 54)
-scale = Vector2(0.3448276, 0.34482756)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=687623032]
-position = Vector2(8.583069e-05, 29.000008)
-shape = SubResource("CapsuleShape2D_hae68")
-disabled = true
-
-[node name="Textbox" type="Sprite2D" parent="." unique_id=469863391]
+[node name="pausemenu" parent="Camera2D" unique_id=622735820 instance=ExtResource("22_djvvj")]
 visible = false
-position = Vector2(0.032344818, 108.99997)
-scale = Vector2(0.34551278, 0.34551278)
-texture = ExtResource("18_m2tfi")
-
-[node name="namelabel" type="Label" parent="Textbox" unique_id=1542405038]
-offset_left = -370.464
-offset_top = -95.51019
-offset_right = 107.087036
-offset_bottom = -52.096497
-theme_override_fonts/font = ExtResource("19_djvvj")
-theme_override_font_sizes/font_size = 35
-text = "???"
-vertical_alignment = 1
-
-[node name="textlabel" type="Label" parent="Textbox" unique_id=1466160199]
-custom_minimum_size = Vector2(16.92, 0)
-offset_left = -222.85681
-offset_top = -34.730988
-offset_right = 240.22302
-offset_bottom = 54.990692
-theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
-theme_override_fonts/font = ExtResource("19_djvvj")
-theme_override_font_sizes/font_size = 38
-text = "hi  my name is bob. i like to eat"
-autowrap_mode = 2
-
-[node name="skiplabel" type="Label" parent="Textbox" unique_id=685571886]
-offset_left = 208.38596
-offset_top = 57.88497
-offset_right = 347.30978
-offset_bottom = 77.88497
-theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
-theme_override_fonts/font = ExtResource("19_djvvj")
-theme_override_font_sizes/font_size = 20
-text = "SPACE TO SKIP"
-
-[node name="photobox" type="TextureRect" parent="Textbox" unique_id=1749238679]
-offset_left = -379.1466
-offset_top = -43.413727
-offset_right = -222.85706
-offset_bottom = 78.144745
-expand_mode = 2
-stretch_mode = 4
-
-[node name="player button" type="Button" parent="." unique_id=663769945]
-visible = false
-texture_filter = 2
-offset_left = -92.96759
-offset_top = -37.0
-offset_right = 91.03241
-offset_bottom = 13.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("19_djvvj")
-theme_override_styles/normal = ExtResource("20_hif1r")
-theme_override_styles/pressed = ExtResource("21_a7tom")
-theme_override_styles/hover = ExtResource("21_a7tom")
-theme_override_styles/focus = ExtResource("21_a7tom")
-text = "Are we going to cook?"
-autowrap_mode = 3
+position = Vector2(-288, -162)
+scale = Vector2(0.5, 0.5)
 
 [connection signal="mouse_entered" from="DoorHandle" to="." method="_on_door_handle_mouse_entered"]
 [connection signal="mouse_exited" from="DoorHandle" to="." method="_on_door_handle_mouse_exited"]
@@ -955,6 +961,7 @@ autowrap_mode = 3
 [connection signal="mouse_entered" from="Bottle" to="." method="_on_bottle_mouse_entered"]
 [connection signal="mouse_exited" from="Bottle" to="." method="_on_bottle_mouse_exited"]
 [connection signal="input_event" from="BackShip" to="." method="_on_back_ship_input_event"]
+[connection signal="input_event" from="Area2D" to="." method="_on_captain_input"]
 [connection signal="mouse_entered" from="Camera2D/CamLeft" to="." method="_on_cam_left_mouse_entered"]
 [connection signal="mouse_exited" from="Camera2D/CamLeft" to="." method="_on_cam_left_mouse_exited"]
 [connection signal="mouse_entered" from="Camera2D/CamRight" to="." method="_on_cam_right_mouse_entered"]
@@ -972,4 +979,3 @@ autowrap_mode = 3
 [connection signal="button_down" from="Camera2D/bg/Map6" to="." method="_on_map_6_button_down"]
 [connection signal="button_up" from="Camera2D/bg/Map6" to="." method="_on_map_6_button_up"]
 [connection signal="pressed" from="Camera2D/bg/RessetMap" to="." method="_on_resset_map_pressed"]
-[connection signal="input_event" from="Area2D" to="." method="_on_captain_input"]

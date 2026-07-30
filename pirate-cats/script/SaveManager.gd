@@ -10,7 +10,8 @@ var sort = true
 var captain = true
 var crab_fight = false
 var full_map = false
-var speed = 0.05
+var aftercrab = false
+var speed: float = 0.05
 func save_game(slot: int) -> void:
 	var path = SAVE_FOLDER + "save_%d.json" % slot
 
@@ -24,6 +25,7 @@ func save_game(slot: int) -> void:
 		"captain": captain,
 		"crab_fight": crab_fight,
 		"speed": speed,
+		"aftercrab": aftercrab,
 	}
 
 	var file = FileAccess.open(path, FileAccess.WRITE)
@@ -66,8 +68,10 @@ func load_game(slot: int):
 		return null
 
 	crab_fight = data["crab_fight"]
-	if crab_fight:
+	if crab_fight and aftercrab:
 		get_tree().change_scene_to_file("res://scene/Backship.tscn")
+	elif crab_fight and aftercrab == false:
+		get_tree().change_scene_to_file("res://scene/aftercrabfight.tscn")
 	else:
 		get_tree().change_scene_to_file("res://scene/ship_sailing.tscn")
 

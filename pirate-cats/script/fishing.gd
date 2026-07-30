@@ -137,8 +137,10 @@ func show_cat_text(line) -> void:
 	$Textbox/textlabel.visible_characters = 0
 	
 	for i in $Textbox/textlabel.text.length():
+		if !is_inside_tree():
+			return
 		$Textbox/textlabel.visible_characters = i
-		await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(SaveManager.speed, false).timeout
 	
 	typing = false
 
@@ -390,6 +392,7 @@ func _on_wait_reel_timeout() -> void:
 	await get_tree().create_timer(0.3).timeout
 	if fish_ammount == 5:
 		SaveManager.fish = true
+		SaveManager.save_game(SaveManager.current_slot)
 		print("done")
 	else:
 		$Button.size.y = 230
@@ -483,3 +486,7 @@ func _on_mapbutton_pressed() -> void:
 	show_next_dialogue()
 	print("yay")
 	
+
+
+func _on_button_2_pressed() -> void:
+	get_tree().paused = true

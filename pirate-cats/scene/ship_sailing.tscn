@@ -25,13 +25,14 @@
 [ext_resource type="Texture2D" uid="uid://uevxgxsijq8n" path="res://assets/captain cat.png" id="15_rc3hd"]
 [ext_resource type="Texture2D" uid="uid://bva75w67aq42b" path="res://assets/crab-1.png" id="24_jepum"]
 [ext_resource type="Texture2D" uid="uid://gftjvq4gmerj" path="res://assets/crab.png" id="25_k5ume"]
+[ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="26_s55cq"]
 
 [sub_resource type="Animation" id="Animation_riyh1"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("parallaxbg/Camera2D:position")
+tracks/0/path = NodePath("Camera2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -71,7 +72,7 @@ length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("parallaxbg/Camera2D:position")
+tracks/0/path = NodePath("Camera2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -179,7 +180,7 @@ length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("parallaxbg/Camera2D:position")
+tracks/0/path = NodePath("Camera2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -322,7 +323,7 @@ length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("parallaxbg/Camera2D:position")
+tracks/0/path = NodePath("Camera2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -490,7 +491,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("parallaxbg/Camera2D:position")
+tracks/1/path = NodePath("Camera2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -684,18 +685,6 @@ position = Vector2(-290, 575)
 scale = Vector2(0.26081735, 0.26081732)
 texture = ExtResource("5_ifos2")
 
-[node name="Camera2D" type="Camera2D" parent="parallaxbg" unique_id=1861970315]
-position = Vector2(1416.8889, 582)
-scale = Vector2(0.5, 0.5)
-zoom = Vector2(2, 2)
-script = ExtResource("8_5h22d")
-
-[node name="Button" type="Button" parent="parallaxbg/Camera2D" unique_id=631269876]
-offset_left = 570.0
-offset_top = -326.0
-offset_right = 578.0
-offset_bottom = -318.0
-
 [node name="Front" type="Parallax2D" parent="parallaxbg" unique_id=415243839]
 scale = Vector2(0.5, 0.5)
 scroll_scale = Vector2(0.4, 0.4)
@@ -851,5 +840,21 @@ offset_bottom = 698.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
-[connection signal="pressed" from="parallaxbg/Camera2D/Button" to="." method="_on_button_pressed"]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1861970315]
+position = Vector2(1416.8889, 582)
+scale = Vector2(0.5, 0.5)
+zoom = Vector2(2, 2)
+script = ExtResource("8_5h22d")
+
+[node name="Button" type="Button" parent="Camera2D" unique_id=631269876]
+offset_left = 570.0
+offset_top = -326.0
+offset_right = 578.0
+offset_bottom = -318.0
+
+[node name="pausemenu" parent="Camera2D" unique_id=622735820 instance=ExtResource("26_s55cq")]
+visible = false
+position = Vector2(-575.77783, -324)
+
 [connection signal="pressed" from="Button" to="." method="_on_player_button_pressed"]
+[connection signal="pressed" from="Camera2D/Button" to="." method="_on_button_pressed"]

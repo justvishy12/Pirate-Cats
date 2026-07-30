@@ -11,6 +11,7 @@
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="11_2m08x"]
 [ext_resource type="Texture2D" uid="uid://2wuctke70gyw" path="res://assets/coconut.png" id="11_ykvkq"]
 [ext_resource type="Texture2D" uid="uid://bfx6njjb766cf" path="res://assets/clam.png" id="12_hrb60"]
+[ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="12_ulwyu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48q5p"]
 
@@ -252,6 +253,9 @@ theme_override_styles/hover = ExtResource("11_2m08x")
 theme_override_styles/focus = ExtResource("11_2m08x")
 text = "Are we going to cook?"
 autowrap_mode = 3
+
+[node name="pausemenu" parent="." unique_id=622735820 instance=ExtResource("12_ulwyu")]
+visible = false
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

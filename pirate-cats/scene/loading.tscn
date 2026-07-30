@@ -574,6 +574,7 @@ position = Vector2(-577.00006, 363)
 scale = Vector2(0.48, 0.48)
 
 [node name="Arrows" type="Sprite2D" parent="." unique_id=157513021]
+visible = false
 position = Vector2(-493.00003, 623.00006)
 scale = Vector2(0.4957627, 0.4957627)
 texture = ExtResource("11_kaksy")

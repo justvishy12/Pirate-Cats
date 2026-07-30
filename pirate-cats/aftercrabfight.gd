@@ -101,6 +101,7 @@ func show_next_dialogue() -> void:
 		$Textbox.visible = false
 		$AnimationPlayer.play("fadescene")
 		await $AnimationPlayer.animation_finished
+		SaveManager.aftercrab = false
 		get_tree().change_scene_to_file("res://scene/FrontShip.tscn")
 
 func _on_player_button_pressed() -> void:
@@ -135,8 +136,10 @@ func show_cat_text(line) -> void:
 	$Textbox/textlabel.visible_characters = 0
 	
 	for i in $Textbox/textlabel.text.length():
+		if !is_inside_tree():
+			return
 		$Textbox/textlabel.visible_characters = i
-		await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(SaveManager.speed, false).timeout
 	
 	typing = false
 

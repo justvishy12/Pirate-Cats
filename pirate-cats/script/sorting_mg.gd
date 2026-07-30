@@ -199,8 +199,10 @@ func show_cat_text(line) -> void:
 	$Textbox/textlabel.visible_characters = 0
 	
 	for i in $Textbox/textlabel.text.length():
+		if !is_inside_tree():
+			return
 		$Textbox/textlabel.visible_characters = i
-		await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(SaveManager.speed, false).timeout
 	
 	typing = false
 
@@ -262,6 +264,7 @@ func _process(delta: float) -> void:
 	if cb4 == true and cc4 == true and wb4 == true and finish == false:
 		finish = true
 		SaveManager.sort = true
+		SaveManager.save_game(SaveManager.current_slot)
 		for button in Buttons:
 			button.disabled = true
 		$mapbutton.visible = true

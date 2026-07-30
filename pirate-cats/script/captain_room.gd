@@ -87,14 +87,14 @@ var typing = false
 
 func show_next_dialogue() -> void:
 	if dialogue_index >= dialogue.size():
-		$Textbox.visible = false
+		$Camera2D/Textbox.visible = false
 		$"player button".visible = false
 		return
 	
 	var line = dialogue[dialogue_index]
 	
 	if line["speaker"] == "you":
-		$Textbox.visible = false
+		$Camera2D/Textbox.visible = false
 		$"player button".visible = true
 		$"player button".text = line["text"]
 		
@@ -104,7 +104,7 @@ func show_next_dialogue() -> void:
 		
 	#elif line["speaker"] == "event":
 		#$Button.visible = false
-		#$Textbox.visible = false
+		#$Camera2D/Textbox.visible = false
 		#$AnimationPlayer.play("event")
 		#await $AnimationPlayer.animation_finished
 		#dialogue_index += 1
@@ -112,7 +112,7 @@ func show_next_dialogue() -> void:
 		#return
 	#elif line["speaker"] == "fadescene":
 		#$Button.visible = false
-		#$Textbox.visible = false
+		#$Camera2D/Textbox.visible = false
 		#$AnimationPlayer.play("fadescene")
 		#await $AnimationPlayer.animation_finished
 		#get_tree().change_scene_to_file("res://scene/crab_fight.tscn")
@@ -122,21 +122,23 @@ func _on_player_button_pressed() -> void:
 	show_next_dialogue()
 
 func show_cat_text(line) -> void:
-	$Textbox.visible = true
+	$Camera2D/Textbox.visible = true
 	typing = true
 	
-	$Textbox/namelabel.text = line["name"]
-	$Textbox/textlabel.text = line["text"]
+	$Camera2D/Textbox/namelabel.text = line["name"]
+	$Camera2D/Textbox/textlabel.text = line["text"]
 	
 	if line.has("portrait"):
-		$Textbox/photobox.texture = line["portrait"]
+		$Camera2D/Textbox/photobox.texture = line["portrait"]
 	else:
-		$Textbox/photobox.texture = null
-	$Textbox/textlabel.visible_characters = 0
+		$Camera2D/Textbox/photobox.texture = null
+	$Camera2D/Textbox/textlabel.visible_characters = 0
 	
-	for i in $Textbox/textlabel.text.length():
-		$Textbox/textlabel.visible_characters = i
-		await get_tree().create_timer(0.05).timeout
+	for i in $Camera2D/Textbox/textlabel.text.length():
+		if !is_inside_tree():
+			return
+		$Camera2D/Textbox/textlabel.visible_characters = i
+		await get_tree().create_timer(SaveManager.speed, false).timeout
 	
 	typing = false
 
@@ -145,10 +147,10 @@ func _input(event):
 	if event.is_action_pressed("ui_accept") and !typing:
 		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
 			if dialogue_index == 0:
-				$Textbox.visible=false
+				$Camera2D/Textbox.visible=false
 				return
 			if dialogue_index == 2:
-				$Textbox.visible=false
+				$Camera2D/Textbox.visible=false
 				return
 			dialogue_index += 1
 			show_next_dialogue()

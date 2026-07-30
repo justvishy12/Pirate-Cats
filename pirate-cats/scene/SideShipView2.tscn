@@ -11,6 +11,7 @@
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="9_0hrjc"]
 [ext_resource type="Texture2D" uid="uid://uevxgxsijq8n" path="res://assets/captain cat.png" id="10_epqup"]
 [ext_resource type="Texture2D" uid="uid://5p61n5jeldm0" path="res://assets/map6.png" id="11_0hrjc"]
+[ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="12_0hrjc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0mlra"]
 atlas = ExtResource("3_pdb1p")
@@ -202,6 +203,11 @@ theme_override_styles/hover = ExtResource("9_0hrjc")
 theme_override_styles/focus = ExtResource("9_0hrjc")
 text = "Are we going to cook?"
 autowrap_mode = 3
+
+[node name="pausemenu" parent="Camera2D" unique_id=622735820 instance=ExtResource("12_0hrjc")]
+visible = false
+position = Vector2(-636.95337, -348.56073)
+scale = Vector2(1.1, 1.1)
 
 [node name="BubbleBucket" type="Area2D" parent="." unique_id=1366504733]
 
