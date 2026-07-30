@@ -4,13 +4,15 @@ var rightside = false
 var round1 = false
 var round2 = false
 var round3 = false
-var r1d = false
-var r2d = false
-var r3d = false
 var roundS = false
+var c1 = false #to check if they are moving
+var c2 = false
+var c3 = false
 var p1 = false
 var p2 = false
 var p3 = false
+var cw = false #this is just extra to make sure round finished is not on loop
+var round_transitioning = false
 var round1done = false
 var round2done = false
 var got_wrong = false
@@ -123,25 +125,33 @@ func _input(event):
 	if event.is_action_pressed("ui_accept") and !typing:
 		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
 			if dialogue_index == 7 and got_wrong:
+				cw = false
 				$AnimationPlayer.play("fadein")
-				await$AnimationPlayer.animation_finished
+				await $AnimationPlayer.animation_finished
 				$BackshipViewNight.visible=false
 				$Textbox.visible=false
-				got_wrong=false
+				reset_game()
 				$AnimationPlayer.play("fadeout")
-				await$AnimationPlayer.animation_finished
+				await $AnimationPlayer.animation_finished
 				game_finished = false
-				round1 = false
-				round2 = false
-				round3 = false
-
+				roundS = true
 				return
 
-			if dialogue_index == 5:
-				$IslandInDistance.visible = false
-			if dialogue_index == 6:
+			if dialogue_index == 5 and got_wrong == false:
+				game_finished = true
+				$AnimationPlayer.play("fadein")
+				await $AnimationPlayer.animation_finished
+				$AnimationPlayer.play("fadeout")
+				await $AnimationPlayer.animation_finished
+				$IslandInDistance.visible = true
+				
+			if dialogue_index == 6 and got_wrong == false:
 				$Textbox.visible = false
-				get_tree().change_scene_to_file("res://scene/island.tscn")
+				$AnimationPlayer.play("fadein")
+				await $AnimationPlayer.animation_finished
+				$AnimationPlayer.play("fadeout")
+				await $AnimationPlayer.animation_finished
+				get_tree().change_scene_to_file("res://scene/islandMG.tscn")
 				
 			if dialogue_index == 4:
 				print("Hiding panel")
@@ -153,9 +163,39 @@ func _input(event):
 
 func _ready() -> void:
 	show_next_dialogue()
-	pass
-
+func reset_game():
+	$FishConstellation.position.x = 194
+	$PawprintConstellation.position.x = 194
+	$BootConstellation.position.x = 182
+	$CatFaceConstellation.position.x = 942
+	$ShirtConstellation.position.x = 934
+	$PantsConstellation.position.x = 944
+	$FishConstellation.modulate = Color(1.0, 1.0, 1.0, 0.0)
+	$PawprintConstellation.modulate = Color(1.0, 1.0, 1.0, 0.0)
+	$BootConstellation.modulate = Color(1.0, 1.0, 1.0, 0.0)
+	$CatFaceConstellation.modulate = Color(1.0, 1.0, 1.0, 0.0)
+	$ShirtConstellation.modulate = Color(1.0, 1.0, 1.0, 0.0)
+	$PantsConstellation.modulate = Color(1.0, 1.0, 1.0, 0.0)
+	round1 = false
+	round2 = false
+	cw  =false
+	round3 = false
+	side_movement = 0
+	roundS = false
+	p1 = false
+	p2 = false
+	p3 = false
+	round1done = false
+	hello = false
+	round2done = false
+	got_wrong = false
+	round3done = false
 func round_finished():
+	if round_transitioning:
+		return
+	round_transitioning = true
+	
+	print("round_finished called")
 	await get_tree().create_timer(0.4).timeout
 	if round1 == false:
 		roundS = true
@@ -168,7 +208,8 @@ func round_finished():
 		roundS = true
 		$Timer.stop()
 		$AnimationPlayer.play("ButtonIn")
-	if round3 == true and got_wrong:
+	if round3 == true and got_wrong and cw == false:
+		cw = true
 		$AnimationPlayer.play("fadein")
 		await $AnimationPlayer.animation_finished
 		$BackshipViewNight.visible=true
@@ -176,7 +217,12 @@ func round_finished():
 		await $AnimationPlayer.animation_finished
 		dialogue_index = 6
 		show_next_dialogue()
-	if round3 == true and hello == false:
+	if round3 == true and hello == false and got_wrong == false and game_finished == false:
+		$AnimationPlayer.play("fadein")
+		await $AnimationPlayer.animation_finished
+		$AnimationPlayer.play("fadeout")
+		await $AnimationPlayer.animation_finished
+		$BackshipViewNight.visible=true
 		hello = true
 		dialogue_index = 5
 		show_next_dialogue()
@@ -184,6 +230,7 @@ func round_finished():
 		print("Player made at least one mistake.")
 	else:
 		print("Player got every constellation correct!")
+	round_transitioning = false
 func _process(delta: float) -> void:
 	if side_movement == 1 and  roundS == false and game_finished == false:
 		$Wheel.rotation += -1.0 * delta
@@ -194,7 +241,7 @@ func _process(delta: float) -> void:
 	if roundS == true:
 		side_movement = 0
 		if round1 == false:
-			$PawprintConstellation.global_position.x = 199
+			$PawprintConstellation.global_position.x = 194
 			$ShirtConstellation.global_position.x = 934
 			$PawprintConstellation.modulate.a = min(1.0, $PawprintConstellation.modulate.a + delta)
 			$ShirtConstellation.modulate.a = min(1.0, $ShirtConstellation.modulate.a + delta)
@@ -212,12 +259,12 @@ func _process(delta: float) -> void:
 				roundS = false
 				
 		elif round3 == false:
-			$FishConstellation.global_position.x = 197
+			$FishConstellation.global_position.x = 194
 			$PantsConstellation.global_position.x = 944
 			$FishConstellation.modulate.a = min(1.0, $FishConstellation.modulate.a + delta)
 			$PantsConstellation.modulate.a = min(1.0, $PantsConstellation.modulate.a + delta)
 
-			if $PantsConstellation.modulate.a >= 1.0 and $PantsConstellation.modulate.a >= 1.0:
+			if $PantsConstellation.modulate.a >= 1.0 and $FishConstellation.modulate.a >= 1.0:
 				roundS = false
 #endregion
 	
@@ -226,6 +273,7 @@ func _process(delta: float) -> void:
 #region Fading DOne
 		
 	if $PawprintConstellation.global_position.x >= 575:
+		c1 = false
 		$PawprintConstellation.modulate.a = max(0.0, $PawprintConstellation.modulate.a - delta)
 		if $PawprintConstellation.modulate.a <= 0.0 and p1 == false:
 			round1done = true
@@ -235,6 +283,7 @@ func _process(delta: float) -> void:
 			round_finished()
 		
 	if $ShirtConstellation.global_position.x <= 575:
+		c1 = false
 		$ShirtConstellation.modulate.a = max(0.0, $ShirtConstellation.modulate.a - delta)
 		if $ShirtConstellation.modulate.a <= 0.0 and p1 == false:
 			got_wrong = true
@@ -247,6 +296,7 @@ func _process(delta: float) -> void:
 
 		
 	if $BootConstellation.global_position.x >= 575:
+		c2 = false
 		$BootConstellation.modulate.a = max(0.0,  $BootConstellation.modulate.a - delta)
 		if $BootConstellation.modulate.a <= 0.0 and p2== false:
 			got_wrong = true
@@ -257,6 +307,7 @@ func _process(delta: float) -> void:
 			round_finished()
 
 	if $CatFaceConstellation.global_position.x <= 575:
+		c2 = false
 		$CatFaceConstellation.modulate.a = max(0.0, $CatFaceConstellation.modulate.a - delta)
 		if $CatFaceConstellation.modulate.a <= 0.0 and p2 == false:
 			round2done = true
@@ -266,6 +317,7 @@ func _process(delta: float) -> void:
 			round_finished()
 
 	if $FishConstellation.global_position.x >= 575:
+		c3 = false
 		$FishConstellation.modulate.a = max(0.0,  $FishConstellation.modulate.a - delta)
 		if $FishConstellation.modulate.a <= 0.0 and p3 == false:
 			round3done = true
@@ -275,6 +327,7 @@ func _process(delta: float) -> void:
 			round_finished()
 
 	if $PantsConstellation.global_position.x <= 575:
+		c3 = false
 		$PantsConstellation.modulate.a = max(0.0, $PantsConstellation.modulate.a - delta)
 		if $PantsConstellation.modulate.a <= 0.0 and p3 == false:
 			got_wrong = true
@@ -290,6 +343,7 @@ func _process(delta: float) -> void:
 #region Movement
 	if round1 == true and round2 == false  and round1done == false:
 		print( $PawprintConstellation.global_position.x)
+		c1 = true
 		if side_movement == 1 and $PawprintConstellation.global_position.x <= 575:
 			$PawprintConstellation.global_position += Vector2(150, 0) * delta
 			$ShirtConstellation.global_position += Vector2(150, 0) * delta
@@ -302,6 +356,7 @@ func _process(delta: float) -> void:
 				
 				
 	if round2 == true and round3 == false  and round2done == false:
+		c2 = true
 		if side_movement == 1 and $BootConstellation.global_position.x <= 575:
 			$BootConstellation.global_position += Vector2(150, 0) * delta
 			$CatFaceConstellation.global_position += Vector2(150, 0) * delta
@@ -312,6 +367,7 @@ func _process(delta: float) -> void:
 		
 				
 	if round3 == true and round3done == false:
+		c3 = true
 		if side_movement == 1 and $FishConstellation.global_position.x <= 575:
 			$FishConstellation.global_position += Vector2(150, 0) * delta
 			$PantsConstellation.global_position += Vector2(150, 0) * delta
@@ -323,8 +379,9 @@ func _process(delta: float) -> void:
 
 #region Left and Right
 func _on_left_side_mouse_entered() -> void:
-	leftside = true
-	$Timer.start()
+	if c1 == false and c2 == false and c3 == false:
+		leftside = true
+		$Timer.start()
 
 
 
@@ -333,8 +390,9 @@ func _on_left_side_mouse_exited() -> void:
 	$Timer.stop()
 
 func _on_right_side_mouse_entered() -> void:
-	rightside = true
-	$Timer.start()
+	if c1 == false and c2 == false and c3 == false:
+		rightside = true
+		$Timer.start()
 
 func _on_right_side_mouse_exited() -> void:
 	rightside = false

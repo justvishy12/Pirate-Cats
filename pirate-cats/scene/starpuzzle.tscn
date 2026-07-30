@@ -114,13 +114,13 @@ texture = ExtResource("8_dcyao")
 
 [node name="FishConstellation" type="Sprite2D" parent="." unique_id=1684616748]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(197, 149)
+position = Vector2(193.99998, 149)
 scale = Vector2(0.49250677, 0.49250683)
 texture = ExtResource("1_vndm2")
 
 [node name="PawprintConstellation" type="Sprite2D" parent="." unique_id=550569064]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(199, 142)
+position = Vector2(194.00002, 142)
 scale = Vector2(0.5755208, 0.5755208)
 texture = ExtResource("3_ylqqd")
 
@@ -149,12 +149,6 @@ texture = ExtResource("4_628eg")
 [node name="PantsConstellation" type="Sprite2D" parent="." unique_id=1606671047]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(944, 154)
-scale = Vector2(0.38785046, 0.38785046)
-texture = ExtResource("2_48817")
-
-[node name="PantsConstellation2" type="Sprite2D" parent="." unique_id=18575373]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(575, 154)
 scale = Vector2(0.38785046, 0.38785046)
 texture = ExtResource("2_48817")
 
@@ -206,6 +200,7 @@ scale = Vector2(0.81808203, 0.8180821)
 texture = ExtResource("19_37775")
 
 [node name="IslandInDistance" type="Sprite2D" parent="." unique_id=1954306830]
+visible = false
 position = Vector2(576, 321)
 scale = Vector2(1.0121527, 1.0324075)
 texture = ExtResource("20_jrvaw")
