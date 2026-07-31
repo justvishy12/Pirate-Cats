@@ -130,6 +130,8 @@ func show_next_dialogue() -> void:
 		show_cat_text(line)
 		
 func _on_player_button_pressed() -> void:
+	if dialogue_index == 13:
+		get_tree().change_scene_to_file("res://scene/finalscene.tscn")
 	dialogue_index += 1
 	show_next_dialogue()
 
@@ -159,12 +161,23 @@ func show_cat_text(line) -> void:
 func _input(event):
 	if event.is_action_pressed("ui_accept") and !typing:
 		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
+			print(dialogue_index)
 			if dialogue_index == 3:
 				print("Hiding panel")
 				$Textbox.visible = false
 				$Panel.visible = false
 			if dialogue_index == 4:
-				get_tree().change_scene_to_file("res://scene/finalscene.tscn")
+				dialogue_index = 11
+				show_next_dialogue()
+				return
+			elif dialogue_index == 11:
+				dialogue_index = 12
+				show_next_dialogue()
+				return
+			elif dialogue_index == 12:
+				dialogue_index = 13
+				show_next_dialogue()
+				return
 			if dialogue_index == 0 or dialogue_index == 1 or dialogue_index == 2:
 				dialogue_index += 1
 				show_next_dialogue()
@@ -198,6 +211,11 @@ func treasure():
 
 
 func tres():
+	Input.set_custom_mouse_cursor(null)
+	$side.disabled = true
+	$side2.disabled = true
+	$top.disabled = true
+	$bottom.disabled = true
 	$Button.disabled = true
 	$Button2.disabled = true
 	$Button3.disabled = true
@@ -206,13 +224,6 @@ func tres():
 	$Button6.disabled = true
 	dialogue_index = 4
 	show_next_dialogue()
-	dialogue_index =11
-	show_next_dialogue()
-	dialogue_index =12
-	show_next_dialogue()
-	dialogue_index =13
-	show_next_dialogue()
-	get_tree().change_scene_to_file("res://scene/finalscene.tscn")
 func _on_side_pressed() -> void:
 	dialogue_index = 10
 	show_next_dialogue()

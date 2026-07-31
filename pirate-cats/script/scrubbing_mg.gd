@@ -206,6 +206,7 @@ func round3():
 	var tween = create_tween()
 	tween.tween_property($mapbutton, "modulate:a", 1.0, 0.5)
 	$Round3.position = Vector2(-816, 383)
+	Input.set_custom_mouse_cursor(null)
 	SaveManager.scrub = true
 	SaveManager.save_game(SaveManager.current_slot)
 #region Round One Mouse

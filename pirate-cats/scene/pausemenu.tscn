@@ -130,6 +130,7 @@ max_value = 1.0
 step = 0.001
 value = 0.5
 script = ExtResource("6_w0dr8")
+bus_name = "Master"
 
 [node name="TextSpeed" type="HSlider" parent="." unique_id=371606633]
 offset_left = 593.0
