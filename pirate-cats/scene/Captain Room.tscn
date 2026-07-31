@@ -894,14 +894,11 @@ texture = ExtResource("18_a7tom")
 region_enabled = true
 region_rect = Rect2(0, 0, 236, 286)
 
-[node name="Area2D" type="Area2D" parent="Camera2D" unique_id=1142379379]
+[node name="Arros" type="Area2D" parent="Camera2D" unique_id=1142379379]
 position = Vector2(306.5, -508)
 
-[node name="ColorRect" type="CollisionPolygon2D" parent="Camera2D/Area2D" unique_id=918298393]
-position = Vector2(-54.5, 32)
-scale = Vector2(0.90683997, 0.9068399)
-polygon = PackedVector2Array(-547, 667, -508, 643, -503, 656, -445, 655, -436, 684, -497, 684, -497, 696, -546, 673, -548, 668)
-disabled = true
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Camera2D/Arros" unique_id=1326875789]
+polygon = PackedVector2Array(-552.5, 639, -515.5, 616, -510.5, 628, -457.5, 627, -449.5, 653, -504.5, 652, -505.5, 664)
 
 [node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=469863391]
 visible = false
@@ -974,6 +971,12 @@ visible = false
 position = Vector2(-288, -162)
 scale = Vector2(0.5, 0.5)
 
+[node name="Button" type="Button" parent="." unique_id=1438323905]
+offset_left = 306.5
+offset_top = -508.0
+offset_right = 314.5
+offset_bottom = -500.0
+
 [node name="Typing" type="AudioStreamPlayer2D" parent="." unique_id=1899866195]
 stream = ExtResource("23_hif1r")
 volume_db = 10.0
@@ -1011,4 +1014,4 @@ parameters/looping = true
 [connection signal="button_down" from="Camera2D/bg/Map6" to="." method="_on_map_6_button_down"]
 [connection signal="button_up" from="Camera2D/bg/Map6" to="." method="_on_map_6_button_up"]
 [connection signal="pressed" from="Camera2D/bg/RessetMap" to="." method="_on_resset_map_pressed"]
-[connection signal="input_event" from="Camera2D/Area2D" to="." method="_on_arrow_input"]
+[connection signal="input_event" from="Camera2D/Arros" to="." method="_on_arros_input_event"]

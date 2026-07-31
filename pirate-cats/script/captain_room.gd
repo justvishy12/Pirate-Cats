@@ -162,6 +162,7 @@ func _input(event):
 				show_next_dialogue()
 
 func _ready() -> void:
+	
 	print($Camera2D/bg/Map1.global_position)
 	print($Camera2D/bg/Map2.global_position)
 	print($Camera2D/bg/Map3.global_position)
@@ -171,6 +172,9 @@ func _ready() -> void:
 	if SaveManager.cook and SaveManager.captain == true and SaveManager.scrub and SaveManager.feed and SaveManager.sort and SaveManager.fish:
 		$CaptainCat.visible=true
 		$Area2D/CollisionShape2D.disabled=false
+	else:
+		$CaptainCat.visible = false
+		$Area2D/CollisionShape2D.disabled = true
 	if SaveManager.fish == false:
 		$Camera2D/bg/Map1.disabled = true
 		$Camera2D/bg/Map1.visible = true
@@ -590,15 +594,14 @@ func all_maps_placed():
 func _on_table_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and !SaveManager.full_map:
 		$Camera2D.position = Vector2(0, 0)
-		$Camera2D/Area2D/ColorRect.disabled=false
-		
-		if dialogue_index == 0:
-			dialogue_id += 1
-			typing = false
-		dialogue_index =1
-		show_next_dialogue()
+		if SaveManager.cook and SaveManager.captain == true and SaveManager.scrub and SaveManager.feed and SaveManager.sort and SaveManager.fish:
+			if dialogue_index == 0:
+				dialogue_id += 1
+				typing = false
+			dialogue_index =1
+			show_next_dialogue()
 		$Camera2D/bg.visible = true
-		$CaptainCat.visible=false
+		
 	#if event is InputEventMouseButton and event.pressed and SaveManager.full_map:
 		#
 		#$Camera2D/bg.visible=true
@@ -638,7 +641,10 @@ func _on_captain_input(viewport: Node, event: InputEvent, shape_idx: int) -> voi
 		show_next_dialogue()
 
 
-func _on_arrow_input(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		$Camera2D/bg.visible=false
-		$Camera2D/Area2D/ColorRect.disabled=true
+
+
+func _on_arros_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	print("works")
+	if event is InputEventMouseButton:
+		print("is working")
+		$Camera2D/bg.visible = false

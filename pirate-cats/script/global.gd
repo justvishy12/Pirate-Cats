@@ -12,7 +12,8 @@ var music_scenes = [
 	"res://scene/FrontShip.tscn",
 	"res://scene/Backship.tscn",
 	"res://scene/Captain Room.tscn",
-	"res://scene/ship_sailing.tscn"
+	"res://scene/ship_sailing.tscn",
+	"res://scene/aftercrabfight.tscn"
 ]
 
 func _ready():

@@ -41,7 +41,7 @@ var dialogue = [
 		#3
 		"speaker": "cat",
 		"name": "Minnow (Fisher)",
-		"text": "Keep the red bar in the orange bar for some time to get the fish. ",
+		"text": "Once you get a catch click to keep the moving bar inside the red box.  ",
 		"portrait": preload("res://assets/headshots/FISHER FACE.png")
 	},
 	{
@@ -197,6 +197,7 @@ func rand_time():
 
 func _on_fishing_timer_timeout() -> void:
 	$FishingTimer.stop()
+	$FishMove.play()
 	fishing = true
 	if bobber == true and fishing == true:
 		if fish_ammount == 4:
@@ -318,6 +319,7 @@ func _on_wait_reel_timeout() -> void:
 		slider_tween.kill()
 	$Button.disabled = true
 	$TimeOutOfTank.stop()
+	$FishMove.stop()
 	$InsMove.stop()
 	if insslider_tween:
 		insslider_tween.kill()

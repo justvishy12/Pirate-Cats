@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="19_21ie3"]
 [ext_resource type="AudioStream" uid="uid://d24kk8ruhuv2a" path="res://audio/TypingSound.mp3" id="20_7wtnd"]
 [ext_resource type="AudioStream" uid="uid://dk1ychhrhket4" path="res://audio/Puzzles.mp3" id="21_7ld5n"]
+[ext_resource type="AudioStream" uid="uid://lakl4032lk4o" path="res://audio/fishing.mp3" id="21_i55qk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ue6ed"]
 atlas = ExtResource("1_ly0cx")
@@ -644,6 +645,13 @@ position = Vector2(-576, -324)
 [node name="Typing" type="AudioStreamPlayer2D" parent="." unique_id=202314017]
 stream = ExtResource("20_7wtnd")
 volume_db = 10.0
+pitch_scale = 0.8
+bus = &"Sfx"
+parameters/looping = true
+
+[node name="FishMove" type="AudioStreamPlayer2D" parent="." unique_id=2116757552]
+stream = ExtResource("21_i55qk")
+volume_db = 15.0
 pitch_scale = 0.8
 bus = &"Sfx"
 parameters/looping = true
