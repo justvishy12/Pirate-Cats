@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://ci5fs3td4usu5" path="res://fonts/Irish_Grover/IrishGrover-Regular.ttf" id="2_njy0u"]
 [ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="3_1dsav"]
 [ext_resource type="Script" uid="uid://bxgo5q0neo22w" path="res://script/musicslider.gd" id="4_3sl1l"]
+[ext_resource type="StyleBox" uid="uid://bxm1bvvsisy70" path="res://styles/leftslideer.tres" id="5_1dsav"]
 [ext_resource type="Script" uid="uid://bfo0ean2mnybh" path="res://script/sfxslider.gd" id="5_iav56"]
 [ext_resource type="Script" uid="uid://drv4q8hic530x" path="res://script/masterslider.gd" id="6_w0dr8"]
 [ext_resource type="Script" uid="uid://cxqqxxqt6sn0c" path="res://script/text_speed.gd" id="7_jndav"]
@@ -85,7 +86,7 @@ offset_top = 410.0
 offset_right = 567.0
 offset_bottom = 445.66666
 theme_override_fonts/font = ExtResource("3_1dsav")
-text = "Text Speed (Faster to Slower)"
+text = "Text Speed"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -104,6 +105,7 @@ offset_left = 593.0
 offset_top = 325.0
 offset_right = 687.0
 offset_bottom = 341.0
+theme_override_styles/grabber_area = ExtResource("5_1dsav")
 max_value = 1.0
 step = 0.001
 value = 0.5
@@ -115,6 +117,7 @@ offset_left = 593.0
 offset_top = 369.0
 offset_right = 687.0
 offset_bottom = 385.0
+theme_override_styles/grabber_area = ExtResource("5_1dsav")
 max_value = 1.0
 step = 0.01
 value = 0.5
@@ -126,6 +129,7 @@ offset_left = 593.0
 offset_top = 281.0
 offset_right = 687.0
 offset_bottom = 297.0
+theme_override_styles/grabber_area = ExtResource("5_1dsav")
 max_value = 1.0
 step = 0.001
 value = 0.5
@@ -137,6 +141,7 @@ offset_left = 593.0
 offset_top = 413.0
 offset_right = 687.0
 offset_bottom = 429.0
+theme_override_styles/grabber_area = ExtResource("5_1dsav")
 min_value = 0.01
 max_value = 0.1
 step = 0.001

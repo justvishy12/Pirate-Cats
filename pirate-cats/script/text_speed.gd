@@ -6,4 +6,4 @@ func _ready() -> void:
 	value = SaveManager.speed
 
 func _process(delta: float) -> void:
-	SaveManager.speed = value
+	SaveManager.speed = -value
