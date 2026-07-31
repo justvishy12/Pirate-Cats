@@ -15,6 +15,30 @@
 
 [sub_resource type="Animation" id="Animation_xwca0"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../creds:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../creds:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_vudae"]
 resource_name = "fade"
@@ -38,7 +62,7 @@ tracks/1/path = NodePath("../Save1:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.2666667, 2),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -50,7 +74,7 @@ tracks/2/path = NodePath("../Save2:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1.1333333, 2),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -62,7 +86,7 @@ tracks/3/path = NodePath("../Save3:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.2333333, 2),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -74,7 +98,7 @@ tracks/4/path = NodePath("../Prefferences:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(1.1, 2),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -86,7 +110,7 @@ tracks/5/path = NodePath("../Guide:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(1.2666667, 2),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -98,7 +122,7 @@ tracks/6/path = NodePath("../Save1:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(2, 3.8333333),
+"times": PackedFloat32Array(2, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -110,7 +134,7 @@ tracks/7/path = NodePath("../Save2:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(2, 3.8333333),
+"times": PackedFloat32Array(2, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -122,7 +146,7 @@ tracks/8/path = NodePath("../Save3:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(2, 3.8333333),
+"times": PackedFloat32Array(2, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -134,7 +158,7 @@ tracks/9/path = NodePath("../Prefferences:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(2, 3.8333333),
+"times": PackedFloat32Array(2, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -146,7 +170,31 @@ tracks/10/path = NodePath("../Guide:modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(2, 3.8333333),
+"times": PackedFloat32Array(2, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../creds:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../creds:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(2, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -188,7 +236,6 @@ scale = Vector2(0.63635814, 0.63635814)
 texture = ExtResource("4_xwca0")
 
 [node name="Save1" type="Panel" parent="Loading" unique_id=765922399]
-modulate = Color(1, 1, 1, 0)
 offset_left = 230.0
 offset_top = 285.0
 offset_right = 476.0
@@ -253,7 +300,6 @@ theme_override_fonts/font = ExtResource("6_waisc")
 text = "xx:xx"
 
 [node name="Save2" type="Panel" parent="Loading" unique_id=1096441112]
-modulate = Color(1, 1, 1, 0)
 offset_left = 539.09106
 offset_top = 285.0
 offset_right = 785.09106
@@ -317,7 +363,6 @@ theme_override_fonts/font = ExtResource("6_waisc")
 text = "xx:xx"
 
 [node name="Save3" type="Panel" parent="Loading" unique_id=964077196]
-modulate = Color(1, 1, 1, 0)
 offset_left = 848.18176
 offset_top = 285.0
 offset_right = 1094.1818
@@ -381,7 +426,6 @@ theme_override_fonts/font = ExtResource("6_waisc")
 text = "xx:xx"
 
 [node name="Prefferences" type="Button" parent="Loading" unique_id=1622919171]
-modulate = Color(1, 1, 1, 0)
 offset_left = 32.0
 offset_top = 88.0
 offset_right = 200.0
@@ -393,7 +437,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_dpmfe")
 text = "PREFFERENCES"
 
 [node name="Guide" type="Button" parent="Loading" unique_id=1436311473]
-modulate = Color(1, 1, 1, 0)
 offset_left = 32.0
 offset_top = 199.99994
 offset_right = 200.0
@@ -406,6 +449,7 @@ text = "GUIDE"
 
 [node name="creds" type="Button" parent="Loading" unique_id=1551845139]
 visible = false
+modulate = Color(1, 1, 1, 0)
 offset_left = 32.0
 offset_top = 309.09064
 offset_right = 200.0
@@ -417,12 +461,14 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_dpmfe")
 text = "Credits"
 
 [node name="LoadBg" type="Sprite2D" parent="." unique_id=1166868167]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(-272.36258, 535.3585)
 scale = Vector2(0.2799976, 0.2799976)
 texture = ExtResource("5_vudae")
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=809109245]
+visible = false
 position = Vector2(-288, 526)
 zoom = Vector2(2, 2)
 

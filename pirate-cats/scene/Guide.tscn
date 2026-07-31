@@ -58,7 +58,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.284375
-anchor_top = 0.15977961
+anchor_top = -0.65863186
 anchor_right = 0.315625
 anchor_bottom = -0.65863186
 offset_left = 296.0
@@ -77,7 +77,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.275
-anchor_top = 0.7217631
+anchor_top = 0.11375112
 anchor_right = 0.30208334
 anchor_bottom = 0.11375112
 offset_left = 296.0
@@ -115,13 +115,6 @@ theme_override_font_sizes/font_size = 56
 text = "PIRATE CATS"
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="." unique_id=2053967841]
-offset_left = 1118.0
-offset_top = 2.0
-offset_right = 1141.0
-offset_bottom = 24.0
-metadata/_edit_use_anchors_ = true
-
 [node name="Mouse" type="Sprite2D" parent="." unique_id=1615545804]
 position = Vector2(194.25, 373.91205)
 scale = Vector2(0.46978024, 0.46978027)
@@ -136,5 +129,3 @@ texture = ExtResource("6_8j1m7")
 position = Vector2(877.00006, 394)
 scale = Vector2(0.49999967, 0.49999976)
 texture = ExtResource("7_af6pv")
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

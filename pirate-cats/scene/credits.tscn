@@ -37,22 +37,27 @@ metadata/_edit_use_anchors_ = true
 custom_minimum_size = Vector2(1.64, 1.415)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.6073171
-anchor_top = 0.027548209
-anchor_right = -0.73170733
-anchor_bottom = -0.055096503
+anchor_left = -0.6707317
+anchor_top = 0.002754821
+anchor_right = -0.6707317
+anchor_bottom = 0.002754821
 offset_left = 296.0
 offset_top = 9.0
 offset_right = 650.0
 offset_bottom = 354.00003
 theme_override_fonts/font = ExtResource("3_mjmje")
 theme_override_font_sizes/font_size = 22
-text = "Credits
-Created by- Vishyyyyyyy & Vishyyyyyyyyy
+text = "Created by- Vishyyyyyyy & Vishyyyyyyyyy
+
 Assets - Vishyyyyyyy & Vishyyyyyyyyy
+
 Google Fonts - Jua & Irish Grover
-Audio - Vishyyyyyyy & Vishyyyyyyyyy"
+
+SFX - Vishyyyyyyy & Vishyyyyyyyyy
+
+Audio - Pixabay"
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
@@ -78,12 +83,3 @@ theme_override_fonts/font = ExtResource("4_xeho1")
 theme_override_font_sizes/font_size = 56
 text = "PIRATE CATS"
 metadata/_edit_use_anchors_ = true
-
-[node name="Button" type="Button" parent="." unique_id=2053967841]
-offset_left = 1118.0
-offset_top = 2.0
-offset_right = 1141.0
-offset_bottom = 24.0
-metadata/_edit_use_anchors_ = true
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
