@@ -464,7 +464,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("6_waisc")
 theme_override_styles/normal = ExtResource("3_mufkd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dpmfe")
-text = "Credits"
+text = "CREDITS"
 
 [node name="LoadBg" type="Sprite2D" parent="." unique_id=1166868167]
 modulate = Color(1, 1, 1, 0)
