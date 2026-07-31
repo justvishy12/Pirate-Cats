@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://5p61n5jeldm0" path="res://assets/map6.png" id="15_it88h"]
 [ext_resource type="Texture2D" uid="uid://eo3m1jqogybo" path="res://assets/map pieces.png" id="15_lerbx"]
 [ext_resource type="Texture2D" uid="uid://uevxgxsijq8n" path="res://assets/captain cat.png" id="17_jmuir"]
+[ext_resource type="Texture2D" uid="uid://cp8626l6c67j5" path="res://scene/arrows.png" id="18_a7tom"]
 [ext_resource type="Texture2D" uid="uid://bk0yokqeio7rc" path="res://assets/textbox.png" id="18_m2tfi"]
 [ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="19_djvvj"]
 [ext_resource type="StyleBox" uid="uid://mgm47pkvgrxx" path="res://styles/userchoice.tres" id="20_hif1r"]
@@ -886,6 +887,22 @@ position = Vector2(288, 200)
 scale = Vector2(0.13166997, 0.13166998)
 texture = ExtResource("15_lerbx")
 
+[node name="Arrows" type="Sprite2D" parent="Camera2D/bg" unique_id=1243061817]
+position = Vector2(92, 334)
+scale = Vector2(0.4152542, 0.41525418)
+texture = ExtResource("18_a7tom")
+region_enabled = true
+region_rect = Rect2(0, 0, 236, 286)
+
+[node name="Area2D" type="Area2D" parent="Camera2D" unique_id=1142379379]
+position = Vector2(306.5, -508)
+
+[node name="ColorRect" type="CollisionPolygon2D" parent="Camera2D/Area2D" unique_id=918298393]
+position = Vector2(-54.5, 32)
+scale = Vector2(0.90683997, 0.9068399)
+polygon = PackedVector2Array(-547, 667, -508, 643, -503, 656, -445, 655, -436, 684, -497, 684, -497, 696, -546, 673, -548, 668)
+disabled = true
+
 [node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=469863391]
 visible = false
 position = Vector2(0.032344818, 108.99997)
@@ -994,3 +1011,4 @@ parameters/looping = true
 [connection signal="button_down" from="Camera2D/bg/Map6" to="." method="_on_map_6_button_down"]
 [connection signal="button_up" from="Camera2D/bg/Map6" to="." method="_on_map_6_button_up"]
 [connection signal="pressed" from="Camera2D/bg/RessetMap" to="." method="_on_resset_map_pressed"]
+[connection signal="input_event" from="Camera2D/Area2D" to="." method="_on_arrow_input"]

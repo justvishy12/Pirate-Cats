@@ -258,8 +258,10 @@ offset_left = 188.18182
 offset_top = 235.45459
 offset_right = 233.63635
 offset_bottom = 280.90918
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = ExtResource("5_waisc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dpmfe")
+text = "X"
 expand_icon = true
 
 [node name="Load1" type="Button" parent="Loading/Save1" unique_id=1341461421]
@@ -322,8 +324,10 @@ offset_left = 188.18182
 offset_top = 235.45459
 offset_right = 229.36365
 offset_bottom = 278.54553
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = ExtResource("5_waisc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dpmfe")
+text = "X "
 
 [node name="Load2" type="Button" parent="Loading/Save2" unique_id=931732838]
 layout_mode = 0
@@ -385,8 +389,10 @@ offset_left = 188.18182
 offset_top = 235.45459
 offset_right = 229.36365
 offset_bottom = 278.54553
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = ExtResource("5_waisc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dpmfe")
+text = "X"
 
 [node name="Load3" type="Button" parent="Loading/Save3" unique_id=1050569299]
 layout_mode = 0
@@ -496,6 +502,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 236, 286)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1920746546]
+visible = false
 position = Vector2(0, -24)
 
 [node name="ColorRect" type="CollisionPolygon2D" parent="Area2D" unique_id=1199503926]

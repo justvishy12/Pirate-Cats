@@ -590,6 +590,8 @@ func all_maps_placed():
 func _on_table_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and !SaveManager.full_map:
 		$Camera2D.position = Vector2(0, 0)
+		$Camera2D/Area2D/ColorRect.disabled=false
+		
 		if dialogue_index == 0:
 			dialogue_id += 1
 			typing = false
@@ -634,3 +636,9 @@ func _on_captain_input(viewport: Node, event: InputEvent, shape_idx: int) -> voi
 	and event.pressed and SaveManager.full_map:
 		dialogue_index = 3
 		show_next_dialogue()
+
+
+func _on_arrow_input(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		$Camera2D/bg.visible=false
+		$Camera2D/Area2D/ColorRect.disabled=true
