@@ -494,7 +494,6 @@ position = Vector2(-577.00006, 363)
 scale = Vector2(0.48, 0.48)
 
 [node name="Arrows" type="Sprite2D" parent="." unique_id=157513021]
-visible = false
 position = Vector2(-493.00003, 623.00006)
 scale = Vector2(0.4957627, 0.4957627)
 texture = ExtResource("11_kaksy")
@@ -502,7 +501,6 @@ region_enabled = true
 region_rect = Rect2(0, 0, 236, 286)
 
 [node name="Area2D" type="Button" parent="." unique_id=208380301]
-visible = false
 modulate = Color(1, 1, 1, 0)
 offset_left = -542.0
 offset_top = 608.0

@@ -600,6 +600,7 @@ func _on_table_input_event(viewport: Node, event: InputEvent, shape_idx: int) ->
 				typing = false
 			dialogue_index =1
 			show_next_dialogue()
+		$Camera2D/arrow.visible=true
 		$Camera2D/bg.visible = true
 		
 	#if event is InputEventMouseButton and event.pressed and SaveManager.full_map:
@@ -641,10 +642,7 @@ func _on_captain_input(viewport: Node, event: InputEvent, shape_idx: int) -> voi
 		show_next_dialogue()
 
 
-
-
-func _on_arros_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_arrow_pressed() -> void:
 	print("works")
-	if event is InputEventMouseButton:
-		print("is working")
-		$Camera2D/bg.visible = false
+	$Camera2D/bg.visible = false
+	$Camera2D/arrow.visible=false

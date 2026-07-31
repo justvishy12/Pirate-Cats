@@ -894,11 +894,13 @@ texture = ExtResource("18_a7tom")
 region_enabled = true
 region_rect = Rect2(0, 0, 236, 286)
 
-[node name="Arros" type="Area2D" parent="Camera2D" unique_id=1142379379]
-position = Vector2(306.5, -508)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Camera2D/Arros" unique_id=1326875789]
-polygon = PackedVector2Array(-552.5, 639, -515.5, 616, -510.5, 628, -457.5, 627, -449.5, 653, -504.5, 652, -505.5, 664)
+[node name="arrow" type="Button" parent="Camera2D" unique_id=1012971439]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = -241.0
+offset_top = 117.0
+offset_right = -150.0
+offset_bottom = 152.0
 
 [node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=469863391]
 visible = false
@@ -1014,4 +1016,4 @@ parameters/looping = true
 [connection signal="button_down" from="Camera2D/bg/Map6" to="." method="_on_map_6_button_down"]
 [connection signal="button_up" from="Camera2D/bg/Map6" to="." method="_on_map_6_button_up"]
 [connection signal="pressed" from="Camera2D/bg/RessetMap" to="." method="_on_resset_map_pressed"]
-[connection signal="input_event" from="Camera2D/Arros" to="." method="_on_arros_input_event"]
+[connection signal="pressed" from="Camera2D/arrow" to="." method="_on_arrow_pressed"]

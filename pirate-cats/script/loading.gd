@@ -73,28 +73,27 @@ func _on_reset_3_pressed() -> void:
 
 func _on_guide_pressed() -> void:
 	$Guide.visible = true
-	$Area2D/ColorRect.disabled=false
 	$Arrows.visible=true
+	$Area2D.visible=true
 
 
 
 func _on_prefferences_pressed() -> void:
 	$Prefferences.visible = true
-	$Area2D/ColorRect.disabled=false
 	$Arrows.visible=true
+	$Area2D.visible=true
 
 
 func _on_creds_pressed() -> void:
 	$credits.visible=true
-	$Area2D/ColorRect.disabled=false
 	$Arrows.visible=true
+	$Area2D.visible=true
 
 
-func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.pressed:
+func _on_area_2d_pressed() -> void:
 		print("hii")
 		$Guide.visible=false
 		$Prefferences.visible=false
 		$credits.visible=false
-		$Area2D/ColorRect.disabled=true
 		$Arrows.visible=false
+		$Area2D.visible=false
