@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://8nuqbej7i6rw" path="res://audio/crab sound.mp3" id="17_5j8du"]
 [ext_resource type="AudioStream" uid="uid://bhfnvfqdt7804" path="res://audio/CannonShot.mp3" id="18_41y0m"]
 [ext_resource type="AudioStream" uid="uid://d24kk8ruhuv2a" path="res://audio/TypingSound.mp3" id="19_vdsdr"]
+[ext_resource type="AudioStream" uid="uid://c2v2k0h4v5ql1" path="res://audio/Crab Fight.mp3" id="20_tukgc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rubrj"]
 atlas = ExtResource("6_1lbqr")
@@ -531,6 +532,14 @@ stream = ExtResource("19_vdsdr")
 volume_db = 10.0
 pitch_scale = 0.8
 bus = &"Sfx"
+parameters/looping = true
+
+[node name="Crab BG" type="AudioStreamPlayer2D" parent="." unique_id=1421660355]
+process_mode = 3
+stream = ExtResource("20_tukgc")
+volume_db = -5.0
+autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [connection signal="pressed" from="Button" to="." method="_on_player_button_pressed"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dctv0yae8d6la"
+path="res://.godot/imported/Lobby Audio.mp3-50a2a999ad59487b9466a702c72e99cd.mp3str"
+
+[deps]
+
+source_file="res://audio/Lobby Audio.mp3"
+dest_files=["res://.godot/imported/Lobby Audio.mp3-50a2a999ad59487b9466a702c72e99cd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

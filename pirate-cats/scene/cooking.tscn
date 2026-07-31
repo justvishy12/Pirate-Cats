@@ -28,6 +28,7 @@
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="24_ssagg"]
 [ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="27_1sr6h"]
 [ext_resource type="AudioStream" uid="uid://d24kk8ruhuv2a" path="res://audio/TypingSound.mp3" id="28_ssagg"]
+[ext_resource type="AudioStream" uid="uid://dk1ychhrhket4" path="res://audio/Puzzles.mp3" id="29_icdxh"]
 
 [sub_resource type="Environment" id="Environment_ldxs4"]
 background_mode = 3
@@ -1028,6 +1029,14 @@ stream = ExtResource("28_ssagg")
 volume_db = 10.0
 pitch_scale = 0.8
 bus = &"Sfx"
+parameters/looping = true
+
+[node name="Puzzle Music" type="AudioStreamPlayer2D" parent="." unique_id=1322748583]
+process_mode = 3
+stream = ExtResource("29_icdxh")
+volume_db = -5.0
+autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [connection signal="pressed" from="Plates/mapbutton" to="." method="_on_mapbutton_pressed"]

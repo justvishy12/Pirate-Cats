@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d1ybmpef1hc1v" path="res://scene/prefferences.tscn" id="9_bua1a"]
 [ext_resource type="PackedScene" uid="uid://n2drqwl3rb0t" path="res://scene/credits.tscn" id="10_3e4rr"]
 [ext_resource type="Texture2D" uid="uid://cp8626l6c67j5" path="res://scene/arrows.png" id="11_kaksy"]
+[ext_resource type="AudioStream" uid="uid://dctv0yae8d6la" path="res://audio/Lobby Audio.mp3" id="12_spo0i"]
 
 [sub_resource type="Animation" id="Animation_xwca0"]
 length = 0.001
@@ -455,6 +456,14 @@ position = Vector2(0, -24)
 position = Vector2(2, -26)
 polygon = PackedVector2Array(-547, 667, -508, 643, -503, 656, -445, 655, -436, 684, -497, 684, -497, 696, -546, 673, -548, 668)
 disabled = true
+
+[node name="Lobby Audio" type="AudioStreamPlayer2D" parent="." unique_id=115012976]
+process_mode = 3
+stream = ExtResource("12_spo0i")
+volume_db = -5.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [connection signal="pressed" from="Loading/Save1/Reset1" to="." method="_on_reset_1_pressed"]
 [connection signal="pressed" from="Loading/Save1/Load1" to="." method="_on_load_1_pressed"]

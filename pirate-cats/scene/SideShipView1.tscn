@@ -186,12 +186,12 @@ scale = Vector2(0.48198202, 0.48198202)
 sprite_frames = SubResource("SpriteFrames_ldxs4")
 
 [node name="Shell(1)" type="Sprite2D" parent="." unique_id=756188745]
-position = Vector2(799, 451)
+position = Vector2(795.00006, 455.00003)
 scale = Vector2(0.7121212, 0.71212125)
 texture = ExtResource("4_x4fq0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1755548329]
-position = Vector2(778, 478.60608)
+position = Vector2(862, 483)
 sprite_frames = SubResource("SpriteFrames_48q5p")
 
 [node name="Dynamite" type="AnimatedSprite2D" parent="." unique_id=64497411]
@@ -201,7 +201,7 @@ sprite_frames = SubResource("SpriteFrames_0kpj8")
 speed_scale = 0.3
 
 [node name="Shell" type="Sprite2D" parent="." unique_id=1385593565]
-position = Vector2(733, 453.60605)
+position = Vector2(919, 424.99997)
 scale = Vector2(0.8484842, 0.8484843)
 texture = ExtResource("6_krglq")
 
@@ -265,11 +265,11 @@ position = Vector2(411, 364)
 shape = SubResource("CapsuleShape2D_ldxs4")
 
 [node name="Shell3" type="Sprite2D" parent="." unique_id=1252177657]
-position = Vector2(980, 352)
+position = Vector2(743, 411)
 texture = ExtResource("10_b4svm")
 
 [node name="Shell2" type="Sprite2D" parent="." unique_id=164977621]
-position = Vector2(682, 452.00003)
+position = Vector2(695, 483)
 scale = Vector2(0.41058356, 0.4105835)
 texture = ExtResource("11_krglq")
 

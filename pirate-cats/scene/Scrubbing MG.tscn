@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="14_cpdr8"]
 [ext_resource type="AudioStream" uid="uid://d24kk8ruhuv2a" path="res://audio/TypingSound.mp3" id="15_7o35d"]
 [ext_resource type="AudioStream" uid="uid://duulpd52lfaej" path="res://audio/Scrubbing.mp3" id="16_tb3ee"]
+[ext_resource type="AudioStream" uid="uid://dk1ychhrhket4" path="res://audio/Puzzles.mp3" id="17_n5b5d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5b5d"]
 bg_color = Color(0.76675236, 0.76675236, 0.76675236, 0)
@@ -362,6 +363,14 @@ stream = ExtResource("16_tb3ee")
 volume_db = 24.0
 pitch_scale = 0.8
 bus = &"Sfx"
+parameters/looping = true
+
+[node name="Puzzle Music" type="AudioStreamPlayer2D" parent="." unique_id=2094203878]
+process_mode = 3
+stream = ExtResource("17_n5b5d")
+volume_db = -5.0
+autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [connection signal="mouse_entered" from="Round1/O1" to="." method="_on_o_1_mouse_entered"]

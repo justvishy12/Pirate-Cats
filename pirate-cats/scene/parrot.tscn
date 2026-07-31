@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="21_66c1l"]
 [ext_resource type="AudioStream" uid="uid://d24kk8ruhuv2a" path="res://audio/TypingSound.mp3" id="22_nr356"]
 [ext_resource type="AudioStream" uid="uid://cjxwjuwyo2cs" path="res://audio/parrot.mp3" id="23_k7b00"]
+[ext_resource type="AudioStream" uid="uid://dk1ychhrhket4" path="res://audio/Puzzles.mp3" id="24_hr8ss"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iio88"]
 atlas = ExtResource("2_bo8uk")
@@ -330,6 +331,14 @@ stream = ExtResource("23_k7b00")
 volume_db = 1.0
 pitch_scale = 0.8
 bus = &"Sfx"
+parameters/looping = true
+
+[node name="Puzzle Music" type="AudioStreamPlayer2D" parent="." unique_id=767555369]
+process_mode = 3
+stream = ExtResource("24_hr8ss")
+volume_db = -5.0
+autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [connection signal="button_down" from="Right/Cookie2/Button" to="Right/Cookie2" method="_on_button_button_down"]

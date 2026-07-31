@@ -13,6 +13,7 @@
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="11_n71jt"]
 [ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="12_64hb0"]
 [ext_resource type="AudioStream" uid="uid://d24kk8ruhuv2a" path="res://audio/TypingSound.mp3" id="13_oa3j0"]
+[ext_resource type="AudioStream" uid="uid://dk1ychhrhket4" path="res://audio/Puzzles.mp3" id="14_n71jt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pqw84"]
 bg_color = Color(1, 1, 1, 0)
@@ -498,6 +499,14 @@ stream = ExtResource("13_oa3j0")
 volume_db = 10.0
 pitch_scale = 0.8
 bus = &"Sfx"
+parameters/looping = true
+
+[node name="Puzzle Music" type="AudioStreamPlayer2D" parent="." unique_id=1916664496]
+process_mode = 3
+stream = ExtResource("14_n71jt")
+volume_db = -5.0
+autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [connection signal="button_down" from="Buttons/A1" to="." method="_on_a_1_button_down"]

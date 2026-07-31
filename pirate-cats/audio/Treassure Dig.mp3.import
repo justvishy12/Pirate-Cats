@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dbyr4ytp43p13"
+path="res://.godot/imported/Treassure Dig.mp3-f04e9ac707747e45d4172e3eb92755db.mp3str"
+
+[deps]
+
+source_file="res://audio/Treassure Dig.mp3"
+dest_files=["res://.godot/imported/Treassure Dig.mp3-f04e9ac707747e45d4172e3eb92755db.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

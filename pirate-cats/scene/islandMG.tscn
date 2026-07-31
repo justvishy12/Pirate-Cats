@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="12_ulwyu"]
 [ext_resource type="AudioStream" uid="uid://d24kk8ruhuv2a" path="res://audio/TypingSound.mp3" id="13_h7jsb"]
 [ext_resource type="AudioStream" uid="uid://bfbweu13bd6qt" path="res://audio/SandDig.mp3" id="14_2m08x"]
+[ext_resource type="AudioStream" uid="uid://dbyr4ytp43p13" path="res://audio/Treassure Dig.mp3" id="15_crlu8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48q5p"]
 
@@ -271,6 +272,14 @@ stream = ExtResource("14_2m08x")
 volume_db = 10.0
 pitch_scale = 0.9
 bus = &"Sfx"
+
+[node name="Treasure BG" type="AudioStreamPlayer2D" parent="." unique_id=951604053]
+process_mode = 3
+stream = ExtResource("15_crlu8")
+volume_db = -5.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

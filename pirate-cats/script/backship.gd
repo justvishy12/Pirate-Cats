@@ -61,7 +61,7 @@ var dialogue = [
 		"speaker": "cat",
 		"name": "Biscuits (Cook)",
 		"text": "Let teach you my secrets ",
-		"portrait": preload("res://assets/headshots/FISHER FACE.png")
+		"portrait": preload("res://assets/headshots/CHEF FACE.png")
 	},
 
 #If player has  done cooking puzzle:
@@ -122,6 +122,8 @@ func show_next_dialogue() -> void:
 
 
 func _on_player_button_pressed() -> void:
+	if SaveManager.fish == false and dialogue_index == 3:
+		get_tree().change_scene_to_file("res://scene/fishing.tscn")
 	dialogue_index += 1
 	show_next_dialogue()
 
