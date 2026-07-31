@@ -31,42 +31,6 @@
 
 [sub_resource type="Animation" id="Animation_riyh1"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1416.8889, 582)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Textbox:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(848, 701)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect:color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_2e2bh"]
 resource_name = "boat craddle"
@@ -844,7 +808,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1861970315]
-position = Vector2(1416.8889, 582)
+position = Vector2(-288, 525)
 scale = Vector2(0.5, 0.5)
 zoom = Vector2(2, 2)
 script = ExtResource("8_5h22d")
