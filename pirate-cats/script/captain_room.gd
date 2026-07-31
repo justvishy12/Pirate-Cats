@@ -68,9 +68,10 @@ var dialogue = [
 		#2
 		"speaker": "cat",
 		"name": "Cat Sparrow (Captain)",
-		"text": "Maybe try dragging the pieces together?",
+		"text": "Maybe try dragging the pieces together? ",
 		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
 	},
+	
 	{
 		#3 
 		"speaker": "cat",
@@ -82,21 +83,22 @@ var dialogue = [
 ]
 var dialogue_index = 0
 var typing = false
-
+var dialogue_id = 0
 
 
 func show_next_dialogue() -> void:
+	dialogue_id += 1
+	
 	if dialogue_index >= dialogue.size():
 		$Camera2D/Textbox.visible = false
-		$"player button".visible = false
+		$"Camera2D/player button".visible = false
 		return
-	
 	var line = dialogue[dialogue_index]
 	
 	if line["speaker"] == "you":
 		$Camera2D/Textbox.visible = false
-		$"player button".visible = true
-		$"player button".text = line["text"]
+		$"Camera2D/player button".visible = true
+		$"Camera2D/player button".text = line["text"]
 		
 	elif line["speaker"] == "cat":
 		#$Button.visible = false
@@ -122,6 +124,7 @@ func _on_player_button_pressed() -> void:
 	show_next_dialogue()
 
 func show_cat_text(line) -> void:
+	var current_id = dialogue_id
 	$Camera2D/Textbox.visible = true
 	typing = true
 	
@@ -135,6 +138,8 @@ func show_cat_text(line) -> void:
 	$Camera2D/Textbox/textlabel.visible_characters = 0
 	$Typing.play()
 	for i in $Camera2D/Textbox/textlabel.text.length():
+		if current_id != dialogue_id:
+			return
 		if !is_inside_tree():
 			return
 		$Camera2D/Textbox/textlabel.visible_characters = i
@@ -152,10 +157,17 @@ func _input(event):
 			if dialogue_index == 2:
 				$Camera2D/Textbox.visible=false
 				return
-			dialogue_index += 1
-			show_next_dialogue()
+			if dialogue_index != 2:
+				dialogue_index += 1
+				show_next_dialogue()
 
 func _ready() -> void:
+	print($Camera2D/bg/Map1.global_position)
+	print($Camera2D/bg/Map2.global_position)
+	print($Camera2D/bg/Map3.global_position)
+	print($Camera2D/bg/Map4.global_position)
+	print($Camera2D/bg/Map5.global_position)
+	print($Camera2D/bg/Map6.global_position)
 	if SaveManager.cook and SaveManager.captain == true and SaveManager.scrub and SaveManager.feed and SaveManager.sort and SaveManager.fish:
 		$CaptainCat.visible=true
 		$Area2D/CollisionShape2D.disabled=false
@@ -199,12 +211,12 @@ func _process(delta: float) -> void:
 			placed4 = false
 			placed5 = false
 			placed6 = false
-			$Camera2D/bg/Map1.position = Vector2(394, 232)
-			$Camera2D/bg/Map2.position = Vector2(423, 152)
-			$Camera2D/bg/Map3.position = Vector2(94, 237)
-			$Camera2D/bg/Map4.position = Vector2(382, 73)
-			$Camera2D/bg/Map5.position = Vector2(65, 154)
-			$Camera2D/bg/Map6.position = Vector2(102, 76)
+			$Camera2D/bg/Map6.global_position = Vector2(-177, -116)
+			$Camera2D/bg/Map5.global_position = Vector2(-214, -38)
+			$Camera2D/bg/Map4.global_position = Vector2(114, -118)
+			$Camera2D/bg/Map3.global_position = Vector2(-185, 45)
+			$Camera2D/bg/Map2.global_position = Vector2(144, -40)
+			$Camera2D/bg/Map1.global_position = Vector2(114, 40)
 
 
 	if dragging1:
@@ -350,9 +362,10 @@ func _on_map_1_button_up() -> void:
 					map1 = false
 				placed1 = true
 			else:
-				$Camera2D/bg/Map1.position = Vector2(106,31)
+				$Camera2D/bg/Map1.global_position = Vector2(114, 40)
 				placed1 = false
-	else:		
+	else:
+		$Camera2D/bg/Map1.global_position = Vector2(114, 40)
 		map1 = false
 		placed1 = false
 
@@ -390,9 +403,10 @@ func _on_map_2_button_up() -> void:
 					map2 = false
 				placed2 = true
 			else:
-				$Camera2D/bg/Map2.position = Vector2(135, -49)
+				$Camera2D/bg/Map2.global_position = Vector2(144, -40)
 				placed2 = false
 	else:
+		$Camera2D/bg/Map2.global_position = Vector2(144, -40)
 		map2 = false
 		placed2 = false
 	print(placed2)
@@ -430,9 +444,10 @@ func _on_map_3_button_up() -> void:
 					map3 = false
 				placed3 = true
 			else:
-				$Camera2D/bg/Map3.position = Vector2(-194, 36)
+				$Camera2D/bg/Map3.global_position = Vector2(-185, 45)
 				placed3 = false
 	else:
+		$Camera2D/bg/Map3.global_position = Vector2(-185, 45)
 		map3 = false
 		placed3 = false
 		
@@ -470,9 +485,10 @@ func _on_map_4_button_up() -> void:
 					map4 = false
 				placed4 = true
 			else:
-				$Camera2D/bg/Map4.position = Vector2(94, -128)
+				$Camera2D/bg/Map4.global_position = Vector2(114, -118)
 				placed4 = false
 	else:
+		$Camera2D/bg/Map4.global_position = Vector2(114, -118)
 		map4 = false
 		placed4 = false
 		
@@ -511,9 +527,10 @@ func _on_map_5_button_up() -> void:
 					map5 = false
 				placed5 = true
 			else:
-				$Camera2D/bg/Map5.position = Vector2(-223, -47)
+				$Camera2D/bg/Map5.global_position = Vector2(-214, -38)
 				placed5 = false
 	else:
+		$Camera2D/bg/Map5.global_position = Vector2(-214, -38)
 		map5 = false
 		placed5 = false
 		
@@ -552,9 +569,10 @@ func _on_map_6_button_up() -> void:
 					map6 = false
 				placed6 = true
 			else:
-				$Camera2D/bg/Map6.position = Vector2(-186, -125)
+				$Camera2D/bg/Map6.global_position = Vector2(-177, -116)
 				placed6 = false
 	else:
+		$Camera2D/bg/Map6.global_position = Vector2(-177, -116)
 		map6 = false
 		placed6 = false
 		
@@ -571,6 +589,10 @@ func all_maps_placed():
 	
 func _on_table_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and !SaveManager.full_map:
+		$Camera2D.position = Vector2(0, 0)
+		if dialogue_index == 0:
+			dialogue_id += 1
+			typing = false
 		dialogue_index =1
 		show_next_dialogue()
 		$Camera2D/bg.visible = true
@@ -594,13 +616,12 @@ func _on_resset_map_pressed() -> void:
 	placed4 = false
 	placed5 = false
 	placed6 = false
-	$Camera2D/bg/Map1.position = Vector2(394, 232)
-	$Camera2D/bg/Map2.position = Vector2(423, 152)
-	$Camera2D/bg/Map3.position = Vector2(94, 237)
-	$Camera2D/bg/Map4.position = Vector2(382, 73)
-	$Camera2D/bg/Map5.position = Vector2(65, 154)
-	$Camera2D/bg/Map6.position = Vector2(102, 76)
-
+	$Camera2D/bg/Map6.global_position = Vector2(-177, -116)
+	$Camera2D/bg/Map5.global_position = Vector2(-214, -38)
+	$Camera2D/bg/Map4.global_position = Vector2(114, -118)
+	$Camera2D/bg/Map3.global_position = Vector2(-185, 45)
+	$Camera2D/bg/Map2.global_position = Vector2(144, -40)
+	$Camera2D/bg/Map1.global_position = Vector2(114, 40)
 
 func _on_captain_input(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton \

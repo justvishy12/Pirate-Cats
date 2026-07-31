@@ -638,72 +638,6 @@ shape = SubResource("RectangleShape2D_ldxs4")
 position = Vector2(266, 0)
 shape = SubResource("RectangleShape2D_ldxs4")
 
-[node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=469863391]
-visible = false
-position = Vector2(0.032344818, 108.99997)
-scale = Vector2(0.34551278, 0.34551278)
-texture = ExtResource("18_m2tfi")
-
-[node name="namelabel" type="Label" parent="Camera2D/Textbox" unique_id=1542405038]
-offset_left = -370.464
-offset_top = -95.51019
-offset_right = 107.087036
-offset_bottom = -52.096497
-theme_override_fonts/font = ExtResource("19_djvvj")
-theme_override_font_sizes/font_size = 35
-text = "???"
-vertical_alignment = 1
-
-[node name="textlabel" type="Label" parent="Camera2D/Textbox" unique_id=1466160199]
-custom_minimum_size = Vector2(16.92, 0)
-offset_left = -222.85681
-offset_top = -34.730988
-offset_right = 240.22302
-offset_bottom = 54.990692
-theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
-theme_override_fonts/font = ExtResource("19_djvvj")
-theme_override_font_sizes/font_size = 38
-text = "hi  my name is bob. i like to eat"
-autowrap_mode = 2
-
-[node name="skiplabel" type="Label" parent="Camera2D/Textbox" unique_id=685571886]
-offset_left = 208.38596
-offset_top = 57.88497
-offset_right = 347.30978
-offset_bottom = 77.88497
-theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
-theme_override_fonts/font = ExtResource("19_djvvj")
-theme_override_font_sizes/font_size = 20
-text = "SPACE TO SKIP"
-
-[node name="photobox" type="TextureRect" parent="Camera2D/Textbox" unique_id=1749238679]
-offset_left = -379.1466
-offset_top = -43.413727
-offset_right = -222.85706
-offset_bottom = 78.144745
-expand_mode = 2
-stretch_mode = 4
-
-[node name="player button" type="Button" parent="Camera2D" unique_id=663769945]
-visible = false
-texture_filter = 2
-offset_left = -92.96759
-offset_top = -37.0
-offset_right = 91.03241
-offset_bottom = 13.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("19_djvvj")
-theme_override_styles/normal = ExtResource("20_hif1r")
-theme_override_styles/pressed = ExtResource("21_a7tom")
-theme_override_styles/hover = ExtResource("21_a7tom")
-theme_override_styles/focus = ExtResource("21_a7tom")
-text = "Are we going to cook?"
-autowrap_mode = 3
-
 [node name="bg" type="Panel" parent="Camera2D" unique_id=1966440609]
 visible = false
 offset_left = -288.0
@@ -729,63 +663,70 @@ pivot_offset = Vector2(107, 70)
 theme_override_styles/panel = SubResource("StyleBoxFlat_w173s")
 
 [node name="MPArea" type="Panel" parent="Camera2D/bg" unique_id=28095608]
+visible = false
 layout_mode = 0
-offset_left = 188.0
+offset_left = 189.0
 offset_top = 134.0
-offset_right = 387.0
+offset_right = 388.0
 offset_bottom = 264.0
 
 [node name="PH1" type="Panel" parent="Camera2D/bg" unique_id=780656321]
+visible = false
 layout_mode = 0
-offset_left = 177.45038
-offset_top = 120.603424
-offset_right = 259.45038
-offset_bottom = 201.60342
+offset_left = 180.45038
+offset_top = 124.603424
+offset_right = 262.45038
+offset_bottom = 205.60342
 scale = Vector2(0.6939116, 0.6939116)
 pivot_offset = Vector2(41, 40.5)
 
 [node name="PH2" type="Panel" parent="Camera2D/bg" unique_id=870294715]
+visible = false
 layout_mode = 0
-offset_left = 243.45038
-offset_top = 120.603424
-offset_right = 325.45038
-offset_bottom = 201.60342
+offset_left = 246.45038
+offset_top = 124.603424
+offset_right = 328.45038
+offset_bottom = 205.60342
 scale = Vector2(0.6939116, 0.6939116)
 pivot_offset = Vector2(41, 40.5)
 
 [node name="PH3" type="Panel" parent="Camera2D/bg" unique_id=1743325725]
+visible = false
 layout_mode = 0
-offset_left = 310.45038
-offset_top = 120.603424
-offset_right = 392.45038
-offset_bottom = 201.60342
+offset_left = 313.45038
+offset_top = 124.603424
+offset_right = 395.45038
+offset_bottom = 205.60342
 scale = Vector2(0.6939116, 0.6939116)
 pivot_offset = Vector2(41, 40.5)
 
 [node name="PH4" type="Panel" parent="Camera2D/bg" unique_id=1977258869]
+visible = false
 layout_mode = 0
-offset_left = 177.45038
-offset_top = 188.60342
-offset_right = 259.45038
-offset_bottom = 269.60342
+offset_left = 180.45038
+offset_top = 192.60342
+offset_right = 262.45038
+offset_bottom = 273.60342
 scale = Vector2(0.6939116, 0.6939116)
 pivot_offset = Vector2(41, 40.5)
 
 [node name="PH5" type="Panel" parent="Camera2D/bg" unique_id=1642609299]
+visible = false
 layout_mode = 0
-offset_left = 243.45038
-offset_top = 188.60342
-offset_right = 325.45038
-offset_bottom = 269.60342
+offset_left = 246.45038
+offset_top = 192.60342
+offset_right = 328.45038
+offset_bottom = 273.60342
 scale = Vector2(0.6939116, 0.6939116)
 pivot_offset = Vector2(41, 40.5)
 
 [node name="PH6" type="Panel" parent="Camera2D/bg" unique_id=1322151804]
+visible = false
 layout_mode = 0
-offset_left = 309.45038
-offset_top = 188.60342
-offset_right = 391.45038
-offset_bottom = 269.60342
+offset_left = 312.45038
+offset_top = 192.60342
+offset_right = 394.45038
+offset_bottom = 273.60342
 scale = Vector2(0.6939116, 0.6939116)
 pivot_offset = Vector2(41, 40.5)
 
@@ -859,10 +800,10 @@ expand_icon = true
 
 [node name="Map4" type="Button" parent="Camera2D/bg" unique_id=431006987]
 layout_mode = 0
-offset_left = 382.0
-offset_top = 73.0
-offset_right = 466.0
-offset_bottom = 157.0
+offset_left = 394.0
+offset_top = 74.0
+offset_right = 478.0
+offset_bottom = 158.0
 scale = Vector2(0.79338324, 0.79338324)
 pivot_offset = Vector2(42, 42)
 theme_override_styles/normal = SubResource("StyleBoxFlat_0kpj8")
@@ -944,6 +885,72 @@ visible = false
 position = Vector2(288, 200)
 scale = Vector2(0.13166997, 0.13166998)
 texture = ExtResource("15_lerbx")
+
+[node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=469863391]
+visible = false
+position = Vector2(0.032344818, 108.99997)
+scale = Vector2(0.34551278, 0.34551278)
+texture = ExtResource("18_m2tfi")
+
+[node name="namelabel" type="Label" parent="Camera2D/Textbox" unique_id=1542405038]
+offset_left = -370.464
+offset_top = -95.51019
+offset_right = 107.087036
+offset_bottom = -52.096497
+theme_override_fonts/font = ExtResource("19_djvvj")
+theme_override_font_sizes/font_size = 35
+text = "???"
+vertical_alignment = 1
+
+[node name="textlabel" type="Label" parent="Camera2D/Textbox" unique_id=1466160199]
+custom_minimum_size = Vector2(16.92, 0)
+offset_left = -222.85681
+offset_top = -34.730988
+offset_right = 240.22302
+offset_bottom = 54.990692
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("19_djvvj")
+theme_override_font_sizes/font_size = 38
+text = "hi  my name is bob. i like to eat"
+autowrap_mode = 2
+
+[node name="skiplabel" type="Label" parent="Camera2D/Textbox" unique_id=685571886]
+offset_left = 208.38596
+offset_top = 57.88497
+offset_right = 347.30978
+offset_bottom = 77.88497
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("19_djvvj")
+theme_override_font_sizes/font_size = 20
+text = "SPACE TO SKIP"
+
+[node name="photobox" type="TextureRect" parent="Camera2D/Textbox" unique_id=1749238679]
+offset_left = -379.1466
+offset_top = -43.413727
+offset_right = -222.85706
+offset_bottom = 78.144745
+expand_mode = 2
+stretch_mode = 4
+
+[node name="player button" type="Button" parent="Camera2D" unique_id=663769945]
+visible = false
+texture_filter = 2
+offset_left = -92.96759
+offset_top = -37.0
+offset_right = 91.03241
+offset_bottom = 13.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("19_djvvj")
+theme_override_styles/normal = ExtResource("20_hif1r")
+theme_override_styles/pressed = ExtResource("21_a7tom")
+theme_override_styles/hover = ExtResource("21_a7tom")
+theme_override_styles/focus = ExtResource("21_a7tom")
+text = "Are we going to cook?"
+autowrap_mode = 3
 
 [node name="pausemenu" parent="Camera2D" unique_id=622735820 instance=ExtResource("22_djvvj")]
 visible = false

@@ -7,12 +7,11 @@ var cook = true
 var scrub = true
 var feed = true
 var sort = true
-var captain = false
+var captain = true
 var crab_fight = false
 var full_map = false
 var stars = false
 var island = false
-
 var aftercrab = false
 var speed: float = 0.05
 func save_game(slot: int) -> void:
