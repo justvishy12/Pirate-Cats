@@ -8,7 +8,6 @@ var four = false
 var five = false
 var six = false
 var sand_scene = preload("res://scene/sand.tscn")
-var sponge = preload("res://assets/shovel cursor.png")
 var treas = randi_range(1, 6)
 
 var dialogue = [
@@ -42,7 +41,7 @@ var dialogue = [
 		#4
 		"speaker": "cat",
 		"name": "Mopps (Scrubber)",
-		"text": "HE ACTUALLY FOUND IT ",
+		"text": "ITS ACTUALLY FINDABLE ",
 		"portrait": preload("res://assets/headshots/SCRUBBER FACE.png")
 	},
 	{
@@ -70,7 +69,7 @@ var dialogue = [
 		#8
 		"speaker": "cat",
 		"name": "Minnow (Fisher)",
-		"text": "Not the shells. ",
+		"text": "Not near the shells. ",
 		"portrait": preload("res://assets/headshots/FISHER FACE.png")
 	},
 	{
@@ -132,8 +131,9 @@ func show_next_dialogue() -> void:
 func _on_player_button_pressed() -> void:
 	if dialogue_index == 13:
 		get_tree().change_scene_to_file("res://scene/finalscene.tscn")
-	dialogue_index += 1
-	show_next_dialogue()
+	if dialogue_index != 3:
+		dialogue_index += 1
+		show_next_dialogue()
 
 
 func show_cat_text(line) -> void:
@@ -185,7 +185,8 @@ func _input(event):
 				$Textbox.visible = false
 
 func _ready() -> void:
-	Input.set_custom_mouse_cursor(sponge)
+	#Input.set_custom_mouse_cursor(shovel)
+	Input.set_custom_mouse_cursor(shovel, Input.CURSOR_ARROW, Vector2(25,25))
 	show_next_dialogue()
 
 func shells():
@@ -203,11 +204,6 @@ func stars():
 func find():
 	dialogue_index = 9
 	show_next_dialogue()
-func treasure():
-	SaveManager.island = true
-	SaveManager.save_game(SaveManager.current_slot)
-	dialogue_index = 4
-	show_next_dialogue()
 
 
 func tres():
@@ -223,6 +219,9 @@ func tres():
 	$Button5.disabled = true
 	$Button6.disabled = true
 	dialogue_index = 4
+	$Panel.visible = true
+	SaveManager.island = true
+	SaveManager.save_game(SaveManager.current_slot)
 	show_next_dialogue()
 func _on_side_pressed() -> void:
 	dialogue_index = 10
@@ -261,8 +260,6 @@ func _on_button_2_pressed() -> void:
 	if treas == 2:
 		sand.treasure = true
 
-
-
 func _on_button_3_pressed() -> void:
 	$Dig.play()
 	mos_pos = get_global_mouse_position()
@@ -272,8 +269,6 @@ func _on_button_3_pressed() -> void:
 	sand.cones = true
 	if treas == 3:
 		sand.treasure = true
-
-
 
 func _on_button_4_pressed() -> void:
 	$Dig.play()
@@ -285,8 +280,6 @@ func _on_button_4_pressed() -> void:
 	if treas == 4:
 		sand.treasure = true
 
-
-
 func _on_button_5_pressed() -> void:
 	$Dig.play()
 	mos_pos = get_global_mouse_position()
@@ -296,8 +289,6 @@ func _on_button_5_pressed() -> void:
 	add_child(sand)
 	if treas == 5:
 		sand.treasure = true
-
-
 
 func _on_button_6_pressed() -> void:
 	$Dig.play()

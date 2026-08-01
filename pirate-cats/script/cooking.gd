@@ -58,7 +58,7 @@ var dialogue = [
 		#2
 		"speaker": "cat",
 		"name": "Biscuits (Cook)",
-		"text": "First Drag a plate onto the line! ",
+		"text": "First Drag a plate into the bordered line! ",
 		"portrait": preload("res://assets/headshots/CHEF FACE.png")
 	},
 	{
@@ -268,6 +268,7 @@ func plate_reset():
 	order()
 
 func _ready() -> void:
+	$"Puzzle Music".play()
 	show_next_dialogue()
 	$Camera2D.position = Vector2(299,463)
 	$MiddlePlate.self_modulate = Color(1.0, 1.0, 1.0, 0.0)

@@ -16,13 +16,13 @@
 [ext_resource type="AudioStream" uid="uid://bfbweu13bd6qt" path="res://audio/SandDig.mp3" id="14_2m08x"]
 [ext_resource type="AudioStream" uid="uid://dbyr4ytp43p13" path="res://audio/Treassure Dig.mp3" id="15_crlu8"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48q5p"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yexw1"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kpj8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7jsb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48q5p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yexw1"]
 
 [node name="Node2D" type="Node2D" unique_id=280944476]
 script = ExtResource("1_h7jsb")
@@ -34,6 +34,45 @@ texture = ExtResource("1_xy4n2")
 [node name="CandiedCatnip" type="Sprite2D" parent="." unique_id=254460415]
 position = Vector2(381, 786)
 texture = ExtResource("3_h7jsb")
+
+[node name="side" type="Button" parent="." unique_id=1822933561]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0, 0, 0, 0.4392157)
+offset_left = -11.0
+offset_top = 5.0
+offset_right = 105.0
+offset_bottom = 616.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_0kpj8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h7jsb")
+
+[node name="side2" type="Button" parent="." unique_id=885996045]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0, 0, 0, 0.4392157)
+offset_left = 966.0
+offset_top = 25.0
+offset_right = 1153.0
+offset_bottom = 636.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_0kpj8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h7jsb")
+
+[node name="top" type="Button" parent="." unique_id=921257450]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0, 0, 0, 0.4392157)
+offset_left = -8.0
+offset_right = 1165.0
+offset_bottom = 146.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_0kpj8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h7jsb")
+
+[node name="bottom" type="Button" parent="." unique_id=425751395]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0, 0, 0, 0.4392157)
+offset_left = -9.0
+offset_top = 612.0
+offset_right = 1164.0
+offset_bottom = 648.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_0kpj8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h7jsb")
 
 [node name="Button" type="Button" parent="." unique_id=167163700]
 modulate = Color(1, 1, 1, 0)
@@ -95,54 +134,18 @@ scale = Vector2(1.3294811, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_48q5p")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yexw1")
 
-[node name="side" type="Button" parent="." unique_id=1822933561]
-modulate = Color(1, 1, 1, 0)
-self_modulate = Color(0, 0, 0, 0.4392157)
-offset_left = -11.0
-offset_top = 5.0
-offset_right = 105.0
-offset_bottom = 616.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_0kpj8")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h7jsb")
-
-[node name="side2" type="Button" parent="." unique_id=885996045]
-modulate = Color(1, 1, 1, 0)
-self_modulate = Color(0, 0, 0, 0.4392157)
-offset_left = 966.0
-offset_top = 25.0
-offset_right = 1153.0
-offset_bottom = 636.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_0kpj8")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h7jsb")
-
-[node name="top" type="Button" parent="." unique_id=921257450]
-modulate = Color(1, 1, 1, 0)
-self_modulate = Color(0, 0, 0, 0.4392157)
-offset_left = -8.0
-offset_right = 1165.0
-offset_bottom = 146.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_0kpj8")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h7jsb")
-
-[node name="bottom" type="Button" parent="." unique_id=425751395]
-modulate = Color(1, 1, 1, 0)
-self_modulate = Color(0, 0, 0, 0.4392157)
-offset_left = -9.0
-offset_top = 612.0
-offset_right = 1164.0
-offset_bottom = 648.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_0kpj8")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h7jsb")
-
 [node name="Star" type="Sprite2D" parent="." unique_id=1733061692]
+z_index = 100
 position = Vector2(864, 434)
 texture = ExtResource("9_mjfxx")
 
 [node name="Star2" type="Sprite2D" parent="." unique_id=175555049]
+z_index = 100
 position = Vector2(1046, 576)
 texture = ExtResource("9_mjfxx")
 
 [node name="Shell2" type="Sprite2D" parent="." unique_id=37325161]
+z_index = 100
 position = Vector2(703.99994, 163)
 rotation = -0.22521693
 scale = Vector2(0.5311166, 0.53111655)
@@ -150,30 +153,36 @@ texture = ExtResource("10_o4bf1")
 
 [node name="Shell3" type="Sprite2D" parent="." unique_id=1743094926]
 modulate = Color(1, 0.50956357, 1, 1)
+z_index = 100
 position = Vector2(450, 277.99994)
 rotation = 0.125043
 scale = Vector2(0.56238985, 0.5623898)
 texture = ExtResource("10_o4bf1")
 
 [node name="Coconut" type="Sprite2D" parent="." unique_id=150007607]
+z_index = 100
 position = Vector2(135.5, 150.5)
 texture = ExtResource("11_ykvkq")
 
 [node name="Coconut4" type="Sprite2D" parent="." unique_id=1072963507]
+z_index = 100
 position = Vector2(952, 222)
 texture = ExtResource("11_ykvkq")
 
 [node name="Coconut3" type="Sprite2D" parent="." unique_id=224694451]
 modulate = Color(0.86898494, 0.8689849, 0.8689849, 1)
+z_index = 100
 position = Vector2(91, 114)
 texture = ExtResource("11_ykvkq")
 flip_h = true
 
 [node name="Coconut2" type="Sprite2D" parent="." unique_id=522541031]
+z_index = 100
 position = Vector2(87.5, 167.5)
 texture = ExtResource("11_ykvkq")
 
 [node name="Clam" type="Sprite2D" parent="." unique_id=1677173877]
+z_index = 100
 position = Vector2(352.00003, 490)
 rotation = 0.2321944
 scale = Vector2(0.6269338, 0.6269338)
@@ -181,12 +190,14 @@ texture = ExtResource("12_hrb60")
 
 [node name="Clam2" type="Sprite2D" parent="." unique_id=1987191464]
 modulate = Color(0.96107644, 0.38908723, 0.48397207, 1)
+z_index = 100
 position = Vector2(89, 581)
 rotation = -0.3786652
 scale = Vector2(0.7348092, 0.7348092)
 texture = ExtResource("12_hrb60")
 
 [node name="Panel" type="Panel" parent="." unique_id=413355514]
+z_index = 900
 offset_left = -6.0
 offset_top = -24.0
 offset_right = 1163.0
@@ -241,10 +252,10 @@ stretch_mode = 4
 [node name="player button" type="Button" parent="." unique_id=223896542]
 z_index = 1000
 texture_filter = 2
-offset_left = 423.0
-offset_top = 253.0
-offset_right = 607.0
-offset_bottom = 303.0
+offset_left = 435.00003
+offset_top = 9.0
+offset_right = 619.0
+offset_bottom = 59.0
 scale = Vector2(1.6574638, 1.6574638)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
@@ -284,14 +295,14 @@ autoplay = true
 bus = &"Music"
 parameters/looping = true
 
+[connection signal="pressed" from="side" to="." method="_on_side_pressed"]
+[connection signal="pressed" from="side2" to="." method="_on_side_2_pressed"]
+[connection signal="pressed" from="top" to="." method="_on_top_pressed"]
+[connection signal="pressed" from="bottom" to="." method="_on_bottom_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]
 [connection signal="pressed" from="Button5" to="." method="_on_button_5_pressed"]
 [connection signal="pressed" from="Button6" to="." method="_on_button_6_pressed"]
-[connection signal="pressed" from="side" to="." method="_on_side_pressed"]
-[connection signal="pressed" from="side2" to="." method="_on_side_2_pressed"]
-[connection signal="pressed" from="top" to="." method="_on_top_pressed"]
-[connection signal="pressed" from="bottom" to="." method="_on_bottom_pressed"]
 [connection signal="pressed" from="player button" to="." method="_on_player_button_pressed"]

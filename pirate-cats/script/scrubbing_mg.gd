@@ -116,6 +116,7 @@ func _input(event):
 
 func _ready() -> void:
 	show_next_dialogue()
+	$"Puzzle Music".play()
 	mouse_pos = get_global_mouse_position()
 	Input.set_custom_mouse_cursor(sponge)
 	round1()
@@ -135,6 +136,10 @@ func round1():
 				$Scrubbing.play()
 		if $Round1/Dirt3.modulate.a < 0.18:
 			$Round1/Dirt3.modulate.a = 0.0
+		if $Round1/Dirt1.modulate.a < 0.18:
+			$Round1/Dirt1.modulate.a = 0.0
+		if $Round1/Dirt2.modulate.a < 0.18:
+			$Round1/Dirt2.modulate.a = 0.0
 		if O1 == true and mouse_pos.distance_to(get_global_mouse_position()) >= 2:
 			$Round1/Dirt1.modulate.a = max(0.0, $Round1/Dirt1.modulate.a - 0.18)
 		if O2 == true and mouse_pos.distance_to(get_global_mouse_position()) >= 2:
@@ -159,6 +164,16 @@ func round2():
 		else:
 			if !$Scrubbing.playing:
 				$Scrubbing.play()
+		if $Round2/Dirt1.modulate.a < 0.18:
+			$Round2/Dirt1.modulate.a = 0.0
+		if $Round2/Dirt2.modulate.a < 0.18:
+			$Round2/Dirt2.modulate.a = 0.0
+		if $Round2/Dirt3.modulate.a < 0.18:
+			$Round2/Dirt3.modulate.a = 0.0
+		if $Round2/Dirt4.modulate.a < 0.18:
+			$Round2/Dirt4.modulate.a = 0.0
+		if $Round2/Dirt5.modulate.a < 0.18:
+			$Round2/Dirt5.modulate.a = 0.0
 		if T1 == true and mouse_pos.distance_to(get_global_mouse_position()) >= 10:
 			$Round2/Dirt1.modulate.a = max(0.0, $Round2/Dirt1.modulate.a - 0.17)
 		if T2 == true and mouse_pos.distance_to(get_global_mouse_position()) >= 10:
@@ -186,6 +201,18 @@ func round3():
 		else:
 			if !$Scrubbing.playing:
 				$Scrubbing.play()
+		if $Round3/Dirt1.modulate.a < 0.18:
+			$Round3/Dirt1.modulate.a = 0.0
+		if $Round3/Dirt2.modulate.a < 0.18:
+			$Round3/Dirt2.modulate.a = 0.0
+		if $Round3/Dirt3.modulate.a < 0.18:
+			$Round3/Dirt3.modulate.a = 0.0
+		if $Round3/Dirt4.modulate.a < 0.18:
+			$Round3/Dirt4.modulate.a = 0.0
+		if $Round3/Dirt5.modulate.a < 0.18:
+			$Round3/Dirt5.modulate.a = 0.0
+		if $Round3/Dirt6.modulate.a < 0.18:
+			$Round3/Dirt6.modulate.a = 0.0
 		if E1 == true and mouse_pos.distance_to(get_global_mouse_position()) >= 10:
 			$Round3/Dirt1.modulate.a = max(0.0, $Round3/Dirt1.modulate.a - 0.17)
 		if E2 == true and mouse_pos.distance_to(get_global_mouse_position()) >= 10:
