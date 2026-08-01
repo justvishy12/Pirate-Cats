@@ -86,7 +86,8 @@ offset_top = 410.0
 offset_right = 567.0
 offset_bottom = 445.66666
 theme_override_fonts/font = ExtResource("3_1dsav")
-text = "Text Speed"
+text = "Text Speed
+(Faster to Slower)"
 horizontal_alignment = 1
 autowrap_mode = 2
 

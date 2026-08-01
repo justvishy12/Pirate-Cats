@@ -67,17 +67,17 @@ metadata/_edit_use_anchors_ = true
 [node name="Label5" type="Label" parent="Panel" unique_id=1903559918]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.035416666
-anchor_top = 0.7556244
-anchor_right = 0.98125
-anchor_bottom = 1.0980257
+anchor_left = 0.034375
+anchor_top = 0.6914601
+anchor_right = 0.98020834
+anchor_bottom = 1.1039945
 theme_override_fonts/font = ExtResource("4_2rvmy")
 theme_override_font_sizes/font_size = 22
-text = "This game will test your patience and see how far you are willing to help cats. To interact with items hover over them, to talk with the characters to play the different games, click them. Use arrows the move around, and if you see a map click it.
+text = "This game will test your patience and see how far you are willing to help cats. To interact with items hover over them, to talk with the characters  and play the different games, click them. To move the camera hover at the edge of the game screen. Use arrows the move around, and if you see a map click it.
 
 "
 horizontal_alignment = 1
-autowrap_mode = 1
+autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="." unique_id=1711591338]
@@ -103,16 +103,16 @@ text = "PIRATE CATS"
 metadata/_edit_use_anchors_ = true
 
 [node name="Mouse" type="Sprite2D" parent="." unique_id=1615545804]
-position = Vector2(194.25, 373.91205)
+position = Vector2(209, 370)
 scale = Vector2(0.46978024, 0.46978027)
 texture = ExtResource("5_r0j4q")
 
 [node name="Arrows" type="Sprite2D" parent="." unique_id=1045512809]
-position = Vector2(514, 395)
+position = Vector2(530, 373)
 scale = Vector2(0.46153837, 0.46153843)
 texture = ExtResource("6_8j1m7")
 
 [node name="Space" type="Sprite2D" parent="." unique_id=466450031]
-position = Vector2(877.00006, 394)
+position = Vector2(878.00006, 371)
 scale = Vector2(0.49999967, 0.49999976)
 texture = ExtResource("7_af6pv")

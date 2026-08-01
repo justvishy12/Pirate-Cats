@@ -252,10 +252,10 @@ stretch_mode = 4
 [node name="player button" type="Button" parent="." unique_id=223896542]
 z_index = 1000
 texture_filter = 2
-offset_left = 435.00003
-offset_top = 9.0
-offset_right = 619.0
-offset_bottom = 59.0
+offset_left = 438.0
+offset_top = 263.0
+offset_right = 622.0
+offset_bottom = 313.0
 scale = Vector2(1.6574638, 1.6574638)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
