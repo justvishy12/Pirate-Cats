@@ -23,6 +23,7 @@ Controls:
 - Mouse - Click
 - Space bar- shoot/skip text
 - Arrow Keys - move cannon
+- Esc to access settings menu
 
 Credits:
 - SFX created by us
