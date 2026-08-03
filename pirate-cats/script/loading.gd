@@ -26,7 +26,11 @@ func refresh_slots():
 			slot.get_node("Container/Date").text = "%s/%s/%s" % [date[2], date[1], date[0]]
 			slot.get_node("Container/Time").text = time
 
-
+func _process(delta: float) -> void:
+	if $Guide.visible == true or $Prefferences.visible == true or $credits.visible == true:
+		$GuideInstructiosn.visible = false
+	else:
+		$GuideInstructiosn.visible = true
 func _on_load_1_pressed() -> void:
 	SaveManager.current_slot = 1
 	if SaveManager.crab_fight == false:

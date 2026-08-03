@@ -153,6 +153,7 @@ func _input(event):
 
 
 func _ready() -> void:
+	print(fish_ammount)
 	$Rod.visible = false
 	$Outside.visible = false
 	$fishbub.visible = false

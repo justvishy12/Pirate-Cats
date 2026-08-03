@@ -73,7 +73,8 @@ offset_top = 496.0
 offset_right = 560.0
 offset_bottom = 512.3334
 theme_override_fonts/font = ExtResource("4_525w4")
-text = "Text Speed"
+text = "Text Speed
+(Fast to Slow)"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -118,6 +119,7 @@ max_value = 1.0
 step = 0.001
 value = 0.5
 script = ExtResource("8_a2s2n")
+bus_name = "Master"
 
 [node name="TextSpeed" type="HSlider" parent="." unique_id=780280650]
 offset_left = 592.0

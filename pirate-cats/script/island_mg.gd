@@ -7,6 +7,7 @@ var three =false
 var four = false
 var five = false
 var six = false
+var treasure = false
 var sand_scene = preload("res://scene/sand.tscn")
 var treas = randi_range(1, 6)
 
@@ -209,6 +210,7 @@ func find():
 func tres():
 	Input.set_custom_mouse_cursor(null)
 	$side.disabled = true
+	treasure = true
 	$side2.disabled = true
 	$top.disabled = true
 	$bottom.disabled = true

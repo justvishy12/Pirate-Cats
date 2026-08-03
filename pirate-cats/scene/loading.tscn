@@ -15,30 +15,6 @@
 
 [sub_resource type="Animation" id="Animation_xwca0"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../GuideInstructiosn:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../GuideInstructiosn:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_vudae"]
 resource_name = "fade"
@@ -209,7 +185,7 @@ tracks/13/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, false]
+"values": [false, true]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
@@ -260,6 +236,8 @@ scale = Vector2(0.63635814, 0.63635814)
 texture = ExtResource("4_xwca0")
 
 [node name="Save1" type="Panel" parent="Loading" unique_id=765922399]
+visible = false
+modulate = Color(1, 1, 1, 0)
 offset_left = 230.0
 offset_top = 285.0
 offset_right = 476.0
@@ -326,6 +304,8 @@ theme_override_fonts/font = ExtResource("6_waisc")
 text = "xx:xx"
 
 [node name="Save2" type="Panel" parent="Loading" unique_id=1096441112]
+visible = false
+modulate = Color(1, 1, 1, 0)
 offset_left = 539.09106
 offset_top = 285.0
 offset_right = 785.09106
@@ -391,6 +371,8 @@ theme_override_fonts/font = ExtResource("6_waisc")
 text = "xx:xx"
 
 [node name="Save3" type="Panel" parent="Loading" unique_id=964077196]
+visible = false
+modulate = Color(1, 1, 1, 0)
 offset_left = 848.18176
 offset_top = 285.0
 offset_right = 1094.1818
@@ -456,6 +438,8 @@ theme_override_fonts/font = ExtResource("6_waisc")
 text = "xx:xx"
 
 [node name="Prefferences" type="Button" parent="Loading" unique_id=1622919171]
+visible = false
+modulate = Color(1, 1, 1, 0)
 offset_left = 32.0
 offset_top = 88.0
 offset_right = 200.0
@@ -467,6 +451,8 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_dpmfe")
 text = "PREFFERENCES"
 
 [node name="Guide" type="Button" parent="Loading" unique_id=1436311473]
+visible = false
+modulate = Color(1, 1, 1, 0)
 offset_left = 32.0
 offset_top = 199.99994
 offset_right = 200.0
@@ -478,6 +464,8 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_dpmfe")
 text = "GUIDE"
 
 [node name="creds" type="Button" parent="Loading" unique_id=1551845139]
+visible = false
+modulate = Color(1, 1, 1, 0)
 offset_left = 32.0
 offset_top = 309.09064
 offset_right = 200.0
@@ -489,7 +477,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_dpmfe")
 text = "CREDITS"
 
 [node name="LoadBg" type="Sprite2D" parent="." unique_id=1166868167]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(-272.36258, 535.3585)
 scale = Vector2(0.2799976, 0.2799976)
 texture = ExtResource("5_vudae")
@@ -517,19 +504,18 @@ scale = Vector2(0.50013214, 0.50013214)
 
 [node name="Arrows" type="Sprite2D" parent="." unique_id=157513021]
 visible = false
-position = Vector2(-493.00003, 623.00006)
+position = Vector2(-505.00003, 660.00006)
 scale = Vector2(0.4957627, 0.4957627)
 texture = ExtResource("11_kaksy")
 region_enabled = true
 region_rect = Rect2(0, 0, 236, 286)
 
 [node name="Area2D" type="Button" parent="." unique_id=208380301]
-visible = false
 modulate = Color(1, 1, 1, 0)
-offset_left = -542.0
-offset_top = 608.0
-offset_right = -440.0
-offset_bottom = 646.0
+offset_left = -559.0
+offset_top = 632.0
+offset_right = -446.0
+offset_bottom = 682.0
 
 [node name="Lobby Audio" type="AudioStreamPlayer2D" parent="." unique_id=115012976]
 process_mode = 3
@@ -540,6 +526,7 @@ bus = &"Music"
 parameters/looping = true
 
 [node name="GuideInstructiosn" type="Label" parent="." unique_id=886742675]
+visible = false
 modulate = Color(1, 1, 1, 0)
 offset_left = -374.0
 offset_top = 644.0

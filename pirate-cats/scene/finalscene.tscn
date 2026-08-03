@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cippd77hlp4i7" path="res://assets/powder monkey.png" id="6_uto7i"]
 [ext_resource type="FontFile" uid="uid://ci5fs3td4usu5" path="res://fonts/Irish_Grover/IrishGrover-Regular.ttf" id="7_t0vf3"]
 [ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="8_gsyk8"]
+[ext_resource type="Texture2D" uid="uid://c0i7ccy83bsu2" path="res://assets/candied catnip.png" id="9_4hnai"]
 
 [node name="Node2D" type="Node2D" unique_id=1484688267]
 
@@ -53,3 +54,8 @@ text = "THE END"
 
 [node name="pausemenu" parent="." unique_id=622735820 instance=ExtResource("8_gsyk8")]
 visible = false
+
+[node name="CandiedCatnip" type="Sprite2D" parent="." unique_id=1810623438]
+position = Vector2(543, 502)
+scale = Vector2(0.8, 0.79999995)
+texture = ExtResource("9_4hnai")

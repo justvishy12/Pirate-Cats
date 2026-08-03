@@ -73,7 +73,7 @@ anchor_right = 0.98020834
 anchor_bottom = 1.1039945
 theme_override_fonts/font = ExtResource("4_2rvmy")
 theme_override_font_sizes/font_size = 22
-text = "This game will test your patience and see how far you are willing to help cats. To interact with items hover over them, to talk with the characters  and play the different games, click them. To move the camera hover at the edge of the game screen. Use arrows the move around, and if you see a map click it.
+text = "This game will test your patience and see how far you are willing to help cats. To interact with items hover over them, CLICK THE CATS AND PARROT to talk to the characters and play the games. To move the camera hover at the edge of the game screen. Use arrows the move around, and if you see a map click it.
 
 "
 horizontal_alignment = 1

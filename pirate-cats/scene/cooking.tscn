@@ -163,18 +163,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_si2go"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Order:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1451, 370)]
-}
 
 [sub_resource type="Animation" id="Animation_ah7bq"]
 resource_name = "Reset"
@@ -334,7 +322,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_0colb")
 
 [node name="Order" type="Sprite2D" parent="." unique_id=557691217]
-position = Vector2(1451, 370)
+position = Vector2(293, 370)
 rotation = -1.3835788
 scale = Vector2(0.5887395, 0.5887395)
 texture = ExtResource("21_yc3pb")
@@ -571,7 +559,7 @@ offset_bottom = 432.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ldxs4")
 
 [node name="MiddlePlate" type="Sprite2D" parent="." unique_id=1426199758]
-position = Vector2(2027, 540)
+position = Vector2(298, 540)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_si2go")
 script = ExtResource("5_6h2ao")
@@ -951,7 +939,7 @@ scale = Vector2(0.59500074, 0.5950007)
 texture = ExtResource("16_aqocp")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=32059403]
-position = Vector2(2027, 463)
+position = Vector2(299, 463)
 zoom = Vector2(2, 2)
 
 [node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=1385800012]

@@ -7,7 +7,10 @@ var cones = false
 var stars
 var find = false
 
-
+func _process(delta: float) -> void:
+	if get_parent().treasure == true:
+		$Button.disabled = true
+		$Button.global_position =Vector2(8000,8000)
 
 func _on_button_pressed() -> void:
 	clicks += 1

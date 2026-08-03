@@ -137,6 +137,7 @@ func show_next_dialogue() -> void:
 	elif line["speaker"] == "plate":
 		if plates == 0:
 			plates = 1
+			$MiddlePlate.visible = true
 			$"Camera2D/player button".visible = false
 			await get_tree().create_timer(0.4).timeout
 			$AnimationPlayer.play("PlateFinish")
@@ -151,7 +152,7 @@ func show_next_dialogue() -> void:
 		$AnimationPlayer2.play("CastleMenu")
 		show_cat_text(line)
 		
-	elif line["speaker"] == "toppings":
+	elif line["speaker"] == "toppings" and $Arrow2.visible == false:
 		$Platesss.visible = false
 		$AnimationPlayer.play("ToppingsFinish")
 		$AnimationPlayer2.play("MenuBack")

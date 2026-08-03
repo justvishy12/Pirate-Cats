@@ -3,7 +3,7 @@ var rightcam = false
 var leftcam = false
 var paused = false
 var in_ship = false
-
+var autosave_timer := 0.0
 var music_player: AudioStreamPlayer
 
 var music_scenes = [
@@ -13,7 +13,8 @@ var music_scenes = [
 	"res://scene/Backship.tscn",
 	"res://scene/Captain Room.tscn",
 	"res://scene/ship_sailing.tscn",
-	"res://scene/aftercrabfight.tscn"
+	"res://scene/aftercrabfight.tscn",
+	"res://scene/finalscene.tscn"
 ]
 
 func _ready():
@@ -27,8 +28,17 @@ func _ready():
 	await get_tree().process_frame
 	check_scene()
 
-func _process(delta: float) -> void:
+
+func _process(delta):
+	autosave_timer += delta
+
+	if autosave_timer >= 5.0:
+		autosave_timer = 0.0
+
+		if SaveManager.current_slot != 0:
+			await SaveManager.save_game(SaveManager.current_slot)
 	check_scene()
+	
 func check_scene():
 	
 	while get_tree().current_scene == null:

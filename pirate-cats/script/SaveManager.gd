@@ -70,21 +70,33 @@ func load_game(slot: int):
 
 	if data == null:
 		return null
-
+	fish = data.get("fish", false)
+	cook = data.get("cook", false)
+	scrub = data.get("scrub", false)
+	feed = data.get("feed", false)
+	sort = data.get("sort", false)
+	captain = data.get("captain", false)
+	crab_fight = data.get("crab_fight", false)
+	full_map = data.get("full_map", false)
+	stars = data.get("stars", false)
+	island = data.get("island", false)
+	aftercrab = data.get("aftercrab", false)
+	speed = data.get("speed", 0.05)
 	crab_fight = data["crab_fight"]
+	
 	if island:
 		get_tree().change_scene_to_file("res://scene/finalscene.tscn")
 	elif stars:
 		get_tree().change_scene_to_file("res://scene/islandMG.tscn")
 	elif full_map:
 		get_tree().change_scene_to_file("res://scene/starpuzzle.tscn")
-	elif crab_fight and aftercrab:
+	elif aftercrab:
 		get_tree().change_scene_to_file("res://scene/Backship.tscn")
 	elif crab_fight and aftercrab == false:
 		get_tree().change_scene_to_file("res://scene/aftercrabfight.tscn")
 	else:
 		get_tree().change_scene_to_file("res://scene/ship_sailing.tscn")
-
+	
 	return data
 
 func get_save_data(slot: int):
