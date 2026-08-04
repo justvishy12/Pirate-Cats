@@ -75,7 +75,8 @@ texture = ExtResource("2_njp8i")
 position = Vector2(228, 420)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_pdb1p")
-frame_progress = 0.14900272
+frame = 1
+frame_progress = 0.7613753
 speed_scale = 0.5
 
 [node name="ScrubberCat" type="Sprite2D" parent="." unique_id=707711708]
@@ -139,7 +140,6 @@ scale = Vector2(0.3214785, 0.31657028)
 texture = ExtResource("11_0hrjc")
 
 [node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=1728152246]
-visible = false
 position = Vector2(16.598186, 226.14949)
 scale = Vector2(0.8402, 0.8402)
 texture = ExtResource("6_ipkij")
@@ -166,15 +166,15 @@ theme_override_font_sizes/font_size = 38
 text = "hi  my name is bob. i like to eat"
 autowrap_mode = 2
 
-[node name="skiplabel" type="Label" parent="Camera2D/Textbox" unique_id=511941624]
-offset_left = 208.38596
-offset_top = 57.88497
-offset_right = 347.30978
-offset_bottom = 77.88497
+[node name="skiplabel" type="Label" parent="Camera2D/Textbox" unique_id=1059051060]
+offset_left = 160.50891
+offset_top = 61.734253
+offset_right = 348.5089
+offset_bottom = 82.15092
 theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
 theme_override_fonts/font = ExtResource("7_6tulu")
 theme_override_font_sizes/font_size = 20
-text = "SPACE TO SKIP"
+text = "SPACE TO CONTINUE"
 
 [node name="photobox" type="TextureRect" parent="Camera2D/Textbox" unique_id=1608415926]
 offset_left = -379.1466

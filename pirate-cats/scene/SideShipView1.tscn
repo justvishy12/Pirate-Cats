@@ -4,12 +4,9 @@
 [ext_resource type="Script" uid="uid://cyr10r7b4pnm4" path="res://script/side_ship_view_1.gd" id="1_cjbe2"]
 [ext_resource type="Texture2D" uid="uid://dd0vn4rel58dv" path="res://assets/lifefloaty anim.png" id="2_cjbe2"]
 [ext_resource type="Texture2D" uid="uid://dxwn5d6n3i8cq" path="res://assets/sparkler anim.png" id="3_jb3qn"]
-[ext_resource type="Texture2D" uid="uid://bmkt1g1dhs0dp" path="res://assets/shell (1).png" id="4_x4fq0"]
-[ext_resource type="Texture2D" uid="uid://6ahevtfqotj0" path="res://assets/crabanim.png" id="5_b4svm"]
-[ext_resource type="Texture2D" uid="uid://cf52x8qgvxnnl" path="res://assets/shell.png" id="6_krglq"]
+[ext_resource type="Texture2D" uid="uid://do33fj1hh7avo" path="res://assets/swmall crab anim.png" id="4_wf1ak"]
 [ext_resource type="Texture2D" uid="uid://cippd77hlp4i7" path="res://assets/powder monkey.png" id="8_x4fq0"]
 [ext_resource type="Texture2D" uid="uid://dxir4o0fqpffg" path="res://assets/ship flag.png" id="9_b4svm"]
-[ext_resource type="Texture2D" uid="uid://cnrdxryoqha32" path="res://assets/shell3.png" id="10_b4svm"]
 [ext_resource type="Texture2D" uid="uid://buhyh8gypkkxu" path="res://assets/shell2.png" id="11_krglq"]
 [ext_resource type="Texture2D" uid="uid://bk0yokqeio7rc" path="res://assets/textbox.png" id="12_kmmhd"]
 [ext_resource type="FontFile" uid="uid://b46q62x2dethf" path="res://fonts/Jua-Regular.ttf" id="13_1jmqj"]
@@ -17,6 +14,7 @@
 [ext_resource type="StyleBox" uid="uid://sgstie1jsmlw" path="res://styles/userchoicehover+focus.tres" id="15_c1htk"]
 [ext_resource type="Texture2D" uid="uid://uevxgxsijq8n" path="res://assets/captain cat.png" id="16_wf1ak"]
 [ext_resource type="Texture2D" uid="uid://5p61n5jeldm0" path="res://assets/map6.png" id="17_c1htk"]
+[ext_resource type="Texture2D" uid="uid://blaw11va7logb" path="res://assets/shellp.png" id="17_vi4cs"]
 [ext_resource type="PackedScene" uid="uid://bftivbshr5lm3" path="res://scene/pausemenu.tscn" id="18_c1htk"]
 [ext_resource type="AudioStream" uid="uid://d24kk8ruhuv2a" path="res://audio/TypingSound.mp3" id="19_vi4cs"]
 
@@ -42,29 +40,29 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vi4cs"]
-atlas = ExtResource("5_b4svm")
-region = Rect2(0, 0, 53, 82)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_y7c0t"]
-atlas = ExtResource("5_b4svm")
-region = Rect2(53, 0, 53, 82)
+atlas = ExtResource("4_wf1ak")
+region = Rect2(0, 0, 110, 152)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1h0th"]
-atlas = ExtResource("5_b4svm")
-region = Rect2(106, 0, 53, 82)
+atlas = ExtResource("4_wf1ak")
+region = Rect2(110, 0, 110, 152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ecva"]
+atlas = ExtResource("4_wf1ak")
+region = Rect2(220, 0, 110, 152)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_48q5p"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vi4cs")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_y7c0t")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1h0th")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ecva")
 }],
 "loop": 1,
 "name": &"default",
@@ -115,7 +113,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldxs4"]
-size = Vector2(121.5, 86.5)
+size = Vector2(238, 125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w173s"]
 size = Vector2(162, 195)
@@ -185,25 +183,18 @@ position = Vector2(819, 328)
 scale = Vector2(0.48198202, 0.48198202)
 sprite_frames = SubResource("SpriteFrames_ldxs4")
 
-[node name="Shell(1)" type="Sprite2D" parent="." unique_id=756188745]
-position = Vector2(795.00006, 455.00003)
-scale = Vector2(0.7121212, 0.71212125)
-texture = ExtResource("4_x4fq0")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1755548329]
-position = Vector2(862, 483)
+position = Vector2(845.00006, 481)
+scale = Vector2(0.44545454, 0.44545454)
 sprite_frames = SubResource("SpriteFrames_48q5p")
+frame_progress = 0.12624052
+speed_scale = 0.6
 
 [node name="Dynamite" type="AnimatedSprite2D" parent="." unique_id=64497411]
 position = Vector2(237, 430.99997)
 scale = Vector2(0.57, 0.57)
 sprite_frames = SubResource("SpriteFrames_0kpj8")
 speed_scale = 0.3
-
-[node name="Shell" type="Sprite2D" parent="." unique_id=1385593565]
-position = Vector2(919, 424.99997)
-scale = Vector2(0.8484842, 0.8484843)
-texture = ExtResource("6_krglq")
 
 [node name="PowderMonkey" type="Sprite2D" parent="." unique_id=980984142]
 position = Vector2(405, 360)
@@ -218,8 +209,7 @@ texture = ExtResource("9_b4svm")
 [node name="CrabOut" type="Area2D" parent="." unique_id=881185874]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CrabOut" unique_id=1826257465]
-visible = false
-position = Vector2(765, 461)
+position = Vector2(786, 443.5)
 shape = SubResource("RectangleShape2D_ldxs4")
 
 [node name="DynaPlay" type="Area2D" parent="." unique_id=197714581]
@@ -264,9 +254,11 @@ polygon = PackedVector2Array(90, 412, 77, 420, 76, 427, 124, 450, 128, 448, 126,
 position = Vector2(411, 364)
 shape = SubResource("CapsuleShape2D_ldxs4")
 
-[node name="Shell3" type="Sprite2D" parent="." unique_id=1252177657]
-position = Vector2(743, 411)
-texture = ExtResource("10_b4svm")
+[node name="Shell4" type="Sprite2D" parent="." unique_id=844015764]
+position = Vector2(887, 426)
+rotation = 0.30911013
+scale = Vector2(0.2521723, 0.2521722)
+texture = ExtResource("11_krglq")
 
 [node name="Shell2" type="Sprite2D" parent="." unique_id=164977621]
 position = Vector2(695, 483)
@@ -315,7 +307,6 @@ scale = Vector2(0.12005934, 0.11822632)
 texture = ExtResource("17_c1htk")
 
 [node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=81887964]
-visible = false
 position = Vector2(16.598186, 226.14949)
 scale = Vector2(0.74479526, 0.74479526)
 texture = ExtResource("12_kmmhd")
@@ -342,16 +333,6 @@ theme_override_font_sizes/font_size = 38
 text = "hi  my name is bob. i like to eat"
 autowrap_mode = 2
 
-[node name="skiplabel" type="Label" parent="Camera2D/Textbox" unique_id=638306855]
-offset_left = 208.38596
-offset_top = 57.88497
-offset_right = 347.30978
-offset_bottom = 77.88497
-theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
-theme_override_fonts/font = ExtResource("13_1jmqj")
-theme_override_font_sizes/font_size = 20
-text = "SPACE TO SKIP"
-
 [node name="photobox" type="TextureRect" parent="Camera2D/Textbox" unique_id=1590633222]
 offset_left = -379.1466
 offset_top = -43.413727
@@ -359,6 +340,16 @@ offset_right = -222.85706
 offset_bottom = 78.144745
 expand_mode = 2
 stretch_mode = 4
+
+[node name="skiplabel" type="Label" parent="Camera2D/Textbox" unique_id=1237546539]
+offset_left = 159.09021
+offset_top = 60.779343
+offset_right = 347.0902
+offset_bottom = 81.196014
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("13_1jmqj")
+theme_override_font_sizes/font_size = 20
+text = "SPACE TO CONTINUE"
 
 [node name="player button" type="Button" parent="Camera2D" unique_id=1360576866]
 visible = false
@@ -392,6 +383,12 @@ volume_db = 10.0
 pitch_scale = 0.8
 bus = &"Sfx"
 parameters/looping = true
+
+[node name="Shellp" type="Sprite2D" parent="." unique_id=1460668419]
+position = Vector2(744, 423)
+rotation = -0.42434272
+scale = Vector2(0.36790264, 0.36790264)
+texture = ExtResource("17_vi4cs")
 
 [connection signal="mouse_entered" from="CrabOut" to="." method="_on_crab_out_mouse_entered"]
 [connection signal="mouse_exited" from="CrabOut" to="." method="_on_crab_out_mouse_exited"]

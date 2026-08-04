@@ -453,14 +453,14 @@ text = "hi  my name is bob. i like to eat"
 autowrap_mode = 2
 
 [node name="skiplabel" type="Label" parent="Textbox" unique_id=735541266]
-offset_left = 208.38596
-offset_top = 57.88497
-offset_right = 347.30978
-offset_bottom = 77.88497
+offset_left = 159.09021
+offset_top = 60.779343
+offset_right = 347.0902
+offset_bottom = 81.196014
 theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
 theme_override_fonts/font = ExtResource("7_kyxsx")
 theme_override_font_sizes/font_size = 20
-text = "SPACE TO SKIP"
+text = "SPACE TO CONTINUE"
 
 [node name="photobox" type="TextureRect" parent="Textbox" unique_id=857879833]
 offset_left = -379.1466

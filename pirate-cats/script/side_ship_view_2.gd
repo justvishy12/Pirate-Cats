@@ -4,6 +4,7 @@ var moveright = false
 var locked = false
 var scrubbing = false
 var scrubbing2 = false
+var bubbles = false
 var can_play = false
 var dialogue=[
 #If player hasn’t done scrubber puzzle:
@@ -218,3 +219,11 @@ func _on_mapbutton_pressed() -> void:
 	$ScrubberMG.monitorable = true
 	$ScrubberMG/CollisionShape2D.disabled = false
 	locked=false
+
+
+func _on_bubble_bucket_mouse_entered() -> void:
+	$BubbleBuket.play("default")
+
+
+func _on_bubble_bucket_mouse_exited() -> void:
+	$BubbleBuket.stop()

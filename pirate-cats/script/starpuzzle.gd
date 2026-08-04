@@ -143,9 +143,9 @@ func _input(event):
 				game_finished = true
 				$AnimationPlayer.play("fadein")
 				await $AnimationPlayer.animation_finished
+				$IslandInDistance.visible = true
 				$AnimationPlayer.play("fadeout")
 				await $AnimationPlayer.animation_finished
-				$IslandInDistance.visible = true
 				
 			if dialogue_index == 6 and got_wrong == false:
 				SaveManager.stars = true
@@ -154,7 +154,7 @@ func _input(event):
 				$AnimationPlayer.play("fadein")
 				await $AnimationPlayer.animation_finished
 				$AnimationPlayer.play("fadeout")
-				await $AnimationPlayer.animation_finished
+				await get_tree().create_timer(0.2).timeout
 				get_tree().change_scene_to_file("res://scene/islandMG.tscn")
 				
 			if dialogue_index == 4:
@@ -219,14 +219,14 @@ func round_finished():
 		$BackshipViewNight.visible=true
 		$AnimationPlayer.play("fadeout")
 		await $AnimationPlayer.animation_finished
-		dialogue_index = 6
+		dialogue_index = 7
 		show_next_dialogue()
 	if round3 == true and hello == false and got_wrong == false and game_finished == false:
 		$AnimationPlayer.play("fadein")
 		await $AnimationPlayer.animation_finished
+		$BackshipViewNight.visible=true
 		$AnimationPlayer.play("fadeout")
 		await $AnimationPlayer.animation_finished
-		$BackshipViewNight.visible=true
 		hello = true
 		dialogue_index = 5
 		show_next_dialogue()

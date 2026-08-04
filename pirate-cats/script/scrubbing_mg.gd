@@ -15,6 +15,7 @@ var E3 = false
 var E4 = false
 var E5 = false
 var E6 = false
+var done = false
 var map_dialogue_shown = false
 var sponge = preload("res://assets/sponge cursor.png")
 var mouse_pos: Vector2
@@ -113,16 +114,12 @@ func _input(event):
 				dialogue_index += 1
 				show_next_dialogue()
 
-
 func _ready() -> void:
 	show_next_dialogue()
 	$"Puzzle Music".play()
 	mouse_pos = get_global_mouse_position()
 	Input.set_custom_mouse_cursor(sponge)
 	round1()
-
-func _process(delta: float) -> void:
-	pass
 
 func round1():
 	while $Round1/Dirt1.modulate.a > 0.0 or $Round1/Dirt2.modulate.a > 0.0 or $Round1/Dirt3.modulate.a > 0.0:
@@ -228,6 +225,7 @@ func round3():
 				
 		mouse_pos = get_global_mouse_position()
 		await get_tree().create_timer(0.4).timeout
+	done = true
 	$Scrubbing.stop()
 	$mapbutton.visible = true
 	var tween = create_tween()

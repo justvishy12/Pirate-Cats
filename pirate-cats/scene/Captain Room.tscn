@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://m765ky3nyymd" path="res://assets/wheelanimsprite.png" id="6_yfeqn"]
 [ext_resource type="Texture2D" uid="uid://4ini3stmid5m" path="res://assets/mouse toy.png" id="7_mcfne"]
 [ext_resource type="Texture2D" uid="uid://l7sdkpegyugb" path="res://assets/mouse toy-2.png" id="8_yetyy"]
+[ext_resource type="Texture2D" uid="uid://c8rghwml3rgmy" path="res://assets/mouse toy-1.png" id="9_pcvpd"]
 [ext_resource type="Texture2D" uid="uid://c8bkutybtaau0" path="res://assets/map1.png" id="10_yetyy"]
 [ext_resource type="Texture2D" uid="uid://rfqlsdlgdnrf" path="res://assets/map2.png" id="11_lerbx"]
 [ext_resource type="Texture2D" uid="uid://b0ioblyl7a35b" path="res://assets/map3.png" id="12_i8n7k"]
@@ -178,42 +179,6 @@ height = 545.2001
 
 [sub_resource type="Animation" id="Animation_mcfne"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mouse3/AreaM3:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Mouse3:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(222.99997, 122)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Mouse3:flip_h")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_yetyy"]
 resource_name = "rat1 move"
@@ -321,10 +286,82 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_8akd2"]
 resource_name = "rat2 move"
 length = 0.57
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouse2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.57),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-161, 97), Vector2(-77.00001, 126)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mouse2/AreaM2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.57),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mouse2:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_3njir"]
 resource_name = "rat2 move back"
 length = 0.451
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouse2:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mouse2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.451),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-77, 126), Vector2(-161, 97)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mouse2/AreaM2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.451),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ganqv"]
 resource_name = "rat3 move"
@@ -571,7 +608,8 @@ scale = Vector2(2.4999998, 2.4999998)
 polygon = PackedVector2Array(-204, 117, -192, 114, -184, 115, -181, 110, -169, 109, -157, 115, -154, 112, -151, 113, -153, 119, -148, 125, -148, 130, -152, 133, -180, 133, -186, 126, -186, 119, -192, 116, -197, 121, -205, 119)
 
 [node name="Mouse1" type="Sprite2D" parent="." unique_id=1042952789]
-position = Vector2(-325.99997, 125)
+position = Vector2(-386, 124)
+rotation = 0.28409764
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("8_yetyy")
 
@@ -580,6 +618,21 @@ position = Vector2(-3.4332275e-05, -1.1444092e-05)
 scale = Vector2(-1, 1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mouse1/AreaM1" unique_id=937306213]
+position = Vector2(439.99997, -307.49997)
+scale = Vector2(2.4999998, 2.4999998)
+polygon = PackedVector2Array(-204, 117, -192, 114, -184, 115, -181, 110, -169, 109, -157, 115, -154, 112, -151, 113, -153, 119, -148, 125, -148, 130, -152, 133, -180, 133, -186, 126, -186, 119, -192, 116, -197, 121, -205, 119)
+
+[node name="Mouse2" type="Sprite2D" parent="." unique_id=704477188]
+position = Vector2(-161, 97)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_pcvpd")
+flip_h = true
+
+[node name="AreaM2" type="Area2D" parent="Mouse2" unique_id=1003173135]
+position = Vector2(-3.4332275e-05, -1.1444092e-05)
+scale = Vector2(-1, 1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mouse2/AreaM2" unique_id=632244435]
 position = Vector2(439.99997, -307.49997)
 scale = Vector2(2.4999998, 2.4999998)
 polygon = PackedVector2Array(-204, 117, -192, 114, -184, 115, -181, 110, -169, 109, -157, 115, -154, 112, -151, 113, -153, 119, -148, 125, -148, 130, -152, 133, -180, 133, -186, 126, -186, 119, -192, 116, -197, 121, -205, 119)
@@ -930,16 +983,6 @@ theme_override_font_sizes/font_size = 38
 text = "hi  my name is bob. i like to eat"
 autowrap_mode = 2
 
-[node name="skiplabel" type="Label" parent="Camera2D/Textbox" unique_id=685571886]
-offset_left = 208.38596
-offset_top = 57.88497
-offset_right = 347.30978
-offset_bottom = 77.88497
-theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
-theme_override_fonts/font = ExtResource("19_djvvj")
-theme_override_font_sizes/font_size = 20
-text = "SPACE TO SKIP"
-
 [node name="photobox" type="TextureRect" parent="Camera2D/Textbox" unique_id=1749238679]
 offset_left = -379.1466
 offset_top = -43.413727
@@ -947,6 +990,16 @@ offset_right = -222.85706
 offset_bottom = 78.144745
 expand_mode = 2
 stretch_mode = 4
+
+[node name="skiplabel" type="Label" parent="Camera2D/Textbox" unique_id=157732694]
+offset_left = 159.09021
+offset_top = 60.779343
+offset_right = 347.0902
+offset_bottom = 81.196014
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("19_djvvj")
+theme_override_font_sizes/font_size = 20
+text = "SPACE TO CONTINUE"
 
 [node name="player button" type="Button" parent="Camera2D" unique_id=663769945]
 visible = false
@@ -994,6 +1047,7 @@ parameters/looping = true
 [connection signal="mouse_exited" from="CatToys" to="." method="_on_cat_toys_mouse_exited"]
 [connection signal="mouse_entered" from="Mouse3/AreaM3" to="." method="_on_area_m_3_mouse_entered"]
 [connection signal="mouse_entered" from="Mouse1/AreaM1" to="." method="_on_area_m_1_mouse_entered"]
+[connection signal="mouse_entered" from="Mouse2/AreaM2" to="." method="_on_area_m_2_mouse_entered"]
 [connection signal="input_event" from="Table" to="." method="_on_table_input_event"]
 [connection signal="mouse_entered" from="Bottle" to="." method="_on_bottle_mouse_entered"]
 [connection signal="mouse_exited" from="Bottle" to="." method="_on_bottle_mouse_exited"]

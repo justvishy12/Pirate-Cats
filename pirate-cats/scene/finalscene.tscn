@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b6klu26i7ax6w"]
 
 [ext_resource type="Texture2D" uid="uid://dm5syaeqx3ki6" path="res://scene/closer island distance.png" id="1_idaht"]
+[ext_resource type="Script" uid="uid://qqui8ijxr776" path="res://script/finalscene.gd" id="1_t36mn"]
 [ext_resource type="Texture2D" uid="uid://uevxgxsijq8n" path="res://assets/captain cat.png" id="2_gsyk8"]
 [ext_resource type="Texture2D" uid="uid://c1ymamehqfgv6" path="res://assets/scrubber cat.png" id="3_4hnai"]
 [ext_resource type="Texture2D" uid="uid://rb44yvydtdb7" path="res://assets/chef cat.png" id="4_t36mn"]
@@ -11,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c0i7ccy83bsu2" path="res://assets/candied catnip.png" id="9_4hnai"]
 
 [node name="Node2D" type="Node2D" unique_id=1484688267]
+script = ExtResource("1_t36mn")
 
 [node name="CloserIslandDistance" type="Sprite2D" parent="." unique_id=2136699666]
 position = Vector2(577, 326)
@@ -52,10 +54,10 @@ theme_override_fonts/font = ExtResource("7_t0vf3")
 theme_override_font_sizes/font_size = 124
 text = "THE END"
 
-[node name="pausemenu" parent="." unique_id=622735820 instance=ExtResource("8_gsyk8")]
-visible = false
-
 [node name="CandiedCatnip" type="Sprite2D" parent="." unique_id=1810623438]
 position = Vector2(543, 502)
 scale = Vector2(0.8, 0.79999995)
 texture = ExtResource("9_4hnai")
+
+[node name="pausemenu" parent="." unique_id=622735820 instance=ExtResource("8_gsyk8")]
+visible = false

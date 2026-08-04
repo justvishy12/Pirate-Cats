@@ -204,7 +204,6 @@ scale = Vector2(0.12005934, 0.11822632)
 texture = ExtResource("12_tluk1")
 
 [node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=275739787]
-visible = false
 position = Vector2(0.032344818, 108.99997)
 scale = Vector2(0.34551278, 0.34551278)
 texture = ExtResource("7_hnov0")
@@ -231,16 +230,6 @@ theme_override_font_sizes/font_size = 38
 text = "hi  my name is bob. i like to eat"
 autowrap_mode = 2
 
-[node name="skiplabel" type="Label" parent="Camera2D/Textbox" unique_id=213599201]
-offset_left = 208.38596
-offset_top = 57.88497
-offset_right = 347.30978
-offset_bottom = 77.88497
-theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
-theme_override_fonts/font = ExtResource("8_c6tu4")
-theme_override_font_sizes/font_size = 20
-text = "SPACE TO SKIP"
-
 [node name="photobox" type="TextureRect" parent="Camera2D/Textbox" unique_id=805237118]
 offset_left = -379.1466
 offset_top = -43.413727
@@ -248,6 +237,16 @@ offset_right = -222.85706
 offset_bottom = 78.144745
 expand_mode = 2
 stretch_mode = 4
+
+[node name="skiplabel" type="Label" parent="Camera2D/Textbox" unique_id=1247818559]
+offset_left = 159.09021
+offset_top = 60.779343
+offset_right = 347.0902
+offset_bottom = 81.196014
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("8_c6tu4")
+theme_override_font_sizes/font_size = 20
+text = "SPACE TO CONTINUE"
 
 [node name="player button" type="Button" parent="Camera2D" unique_id=1073317667]
 visible = false

@@ -224,23 +224,13 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(16.92, 0)
 offset_left = -222.85681
 offset_top = -34.730988
-offset_right = 240.22302
-offset_bottom = 54.990692
+offset_right = 244.46674
+offset_bottom = 54.13199
 theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
 theme_override_fonts/font = ExtResource("9_ulwyu")
 theme_override_font_sizes/font_size = 38
 text = "hi  my name is bob. i like to eat"
 autowrap_mode = 2
-
-[node name="skiplabel" type="Label" parent="Textbox" unique_id=118051696]
-offset_left = 208.38596
-offset_top = 57.88497
-offset_right = 347.30978
-offset_bottom = 77.88497
-theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
-theme_override_fonts/font = ExtResource("9_ulwyu")
-theme_override_font_sizes/font_size = 20
-text = "SPACE TO SKIP"
 
 [node name="photobox" type="TextureRect" parent="Textbox" unique_id=1073817684]
 offset_left = -379.1466
@@ -249,6 +239,16 @@ offset_right = -222.85706
 offset_bottom = 78.144745
 expand_mode = 2
 stretch_mode = 4
+
+[node name="skiplabel" type="Label" parent="Textbox" unique_id=116254160]
+offset_left = 159.09021
+offset_top = 60.779343
+offset_right = 347.0902
+offset_bottom = 81.196014
+theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("9_ulwyu")
+theme_override_font_sizes/font_size = 20
+text = "SPACE TO CONTINUE"
 
 [node name="player button" type="Button" parent="." unique_id=223896542]
 z_index = 1000

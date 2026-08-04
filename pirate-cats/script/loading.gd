@@ -33,24 +33,24 @@ func _process(delta: float) -> void:
 		$GuideInstructiosn.visible = true
 func _on_load_1_pressed() -> void:
 	SaveManager.current_slot = 1
-	if SaveManager.crab_fight == false:
-		get_tree().change_scene_to_file("res://scene/ship_sailing.tscn")
+	if FileAccess.file_exists("user://save_1.json"):
+		SaveManager.load_game(1)
 	else:
-		get_tree().change_scene_to_file("res://scene/Backship.tscn")
+		get_tree().change_scene_to_file('res://scene/ship_sailing.tscn')
 
 func _on_load_2_pressed() -> void:
 	SaveManager.current_slot = 2
-	if SaveManager.crab_fight == false:
-		get_tree().change_scene_to_file("res://scene/ship_sailing.tscn")
+	if FileAccess.file_exists("user://save_2.json"):
+		SaveManager.load_game(2)
 	else:
-		get_tree().change_scene_to_file("res://scene/Backship.tscn")
+		get_tree().change_scene_to_file('res://scene/ship_sailing.tscn')
 
 func _on_load_3_pressed() -> void:
 	SaveManager.current_slot = 3
-	if SaveManager.crab_fight == false:
-		get_tree().change_scene_to_file("res://scene/ship_sailing.tscn")
+	if FileAccess.file_exists("user://save_3.json"):
+		SaveManager.load_game(3)
 	else:
-		get_tree().change_scene_to_file("res://scene/Backship.tscn")
+		get_tree().change_scene_to_file('res://scene/ship_sailing.tscn')
 
 func _on_reset_1_pressed() -> void:
 	SaveManager.delete_save(1)
