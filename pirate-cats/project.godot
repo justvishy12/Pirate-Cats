@@ -24,10 +24,6 @@ Global="*uid://gggp3uns2iey"
 
 window/stretch/mode="canvas_items"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
-
 [input]
 
 space={

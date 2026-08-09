@@ -869,7 +869,6 @@ offset_bottom = 51.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Arrow3" type="Sprite2D" parent="." unique_id=1612276319]
-visible = false
 position = Vector2(2239.0002, 540)
 scale = Vector2(0.5927776, 0.5927776)
 texture = ExtResource("20_8giwa")

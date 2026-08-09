@@ -215,19 +215,6 @@ func _on_cam_right_mouse_entered() -> void:
 func _on_cam_right_mouse_exited() -> void:
 	moveright = false
 
-func _on_flag_raise_mouse_entered() -> void:
-	var anim = $AnimationPlayer.get_animation("FlagRaise")
-
-	if flag == 0:
-		flag = 1
-		$AnimationPlayer.play("FlagRaise", -1, 1.0)
-	else:
-		flag = 0
-		var current_time = $AnimationPlayer.current_animation_position
-		$AnimationPlayer.play("FlagRaise", -1, -1.0)
-		$AnimationPlayer.seek(current_time, true)
-
-
 func _on_back_ship_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		Global.rightcam = true
@@ -266,3 +253,13 @@ func _on_mapbutton_pressed() -> void:
 	$PowderMG.monitorable = true
 	locked=false
 	
+
+
+func _on_flag_raise_mouse_exited() -> void:
+	$AnimationPlayer.speed_scale = -1
+	$AnimationPlayer.play("FlagRaise")
+
+
+func _on_flag_raise_mouse_entered() -> void:
+	$AnimationPlayer.speed_scale = 1
+	$AnimationPlayer.play("FlagRaise")

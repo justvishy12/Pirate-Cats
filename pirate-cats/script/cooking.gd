@@ -77,16 +77,16 @@ var dialogue = [
 	},
 	{
 		#5
-		"speaker": "toppings",
-		"name": "Biscuits (Cook)",
-		"text": "You did it, Ready to make your own? ",
-		"portrait": preload("res://assets/headshots/CHEF FACE.png")
+		"speaker": "you(start)",
+		"name": "",
+		"text": "Whoa I did it "
 	},
 	{
 		#6
-		"speaker": "you(start)",
-		"name": "",
-		"text": "Okay, Lets DO this "
+		"speaker": "toppings",
+		"name": "Biscuits (Cook)",
+		"text": "Yes you did, press the arrow to go back and make more (3)! ",
+		"portrait": preload("res://assets/headshots/CHEF FACE.png")
 	},
 	{
 		#7
@@ -106,7 +106,7 @@ var typing = false
 func show_next_dialogue() -> void:
 	if dialogue_busy:
 		return
-	
+	print(dialogue_index)
 	dialogue_busy = true
 
 	if dialogue_index >= dialogue.size():
@@ -164,14 +164,9 @@ func show_next_dialogue() -> void:
 	dialogue_busy = false
 
 func _on_player_button_pressed() -> void:
-	if dialogue_index == 6:
-		$"Camera2D/player button".visible = false
-		$AnimationPlayer2.play("Reset")
-		await  get_tree().create_timer(0.2).timeout
-		plate_reset()
-	else:
-		dialogue_index += 1
-		show_next_dialogue()
+	$"Camera2D/player button".visible = false
+	dialogue_index += 1
+	show_next_dialogue()
 	
 func show_cat_text(line) -> void:
 	$Camera2D/Textbox.visible = true
@@ -217,9 +212,8 @@ func _input(event):
 			dialogue_index += 1
 			show_next_dialogue()
 		elif dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "toppings":
-			print(dialogue_index)
-			dialogue_index += 1
-			show_next_dialogue()
+			$Camera2D/Textbox.visible = false
+			
 func plate_reset():
 	$MiddlePlate.can_drag = true
 	$MiddlePlate.dragging = false

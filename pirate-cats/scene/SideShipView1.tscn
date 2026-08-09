@@ -116,7 +116,7 @@ animations = [{
 size = Vector2(238, 125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w173s"]
-size = Vector2(162, 195)
+size = Vector2(232, 189)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0kpj8"]
 size = Vector2(118, 113.5)
@@ -221,7 +221,7 @@ shape = SubResource("RectangleShape2D_ldxs4")
 [node name="FlagRaise" type="Area2D" parent="." unique_id=1694146921]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlagRaise" unique_id=1445901905]
-position = Vector2(558, 288.5)
+position = Vector2(593, 285.5)
 shape = SubResource("RectangleShape2D_w173s")
 
 [node name="BouyPlay" type="Area2D" parent="." unique_id=1148176613]
@@ -307,6 +307,7 @@ scale = Vector2(0.12005934, 0.11822632)
 texture = ExtResource("17_c1htk")
 
 [node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=81887964]
+visible = false
 position = Vector2(16.598186, 226.14949)
 scale = Vector2(0.74479526, 0.74479526)
 texture = ExtResource("12_kmmhd")
@@ -395,6 +396,7 @@ texture = ExtResource("17_vi4cs")
 [connection signal="mouse_entered" from="DynaPlay" to="." method="_on_dyna_play_mouse_entered"]
 [connection signal="mouse_exited" from="DynaPlay" to="." method="_on_dyna_play_mouse_exited"]
 [connection signal="mouse_entered" from="FlagRaise" to="." method="_on_flag_raise_mouse_entered"]
+[connection signal="mouse_exited" from="FlagRaise" to="." method="_on_flag_raise_mouse_exited"]
 [connection signal="mouse_entered" from="BouyPlay" to="." method="_on_bouy_play_mouse_entered"]
 [connection signal="mouse_exited" from="BouyPlay" to="." method="_on_bouy_play_mouse_exited"]
 [connection signal="input_event" from="BackShip" to="." method="_on_back_ship_input_event"]
