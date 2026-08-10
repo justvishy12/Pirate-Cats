@@ -18,6 +18,7 @@ var moving = false
 var rounds = 0
 var can_play = false
 var can_shoot = true
+var skip_typing = false
 const CannonBallScene = preload("res://scene/Cannon Ball.tscn")
 @onready var mid_start: Vector2 = $CMid.global_position
 @onready var left_start = $CLeft.global_position
@@ -103,6 +104,7 @@ func _on_player_button_pressed() -> void:
 	show_next_dialogue()
 
 func show_cat_text(line) -> void:
+	skip_typing = false
 	$Textbox.visible = true
 	typing = true
 	
@@ -118,6 +120,9 @@ func show_cat_text(line) -> void:
 	$Textbox/textlabel.visible_characters = 0
 	$Typing.play()
 	for i in $Textbox/textlabel.text.length():
+		if skip_typing:
+			$Textbox/textlabel.visible_characters = $Textbox/textlabel.text.length()
+			break
 		if !is_inside_tree():
 			return
 		$Textbox/textlabel.visible_characters = i
@@ -161,6 +166,9 @@ func _input(event):
 		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
 			dialogue_index += 1
 			show_next_dialogue()
+	elif event.is_action_pressed("ui_accept") and typing:
+		skip_typing = true
+		$Textbox/textlabel.visible_characters = $Textbox/textlabel.text.length()
 
 	if event.is_action_pressed("space") and fight == true and can_shoot == true:
 		can_shoot = false

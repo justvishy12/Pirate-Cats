@@ -7,7 +7,7 @@ var fishing = false
 var cooking2 = false
 var fishing2 = false
 var locked = false
-
+var skip_typing = false
 var dialogue = [
 #If player hasn’t done fishing puzzle
 
@@ -60,7 +60,7 @@ var dialogue = [
 		#6
 		"speaker": "cat",
 		"name": "Biscuits (Cook)",
-		"text": "Let teach you my secrets ",
+		"text": "Let me teach you my secrets! ",
 		"portrait": preload("res://assets/headshots/CHEF FACE.png")
 	},
 
@@ -128,6 +128,7 @@ func _on_player_button_pressed() -> void:
 	show_next_dialogue()
 
 func show_cat_text(line) -> void:
+	skip_typing = false
 	$Camera2D/Textbox.visible = true
 	typing = true
 	
@@ -141,6 +142,9 @@ func show_cat_text(line) -> void:
 	$Camera2D/Textbox/textlabel.visible_characters = 0
 	$Typing.play()
 	for i in $Camera2D/Textbox/textlabel.text.length():
+		if skip_typing:
+			$Camera2D/Textbox/textlabel.visible_characters = $Camera2D/Textbox/textlabel.text.length()
+			break
 		if !is_inside_tree():
 			return
 		$Camera2D/Textbox/textlabel.visible_characters = i
@@ -170,6 +174,9 @@ func _input(event):
 			if dialogue_index not in [3, 4, 6, 7]:
 				dialogue_index += 1
 				show_next_dialogue()
+	elif event.is_action_pressed("ui_accept") and typing:
+		skip_typing = true
+		$Camera2D/Textbox/textlabel.visible_characters = $Camera2D/Textbox/textlabel.text.length()
 
 func _ready() -> void:
 	if Global.rightcam == true:

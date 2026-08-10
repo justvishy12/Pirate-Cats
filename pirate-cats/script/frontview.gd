@@ -6,6 +6,7 @@ var feeding = false
 var feeding2 = false
 var locked = false
 var can_play = false
+var skip_typing = false
 var dialogue=[
 #If player hasn’t done parrot puzzle:
 	{
@@ -75,6 +76,7 @@ func show_next_dialogue() -> void:
 		show_cat_text(line)
 
 func show_cat_text(line) -> void:
+	skip_typing = false
 	$Camera2D/Textbox.visible = true
 	typing = true
 	
@@ -88,6 +90,9 @@ func show_cat_text(line) -> void:
 	$Camera2D/Textbox/textlabel.visible_characters = 0
 	$Typing.play()
 	for i in $Camera2D/Textbox/textlabel.text.length():
+		if skip_typing:
+			$Camera2D/Textbox/textlabel.visible_characters = $Camera2D/Textbox/textlabel.text.length()
+			break
 		if !is_inside_tree():
 			return
 		$Camera2D/Textbox/textlabel.visible_characters = i
@@ -109,6 +114,9 @@ func _input(event):
 			if dialogue_index != 2:
 				dialogue_index += 1
 				show_next_dialogue()
+	elif event.is_action_pressed("ui_accept") and typing and can_play == true:
+		skip_typing = true
+		$Camera2D/Textbox/textlabel.visible_characters = $Camera2D/Textbox/textlabel.text.length()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -285,14 +285,14 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="skiplabel" type="Label" parent="Camera2D/Textbox" unique_id=795486009]
-offset_left = 159.09021
+offset_left = 216.97522
 offset_top = 60.779343
-offset_right = 347.0902
+offset_right = 355.89905
 offset_bottom = 81.196014
 theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
 theme_override_fonts/font = ExtResource("9_tjcn3")
 theme_override_font_sizes/font_size = 20
-text = "SPACE TO CONTINUE"
+text = "SPACE TO SKIP"
 
 [node name="player button" type="Button" parent="Camera2D" unique_id=1587189552]
 visible = false

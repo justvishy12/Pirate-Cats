@@ -245,10 +245,10 @@ text = "hi  my name is bob. i like to eat"
 autowrap_mode = 2
 
 [node name="skiplabel" type="Label" parent="Textbox" unique_id=1478520986]
-offset_left = 208.38596
-offset_top = 57.88497
-offset_right = 347.30978
-offset_bottom = 77.88497
+offset_left = 216.61104
+offset_top = 62.08927
+offset_right = 355.53485
+offset_bottom = 82.505936
 theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
 theme_override_fonts/font = ExtResource("11_vwbd2")
 theme_override_font_sizes/font_size = 20

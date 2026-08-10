@@ -204,6 +204,7 @@ scale = Vector2(0.12005934, 0.11822632)
 texture = ExtResource("12_tluk1")
 
 [node name="Textbox" type="Sprite2D" parent="Camera2D" unique_id=275739787]
+visible = false
 position = Vector2(0.032344818, 108.99997)
 scale = Vector2(0.34551278, 0.34551278)
 texture = ExtResource("7_hnov0")
@@ -239,14 +240,14 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="skiplabel" type="Label" parent="Camera2D/Textbox" unique_id=1247818559]
-offset_left = 159.09021
-offset_top = 60.779343
-offset_right = 347.0902
-offset_bottom = 81.196014
+offset_left = 216.975
+offset_top = 60.779167
+offset_right = 353.975
+offset_bottom = 81.19584
 theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
 theme_override_fonts/font = ExtResource("8_c6tu4")
 theme_override_font_sizes/font_size = 20
-text = "SPACE TO CONTINUE"
+text = "SPACE TO SKIP"
 
 [node name="player button" type="Button" parent="Camera2D" unique_id=1073317667]
 visible = false

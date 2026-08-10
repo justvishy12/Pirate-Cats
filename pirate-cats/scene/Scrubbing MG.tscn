@@ -318,14 +318,14 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="skiplabel" type="Label" parent="Textbox" unique_id=1416134988]
-offset_left = 159.09021
-offset_top = 60.779343
-offset_right = 347.0902
-offset_bottom = 81.196014
+offset_left = 217.06866
+offset_top = 60.779232
+offset_right = 354.06866
+offset_bottom = 81.19591
 theme_override_colors/font_color = Color(0.32941177, 0.2627451, 0.2627451, 1)
 theme_override_fonts/font = ExtResource("2_7u8rw")
 theme_override_font_sizes/font_size = 20
-text = "SPACE TO CONTINUE"
+text = "SPACE TO SKIP"
 
 [node name="player button" type="Button" parent="." unique_id=1249795735]
 texture_filter = 2

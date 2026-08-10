@@ -46,7 +46,7 @@ var dragging6 = false
 var of6 = Vector2(0,0)
 var in_zone6 = false
 var get_map = false
-
+var skip_typing = false
 
 
 var dialogue = [
@@ -120,6 +120,7 @@ func show_next_dialogue() -> void:
 		#get_tree().change_scene_to_file("res://scene/crab_fight.tscn")
 
 func _on_player_button_pressed() -> void:
+	skip_typing = false
 	dialogue_index += 1
 	show_next_dialogue()
 
@@ -138,6 +139,9 @@ func show_cat_text(line) -> void:
 	$Camera2D/Textbox/textlabel.visible_characters = 0
 	$Typing.play()
 	for i in $Camera2D/Textbox/textlabel.text.length():
+		if skip_typing:
+			$Camera2D/Textbox/textlabel.visible_characters = $Camera2D/Textbox/textlabel.text.length()
+			break
 		if current_id != dialogue_id:
 			return
 		if !is_inside_tree():
@@ -160,6 +164,9 @@ func _input(event):
 			if dialogue_index != 2:
 				dialogue_index += 1
 				show_next_dialogue()
+	elif event.is_action_pressed("ui_accept") and typing:
+		skip_typing = true
+		$Camera2D/Textbox/textlabel.visible_characters = $Camera2D/Textbox/textlabel.text.length()
 
 func _ready() -> void:
 	

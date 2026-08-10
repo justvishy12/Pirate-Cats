@@ -14,8 +14,7 @@ var insslide_move
 var insslider_tween: Tween
 var time_insmove
 var fish_swiming = true
-
-
+var skip_typing = false
 var dialogue = [
 	{
 		#0
@@ -124,6 +123,7 @@ func _on_player_button_pressed() -> void:
 	show_next_dialogue()
 
 func show_cat_text(line) -> void:
+	skip_typing = false
 	$Textbox.visible = true
 	typing = true
 	
@@ -137,6 +137,9 @@ func show_cat_text(line) -> void:
 	$Textbox/textlabel.visible_characters = 0
 	$Typing.play()
 	for i in $Textbox/textlabel.text.length():
+		if skip_typing:
+			$Textbox/textlabel.visible_characters = $Textbox/textlabel.text.length()
+			break
 		if !is_inside_tree():
 			return
 		$Textbox/textlabel.visible_characters = i
@@ -150,6 +153,9 @@ func _input(event):
 		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
 			dialogue_index += 1
 			show_next_dialogue()
+	elif event.is_action_pressed("ui_accept") and typing:
+		skip_typing = true
+		$Textbox/textlabel.visible_characters = $Textbox/textlabel.text.length()
 
 
 func _ready() -> void:

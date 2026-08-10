@@ -15,6 +15,7 @@ var E3 = false
 var E4 = false
 var E5 = false
 var E6 = false
+var skip_typing = false
 var done = false
 var map_dialogue_shown = false
 var sponge = preload("res://assets/sponge cursor.png")
@@ -80,6 +81,7 @@ func _on_player_button_pressed() -> void:
 	show_next_dialogue()
 
 func show_cat_text(line) -> void:
+	skip_typing = false
 	$Textbox.visible = true
 	typing = true
 	
@@ -93,6 +95,9 @@ func show_cat_text(line) -> void:
 	$Textbox/textlabel.visible_characters = 0
 	$Typing.play()
 	for i in $Textbox/textlabel.text.length():
+		if skip_typing:
+			$Textbox/textlabel.visible_characters = $Textbox/textlabel.text.length()
+			break
 		if !is_inside_tree():
 			return
 		$Textbox/textlabel.visible_characters = i
@@ -113,6 +118,9 @@ func _input(event):
 			if dialogue_index != 2:
 				dialogue_index += 1
 				show_next_dialogue()
+	elif event.is_action_pressed("ui_accept") and typing:
+		skip_typing = true
+		$Textbox/textlabel.visible_characters = $Textbox/textlabel.text.length()
 
 func _ready() -> void:
 	show_next_dialogue()

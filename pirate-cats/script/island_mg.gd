@@ -8,6 +8,7 @@ var four = false
 var five = false
 var six = false
 var treasure = false
+var skip_typing = false
 var sand_scene = preload("res://scene/sand.tscn")
 var treas = randi_range(1, 6)
 
@@ -138,6 +139,7 @@ func _on_player_button_pressed() -> void:
 
 
 func show_cat_text(line) -> void:
+	skip_typing = false
 	$Textbox.visible = true
 	typing = true
 	
@@ -152,6 +154,9 @@ func show_cat_text(line) -> void:
 	$Typing.play()
 	
 	for i in $Textbox/textlabel.text.length():
+		if skip_typing:
+			$Textbox/textlabel.visible_characters = $Textbox/textlabel.text.length()
+			break
 		if !is_inside_tree():
 			return
 		$Textbox/textlabel.visible_characters = i
@@ -184,6 +189,9 @@ func _input(event):
 				show_next_dialogue()
 			else:
 				$Textbox.visible = false
+	elif event.is_action_pressed("ui_accept") and typing:
+		skip_typing = true
+		$Textbox/textlabel.visible_characters = $Textbox/textlabel.text.length()
 
 func _ready() -> void:
 	#Input.set_custom_mouse_cursor(shovel)

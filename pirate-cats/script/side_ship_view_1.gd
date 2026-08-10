@@ -7,6 +7,8 @@ var sorting = false
 var sorting2 = false
 var locked = false
 var can_play = false
+var skip_typing = false
+
 var dialogue=[
 #If player hasn’t done powder monkey puzzle:
 	{
@@ -101,6 +103,7 @@ func show_next_dialogue() -> void:
 		show_cat_text(line)
 
 func show_cat_text(line) -> void:
+	skip_typing = false
 	$Camera2D/Textbox.visible = true
 	typing = true
 	
@@ -114,6 +117,9 @@ func show_cat_text(line) -> void:
 	$Camera2D/Textbox/textlabel.visible_characters = 0
 	$Typing.play()
 	for i in $Camera2D/Textbox/textlabel.text.length():
+		if skip_typing:
+			$Camera2D/Textbox/textlabel.visible_characters = $Camera2D/Textbox/textlabel.text.length()
+			break
 		if !is_inside_tree():
 			return
 		$Camera2D/Textbox/textlabel.visible_characters = i
@@ -139,6 +145,9 @@ func _input(event):
 			if dialogue_index == 6:
 				locked = false
 				$Camera2D/Textbox.visible = false
+	elif event.is_action_pressed("ui_accept") and typing and can_play == true:
+		skip_typing = true
+		$Camera2D/Textbox/textlabel.visible_characters = $Camera2D/Textbox/textlabel.text.length()
 			
 func _on_player_button_pressed() -> void:
 	if sorting == true and dialogue_index == 5:

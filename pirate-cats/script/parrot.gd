@@ -1,6 +1,7 @@
 extends Node2D
 var eating = false
 var map_dialogue_shown = false
+var skip_typing = false
 var dialogue=[
 	{
 		#0
@@ -79,6 +80,7 @@ func _on_player_button_pressed() -> void:
 	show_next_dialogue()
 
 func show_cat_text(line) -> void:
+	skip_typing = false
 	$Camera2D/Textbox.visible = true
 	typing = true
 	
@@ -92,6 +94,9 @@ func show_cat_text(line) -> void:
 	$Camera2D/Textbox/textlabel.visible_characters = 0
 	$Typing.play()
 	for i in $Camera2D/Textbox/textlabel.text.length():
+		if skip_typing:
+			$Camera2D/Textbox/textlabel.visible_characters = $Camera2D/Textbox/textlabel.text.length()
+			break
 		if !is_inside_tree():
 			return
 		$Camera2D/Textbox/textlabel.visible_characters = i
@@ -104,6 +109,9 @@ func _input(event):
 	if event.is_action_pressed("ui_accept") and !typing:
 		if dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "cat":
 			$Camera2D/Textbox.visible = false
+	elif event.is_action_pressed("ui_accept") and typing:
+		skip_typing = true
+		$Camera2D/Textbox/textlabel.visible_characters = $Camera2D/Textbox/textlabel.text.length()
 
 func _on_mapbutton_pressed() -> void:
 	get_tree().change_scene_to_file("res://scene/FrontShip.tscn")

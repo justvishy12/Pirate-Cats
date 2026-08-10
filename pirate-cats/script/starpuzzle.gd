@@ -19,7 +19,7 @@ var got_wrong = false
 var round3done = false
 var side_movement = 0
 var hello = false
-
+var skip_typing = false
 var game_finished = false
 var map_dialogue_shown = false
 var dialogue = [
@@ -103,6 +103,7 @@ func _on_player_button_pressed() -> void:
 	show_next_dialogue()
 
 func show_cat_text(line) -> void:
+	skip_typing = false
 	$Textbox.visible = true
 	typing = true
 	
@@ -116,6 +117,9 @@ func show_cat_text(line) -> void:
 	$Textbox/textlabel.visible_characters = 0
 	$Typing.play()
 	for i in $Textbox/textlabel.text.length():
+		if skip_typing:
+			$Textbox/textlabel.visible_characters = $Textbox/textlabel.text.length()
+			break
 		if !is_inside_tree():
 			return
 		$Textbox/textlabel.visible_characters = i
@@ -164,6 +168,9 @@ func _input(event):
 			if dialogue_index != 4:
 				dialogue_index += 1
 				show_next_dialogue()
+	elif event.is_action_pressed("ui_accept") and typing:
+		skip_typing = true
+		$Textbox/textlabel.visible_characters = $Textbox/textlabel.text.length()
 
 func _ready() -> void:
 	show_next_dialogue()

@@ -39,7 +39,7 @@ var CTop2 = false
 var CShell = false
 var CFlag = false
 var CStar = false
-
+var skip_typing = false
 var dialogue = [
 	{
 		#0
@@ -169,6 +169,7 @@ func _on_player_button_pressed() -> void:
 	show_next_dialogue()
 	
 func show_cat_text(line) -> void:
+	skip_typing = false
 	$Camera2D/Textbox.visible = true
 	typing = true
 	
@@ -182,6 +183,9 @@ func show_cat_text(line) -> void:
 	$Camera2D/Textbox/textlabel.visible_characters = 0
 	$Typing.play()
 	for i in $Camera2D/Textbox/textlabel.text.length():
+		if skip_typing:
+			$Camera2D/Textbox/textlabel.visible_characters = $Camera2D/Textbox/textlabel.text.length()
+			break
 		if !is_inside_tree():
 			return
 		$Camera2D/Textbox/textlabel.visible_characters = i
@@ -213,6 +217,9 @@ func _input(event):
 			show_next_dialogue()
 		elif dialogue_index < dialogue.size() and dialogue[dialogue_index]["speaker"] == "toppings":
 			$Camera2D/Textbox.visible = false
+	elif event.is_action_pressed("ui_accept") and typing:
+		skip_typing = true
+		$Camera2D/Textbox/textlabel.visible_characters = $Camera2D/Textbox/textlabel.text.length()
 			
 func plate_reset():
 	$MiddlePlate.can_drag = true
