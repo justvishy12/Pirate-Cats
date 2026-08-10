@@ -19,7 +19,11 @@ var rounds = 0
 var can_play = false
 var can_shoot = true
 var skip_typing = false
+var gone_1 = false
+var gone_2 = false
+var gone_3 = false
 const CannonBallScene = preload("res://scene/Cannon Ball.tscn")
+const explode = preload("res://scene/explosion.tscn")
 @onready var mid_start: Vector2 = $CMid.global_position
 @onready var left_start = $CLeft.global_position
 @onready var right_start = $CRight.global_position
@@ -143,17 +147,29 @@ func _process(delta: float) -> void:
 	for cannonball in get_tree().get_nodes_in_group("cannonballs"):
 		var cannon_rect = cannonball.get_node("CannonPanel").get_global_rect()
 
-		if crab_rect.intersects(cannon_rect) and C1_touchable == true:
+		if crab_rect.intersects(cannon_rect) and C1_touchable == true and gone_1 == false:
+			gone_1 = true
 			cancel_crabmove = true
 			await get_tree().create_timer(0.1).timeout
+			var explosion = explode.instantiate()
+			get_parent().add_child(explosion)
+			explosion.global_position = $CMid/purplecrab.global_position
 			$CMid.visible = false
-		if crab_rect2.intersects(cannon_rect) and C2_touchable == true:
+		if crab_rect2.intersects(cannon_rect) and C2_touchable == true and gone_2 == false:
+			gone_2 = true
 			cancel_crabmove2 = true
 			await get_tree().create_timer(0.1).timeout
+			var explosion = explode.instantiate()
+			get_parent().add_child(explosion)
+			explosion.global_position = $CLeft/purplecrab.global_position
 			$CLeft.visible = false
-		if crab_rect3.intersects(cannon_rect) and C3_touchable == true:
+		if crab_rect3.intersects(cannon_rect) and C3_touchable == true and gone_3 == false:
+			gone_3 = true
 			cancel_crabmove3 = true
 			await get_tree().create_timer(0.1).timeout
+			var explosion = explode.instantiate()
+			get_parent().add_child(explosion)
+			explosion.global_position = $CRight/purplecrab.global_position
 			$CRight.visible = false
 	if $CMid.visible == false and $CLeft.visible == false and $CRight.visible == false:
 		$CrabWalk.stop()
@@ -184,6 +200,7 @@ func fire():
 
 	cannonball.add_to_group("cannonballs")
 	cannonball.global_position = $Cannon.global_position
+	$CannonShoot.pitch_scale = 1 + randf_range(-0.1, 0.1)
 	$CannonShoot.play()
 	var target_z: float = cannonball.position.y - 290
 	var tween: Tween = create_tween()
@@ -232,12 +249,15 @@ func pick_crabs():
 		cancel_crabmove2 = false
 		cancel_crabmove3 = false
 		if CMid == 1:
+			gone_1 = false
 			crab_move()
 			$CMid.visible = true
 		if CLeft == 1:
+			gone_2 = false
 			crab_move2()
 			$CLeft.visible = true
 		if CRight == 1:
+			gone_3 = false
 			crab_move3()
 			$CRight.visible = true
 		crab_finished = false

@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://hcnsguqnejg2"]
+
+[ext_resource type="Script" uid="uid://y27c1dqc72gf" path="res://script/explosion.gd" id="1_c5443"]
+[ext_resource type="Texture2D" uid="uid://c1lg8m74mq6tg" path="res://assets/Explosion.png" id="1_xjdxb"]
+
+[sub_resource type="Animation" id="Animation_c5443"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qekrk"]
+resource_name = "explode"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.73333335, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hfxkd"]
+_data = {
+&"RESET": SubResource("Animation_c5443"),
+&"explode": SubResource("Animation_qekrk")
+}
+
+[node name="Node2D" type="Node2D" unique_id=600920297]
+script = ExtResource("1_c5443")
+
+[node name="Explosion" type="Sprite2D" parent="." unique_id=1112414278]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-4.0000005, -1.0000014)
+scale = Vector2(0.14709395, 0.14709395)
+texture = ExtResource("1_xjdxb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1805916873]
+libraries/ = SubResource("AnimationLibrary_hfxkd")

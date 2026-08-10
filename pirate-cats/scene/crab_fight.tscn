@@ -499,6 +499,7 @@ autowrap_mode = 3
 libraries/ = SubResource("AnimationLibrary_5j8du")
 
 [node name="ColorRect" type="ColorRect" parent="AnimationPlayer2" unique_id=1186796476]
+visible = false
 offset_left = -496.0
 offset_top = -168.0
 offset_right = 490.0
