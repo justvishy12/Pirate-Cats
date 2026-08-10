@@ -242,6 +242,7 @@ func _ready() -> void:
 	$mapbutton.visible = false
 
 func _process(delta: float) -> void:
+	#whole section is checking if u have made any matches
 	if a1[1] == "WB" and a2[1] == "WB" and a3[1] == "WB" and a4[1] == "WB":
 		wb4 = true
 	elif b1[1] == "WB" and b2[1] == "WB" and b3[1] == "WB" and b4[1] == "WB":
@@ -281,6 +282,7 @@ func _process(delta: float) -> void:
 		
 
 #region Dragging
+
 	if dragginga1:
 		a1[0].global_position = get_global_mouse_position() - ofa1
 	if dragginga2:

@@ -141,7 +141,7 @@ func show_cat_text(line) -> void:
 		$Camera2D/Textbox/photobox.texture = null
 	$Camera2D/Textbox/textlabel.visible_characters = 0
 	$Typing.play()
-	for i in $Camera2D/Textbox/textlabel.text.length():
+	for i in $Camera2D/Textbox/textlabel.text.length(): #makes it look like dialogue is being played character by character
 		if skip_typing:
 			$Camera2D/Textbox/textlabel.visible_characters = $Camera2D/Textbox/textlabel.text.length()
 			break
@@ -179,6 +179,8 @@ func _input(event):
 		$Camera2D/Textbox/textlabel.visible_characters = $Camera2D/Textbox/textlabel.text.length()
 
 func _ready() -> void:
+	SaveManager.ship = 3
+	SaveManager.save_game(SaveManager.current_slot)
 	if Global.rightcam == true:
 		$Camera2D.position.x = 351
 	elif Global.leftcam == true:
@@ -186,7 +188,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if SaveManager.cook and SaveManager.captain == false and SaveManager.scrub and SaveManager.feed and SaveManager.sort and SaveManager.fish:
+	if SaveManager.cook and SaveManager.captain == false and SaveManager.scrub and SaveManager.feed and SaveManager.sort and SaveManager.fish: #checks if everything is doen then captain apears
 		SaveManager.captain = true
 		$Cook.monitorable = false
 		locked = true

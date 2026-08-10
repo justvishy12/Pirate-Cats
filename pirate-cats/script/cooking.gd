@@ -134,7 +134,7 @@ func show_next_dialogue() -> void:
 		$"Camera2D/player button".visible = false
 		show_cat_text(line)
 		
-	elif line["speaker"] == "plate":
+	elif line["speaker"] == "plate": #moves from getting plate to gettitng base
 		if plates == 0:
 			plates = 1
 			$MiddlePlate.visible = true
@@ -145,14 +145,14 @@ func show_next_dialogue() -> void:
 			$AnimationPlayer2.play("PlateMenu")
 			show_cat_text(line)
 
-	elif line["speaker"] == "base":
+	elif line["speaker"] == "base": #moves from getting base to getting toppings
 		$"Camera2D/player button".visible = false
 		$AnimationPlayer.play("CastleFinish")
 		await get_tree().create_timer(0.65).timeout
 		$AnimationPlayer2.play("CastleMenu")
 		show_cat_text(line)
 		
-	elif line["speaker"] == "toppings" and $Arrow2.visible == false:
+	elif line["speaker"] == "toppings" and $Arrow2.visible == false: #goes to then end to check toppings
 		$Platesss.visible = false
 		$AnimationPlayer.play("ToppingsFinish")
 		$AnimationPlayer2.play("MenuBack")
@@ -221,7 +221,7 @@ func _input(event):
 		skip_typing = true
 		$Camera2D/Textbox/textlabel.visible_characters = $Camera2D/Textbox/textlabel.text.length()
 			
-func plate_reset():
+func plate_reset(): #resets the plate making everything dragable again and clickable again and puts everything back into position and visible
 	$MiddlePlate.can_drag = true
 	$MiddlePlate.dragging = false
 	$MiddlePlate.in_zone = false
@@ -278,7 +278,7 @@ func _ready() -> void:
 	order()
 	
 func _process(delta: float) -> void:
-	if $Plates/Plate1.visible == false and $Plates/Plate2.visible == false and $Plates/Plate3.visible == false  and $Plates/Plate4.visible == false:
+	if $Plates/Plate1.visible == false and $Plates/Plate2.visible == false and $Plates/Plate3.visible == false  and $Plates/Plate4.visible == false: #checks if all plates are made
 		if done == false:
 			done = true
 			SaveManager.cook = true
@@ -290,6 +290,7 @@ func _process(delta: float) -> void:
 			await $AnimationPlayer.animation_finished
 			
 	if $MiddlePlate/Panel.get_global_rect().intersects($PlatePanel.get_global_rect()) and plate_anim == false and $MiddlePlate.in_zone == true:
+		#checks if u dragged the plate into the zone
 		print("work 1")
 		plate_anim = true
 		if game_start == true:

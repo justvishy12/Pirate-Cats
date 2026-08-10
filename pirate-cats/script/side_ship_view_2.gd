@@ -134,6 +134,8 @@ func _on_player_button_pressed() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SaveManager.ship = 2
+	SaveManager.save_game(SaveManager.current_slot)
 	if Global.rightcam == true:
 		$Camera2D.position.x = 288
 	elif Global.leftcam == true:

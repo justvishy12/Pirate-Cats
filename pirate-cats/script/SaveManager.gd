@@ -13,6 +13,7 @@ var full_map = false
 var stars = false
 var island = false
 var aftercrab = false
+var ship = 3
 var speed: float = 0.05
 func save_game(slot: int) -> void:
 	var path = SAVE_FOLDER + "save_%d.json" % slot
@@ -30,6 +31,7 @@ func save_game(slot: int) -> void:
 		"aftercrab": aftercrab,
 		"stars": stars,
 		"island": island,
+		"ship": ship,
 	}
 
 	var file = FileAccess.open(path, FileAccess.WRITE)
@@ -91,7 +93,14 @@ func load_game(slot: int):
 	elif full_map:
 		get_tree().change_scene_to_file("res://scene/starpuzzle.tscn")
 	elif aftercrab:
-		get_tree().change_scene_to_file("res://scene/Backship.tscn")
+		if ship == 1:
+			get_tree().change_scene_to_file("res://scene/SideShipView1.tscn")
+		elif ship == 2:
+			get_tree().change_scene_to_file("res://scene/SideShipView2.tscn")
+		elif ship == 3:
+			get_tree().change_scene_to_file("res://scene/Backship.tscn")
+		elif ship == 4:
+			get_tree().change_scene_to_file("res://scene/FrontShip.tscn")
 	elif crab_fight and aftercrab == false:
 		get_tree().change_scene_to_file("res://scene/aftercrabfight.tscn")
 	else:

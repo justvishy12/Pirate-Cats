@@ -157,6 +157,8 @@ func _on_player_button_pressed() -> void:
 
 
 func _ready() -> void:
+	SaveManager.ship = 1
+	SaveManager.save_game(SaveManager.current_slot)
 	if Global.rightcam == true:
 		$Camera2D.position.x = 288
 	elif Global.leftcam == true:

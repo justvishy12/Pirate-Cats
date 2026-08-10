@@ -174,7 +174,7 @@ func _input(event):
 
 func _ready() -> void:
 	show_next_dialogue()
-func reset_game():
+func reset_game(): #if u dont get it right and resets
 	$FishConstellation.position.x = 194
 	$PawprintConstellation.position.x = 194
 	$BootConstellation.position.x = 182
@@ -201,7 +201,7 @@ func reset_game():
 	round2done = false
 	got_wrong = false
 	round3done = false
-func round_finished():
+func round_finished(): #what happens after a round is finished weather right or wrong
 	if round_transitioning:
 		return
 	round_transitioning = true

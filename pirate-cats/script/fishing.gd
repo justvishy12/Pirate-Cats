@@ -168,9 +168,9 @@ func _ready() -> void:
 	show_next_dialogue()
 		
 
-func _on_button_pressed() -> void:
+func _on_button_pressed() -> void: 
 	var pos = Vector2(get_global_mouse_position())
-	if bobber == false:
+	if bobber == false: #putting the bober in the ocean
 		$Rod.visible = true
 		$Outside/Slider.position = Vector2(127,6)
 		fightcount = 0
@@ -184,7 +184,7 @@ func _on_button_pressed() -> void:
 		$Button.size.y = 324
 		rand_time()
 	
-	elif bobber == true and fishing == false:
+	elif bobber == true and fishing == false: #taking the bobber out
 		$Button.size.y = 230
 		$Rod.visible = false
 		bobber = false
@@ -192,17 +192,17 @@ func _on_button_pressed() -> void:
 		$bobber.visible = false
 		$FishingTimer.stop()
 		
-	elif bobber == true and fishing == true:
+	elif bobber == true and fishing == true: #playing the mini game
 		var target_x: float = $Outside/Slider.position.x + 15
 		var tween: Tween = create_tween()
 		tween.tween_property($Outside/Slider, "position:x", target_x, 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
-func rand_time():
+func rand_time(): #how long user has to fight the fish for
 	time = randi_range(1, 4)
 	$FishingTimer.wait_time = time
 	$FishingTimer.start()
 
-func _on_fishing_timer_timeout() -> void:
+func _on_fishing_timer_timeout() -> void: #what happens when user is fighting fish
 	$FishingTimer.stop()
 	$FishMove.play()
 	fishing = true
@@ -232,7 +232,7 @@ func _on_fishing_timer_timeout() -> void:
 		fight_type()
 		inside_slide()
 		
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void: #fish movment
 	if fishing == true and fight_style == "stream" and (fish == 1 or fish == 2 or fish == 3):
 		$Outside/Slider.position.x -= 60 * delta	
 	elif fishing == true and fight_style == "stream" and (fish == 4 or fish == 5):
@@ -248,7 +248,7 @@ func _physics_process(delta: float) -> void:
 	)
 
 
-func fight_type():
+func fight_type(): #if the fish is moving constant or sudden jerks
 	while $WaitReel.time_left > 0:
 		fish_type = randi_range(1,2)
 		if fishing == true:
@@ -320,7 +320,7 @@ func fight_type():
 						if !fishing:
 							return
 
-func _on_wait_reel_timeout() -> void:
+func _on_wait_reel_timeout() -> void: #what happens after the player catches the fish
 	$WaitReel.stop()
 	if slider_tween and slider_tween.is_valid():
 		slider_tween.kill()

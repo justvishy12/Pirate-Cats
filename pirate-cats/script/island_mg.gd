@@ -215,7 +215,7 @@ func find():
 	show_next_dialogue()
 
 
-func tres():
+func tres(): #if user finds treassure
 	Input.set_custom_mouse_cursor(null)
 	$side.disabled = true
 	treasure = true
@@ -233,6 +233,7 @@ func tres():
 	SaveManager.island = true
 	SaveManager.save_game(SaveManager.current_slot)
 	show_next_dialogue()
+#pressing the sides like border
 func _on_side_pressed() -> void:
 	dialogue_index = 10
 	show_next_dialogue()
@@ -248,7 +249,7 @@ func _on_top_pressed() -> void:
 func _on_bottom_pressed() -> void:
 	dialogue_index = 10
 	show_next_dialogue()
- 
+#pressing the actual places u can
 func _on_button_pressed() -> void:
 	$Dig.play()
 	mos_pos = get_global_mouse_position()

@@ -116,7 +116,7 @@ func _input(event):
 func _on_mapbutton_pressed() -> void:
 	get_tree().change_scene_to_file("res://scene/FrontShip.tscn")
 
-func parrot_eat():
+func parrot_eat(): #when the cookie intersects with parrot
 	if eating == false:
 		var text = randi_range(1, 5)
 		dialogue_index = text
@@ -136,6 +136,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if $Right/Cookie2.visible == false and $Right/Cookie1.visible == false and $Right/Cookie.visible == false and $Left/Cookie5.visible == false and $Left/Cookie4.visible == false and $Left/Cookie3.visible == false and $Left/Cookie6.visible == false and map_dialogue_shown == false:
+		#chwecks if u fed all the cookies then brings the map
 		print("worked")
 		SaveManager.feed= true
 		SaveManager.save_game(SaveManager.current_slot)

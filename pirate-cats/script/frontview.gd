@@ -118,7 +118,10 @@ func _input(event):
 		skip_typing = true
 		$Camera2D/Textbox/textlabel.visible_characters = $Camera2D/Textbox/textlabel.text.length()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _ready() -> void:
+	SaveManager.ship = 4
+	SaveManager.save_game(SaveManager.current_slot)
+
 func _process(delta: float) -> void:
 	if SaveManager.cook and SaveManager.captain == false and SaveManager.scrub and SaveManager.feed and SaveManager.sort and SaveManager.fish:
 		SaveManager.captain = true

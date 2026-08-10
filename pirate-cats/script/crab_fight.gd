@@ -146,7 +146,7 @@ func _process(delta: float) -> void:
 	var crab_rect3 = $CRight/RightPanel.get_global_rect()
 	for cannonball in get_tree().get_nodes_in_group("cannonballs"):
 		var cannon_rect = cannonball.get_node("CannonPanel").get_global_rect()
-
+		#checks if the cannonball has touched any crabs
 		if crab_rect.intersects(cannon_rect) and C1_touchable == true and gone_1 == false:
 			gone_1 = true
 			cancel_crabmove = true
@@ -220,7 +220,7 @@ func _physics_process(delta):
 func pick_crabs():
 	if spawning_crabs:
 		return
-		
+	# to pick crabs after round down, make it reset and random	
 	if rounds == 3:
 		SaveManager.crab_fight = true
 		can_play = false
@@ -266,6 +266,7 @@ func pick_crabs():
 
 		
 func crab_move3():
+	# for the right side of crabs
 	if CRight == purp:
 		$CRight/greencrab.visible = false
 		$CRight/yellowcrab.visible = false
