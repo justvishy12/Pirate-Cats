@@ -79,6 +79,13 @@ var dialogue = [
 		"text": "Meet me outside and let's start sailing towards the treasure. ",
 		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
 	},
+	{
+		#4
+		"speaker": "cat",
+		"name": "Cat Sparrow (Captain)",
+		"text": "Jasmine... She was so young and had to go. ",
+		"portrait": preload("res://assets/headshots/CAPTIAN FACE.png")
+	},
 
 ]
 var dialogue_index = 0
@@ -161,7 +168,12 @@ func _input(event):
 			if dialogue_index == 2:
 				$Camera2D/Textbox.visible=false
 				return
-			if dialogue_index != 2:
+			if dialogue_index == 4:
+				$Camera2D/Panel.visible = false
+				$Camera2D/JasminePhoto.visible = false
+			if dialogue_index == 3:
+				$Camera2D/Textbox.visible=false
+			if dialogue_index != 2 or dialogue_index!= 3:
 				dialogue_index += 1
 				show_next_dialogue()
 	elif event.is_action_pressed("ui_accept") and typing:
@@ -169,6 +181,12 @@ func _input(event):
 		$Camera2D/Textbox/textlabel.visible_characters = $Camera2D/Textbox/textlabel.text.length()
 
 func _ready() -> void:
+	$Camera2D/JasminePhoto.visible = false
+	$Camera2D/Panel.visible = false
+	if SaveManager.cook and SaveManager.captain == true and SaveManager.scrub and SaveManager.feed and SaveManager.sort and SaveManager.fish:
+		$JasminePhoto.global_position = Vector2( 300, -300)
+	else:
+		$JasminePhoto.global_position = Vector2( -288, -23)
 	
 	print($Camera2D/bg/Map1.global_position)
 	print($Camera2D/bg/Map2.global_position)
@@ -650,6 +668,40 @@ func _on_captain_input(viewport: Node, event: InputEvent, shape_idx: int) -> voi
 
 
 func _on_arrow_pressed() -> void:
-	print("works")
+	print("went back")
 	$Camera2D/bg.visible = false
 	$Camera2D/arrow.visible=false
+
+
+func _on_table_mouse_entered() -> void:
+	if !SaveManager.full_map:
+		Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+
+
+func _on_table_mouse_exited() -> void:
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+
+func _on_back_ship_mouse_entered() -> void:
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+
+
+func _on_back_ship_mouse_exited() -> void:
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+
+func _on_photo_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		$Camera2D/Panel.visible = true
+		$Camera2D/JasminePhoto.visible = true
+		print("worked")
+		dialogue_index = 4
+		show_next_dialogue()
+
+
+func _on_photo_2d_mouse_entered() -> void:
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+
+
+func _on_photo_2d_mouse_exited() -> void:
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
