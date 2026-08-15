@@ -680,14 +680,17 @@ scale = Vector2(0.3448276, 0.34482756)
 texture = ExtResource("17_jmuir")
 
 [node name="JasminePhoto" type="Sprite2D" parent="." unique_id=1361199493]
+position = Vector2(-288.4533, -22.987202)
+rotation = 0.13139696
+scale = Vector2(0.093204364, 0.09320436)
+texture = ExtResource("26_o7lqx")
+
+[node name="Photo2d" type="Area2D" parent="." unique_id=1854159124]
 position = Vector2(-288, -22.999996)
 rotation = 0.13139696
 scale = Vector2(0.19921881, 0.19921881)
-texture = ExtResource("26_o7lqx")
 
-[node name="Photo2d" type="Area2D" parent="JasminePhoto" unique_id=1854159124]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="JasminePhoto/Photo2d" unique_id=497998148]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Photo2d" unique_id=497998148]
 scale = Vector2(0.9999999, 0.9999999)
 polygon = PackedVector2Array(-127.23633, -119.89249, -119.91431, -141.11316, -92.0293, -159.98817, 15.104492, -153.89377, 85.430786, -158.12476, 111.62781, -151.4604, 124.21118, -132.87038, 126.184204, -117.94136, 124.89075, 140.45547, 92.0293, 159.98814, 45.26941, 150.97812, 66.46826, -110.04938, 22.05371, -139.62244)
 
@@ -703,13 +706,13 @@ zoom = Vector2(2, 2)
 visible = false
 offset_left = -296.0
 offset_top = -169.0
-offset_right = 251.0
+offset_right = 297.0
 offset_bottom = 166.0
 
 [node name="JasminePhoto" type="Sprite2D" parent="Camera2D" unique_id=1762768836]
 visible = false
-position = Vector2(-1.0000019, -26)
-scale = Vector2(0.76562506, 0.76562506)
+position = Vector2(-1.0000029, -21)
+scale = Vector2(0.36217463, 0.36217463)
 texture = ExtResource("26_o7lqx")
 
 [node name="CamLeft" type="Area2D" parent="Camera2D" unique_id=1801226290]
@@ -1096,9 +1099,9 @@ parameters/looping = true
 [connection signal="mouse_entered" from="BackShip" to="." method="_on_back_ship_mouse_entered"]
 [connection signal="mouse_exited" from="BackShip" to="." method="_on_back_ship_mouse_exited"]
 [connection signal="input_event" from="Area2D" to="." method="_on_captain_input"]
-[connection signal="input_event" from="JasminePhoto/Photo2d" to="." method="_on_photo_2d_input_event"]
-[connection signal="mouse_entered" from="JasminePhoto/Photo2d" to="." method="_on_photo_2d_mouse_entered"]
-[connection signal="mouse_exited" from="JasminePhoto/Photo2d" to="." method="_on_photo_2d_mouse_exited"]
+[connection signal="input_event" from="Photo2d" to="." method="_on_photo_2d_input_event"]
+[connection signal="mouse_entered" from="Photo2d" to="." method="_on_photo_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Photo2d" to="." method="_on_photo_2d_mouse_exited"]
 [connection signal="mouse_entered" from="Camera2D/CamLeft" to="." method="_on_cam_left_mouse_entered"]
 [connection signal="mouse_exited" from="Camera2D/CamLeft" to="." method="_on_cam_left_mouse_exited"]
 [connection signal="mouse_entered" from="Camera2D/CamRight" to="." method="_on_cam_right_mouse_entered"]

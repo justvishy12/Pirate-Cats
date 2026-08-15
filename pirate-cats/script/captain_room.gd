@@ -96,6 +96,7 @@ var dialogue_id = 0
 func show_next_dialogue() -> void:
 	dialogue_id += 1
 	
+	
 	if dialogue_index >= dialogue.size():
 		$Camera2D/Textbox.visible = false
 		$"Camera2D/player button".visible = false
