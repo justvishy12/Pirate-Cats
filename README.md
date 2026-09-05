@@ -4,10 +4,6 @@ Pirate cats is an interactive 2D point and click game where you find yourself on
 Help the cats solve various puzzles to uncover map pieces hiding throughout the boat and set sail towards the ultimate treasure!
 (It is really recommended to read the guide in the game before starting)
 
-Creation:
-- Made in Godot 4.7
-- Used Figma for assets
-
 Specials:
 - Dialogue/Skip Text
 - Different Minigames
@@ -29,6 +25,7 @@ Credits:
 - SFX created by us
 - Background Music from Pixabay
 - Assets created in Figma
+- Made in Godot 4.7
 <img width="1152" height="648" alt="example_crab_fight" src="https://github.com/user-attachments/assets/0b945664-e58c-4ce9-af4f-e2b1f530273f" />
 
 Good luck fellow adventurers, and find that treasure!
